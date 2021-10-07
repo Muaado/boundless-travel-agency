@@ -21,7 +21,15 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.22.0",
-    "lerna": "^3.13.1",
+    "lerna": "^4.0.0",
     "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "babel-plugin-styled-components": "^1.5.1",
+    "gatsby-plugin-react-svg": "^3.0.1",
+    "gatsby-plugin-styled-components": "^2.0.4",
+    "gatsby-remark-embed-video": "^3.1.1",
+    "gatsby-transformer-remark": "^4.11.0",
+    "styled-components": "^5.2.1"
   }
 }

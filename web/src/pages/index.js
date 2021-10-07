@@ -1,15 +1,21 @@
 import React from "react";
 import { graphql } from "gatsby";
-import {
-  filterOutDocsPublishedInTheFuture,
-  filterOutDocsWithoutSlugs,
-  mapEdgesToNodes,
-} from "../lib/helpers";
-import BlogPostPreviewList from "../components/blog-post-preview-list";
+// import {
+//   filterOutDocsPublishedInTheFuture,
+//   filterOutDocsWithoutSlugs,
+//   mapEdgesToNodes,
+// } from "../lib/helpers";
+
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
+
+import styled from "styled-components";
+
+import Video from "../components/Video";
+
+import VideoBg from "../assets/videobg.mp4";
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -76,11 +82,11 @@ const IndexPage = (props) => {
   }
 
   const site = (data || {}).site;
-  const postNodes = (data || {}).posts
-    ? mapEdgesToNodes(data.posts)
-        .filter(filterOutDocsWithoutSlugs)
-        .filter(filterOutDocsPublishedInTheFuture)
-    : [];
+  // const postNodes = (data || {}).posts
+  //   ? mapEdgesToNodes(data.posts)
+  //       .filter(filterOutDocsWithoutSlugs)
+  //       .filter(filterOutDocsPublishedInTheFuture)
+  //   : [];
 
   if (!site) {
     throw new Error(
@@ -96,17 +102,103 @@ const IndexPage = (props) => {
         keywords={site.keywords}
       />
       <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
-        {postNodes && (
-          <BlogPostPreviewList
-            title="Latest blog posts"
-            nodes={postNodes}
-            browseMoreHref="/archive/"
-          />
-        )}
+        <HeroStyles>
+          <h1> {site.description}</h1>
+          <Video videoSrcURL={VideoBg} />
+        </HeroStyles>
+        <div className="page-content">
+          <SearchBar>
+            <input
+              placeholder="Where would you like to go?"
+              type="text"
+              name="location"
+            />
+            <input placeholder="Check in" type="date" />
+            <input placeholder="Check out" type="date" />
+            <input placeholder="Adults" type="number" />
+            <input placeholder="Children" type="number" />
+            <button className="btn">SEARCH</button>
+          </SearchBar>
+
+          <JourneyStyles>
+            <h1>Start your journey</h1>
+          </JourneyStyles>
+        </div>
       </Container>
     </Layout>
   );
 };
 
 export default IndexPage;
+
+const JourneyStyles = styled.div`
+  margin-top: 15rem;
+  align-self: center;
+`;
+
+const SearchBar = styled.form`
+  padding: 1rem;
+  position: absolute;
+  top: -3.5rem;
+
+  background: #fff;
+  align-self: center;
+
+  display: flex;
+  width: 80%;
+
+  filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.25));
+  input {
+    padding: 1rem;
+    border: none;
+    width: 20%;
+
+    &[name="location"] {
+      width: 60%;
+    }
+    &:focus {
+      outline: none;
+    }
+    &:not(:last-of-type) {
+      border-right: 1px solid #000;
+    }
+  }
+
+  button {
+    border-radius: 2px;
+  }
+`;
+const HeroStyles = styled.div`
+  text-align: center;
+
+  color: #fff;
+
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  &:before {
+    content: "";
+    position: absolute;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+  }
+  h1 {
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  video {
+    height: 100%;
+    width: 100vw;
+    object-fit: fill;
+  }
+`;
