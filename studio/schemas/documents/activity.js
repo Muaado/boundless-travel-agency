@@ -1,7 +1,7 @@
 export default {
-  name: "resortHighlight",
+  name: "activity",
   type: "document",
-  title: "Resort highlight",
+  title: "Activity",
   fields: [
     {
       name: "name",
@@ -13,49 +13,49 @@ export default {
       title: "Description",
     },
     {
-      name: "highlightAlternateName",
-      title: "Highlight alternate name",
+      name: "activityAlternateName",
+      title: "Activity alternate name",
       type: "array",
       of: [
         {
           type: "reference",
           to: {
-            type: "highlightAlternateName",
+            type: "activityAlternateName",
           },
         },
       ],
     },
 
     {
-      name: "highlightIdealFor",
-      title: "Highlight ideal for",
+      name: "activityIdealFor",
+      title: "Activity ideal for",
       type: "array",
       of: [
         {
           type: "reference",
           to: {
-            type: "highlightIdealFor",
+            type: "activityIdealFor",
           },
         },
       ],
     },
 
     {
-      name: "highlightTags",
-      title: "Highlight tags",
+      name: "activityTags",
+      title: "Activity tags",
       type: "array",
       of: [
         {
           type: "reference",
           to: {
-            type: "highlightTag",
+            type: "activityTag",
           },
         },
       ],
     },
 
     {
-      name: "highlightSpecialityArticlePage",
+      name: "ActivitySpecialityArticlePage",
       title: "Hightlight speciality article page",
       type: "string",
     },
@@ -63,17 +63,17 @@ export default {
     {
       name: "imageMobile",
       type: "mainImage",
-      title: "Restaurant image mobile",
+      title: "Activity image mobile",
     },
     {
       name: "imageWeb",
       type: "mainImage",
-      title: "Restaurant image web",
+      title: "Activity image web",
     },
     {
       name: "imageThumb",
       type: "mainImage",
-      title: "Restaurant image thumb",
+      title: "Activity image thumb",
     },
   ],
   preview: {

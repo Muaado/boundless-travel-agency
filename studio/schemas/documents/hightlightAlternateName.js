@@ -1,7 +1,7 @@
 export default {
-  name: "highlightAlternateNames",
+  name: "highlightAlternateName",
   type: "document",
-  title: "Highlight alternate names",
+  title: "Highlight alternate name",
   fields: [
     {
       name: "name",
