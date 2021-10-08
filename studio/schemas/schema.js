@@ -40,6 +40,9 @@ import activity from "./documents/activity";
 import activityAlternateName from "./documents/activityAlternateName";
 import activityIdealFor from "./documents/activityIdealFor";
 import activityTag from "./documents/activityTag";
+import resortFaq from "./documents/resortFaq";
+import faqGroupTag from "./documents/faqGroupTag";
+import faqQuestionAnswer from "./objects/faqQuestionAnswer";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -64,6 +67,10 @@ export default createSchema({
     highlightTag,
     hightlightAlternateName,
     highlightIdealFor,
+
+    resortFaq,
+    faqGroupTag,
+    faqQuestionAnswer,
 
     restaurant,
     restaurantCusinesServed,
