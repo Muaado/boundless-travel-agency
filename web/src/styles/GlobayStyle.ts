@@ -3,11 +3,14 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
   :root {
+    --darkRed: #5D0012;
+    --lightOrange: #B39A6A;
+
+
     /* Define colors as colors */
     --black: #2b2926;
     --cream: #eeeeee;
-    --darkRed: #5D0012;
-    --lightOrange: #ff9100;
+    /* --lightOrange: #ff9100; */
     --orange: #EA4C2F;
     --green: #5cb85c;
     --red: #cb1d00;
@@ -28,8 +31,8 @@ export const GlobalStyle = createGlobalStyle`
     --background: var(--cream);
     --textColor: var(--black);
     --lineColor: var(--lightGrey);
-    --primary: var(--darkRed);
-    --secondary: var(--darkGrey);
+    --primary: var(--lightOrange);
+    --secondary: var(--darkRed);
     --primaryDark20: var(--orangeDark20);
     --cardBg: var(--pureWhite);
     --headerBg: var(--black);
@@ -60,19 +63,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 
-  @font-face {
-    font-family: "Roboto";
-    /* src: url("/fonts/glacial-indifference/GlacialIndifference-Regular.eot");
-    src: url("/fonts/glacial-indifference/GlacialIndifference-Regular.woff2") format("woff2"), url("./fonts/glacial-indifference/GlacialIndifference-Regular.woff") format("woff"), url("./fonts/glacial-indifference/GlacialIndifference-Regular.ttf") format("truetype"), url("./fonts/glacial-indifference/GlacialIndifference-Regular.otf") format("opentype"), url("./fonts/glacial-indifference/GlacialIndifference-Regular.svg") format("svg"); */
-  }
-
-  @font-face {
-    font-family: "Roboto";
-    src: url("/fonts/glacial-indifference/GlacialIndifference-Bold.eot");
-    src: url("/fonts/glacial-indifference/GlacialIndifference-Bold.woff2") format("woff2"), url("./fonts/glacial-indifference/GlacialIndifference-Bold.woff") format("woff"), url("./fonts/glacial-indifference/GlacialIndifference-Bold.ttf") format("truetype"), url("./fonts/glacial-indifference/GlacialIndifference-Bold.otf") format("opentype"), url("./fonts/glacial-indifference/GlacialIndifference-Bold.svg") format("svg");
-    font-weight: bold;
-  }
-
 
   html {
     box-sizing: border-box;
@@ -90,7 +80,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .btn {
-    background: var(--primary);
+    background: var(--secondary);
     color: var(--pureWhite);
     border: none;
     padding: 1rem 1.75rem;

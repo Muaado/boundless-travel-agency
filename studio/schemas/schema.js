@@ -16,6 +16,12 @@ import bioPortableText from "./objects/bioPortableText";
 import excerptPortableText from "./objects/excerptPortableText";
 import mainImage from "./objects/mainImage";
 import authorReference from "./objects/authorReference";
+import resort from "./documents/resort";
+import restaurant from "./documents/restaurant";
+import villa from "./documents/villa";
+
+import resortTag from "./documents/resortTag";
+import resortAccomodationType from "./documents/resortAccomodationType";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -30,6 +36,11 @@ export default createSchema({
     post,
     category,
     author,
+    resort,
+    restaurant,
+    villa,
+    resortTag,
+    resortAccomodationType,
     mainImage,
     authorReference,
     bodyPortableText,

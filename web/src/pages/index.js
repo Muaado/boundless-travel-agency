@@ -122,6 +122,13 @@ const IndexPage = (props) => {
 
           <JourneyStyles>
             <h1>Start your journey</h1>
+            <ul>
+              <li>most popular</li>
+              <li>experiences</li>
+              <li>by traveler</li>
+              <li>unique</li>
+              <li>view all</li>
+            </ul>
           </JourneyStyles>
         </div>
       </Container>
@@ -133,7 +140,32 @@ export default IndexPage;
 
 const JourneyStyles = styled.div`
   margin-top: 15rem;
+  margin-bottom: 2rem;
   align-self: center;
+  display: flex;
+  flex-direction: column;
+  font-family: "Playfair Display";
+  h1 {
+    font-size: 7rem;
+    letter-spacing: 2rem;
+    line-height: 10rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    align-self: center;
+    display: flex;
+    align-items: center;
+
+    li {
+      padding: 0 2rem;
+      text-transform: uppercase;
+      &:not(:last-of-type) {
+        border-right: 1px solid #000;
+      }
+    }
+  }
 `;
 
 const SearchBar = styled.form`
