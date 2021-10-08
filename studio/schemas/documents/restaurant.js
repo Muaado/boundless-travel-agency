@@ -21,6 +21,30 @@ export default {
     },
 
     {
+      title: "Halal available",
+      name: "halalAvailable",
+      type: "boolean",
+    },
+
+    {
+      title: "Restaurant featured",
+      name: "restaurantFeatured",
+      type: "boolean",
+    },
+    {
+      name: "restaurantCuisinesServed",
+      title: "Restaurant cuisines served",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "restaurantCuisinesServed",
+          },
+        },
+      ],
+    },
+    {
       name: "description",
       type: "bodyPortableText",
       title: "Description",

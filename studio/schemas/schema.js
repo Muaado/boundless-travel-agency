@@ -24,6 +24,7 @@ import resortTag from "./documents/resortTag";
 import resortAccomodationType from "./documents/resortAccomodationType";
 import resortTransferType from "./documents/resortTransferType";
 import resortCollection from "./documents/resortCollection";
+import restaurantCusinesServed from "./documents/restaurantCusinesServed";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -40,11 +41,12 @@ export default createSchema({
     author,
     resort,
     resortCollection,
-    restaurant,
-    villa,
     resortTag,
     resortAccomodationType,
     resortTransferType,
+    restaurant,
+    restaurantCusinesServed,
+    villa,
     mainImage,
     authorReference,
     bodyPortableText,
