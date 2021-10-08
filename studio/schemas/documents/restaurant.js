@@ -1,5 +1,5 @@
 export default {
-  name: "Restaurant",
+  name: "restaurant",
   type: "document",
   title: "Restaurant",
   fields: [
@@ -7,6 +7,12 @@ export default {
       name: "name",
       type: "string",
       title: "Name",
+    },
+    {
+      title: "Resort",
+      name: "resort",
+      type: "reference",
+      to: [{ type: "resort" }],
     },
     {
       name: "alternateName",

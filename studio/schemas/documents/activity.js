@@ -8,6 +8,12 @@ export default {
       type: "string",
     },
     {
+      title: "Resort",
+      name: "resort",
+      type: "reference",
+      to: [{ type: "resort" }],
+    },
+    {
       name: "description",
       type: "bodyPortableText",
       title: "Description",

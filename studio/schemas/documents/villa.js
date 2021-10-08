@@ -8,6 +8,14 @@ export default {
       type: "string",
       title: "Name",
     },
+
+    {
+      title: "Resort",
+      name: "resort",
+      type: "reference",
+      to: [{ type: "resort" }],
+    },
+
     {
       name: "alternateName",
       type: "string",

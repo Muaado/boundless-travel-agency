@@ -13,6 +13,12 @@ export default {
       title: "Description",
     },
     {
+      title: "Resort",
+      name: "resort",
+      type: "reference",
+      to: [{ type: "resort" }],
+    },
+    {
       name: "highlightAlternateName",
       title: "Highlight alternate name",
       type: "array",

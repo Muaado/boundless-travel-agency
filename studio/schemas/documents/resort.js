@@ -67,6 +67,19 @@ export default {
     },
 
     {
+      name: "restaurants",
+      title: "Restaurants",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "restaurant",
+          },
+        },
+      ],
+    },
+    {
       name: "resortTransferType",
       title: "Resort transfer type",
       type: "array",
