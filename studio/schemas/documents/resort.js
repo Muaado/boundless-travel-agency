@@ -1,5 +1,5 @@
 export default {
-  name: "Resort",
+  name: "resort",
   type: "document",
   title: "Resort",
   fields: [
@@ -58,6 +58,26 @@ export default {
       name: "numberOfBars",
       type: "number",
       title: "Number of bars",
+    },
+
+    {
+      name: "roomVoltage",
+      type: "number",
+      title: "Resort room voltage",
+    },
+
+    {
+      name: "resortTransferType",
+      title: "Resort transfer type",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "resortTransferType",
+          },
+        },
+      ],
     },
     {
       name: "resortTags",
