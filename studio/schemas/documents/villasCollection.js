@@ -10,19 +10,19 @@ export default {
       title: "Collection Name",
     },
 
-    {
-      name: "villas",
-      title: "Villas",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: {
-            type: "villa",
-          },
-        },
-      ],
-    },
+    // {
+    //   name: "villas",
+    //   title: "Villas",
+    //   type: "array",
+    //   of: [
+    //     {
+    //       type: "reference",
+    //       to: {
+    //         type: "villa",
+    //       },
+    //     },
+    //   ],
+    // },
 
     {
       name: "imageMobile",

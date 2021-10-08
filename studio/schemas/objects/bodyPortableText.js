@@ -46,7 +46,7 @@ export default {
           },
         ],
       },
-      of: [{ type: "text" }],
+      of: [{ type: "authorReference" }],
     },
     // You can add additional types here. Note that you can't use
     // primitive types such as 'string' and 'number' in the same array

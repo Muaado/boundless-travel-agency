@@ -50,35 +50,12 @@ export default {
       ],
     },
 
-    {
-      name: "spaServicesOffered",
-      title: "Spa services offered",
-      type: "array",
-      of: [
-        {
-          type: "object",
-          fields: [
-            {
-              name: "service",
-              type: "reference",
-              to: {
-                type: "spaServiceOffered",
-              },
-            },
-            {
-              title: "Service featured",
-              name: "serviceFeatured",
-              type: "boolean",
-            },
-          ],
-          preview: {
-            select: {
-              title: "service.service",
-            },
-          },
-        },
-      ],
-    },
+    // {
+    //   name: "spaServicesOffered",
+    //   title: "Spa services offered",
+    //   type: "array",
+    //   of: [{ type: "spaService" }],
+    // },
 
     {
       name: "spaTreatmentTypes",
