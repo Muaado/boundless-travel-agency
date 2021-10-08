@@ -23,7 +23,7 @@ import villa from "./documents/villa";
 import resortTag from "./documents/resortTag";
 import resortAccomodationType from "./documents/resortAccomodationType";
 import resortTransferType from "./documents/resortTransferType";
-import resortCollection from "./documents/resortCollection";
+// import resortCollection from "./documents/resortCollection";
 import restaurantCusinesServed from "./documents/restaurantCusinesServed";
 import spaServicesOffered from "./documents/spaServicesOffered";
 import spaTreatmentType from "./documents/spaTreatmentType";
@@ -43,6 +43,7 @@ import activityTag from "./documents/activityTag";
 import resortFaq from "./documents/resortFaq";
 import faqGroupTag from "./documents/faqGroupTag";
 import faqQuestionAnswer from "./objects/faqQuestionAnswer";
+import villasCollection from "./documents/villasCollection";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -58,7 +59,6 @@ export default createSchema({
     category,
     author,
     resort,
-    resortCollection,
     resortTag,
     resortAccomodationType,
     resortTransferType,
@@ -86,6 +86,7 @@ export default createSchema({
     activityTag,
 
     villa,
+    villasCollection,
     villaPoolType,
     villaTag,
 

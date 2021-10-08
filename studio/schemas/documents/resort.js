@@ -31,6 +31,8 @@ export default {
       type: "bodyPortableText",
       title: "Description",
     },
+
+    /* text, name, country source (Reviews) */
     {
       name: "accomodationDescription",
       type: "bodyPortableText",

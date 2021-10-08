@@ -1,7 +1,8 @@
 export default {
-  name: "resortCollection",
+  // type of rooms(villa)
+  name: "villasCollection",
   type: "document",
-  title: "Resort Collection",
+  title: "Villas Collection",
   fields: [
     {
       name: "name",
@@ -10,14 +11,14 @@ export default {
     },
 
     {
-      name: "resorts",
-      title: "Resorts",
+      name: "villas",
+      title: "Villas",
       type: "array",
       of: [
         {
           type: "reference",
           to: {
-            type: "resort",
+            type: "villa",
           },
         },
       ],
