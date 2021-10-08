@@ -30,6 +30,8 @@ import spaTreatmentType from "./documents/spaTreatmentType";
 import spaTag from "./documents/spaTag";
 import spa from "./documents/spa";
 import spaFeaturedProductBrand from "./documents/spaFeaturedProductBrand";
+import villaPoolType from "./documents/villaPoolType";
+import villaTag from "./documents/villaTag";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -51,12 +53,15 @@ export default createSchema({
     resortTransferType,
     restaurant,
     restaurantCusinesServed,
-    villa,
     spa,
     spaServicesOffered,
     spaTreatmentType,
     spaTag,
     spaFeaturedProductBrand,
+
+    villa,
+    villaPoolType,
+    villaTag,
 
     mainImage,
     authorReference,

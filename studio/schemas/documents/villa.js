@@ -33,19 +33,70 @@ export default {
     },
 
     {
+      name: "numberOfRooms",
+      type: "number",
+      title: "Number of rooms",
+    },
+
+    {
+      title: "Villa featured",
+      name: "villaFeatured",
+      type: "boolean",
+    },
+
+    {
+      name: "villaAwards",
+      title: "Villa awards",
+      type: "array",
+      of: [
+        {
+          type: "string",
+        },
+      ],
+    },
+
+    {
+      name: "villaPoolTypes",
+      title: "Villa pool types",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "villaPoolType",
+          },
+        },
+      ],
+    },
+
+    {
+      name: "villaTags",
+      title: "Villa tags",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "villaTag",
+          },
+        },
+      ],
+    },
+
+    {
       name: "imageMobile",
       type: "mainImage",
-      title: "Restaurant image mobile",
+      title: "Villa image mobile",
     },
     {
       name: "imageWeb",
       type: "mainImage",
-      title: "Restaurant image web",
+      title: "Villa image web",
     },
     {
       name: "imageThumb",
       type: "mainImage",
-      title: "Restaurant image thumb",
+      title: "Villa image thumb",
     },
   ],
   preview: {
