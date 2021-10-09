@@ -46,9 +46,20 @@ const DropDown = ({ list }) => {
   return (
     <div>
       <ul>
-        {list.nodes.map((item) => (
-          <li key={item.name}>{item.name}</li>
-        ))}
+        {list.nodes.map(
+          (item) =>
+            item.name && (
+              <Link
+                key={item.name}
+                to={`/${item.name.toLowerCase().split(" ").join("-")}`}
+              >
+                {item.name}
+                {/* <a>
+              <li key={item.name}>{item.name}</li>
+            </a> */}
+              </Link>
+            )
+        )}
       </ul>
     </div>
   );

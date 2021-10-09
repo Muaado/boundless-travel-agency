@@ -69,6 +69,12 @@ export default {
     },
 
     {
+      name: "timeToAirport",
+      type: "string",
+      title: "Time to airport",
+    },
+
+    {
       name: "restaurants",
       title: "Restaurants",
       type: "array",
@@ -77,6 +83,20 @@ export default {
           type: "reference",
           to: {
             type: "restaurant",
+          },
+        },
+      ],
+    },
+
+    {
+      name: "villas",
+      title: "Villas",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "villa",
           },
         },
       ],

@@ -214,6 +214,10 @@ export const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     font-weight: normal;
+    font-family: "Playfair Display";
+    font-size: 5rem;
+    color: var(--darkGreen);
+    text-transform: uppercase;
   }
 
   @media print,

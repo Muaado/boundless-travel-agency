@@ -46,6 +46,48 @@ async function createBlogPostPages(graphql, actions) {
     });
 }
 
+async function createResortPages(graphql, actions) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allSanityResort {
+        nodes {
+          name
+          _id
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const resortEdges = (result.data.allSanityResort || {}).nodes || [];
+
+  console.log(result.data.allSanityResort);
+  resortEdges
+    // .filter((edge) => !isFuture(new Date(edge.node.publishedAt)))
+    .forEach((node) => {
+      const { _id, name } = node;
+      // const dateSegment = format(new Date(publishedAt), "yyyy/MM");
+
+      let path;
+      if (typeof name === "string") {
+        path = `/${name.toLowerCase().split(" ").join("-")}`;
+      }
+      // console.log(path, "path");
+
+      if (path)
+        createPage({
+          path,
+          component: require.resolve("./src/templates/resort.js"),
+          context: { id: _id },
+        });
+    });
+}
+
 exports.createPages = async ({ graphql, actions }) => {
-  await createBlogPostPages(graphql, actions);
+  // await createBlogPostPages(graphql, actions);
+
+  console.log("here");
+  await createResortPages(graphql, actions);
 };
