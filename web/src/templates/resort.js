@@ -257,6 +257,7 @@ const ResortTemplate = (props) => {
                       alt={imageThumb.alt}
                     />
                   </div>
+                  test
                 </li>
               ))}
             </ul>
