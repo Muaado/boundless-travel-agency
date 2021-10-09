@@ -239,7 +239,7 @@ const ResortTemplate = (props) => {
             </Carousel>
             {/* </ul> */}
           </div>
-
+          {/* 
           <div>
             <ul>
               {restaurants.map(({ name, alternateName, imageThumb }) => (
@@ -261,7 +261,7 @@ const ResortTemplate = (props) => {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
         </ResortStyles>
       </Container>
     </Layout>
