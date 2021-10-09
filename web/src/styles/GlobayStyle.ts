@@ -5,6 +5,8 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     --darkRed: #5D0012;
     --lightOrange: #B39A6A;
+    --darkGreen: #004743;
+
 
 
     /* Define colors as colors */
@@ -77,6 +79,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Roboto", sans-serif;
     box-sizing: border-box;
     overflow-x: hidden;
+
   }
 
   .btn {
@@ -101,6 +104,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   a, a:visited {
+    cursor: pointer;
     color: inherit;
     text-decoration: none;
   }

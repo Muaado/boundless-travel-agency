@@ -4,9 +4,17 @@ import Header from "./header";
 // import "../styles/layout.css";
 import { GlobalStyle } from "../styles/GlobayStyle";
 
-const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle }) => (
+const Layout = ({
+  children,
+  onHideNav,
+  onShowNav,
+  showNav,
+  siteTitle,
+  data,
+}) => (
   <>
     <Header
+      data={data}
       siteTitle={siteTitle}
       onHideNav={onHideNav}
       onShowNav={onShowNav}

@@ -7,6 +7,12 @@ const query = graphql`
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
     }
+
+    resorts: allSanityResort {
+      nodes {
+        name
+      }
+    }
   }
 `;
 
@@ -30,6 +36,7 @@ function LayoutContainer(props) {
 
   return (
     <Layout
+      data={{ resorts: data.resorts }}
       {...props}
       showNav={showNav}
       siteTitle={data.site.title}

@@ -1,5 +1,5 @@
 import React from "react";
-const Video = ({ videoSrcURL, videoTitle, ...props }) => (
+const Video = ({ videoSrcURL }) => (
   <video
     className="video-player"
     // height="100%"

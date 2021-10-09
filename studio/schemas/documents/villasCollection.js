@@ -9,6 +9,11 @@ export default {
       type: "string",
       title: "Collection Name",
     },
+    {
+      name: "rank",
+      type: "number",
+      title: "Rank",
+    },
 
     // {
     //   name: "villas",

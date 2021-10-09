@@ -1,5 +1,5 @@
 import { Link } from "gatsby";
-import React from "react";
+import React, { useState } from "react";
 
 import Logo from "../assets/logo.svg";
 
@@ -12,7 +12,7 @@ const HeaderStyles = styled.header`
   justify-content: space-between;
   align-items: center;
   z-index: 100;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
 
   color: #fff;
@@ -41,34 +41,61 @@ const HeaderStyles = styled.header`
   }
 `;
 
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
-  <HeaderStyles>
-    <div className="logo">
-      <Link to="/">
-        <a>
-          <Logo />
-        </a>
-      </Link>
-    </div>
-
-    <nav>
+const DropDown = ({ list }) => {
+  console.log(list);
+  return (
+    <div>
       <ul>
-        <li>
-          <Link to="/resorts">Resorts</Link>
-        </li>
-        <li>
-          <Link to="/villas">Villas</Link>
-        </li>
-        <li>
-          <Link to="/holiday">Holiday styles</Link>
-        </li>
-        <li>
-          <Link to="/magazine">Magazine</Link>
-        </li>
+        {list.nodes.map((item) => (
+          <li key={item.name}>{item.name}</li>
+        ))}
       </ul>
-    </nav>
-    <div></div>
-  </HeaderStyles>
-);
+    </div>
+  );
+};
+
+const Header = ({ onHideNav, onShowNav, showNav, siteTitle, data }) => {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [list, setList] = useState(false);
+
+  return (
+    <HeaderStyles>
+      <div className="logo">
+        <Link to="/">
+          <a>
+            <Logo />
+          </a>
+        </Link>
+      </div>
+
+      {console.log(data, "header")}
+      <nav>
+        <ul>
+          <li>
+            <a
+              onClick={() => {
+                setShowDropdown(!showDropdown);
+                setList(data.resorts);
+              }}
+            >
+              Resorts
+            </a>
+          </li>
+          <li>
+            <Link to="/villas">Villas</Link>
+          </li>
+          <li>
+            <Link to="/holiday">Holiday styles</Link>
+          </li>
+          <li>
+            <Link to="/magazine">Magazine</Link>
+          </li>
+        </ul>
+        {showDropdown && <DropDown list={list} />}
+      </nav>
+      <div></div>
+    </HeaderStyles>
+  );
+};
 
 export default Header;

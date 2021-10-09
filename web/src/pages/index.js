@@ -17,6 +17,10 @@ import Video from "../components/Video";
 
 import VideoBg from "../assets/videobg.mp4";
 
+import PromoSection from "../components/Homepage/PromoSection";
+import AboutUs from "../components/Homepage/AboutUs";
+import Journey from "../components/Homepage/Journey";
+
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
     crop {
@@ -45,33 +49,62 @@ export const query = graphql`
       title
       description
       keywords
+      description
+      promoImageWeb {
+        ...SanityImage
+        alt
+      }
+      aboutUs {
+        title
+        image {
+          ...SanityImage
+        }
+        _rawDescription(resolveReferences: { maxDepth: 10 })
+      }
     }
-    posts: allSanityPost(
-      limit: 6
-      sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
-    ) {
+
+    collections: allSanityVillasCollection {
       edges {
         node {
-          id
-          publishedAt
-          mainImage {
+          name
+          rank
+
+          imageThumb {
             ...SanityImage
             alt
-          }
-          title
-          _rawExcerpt
-          slug {
-            current
           }
         }
       }
     }
+    # posts: allSanityPost(
+    #   limit: 6
+    #   sort: { fields: [publishedAt], order: DESC }
+    #   filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
+    # ) {
+    #   edges {
+    #     node {
+    #       id
+    #       publishedAt
+    #       mainImage {
+    #         ...SanityImage
+    #         alt
+    #       }
+    #       title
+    #       _rawExcerpt
+    #       slug {
+    #         current
+    #       }
+    #     }
+    #   }
+    # }
   }
 `;
 
 const IndexPage = (props) => {
   const { data, errors } = props;
+
+  console.log(data, "data");
+  const { collections } = data;
 
   if (errors) {
     return (
@@ -103,7 +136,7 @@ const IndexPage = (props) => {
       />
       <Container>
         <HeroStyles>
-          <h1> {site.description}</h1>
+          {/* <h1> {site.description}</h1> */}
           <Video videoSrcURL={VideoBg} />
         </HeroStyles>
         <div className="page-content">
@@ -120,16 +153,9 @@ const IndexPage = (props) => {
             <button className="btn">SEARCH</button>
           </SearchBar>
 
-          <JourneyStyles>
-            <h1>Start your journey</h1>
-            <ul>
-              <li>most popular</li>
-              <li>experiences</li>
-              <li>by traveler</li>
-              <li>unique</li>
-              <li>view all</li>
-            </ul>
-          </JourneyStyles>
+          <Journey collections={collections} />
+          <PromoSection image={site.promoImageWeb} />
+          <AboutUs aboutUs={site.aboutUs} />
         </div>
       </Container>
     </Layout>
@@ -137,36 +163,6 @@ const IndexPage = (props) => {
 };
 
 export default IndexPage;
-
-const JourneyStyles = styled.div`
-  margin-top: 15rem;
-  margin-bottom: 2rem;
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  font-family: "Playfair Display";
-  h1 {
-    font-size: 7rem;
-    letter-spacing: 2rem;
-    line-height: 10rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
-  }
-
-  ul {
-    align-self: center;
-    display: flex;
-    align-items: center;
-
-    li {
-      padding: 0 2rem;
-      text-transform: uppercase;
-      &:not(:last-of-type) {
-        border-right: 1px solid #000;
-      }
-    }
-  }
-`;
 
 const SearchBar = styled.form`
   padding: 1rem;
@@ -226,6 +222,8 @@ const HeroStyles = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  p {
   }
 
   video {
