@@ -18,6 +18,7 @@ import mainImage from "./objects/mainImage";
 import authorReference from "./objects/authorReference";
 import resort from "./documents/resort";
 import restaurant from "./documents/restaurant";
+// import restauranta from "./documents/restaurant copy";
 import villa from "./documents/villa";
 
 import resortTag from "./documents/resortTag";
@@ -102,6 +103,7 @@ export default createSchema({
     bioPortableText,
     excerptPortableText,
 
+    // restauranta,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
   ]),
