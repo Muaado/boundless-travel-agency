@@ -64,6 +64,12 @@ export default {
     },
 
     {
+      name: "aboutUs",
+      type: "aboutUs",
+      // to: [{ type: "aboutUs" }],
+    },
+
+    {
       name: "keywords",
       type: "array",
       title: "Keywords",

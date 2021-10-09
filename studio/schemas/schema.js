@@ -44,7 +44,8 @@ import resortFaq from "./documents/resortFaq";
 import faqGroupTag from "./documents/faqGroupTag";
 import faqQuestionAnswer from "./objects/faqQuestionAnswer";
 import villasCollection from "./documents/villasCollection";
-import spaService from "./objects/spaService";
+// import spaService from "./objects/spaService";
+import aboutUs from "./objects/homepage/aboutUs";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -56,6 +57,9 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     siteSettings,
+
+    aboutUs,
+
     post,
     category,
     author,
