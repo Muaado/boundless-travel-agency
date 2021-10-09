@@ -46,7 +46,7 @@ const PromoSectionStyles = styled.div`
 
 const PromoSection = ({ image }) => {
   return (
-    <PromoSectionStyles windowWidth={window.innerWidth}>
+    <PromoSectionStyles>
       <h2>we specialise in the maldives</h2>
       <p>
         hand-picked portfolio of the world’s most luxurious resorts and Villas

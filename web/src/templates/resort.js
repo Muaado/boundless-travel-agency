@@ -40,6 +40,14 @@ export const query = graphql`
           alt
         }
       }
+      restaurants {
+        name
+        alternateName
+        imageThumb {
+          ...SanityImage
+          alt
+        }
+      }
     }
   }
 `;
@@ -130,6 +138,7 @@ const ResortTemplate = (props) => {
     timeToAirport,
     image,
     villas,
+    restaurants,
   } = resort;
 
   console.log(villas);
@@ -144,7 +153,7 @@ const ResortTemplate = (props) => {
         />
       )}
       <Container>
-        <ResortStyles windowWidth={window.innerWidth}>
+        <ResortStyles>
           <h1>{name}</h1>
 
           <div className="image-container">
@@ -230,45 +239,28 @@ const ResortTemplate = (props) => {
             </Carousel>
             {/* </ul> */}
           </div>
-          {/* <Carousel
-        slidesToShow={numberOfSlides}
-        cellSpacing={cellSpacing}
-        enableKeyboardControls
-        renderCenterLeftControls={null}
-        renderBottomCenterControls={null}
-        renderCenterRightControls={({ nextSlide }) => (
-          <button
-            type="button"
-            className="btn-right"
-            onClick={nextSlide}
-            aria-label="Next Slide"
-          >
-            <img src={chevron} alt="" />
-            <p className="eye-not-visible">Next Slide</p>
-          </button>
-        )}
-        dragging
-        wrapAround
-      >
-        {sectionData.slides.map((slide, idx) => (
-          <EntrySlides
-            key={idx.toString()}
-            id={idx.toString()}
-            cardTitle={slide.cardTitle}
-            cardContent={slide.cardContent}
-            bg={slide.bg}
-            cardIcon={iconArr[idx]}
-          />
-        ))}
-      </Carousel> */}
-          {/* {errors && (
-        <Container>
-          <GraphQLErrorList errors={errors} />
-        </Container>
-      )}
 
-      
-      {post && <BlogPost {...post} />} */}
+          <div>
+            <ul>
+              {restaurants.map(({ name, alternateName, imageThumb }) => (
+                <li key={name}>
+                  {name}
+                  {alternateName}
+                  <div key={name} className="image-container">
+                    <Image
+                      style={{
+                        width: "100%",
+                        height: "90%",
+                        objectFit: "cover",
+                      }}
+                      {...imageThumb}
+                      alt={imageThumb.alt}
+                    />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </ResortStyles>
       </Container>
     </Layout>

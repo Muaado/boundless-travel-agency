@@ -51,11 +51,7 @@ const ContainerStyles = styled.main`
 `;
 
 const Container = ({ children }) => {
-  return (
-    <ContainerStyles windowWidth={window.innerWidth}>
-      {children}
-    </ContainerStyles>
-  );
+  return <ContainerStyles>{children}</ContainerStyles>;
 };
 
 export default Container;
