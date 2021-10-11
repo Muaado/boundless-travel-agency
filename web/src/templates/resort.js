@@ -12,6 +12,7 @@ import Carousel from "nuka-carousel";
 import Image from "gatsby-plugin-sanity-image";
 import styled from "styled-components";
 import PortableText from "../components/portableText";
+import { device } from "../styles/deviceSizes";
 
 export const query = graphql`
   query ResortTemplateQuery($id: String!) {
@@ -43,6 +44,7 @@ export const query = graphql`
       restaurants {
         name
         alternateName
+        _rawDescription
         imageThumb {
           ...SanityImage
           alt
@@ -57,8 +59,19 @@ const ResortStyles = styled.div`
   flex-direction: column;
   h1 {
     text-align: center;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 7.2rem;
+    padding: 7rem 0;
   }
+
   .resort {
+    &__image {
+      padding: 0 10%;
+      @media ${device.laptopL} {
+        padding: 0;
+      }
+    }
     &__description {
       max-width: 80rem;
       font-size: 2.4rem;
@@ -95,26 +108,97 @@ const ResortStyles = styled.div`
     }
 
     &__accomodation {
+      padding: 0 10%;
+      @media ${device.laptopL} {
+        padding: 0;
+      }
       h2 {
         text-align: center;
         padding: 5rem;
       }
       ul {
-        /* width: 100vw; */
-        /* position: relative; */
-
         display: flex;
         gap: 2rem;
       }
 
       .image-container {
         width: 100%;
+        @media ${device.laptopL} {
+        }
         height: 70rem;
+        img {
+          height: 80%;
+        }
         p {
           font-family: "Playfair Display";
           font-size: 3rem;
           padding: 2rem 0;
           text-align: right;
+        }
+      }
+    }
+
+    &__restaurants {
+      margin-top: 10rem;
+      padding: 0 10%;
+
+      &__header {
+        position: absolute;
+        width: 40rem;
+
+        h2 {
+          color: var(--primary);
+          font-weight: bold;
+          font-size: 7.2rem;
+          width: 30rem;
+          line-height: 1;
+          padding-bottom: 2rem;
+
+          border-bottom: 2px solid var(--primary);
+          margin-bottom: 2rem;
+        }
+      }
+      ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 20rem;
+
+        position: relative;
+        li {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          &:nth-of-type(odd) {
+            margin-top: 15rem;
+          }
+          &:nth-of-type(even) {
+            top: -15rem;
+          }
+          &:nth-of-type(1) {
+            margin-top: 30rem;
+          }
+          &:nth-of-type(2) {
+            top: 0;
+          }
+        }
+      }
+
+      &__text {
+        align-self: center;
+        max-width: 25rem;
+
+        display: flex;
+        flex-direction: column;
+        .name {
+          font-size: 2rem;
+        }
+        .alternate-name {
+          font-size: 1.6rem;
+          font-weight: 100;
+          margin-bottom: 2rem;
+          color: var(--grey);
+          text-transform: capitalize;
+          letter-spacing: 0.3rem;
         }
       }
     }
@@ -154,9 +238,9 @@ const ResortTemplate = (props) => {
       )}
       <Container>
         <ResortStyles>
-          <h1>{name}</h1>
+          <h1>Island overview</h1>
 
-          <div className="image-container">
+          <div className="resort__image">
             <Image
               {...image}
               // tell Sanity how large to make the image (does not set any CSS)
@@ -201,7 +285,7 @@ const ResortTemplate = (props) => {
             <h2>Accomodation</h2>
             {/* <ul> */}
             <Carousel
-              slidesToShow={2.7}
+              slidesToShow={3.2}
               cellSpacing={10}
               // enableKeyboardControls
               // renderCenterLeftControls={null}
@@ -226,7 +310,7 @@ const ResortTemplate = (props) => {
                   <Image
                     style={{
                       width: "100%",
-                      height: "90%",
+                      height: "80%",
                       objectFit: "cover",
                     }}
                     {...imageThumb}
@@ -239,13 +323,20 @@ const ResortTemplate = (props) => {
             </Carousel>
             {/* </ul> */}
           </div>
-          {/* 
-          <div>
+
+          <div className="resort__restaurants">
+            <div className="resort__restaurants__header">
+              <h2>DINE</h2>
+              <p>
+                Great conversation, a perfectly mixed drink, delicious tapas
+                plates served under the sparkle of the Maldivian sky. Our
+                poolside bar in the Maldives lets you enjoy life’s simplest
+                luxuries: sunset, kinship and the peace of an island sanctuary.
+              </p>
+            </div>
             <ul>
               {restaurants.map(({ name, alternateName, imageThumb }) => (
                 <li key={name}>
-                  {name}
-                  {alternateName}
                   <div key={name} className="image-container">
                     <Image
                       style={{
@@ -257,11 +348,16 @@ const ResortTemplate = (props) => {
                       alt={imageThumb.alt}
                     />
                   </div>
-                  test
+                  <div className="resort__restaurants__text">
+                    <span className="name">{name}</span>
+                    <span className="alternate-name">{alternateName}</span>
+
+                    <PortableText blocks={_rawDescription} />
+                  </div>
                 </li>
               ))}
             </ul>
-          </div> */}
+          </div>
         </ResortStyles>
       </Container>
     </Layout>
