@@ -2,9 +2,11 @@ import React from "react";
 import Image from "gatsby-plugin-sanity-image";
 
 import styled from "styled-components";
+import { device } from "../../styles/deviceSizes";
 
 const PromoSectionStyles = styled.div`
-  width: 100vw;
+  /* width: 100vw; */
+  margin: 0 -12%;
   position: relative;
   height: 60rem;
   color: #fff;
@@ -16,6 +18,10 @@ const PromoSectionStyles = styled.div`
     return `calc(1440px + ${(props.windowWidth - 1440) * 2}px)`;
   }};
 
+  @media ${device.laptopL} {
+    margin: 0;
+  }
+
   img {
     height: 100%;
     width: 100%;
@@ -24,20 +30,22 @@ const PromoSectionStyles = styled.div`
 
   h2 {
     width: 45rem;
+    position: absolute;
+    top: 45%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+
+    color: #fff;
     text-align: center;
     letter-spacing: 1rem;
     font-family: "Playfair display";
     font-size: 4.8rem;
-    position: absolute;
-    top: 50%;
-    left: 70%;
-    transform: translate(-50%, -50%);
   }
   p {
     width: 45rem;
     position: absolute;
-    top: 80%;
-    left: 70%;
+    top: 75%;
+    left: 75%;
     transform: translate(-50%, -50%);
 
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

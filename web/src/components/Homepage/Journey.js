@@ -5,6 +5,7 @@ import React from "react";
 
 import Image from "gatsby-plugin-sanity-image";
 import styled from "styled-components";
+import { device } from "../../styles/deviceSizes";
 
 const JourneyStyles = styled.div`
   margin-top: 15rem;
@@ -17,6 +18,10 @@ const JourneyStyles = styled.div`
 
   width: 100%;
   /* max-width: 1440px; */
+  @media ${device.laptopL} {
+    padding: 0 10%;
+  }
+
   h1 {
     font-size: 7rem;
     letter-spacing: 2rem;

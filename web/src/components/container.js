@@ -3,6 +3,7 @@ import React from "react";
 // import * as styles from "./container.module.css";
 
 import styled from "styled-components";
+import { device } from "../styles/deviceSizes";
 
 const ContainerStyles = styled.main`
   display: flex;
@@ -15,7 +16,17 @@ const ContainerStyles = styled.main`
     position: relative;
     display: flex;
     flex-direction: column;
-    max-width: 1440px;
+
+    width: 100vw;
+
+    @media ${device.desktop} {
+      /* width: 1440px; */
+      padding: 0 10%;
+    }
+    @media ${device.laptopL} {
+      width: 100vw;
+      padding: 0;
+    }
     /* margin: 0 10%; */
   }
 
@@ -26,6 +37,10 @@ const ContainerStyles = styled.main`
     display: flex;
     align-items: center;
     padding: 10rem 0;
+
+    @media ${device.laptopL} {
+      padding: 10rem 10%;
+    }
 
     &__image-container {
       width: 50rem;

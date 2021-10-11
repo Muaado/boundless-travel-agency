@@ -13,6 +13,12 @@ const query = graphql`
         name
       }
     }
+
+    villas: allSanityVilla {
+      nodes {
+        name
+      }
+    }
   }
 `;
 
@@ -36,7 +42,7 @@ function LayoutContainer(props) {
 
   return (
     <Layout
-      data={{ resorts: data.resorts }}
+      data={{ resorts: data.resorts, villas: data.villas }}
       {...props}
       showNav={showNav}
       siteTitle={data.site.title}

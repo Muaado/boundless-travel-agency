@@ -23,6 +23,7 @@ const HeaderStyles = styled.header`
   }
 
   nav {
+    position: relative;
     /* margin-top: 15rem; */
     margin-left: -8rem;
     /* align-self: center;
@@ -36,15 +37,38 @@ const HeaderStyles = styled.header`
         &.selected {
           font-weight: bold;
         }
+
+        a {
+          position: relative;
+        }
       }
+    }
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    background: #fff;
+    color: #000;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+    padding: 2rem 3rem;
+    margin-top: 2rem;
+
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    a {
+      word-break: keep-all;
+      width: max-content;
     }
   }
 `;
 
 const DropDown = ({ list }) => {
-  console.log(list);
   return (
-    <div>
+    <div className="dropdown">
       <ul>
         {list.nodes.map(
           (item) =>
@@ -53,10 +77,7 @@ const DropDown = ({ list }) => {
                 key={item.name}
                 to={`/${item.name.toLowerCase().split(" ").join("-")}`}
               >
-                {item.name}
-                {/* <a>
-              <li key={item.name}>{item.name}</li>
-            </a> */}
+                <a>{item.name}</a>
               </Link>
             )
         )}
@@ -66,8 +87,8 @@ const DropDown = ({ list }) => {
 };
 
 const Header = ({ onHideNav, onShowNav, showNav, siteTitle, data }) => {
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [list, setList] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(0);
+  const [list, setList] = useState([]);
 
   return (
     <HeaderStyles>
@@ -79,9 +100,41 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, data }) => {
         </Link>
       </div>
 
-      {console.log(data, "header")}
       <nav>
         <ul>
+          <li>
+            <a
+              onClick={() => {
+                setShowDropdown(1);
+                setList(data.resorts);
+              }}
+            >
+              Resorts
+              {showDropdown === 1 && <DropDown list={list} />}
+            </a>
+          </li>
+          <li>
+            <a
+              onClick={() => {
+                setShowDropdown(2);
+                setList(data.villas);
+              }}
+            >
+              Villas
+              {showDropdown === 2 && <DropDown list={list} />}
+            </a>
+          </li>
+          <li>
+            <a
+              onClick={() => {
+                setShowDropdown(3);
+                setList(data.resorts);
+              }}
+            >
+              Holiday stays
+              {showDropdown === 3 && <DropDown list={list} />}
+            </a>
+          </li>
           <li>
             <a
               onClick={() => {
@@ -89,21 +142,13 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, data }) => {
                 setList(data.resorts);
               }}
             >
-              Resorts
+              Magazine
+              {showDropdown === 4 && <DropDown list={list} />}
             </a>
           </li>
-          <li>
-            <Link to="/villas">Villas</Link>
-          </li>
-          <li>
-            <Link to="/holiday">Holiday styles</Link>
-          </li>
-          <li>
-            <Link to="/magazine">Magazine</Link>
-          </li>
         </ul>
-        {showDropdown && <DropDown list={list} />}
       </nav>
+
       <div></div>
     </HeaderStyles>
   );
