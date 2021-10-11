@@ -17,9 +17,16 @@ import Video from "../components/Video";
 
 import VideoBg from "../assets/videobg.mp4";
 
-import PromoSection from "../components/Homepage/PromoSection";
+import PromoSection, {
+  PromoSectionStyles,
+} from "../components/Homepage/PromoSection";
 import AboutUs from "../components/Homepage/AboutUs";
 import Journey from "../components/Homepage/Journey";
+
+import Image from "gatsby-plugin-sanity-image";
+import Faq from "../components/Homepage/Faq";
+import TailorMade from "../components/Homepage/TailorMade";
+// import HomepageStaticImage from "../assets/homepage-image.png";
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -54,12 +61,24 @@ export const query = graphql`
         ...SanityImage
         alt
       }
+      secondImage {
+        ...SanityImage
+        alt
+      }
       aboutUs {
         title
         image {
           ...SanityImage
         }
         _rawDescription(resolveReferences: { maxDepth: 10 })
+      }
+
+      FAQ {
+        faqQuestionsAnswers {
+          # _id
+          answer
+          question
+        }
       }
     }
 
@@ -156,6 +175,15 @@ const IndexPage = (props) => {
           <Journey collections={collections} />
           <PromoSection image={site.promoImageWeb} />
           <AboutUs aboutUs={site.aboutUs} />
+          <TailorMade />
+          <div className="second-image">
+            <Image
+              {...site.secondImage}
+              width={1440}
+              alt={site.secondImage.alt}
+            />
+          </div>
+          <Faq faq={site.FAQ.faqQuestionsAnswers} />
         </div>
       </Container>
     </Layout>

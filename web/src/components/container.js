@@ -63,6 +63,23 @@ const ContainerStyles = styled.main`
       }
     }
   }
+
+  .second-image {
+    margin: 20rem -14%;
+    margin-bottom: 10rem;
+    position: relative;
+    height: 70rem;
+    color: #fff;
+    @media ${device.laptopL} {
+      margin: 20rem 0;
+      margin-bottom: 10rem;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
 `;
 
 const Container = ({ children }) => {

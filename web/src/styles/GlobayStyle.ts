@@ -89,6 +89,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 1rem 1.75rem;
     outline: none;
     cursor: pointer;
+    font-size: 1.6rem;
     text-transform: uppercase;
     
   }

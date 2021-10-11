@@ -32,7 +32,7 @@ const HeaderStyles = styled.header`
     font-size: 1.6rem;
     ul {
       display: flex;
-      gap: 2rem;
+      gap: 6rem;
       li {
         &.selected {
           font-weight: bold;
@@ -58,6 +58,7 @@ const HeaderStyles = styled.header`
     ul {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      gap: 2rem;
     }
     a {
       word-break: keep-all;

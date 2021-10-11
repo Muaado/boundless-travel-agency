@@ -57,6 +57,13 @@ export default {
       type: "mainImage",
       title: "Promo image mobile",
     },
+
+    {
+      name: "secondImage",
+      type: "mainImage",
+      title: "Second image",
+    },
+
     {
       name: "promoImageWeb",
       type: "mainImage",
@@ -66,6 +73,11 @@ export default {
     {
       name: "aboutUs",
       type: "aboutUs",
+      // to: [{ type: "aboutUs" }],
+    },
+    {
+      name: "FAQ",
+      type: "boundlessFaq",
       // to: [{ type: "aboutUs" }],
     },
 

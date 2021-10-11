@@ -47,6 +47,7 @@ import faqQuestionAnswer from "./objects/faqQuestionAnswer";
 import villasCollection from "./documents/villasCollection";
 // import spaService from "./objects/spaService";
 import aboutUs from "./objects/homepage/aboutUs";
+import boundlessFaq from "./objects/homepage/boundlessFaq";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -60,6 +61,7 @@ export default createSchema({
     siteSettings,
 
     aboutUs,
+    boundlessFaq,
 
     post,
     category,

@@ -4,19 +4,12 @@ import Image from "gatsby-plugin-sanity-image";
 import styled from "styled-components";
 import { device } from "../../styles/deviceSizes";
 
-const PromoSectionStyles = styled.div`
+export const PromoSectionStyles = styled.div`
   /* width: 100vw; */
-  margin: 0 -12%;
+  margin: 0 -14%;
   position: relative;
   height: 60rem;
   color: #fff;
-  left: ${(props) => {
-    return `-${props.windowWidth - 1440}px`;
-  }};
-  width: ${(props) => {
-    console.log(props);
-    return `calc(1440px + ${(props.windowWidth - 1440) * 2}px)`;
-  }};
 
   @media ${device.laptopL} {
     margin: 0;
