@@ -17,9 +17,7 @@ import Video from "../components/Video";
 
 import VideoBg from "../assets/videobg.mp4";
 
-import PromoSection, {
-  PromoSectionStyles,
-} from "../components/Homepage/PromoSection";
+import PromoSection from "../components/Homepage/PromoSection";
 import AboutUs from "../components/Homepage/AboutUs";
 import Journey from "../components/Homepage/Journey";
 

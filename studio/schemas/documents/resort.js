@@ -75,6 +75,18 @@ export default {
     },
 
     {
+      title: "Gallery",
+      name: "gallery",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: { type: "gallery" },
+        },
+      ],
+    },
+
+    {
       name: "restaurants",
       title: "Restaurants",
       type: "array",
@@ -101,6 +113,21 @@ export default {
         },
       ],
     },
+
+    {
+      name: "spas",
+      title: "Spas",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "spa",
+          },
+        },
+      ],
+    },
+
     {
       name: "resortTransferType",
       title: "Resort transfer type",

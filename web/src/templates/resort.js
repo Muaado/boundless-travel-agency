@@ -1,6 +1,6 @@
 import { graphql } from "gatsby";
 import BlogPost from "../components/blog-post";
-import React from "react";
+import React, { useState } from "react";
 import GraphQLErrorList from "../components/graphql-error-list";
 import Layout from "../containers/layout";
 import Container from "../components/container";
@@ -49,6 +49,33 @@ export const query = graphql`
           ...SanityImage
           alt
         }
+      }
+
+      gallery {
+        images {
+          ...SanityImage
+          alt
+        }
+        name
+        type {
+          name
+        }
+      }
+    }
+    featuredSpa: sanitySpa(
+      resort: { _id: { eq: $id } }
+      spaFeatured: { eq: true }
+    ) {
+      id
+      _rawDescription
+      name
+      imageWeb {
+        ...SanityImage
+        alt
+      }
+      imageThumb {
+        ...SanityImage
+        alt
       }
     }
   }
@@ -202,12 +229,148 @@ const ResortStyles = styled.div`
         }
       }
     }
+    &__gallery {
+      display: flex;
+      flex-direction: column;
+
+      text-align: center;
+      padding: 0 10%;
+      @media ${device.laptopL} {
+        padding: 0;
+      }
+
+      h2 {
+        margin-bottom: 7rem;
+      }
+
+      .filters {
+        margin-bottom: 3rem;
+        align-self: center;
+        display: flex;
+
+        li {
+          color: var(--grey);
+          font-size: 2rem;
+          &:not(:last-of-type) {
+            margin-right: 3rem;
+          }
+        }
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .main-image-container {
+        /* height: 70rem; */
+      }
+
+      .image-grid {
+        /* height: 70rem; */
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 1fr 1fr 1fr;
+        li {
+          &:nth-of-type(1) {
+            grid-row: 1/3;
+          }
+        }
+        li {
+          &:nth-of-type(4) {
+            grid-column: 2/4;
+          }
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    &__spa {
+      margin-top: 14rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      .container {
+        /* padding: 0 0 7rem 17rem; */
+        display: flex;
+        align-self: center;
+
+        justify-content: center;
+        max-width: 1400px;
+        div {
+          padding-top: 3rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding-bottom: 5rem;
+
+          &:nth-of-type(2) {
+            /* background: #c0a7772b; */
+            padding: 10rem 10rem;
+          }
+
+          p {
+            padding-left: 5rem;
+            max-width: 60rem;
+          }
+        }
+      }
+
+      &:after {
+        content: "";
+        background: #c0a7772b;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        right: -55vw;
+        /* opacity: 1; */
+        /* z-index: 100; */
+      }
+      /* display: grid;
+      grid-template-columns: 1fr 30%; */
+
+      background: #fff6f6;
+      h2 {
+        width: max-content;
+        text-transform: capitalize;
+        z-index: 100;
+      }
+
+      p {
+        /* position: absolute; */
+        bottom: 0;
+      }
+      .image-web {
+        width: 70rem;
+        position: relative;
+        right: -5rem;
+        top: -2rem;
+        z-index: 100;
+      }
+
+      .image-thumb {
+        max-width: 35rem;
+        z-index: 100;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
   }
 `;
 
 const ResortTemplate = (props) => {
   const { data, errors } = props;
   const resort = data && data.resort;
+  const featuredSpa = data && data.featuredSpa;
 
   const {
     name,
@@ -223,9 +386,15 @@ const ResortTemplate = (props) => {
     image,
     villas,
     restaurants,
+    gallery: galleries,
   } = resort;
 
-  console.log(villas);
+  console.log(featuredSpa);
+  const firstImage = galleries[0].images[0];
+  const types = galleries.map((galleryItem) => galleryItem.type.name);
+  const [selectedGallery, setSelectedGallery] = useState(null);
+
+  console.log(selectedGallery);
   return (
     <Layout>
       {errors && <SEO title="GraphQL Error" />}
@@ -357,6 +526,64 @@ const ResortTemplate = (props) => {
                 </li>
               ))}
             </ul>
+          </div>
+
+          <div className="resort__gallery">
+            <h2>Gallery</h2>
+            <ul className="filters">
+              {types?.map((type) => (
+                <li
+                  className="clickable"
+                  key={type}
+                  onClick={() => {
+                    const foundGallery = galleries.find(
+                      (gallery) => gallery.type.name === type
+                    );
+                    setSelectedGallery(foundGallery);
+                  }}
+                >
+                  {type}
+                </li>
+              ))}
+            </ul>
+            {!selectedGallery ? (
+              <div className="main-image-container">
+                <Image {...firstImage} alt={firstImage.alt} />
+              </div>
+            ) : (
+              <ul className="image-grid">
+                {selectedGallery.images.slice(0, 4).map((image) => {
+                  return (
+                    <li key={image.alt}>
+                      <Image {...image} alt={image.alt} />
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
+
+          <div className="resort__spa">
+            <div className="container">
+              <div>
+                <div className="image-web">
+                  <Image
+                    {...featuredSpa.imageWeb}
+                    alt={featuredSpa.imageWeb.alt}
+                  />
+                </div>
+                <PortableText blocks={featuredSpa._rawDescription} />
+              </div>
+              <div>
+                <h2>{featuredSpa.name}</h2>
+                <div className="image-thumb">
+                  <Image
+                    {...featuredSpa.imageThumb}
+                    alt={featuredSpa.imageThumb.alt}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </ResortStyles>
       </Container>
