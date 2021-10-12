@@ -1,6 +1,6 @@
 import { graphql } from "gatsby";
 import BlogPost from "../components/blog-post";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GraphQLErrorList from "../components/graphql-error-list";
 import Layout from "../containers/layout";
 import Container from "../components/container";
@@ -13,6 +13,10 @@ import Image from "gatsby-plugin-sanity-image";
 import styled from "styled-components";
 import PortableText from "../components/portableText";
 import { device } from "../styles/deviceSizes";
+
+import useWindowSize from "../lib/useWindowSize";
+
+// import review from "../../../studio/schemas/documents/review";
 
 export const query = graphql`
   query ResortTemplateQuery($id: String!) {
@@ -61,7 +65,13 @@ export const query = graphql`
           name
         }
       }
+
+      reviews {
+        name
+        _rawDescription
+      }
     }
+
     featuredSpa: sanitySpa(
       resort: { _id: { eq: $id } }
       spaFeatured: { eq: true }
@@ -296,7 +306,6 @@ const ResortStyles = styled.div`
       justify-content: center;
       position: relative;
       .container {
-        /* padding: 0 0 7rem 17rem; */
         display: flex;
         align-self: center;
 
@@ -310,8 +319,7 @@ const ResortStyles = styled.div`
           padding-bottom: 5rem;
 
           &:nth-of-type(2) {
-            /* background: #c0a7772b; */
-            padding: 10rem 10rem;
+            padding: 10rem;
           }
 
           p {
@@ -328,11 +336,7 @@ const ResortStyles = styled.div`
         height: 100%;
         position: absolute;
         right: -55vw;
-        /* opacity: 1; */
-        /* z-index: 100; */
       }
-      /* display: grid;
-      grid-template-columns: 1fr 30%; */
 
       background: #fff6f6;
       h2 {
@@ -340,9 +344,7 @@ const ResortStyles = styled.div`
         text-transform: capitalize;
         z-index: 100;
       }
-
       p {
-        /* position: absolute; */
         bottom: 0;
       }
       .image-web {
@@ -362,6 +364,50 @@ const ResortStyles = styled.div`
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+    }
+
+    &__reviews {
+      display: flex;
+      margin-top: 10rem;
+      margin-bottom: 10rem;
+      padding: 2rem 10%;
+      min-width: fit-content;
+
+      .carousel {
+        padding: 5rem;
+        display: flex;
+        justify-content: center;
+        .slider-frame {
+          padding: 5rem !important;
+          display: flex;
+          justify-content: center;
+        }
+
+        .slider-slide {
+          @media ${device.tablet} {
+            display: flex !important;
+            justify-content: center;
+          }
+        }
+      }
+
+      &__review {
+        max-width: 25rem;
+
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+
+        margin-right: 0;
+
+        p:first-of-type {
+          font-weight: bold;
+          font-size: 2rem;
+          margin-bottom: 5rem;
+        }
       }
     }
   }
@@ -386,15 +432,44 @@ const ResortTemplate = (props) => {
     image,
     villas,
     restaurants,
+    reviews,
     gallery: galleries,
   } = resort;
 
-  console.log(featuredSpa);
   const firstImage = galleries[0].images[0];
   const types = galleries.map((galleryItem) => galleryItem.type.name);
   const [selectedGallery, setSelectedGallery] = useState(null);
 
-  console.log(selectedGallery);
+  const [numberOfSlides, setNumberOfSlides] = useState(3);
+  const [cellSpacing, setCellSpacing] = useState(10);
+  const size = useWindowSize();
+
+  useEffect(() => {
+    const { width } = size;
+    const isMobileOnly = width <= 576;
+    const isTablet = width > 576 && width < 992;
+    const isSreenSM = width > 992 && width < 1200;
+    const isSreenLG = width > 1200 && width < 1440;
+    const screenXL = width > 1440;
+
+    const slides = () => {
+      if (isMobileOnly) return 1;
+      if (isTablet) return 2;
+      if (isSreenSM) return 2.4;
+      if (isSreenLG) return 2.8;
+      if (screenXL) return 4;
+      return 2;
+    };
+    const spacing = () => {
+      if (isMobileOnly) return -150;
+      if (isTablet) return -100;
+      return -30;
+    };
+
+    setNumberOfSlides(slides);
+    setCellSpacing(spacing);
+  }, [size]);
+
   return (
     <Layout>
       {errors && <SEO title="GraphQL Error" />}
@@ -584,6 +659,36 @@ const ResortTemplate = (props) => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="resort__reviews">
+            <Carousel
+              className="carousel"
+              slidesToShow={numberOfSlides}
+              cellSpacing={cellSpacing}
+              // enableKeyboardControls
+              // renderCenterLeftControls={null}
+              // renderBottomCenterControls={null}
+              // renderCenterRightControls={({ nextSlide }) => (
+              //   <button
+              //     type="button"
+              //     className="btn-right"
+              //     onClick={nextSlide}
+              //     aria-label="Next Slide"
+              //   >
+              //     <img src={chevron} alt="" />
+              //     <p className="eye-not-visible">Next Slide</p>
+              //   </button>
+              // )}
+              // dragging
+              // wrapAround
+            >
+              {reviews.map(({ name, _rawDescription }) => (
+                <div className="resort__reviews__review" key={name}>
+                  <p>{name}</p>
+                  <PortableText blocks={_rawDescription} />
+                </div>
+              ))}
+            </Carousel>
           </div>
         </ResortStyles>
       </Container>

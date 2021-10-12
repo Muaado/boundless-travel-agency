@@ -50,6 +50,7 @@ import aboutUs from "./objects/homepage/aboutUs";
 import boundlessFaq from "./objects/homepage/boundlessFaq";
 import gallery from "./documents/gallery";
 import galleryType from "./documents/galleryType";
+import review from "./documents/review";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -72,6 +73,8 @@ export default createSchema({
     resortTag,
     resortAccomodationType,
     resortTransferType,
+
+    review,
 
     gallery,
     galleryType,

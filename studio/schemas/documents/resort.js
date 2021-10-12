@@ -87,6 +87,18 @@ export default {
     },
 
     {
+      title: "Reviews",
+      name: "reviews",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: { type: "review" },
+        },
+      ],
+    },
+
+    {
       name: "restaurants",
       title: "Restaurants",
       type: "array",
