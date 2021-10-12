@@ -13,6 +13,7 @@ import Image from "gatsby-plugin-sanity-image";
 import styled from "styled-components";
 import PortableText from "../components/portableText";
 import { device } from "../styles/deviceSizes";
+import ChevronRight from "../assets/icons/chevron-right.svg";
 
 import useWindowSize from "../lib/useWindowSize";
 
@@ -102,6 +103,19 @@ export const query = graphql`
         }
       }
     }
+
+    highlights: allSanityResortHighlight(
+      filter: { resort: { _id: { eq: $id } } }
+    ) {
+      nodes {
+        name
+        _rawDescription
+        imageThumb {
+          ...SanityImage
+          alt
+        }
+      }
+    }
   }
 `;
 
@@ -119,6 +133,7 @@ const ResortStyles = styled.div`
 
   h2 {
     letter-spacing: 1rem;
+    text-align: center;
   }
 
   .resort {
@@ -141,6 +156,7 @@ const ResortStyles = styled.div`
       /* color: var(--grey); */
     }
     &__amenties {
+      margin-bottom: 10rem;
       align-self: center;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -162,6 +178,81 @@ const ResortStyles = styled.div`
           padding-left: 1rem;
           text-align: left;
         }
+      }
+    }
+
+    &__highlights {
+      margin: 10rem 0;
+      text-align: center;
+      padding: 0 10%;
+      display: flex;
+      flex-direction: column;
+      @media ${device.laptopL} {
+        padding: 0;
+      }
+
+      h2 {
+        margin-bottom: 7rem;
+        /* letter-spacing: 1rem; */
+      }
+
+      ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.6rem;
+
+        li {
+          position: relative;
+
+          &:hover {
+            transition: all 0.3s;
+
+            p {
+              transition: all 0.3s;
+              opacity: 1;
+            }
+            &:after {
+              content: "";
+              background: #000;
+              left: 0;
+              top: 0;
+              opacity: 0.4;
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              z-index: 50;
+              /* right: -55vw; */
+            }
+          }
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      a {
+        position: absolute;
+        color: #fff;
+        font-size: 2.2rem;
+        padding: 1rem 5rem;
+        bottom: 3rem;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid #fff;
+        z-index: 100;
+      }
+      p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 100;
+
+        opacity: 0;
+        color: #fff;
+        align-self: center;
+        line-height: 2.4rem;
       }
     }
 
@@ -437,7 +528,7 @@ const ResortStyles = styled.div`
       }
 
       .carousel {
-        padding: 5rem;
+        /* padding: 5rem; */
         display: flex;
         justify-content: center;
         .slider-frame {
@@ -455,7 +546,8 @@ const ResortStyles = styled.div`
       }
 
       &__review {
-        max-width: 25rem;
+        /* max-width: 25rem; */
+        width: fit-content;
 
         padding: 2rem;
         display: flex;
@@ -488,6 +580,7 @@ const ResortTemplate = (props) => {
   const resort = data && data.resort;
   const featuredSpa = data && data.featuredSpa;
   const activities = data && data.activities;
+  const highlights = data && data.highlights;
 
   const {
     name,
@@ -533,9 +626,9 @@ const ResortTemplate = (props) => {
       return 2;
     };
     const spacing = () => {
-      if (isMobileOnly) return -150;
-      if (isTablet) return -100;
-      return -30;
+      if (isMobileOnly) return 50;
+      if (isTablet) return 20;
+      return 30;
     };
 
     setNumberOfSlides(slides);
@@ -596,6 +689,21 @@ const ResortTemplate = (props) => {
               )}
             </li>
           </ul>
+
+          <div className="resort__highlights">
+            <h2>Highlights</h2>
+            <ul>
+              {highlights.nodes.map(({ name, imageThumb, _rawDescription }) => (
+                <li key={imageThumb.alt}>
+                  <a>
+                    {name} <ChevronRight />
+                  </a>
+                  <PortableText blocks={_rawDescription} />
+                  <Image {...imageThumb} alt={imageThumb.alt} />
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <div className="resort__accomodation">
             <h2>Accomodation</h2>
