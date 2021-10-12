@@ -53,6 +53,18 @@ export default {
     },
 
     {
+      title: "Gallery",
+      name: "gallery",
+      type: "array",
+      of: [
+        {
+          type: "gallery",
+          // to: { type: "gallery" },
+        },
+      ],
+    },
+
+    {
       name: "villaAwards",
       title: "Villa awards",
       type: "array",

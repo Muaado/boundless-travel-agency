@@ -16,6 +16,9 @@ import ChevronRight from "../assets/icons/chevron-right.svg";
 import Reviews from "../components/Resort/Reviews";
 
 import ResortStyles from "../styles/ResortTempleteStyles";
+import Gallery from "../components/Gallery";
+import Amenities from "../components/Resort/Amenities";
+import Activities from "../components/Resort/Activities";
 
 // import review from "../../../studio/schemas/documents/review";
 
@@ -145,10 +148,6 @@ const ResortTemplate = (props) => {
     secondImage,
   } = resort;
 
-  const firstImage = galleries[0].images[0];
-  const types = galleries.map((galleryItem) => galleryItem.type.name);
-  const [selectedGallery, setSelectedGallery] = useState(null);
-
   return (
     <Layout>
       {errors && <SEO title="GraphQL Error" />}
@@ -167,7 +166,16 @@ const ResortTemplate = (props) => {
             <Image {...image} width={1440} alt={image.alt} />
           </div>
 
-          <div className="resort__description">
+          <Amenities
+            locationAtoll={locationAtoll}
+            numberOfBars={numberOfBars}
+            numberOfRestaurants={numberOfRestaurants}
+            numberOfRooms={numberOfRooms}
+            resortTransferType={resortTransferType}
+            timeToAirport={timeToAirport}
+            _rawDescription={_rawDescription}
+          />
+          {/* <div className="resort__description">
             <PortableText blocks={_rawDescription} />
           </div>
           <ul className="resort__amenties">
@@ -185,7 +193,7 @@ const ResortTemplate = (props) => {
                   }`
               )}
             </li>
-          </ul>
+          </ul> */}
 
           <div className="resort__highlights">
             <h2>Highlights</h2>
@@ -280,40 +288,7 @@ const ResortTemplate = (props) => {
             </ul>
           </div>
 
-          <div className="resort__gallery">
-            <h2>Gallery</h2>
-            <ul className="filters">
-              {types?.map((type) => (
-                <li
-                  className="clickable"
-                  key={type}
-                  onClick={() => {
-                    const foundGallery = galleries.find(
-                      (gallery) => gallery.type.name === type
-                    );
-                    setSelectedGallery(foundGallery);
-                  }}
-                >
-                  {type}
-                </li>
-              ))}
-            </ul>
-            {!selectedGallery ? (
-              <div className="main-image-container">
-                <Image {...firstImage} alt={firstImage.alt} />
-              </div>
-            ) : (
-              <ul className="image-grid">
-                {selectedGallery.images.slice(0, 4).map((image) => {
-                  return (
-                    <li key={image.alt}>
-                      <Image {...image} alt={image.alt} />
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-          </div>
+          <Gallery galleries={galleries} />
 
           <div className="resort__spa">
             <div className="container">
@@ -338,21 +313,7 @@ const ResortTemplate = (props) => {
             </div>
           </div>
 
-          <div className="resort__activities">
-            <h2>Activities</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation.
-            </p>
-            <ul>
-              {activities.nodes.map(({ imageThumb }) => (
-                <li key={imageThumb.alt}>
-                  <Image {...imageThumb} alt={imageThumb.alt} />
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Activities activities={activities} />
 
           <Reviews reviews={reviews} />
           <div className="resort__second-image">

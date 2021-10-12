@@ -17,6 +17,9 @@ const query = graphql`
     villas: allSanityVilla {
       nodes {
         name
+        resort {
+          name
+        }
       }
     }
   }
@@ -40,11 +43,29 @@ function LayoutContainer(props) {
     );
   }
 
-  // cons;
+  const villas = navData.villas.nodes.map(
+    ({ name, resort }) =>
+      resort && {
+        url: `/${resort.name.toLowerCase().split(" ").join("-")}/${name
+          .toLowerCase()
+          .split(" ")
+          .join("-")}`,
+        name: name,
+      }
+  );
+  const resorts = navData.resorts.nodes
+    .map(({ name }) => {
+      if (typeof name === "string")
+        return {
+          name: name,
+          url: `/${name.toLowerCase().split(" ").join("-")}`,
+        };
+    })
+    .filter((item) => item !== undefined);
 
   return (
     <Layout
-      navData={{ resorts: navData.resorts, villas: navData.villas }}
+      navData={{ resorts, villas }}
       {...props}
       showNav={showNav}
       siteTitle={navData.site.title}

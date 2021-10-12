@@ -24,43 +24,10 @@ const ResortStyles = styled.div`
         padding: 0;
       }
     }
-    &__description {
-      max-width: 80rem;
-      font-size: 2.4rem;
-      font-weight: 100;
-      text-align: center;
-      align-self: center;
-      padding: 5rem 0;
 
-      line-height: 3.6rem;
-
-      /* color: var(--grey); */
-    }
-    &__amenties {
-      margin-bottom: 10rem;
-      align-self: center;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2rem;
-      li {
-        /* border-right: 1px solid #000; */
-        /* padding: 0 1rem; */
-        text-align: center;
-
-        &:nth-of-type(1),
-        &:nth-of-type(4) {
-          border-right: 1px solid var(--grey);
-          padding-right: 1rem;
-          text-align: right;
-        }
-        &:nth-of-type(3),
-        &:last-of-type {
-          border-left: 1px solid var(--grey);
-          padding-left: 1rem;
-          text-align: left;
-        }
-      }
-    }
+    /* &__amenties {
+  
+    } */
 
     &__highlights {
       margin: 10rem 0;
@@ -232,64 +199,9 @@ const ResortStyles = styled.div`
         }
       }
     }
-    &__gallery {
-      display: flex;
-      flex-direction: column;
-
-      text-align: center;
-      padding: 0 10%;
-      @media ${device.laptopL} {
-        padding: 0;
-      }
-
-      h2 {
-        margin-bottom: 7rem;
-      }
-
-      .filters {
-        margin-bottom: 3rem;
-        align-self: center;
-        display: flex;
-
-        li {
-          color: var(--grey);
-          font-size: 2rem;
-          &:not(:last-of-type) {
-            margin-right: 3rem;
-          }
-        }
-      }
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .main-image-container {
-        /* height: 70rem; */
-      }
-
-      .image-grid {
-        /* height: 70rem; */
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: 1fr 1fr 1fr;
-        li {
-          &:nth-of-type(1) {
-            grid-row: 1/3;
-          }
-        }
-        li {
-          &:nth-of-type(4) {
-            grid-column: 2/4;
-          }
-        }
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-    }
+    /* &__gallery {
+     
+    } */
 
     &__spa {
       margin-top: 14rem;
@@ -361,93 +273,9 @@ const ResortStyles = styled.div`
       }
     }
 
-    &__activities {
-      margin: 10rem 0;
-      text-align: center;
-      padding: 0 10%;
-      display: flex;
-      flex-direction: column;
-      @media ${device.laptopL} {
-        padding: 0;
-      }
-
-      h2 {
-        margin-bottom: 3rem;
-        letter-spacing: 1rem;
-      }
-      p {
-        margin-bottom: 5rem;
-        width: 70rem;
-        color: var(--grey);
-        align-self: center;
-      }
-
-      ul {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 1.6rem;
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-    }
-
-    &__reviews {
-      display: flex;
-      flex-direction: column;
-
-      margin-bottom: 5rem;
-      padding: 2rem 10%;
-      min-width: fit-content;
-
-      h2 {
-        letter-spacing: 1rem;
-        text-align: center;
-      }
-
-      .carousel {
-        /* padding: 5rem; */
-        display: flex;
-        justify-content: center;
-        .slider-frame {
-          padding: 5rem !important;
-          display: flex;
-          justify-content: center;
-        }
-
-        .slider-slide {
-          @media ${device.tablet} {
-            display: flex !important;
-            justify-content: center;
-          }
-        }
-      }
-
-      &__review {
-        /* max-width: 25rem; */
-        width: fit-content;
-
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
-
-        margin-right: 0;
-
-        p {
-          width: 20rem;
-        }
-        p:first-of-type {
-          font-weight: bold;
-          font-size: 2rem;
-          margin-bottom: 5rem;
-        }
-      }
-    }
+    /* &__activities {
+   
+    } */
 
     &__second-image {
       img {

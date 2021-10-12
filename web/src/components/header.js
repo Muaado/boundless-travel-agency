@@ -73,13 +73,10 @@ const DropDown = ({ list }) => {
   return (
     <div className="dropdown">
       <ul>
-        {list.nodes.map(
+        {list.map(
           (item) =>
-            item.name && (
-              <Link
-                key={item.name}
-                to={`/${item.name.toLowerCase().split(" ").join("-")}`}
-              >
+            item.url && (
+              <Link key={item} to={item.url}>
                 <a>{item.name}</a>
               </Link>
             )
