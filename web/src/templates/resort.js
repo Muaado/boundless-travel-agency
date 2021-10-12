@@ -93,6 +93,15 @@ export const query = graphql`
         alt
       }
     }
+
+    activities: allSanityActivity(filter: { resort: { _id: { eq: $id } } }) {
+      nodes {
+        imageThumb {
+          ...SanityImage
+          alt
+        }
+      }
+    }
   }
 `;
 
@@ -105,6 +114,11 @@ const ResortStyles = styled.div`
     font-weight: bold;
     font-size: 7.2rem;
     padding: 7rem 0;
+    letter-spacing: 1rem;
+  }
+
+  h2 {
+    letter-spacing: 1rem;
   }
 
   .resort {
@@ -123,6 +137,8 @@ const ResortStyles = styled.div`
       padding: 5rem 0;
 
       line-height: 3.6rem;
+
+      /* color: var(--grey); */
     }
     &__amenties {
       align-self: center;
@@ -373,12 +389,52 @@ const ResortStyles = styled.div`
       }
     }
 
+    &__activities {
+      margin: 10rem 0;
+      text-align: center;
+      padding: 0 10%;
+      display: flex;
+      flex-direction: column;
+      @media ${device.laptopL} {
+        padding: 0;
+      }
+
+      h2 {
+        margin-bottom: 3rem;
+        letter-spacing: 1rem;
+      }
+      p {
+        margin-bottom: 5rem;
+        width: 70rem;
+        color: var(--grey);
+        align-self: center;
+      }
+
+      ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.6rem;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
     &__reviews {
       display: flex;
-      margin-top: 10rem;
+      flex-direction: column;
+
       margin-bottom: 5rem;
       padding: 2rem 10%;
       min-width: fit-content;
+
+      h2 {
+        letter-spacing: 1rem;
+        text-align: center;
+      }
 
       .carousel {
         padding: 5rem;
@@ -431,6 +487,7 @@ const ResortTemplate = (props) => {
   const { data, errors } = props;
   const resort = data && data.resort;
   const featuredSpa = data && data.featuredSpa;
+  const activities = data && data.activities;
 
   const {
     name,
@@ -675,7 +732,25 @@ const ResortTemplate = (props) => {
               </div>
             </div>
           </div>
+
+          <div className="resort__activities">
+            <h2>Activities</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation.
+            </p>
+            <ul>
+              {activities.nodes.map(({ imageThumb }) => (
+                <li key={imageThumb.alt}>
+                  <Image {...imageThumb} alt={imageThumb.alt} />
+                </li>
+              ))}
+            </ul>
+          </div>
+
           <div className="resort__reviews">
+            <h2>Reviews</h2>
             <Carousel
               className="carousel"
               slidesToShow={numberOfSlides}
@@ -705,7 +780,6 @@ const ResortTemplate = (props) => {
               ))}
             </Carousel>
           </div>
-
           <div className="resort__second-image">
             <Image {...secondImage} alt={secondImage.alt} />
           </div>

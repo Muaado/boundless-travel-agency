@@ -17,6 +17,8 @@ const HeaderStyles = styled.header`
 
   color: #fff;
 
+  background: ${(props) =>
+    props.pathname !== "/" ? "var(--primary)" : "transparent"};
   .logo {
     align-self: flex-start;
     height: 100%;
@@ -24,7 +26,7 @@ const HeaderStyles = styled.header`
 
   nav {
     position: relative;
-    /* margin-top: 15rem; */
+    margin-top: 6rem;
     margin-left: -8rem;
     /* align-self: center;
     justify-self: center; */
@@ -87,12 +89,28 @@ const DropDown = ({ list }) => {
   );
 };
 
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle, data }) => {
+const Header = ({
+  onHideNav,
+  onShowNav,
+  showNav,
+  siteTitle,
+  navData,
+  location,
+}) => {
   const [showDropdown, setShowDropdown] = useState(0);
   const [list, setList] = useState([]);
 
+  const handleOpenDropDown = (list, index) => {
+    if (showDropdown !== index) {
+      setShowDropdown(index);
+      setList(list);
+    } else {
+      setShowDropdown(-1);
+    }
+  };
+
   return (
-    <HeaderStyles>
+    <HeaderStyles pathname={location?.pathname}>
       <div className="logo">
         <Link to="/">
           <a>
@@ -104,48 +122,50 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, data }) => {
       <nav>
         <ul>
           <li>
-            <a
+            <p
+              className="clickable"
               onClick={() => {
-                setShowDropdown(1);
-                setList(data.resorts);
+                handleOpenDropDown(navData.resorts, 1);
               }}
             >
               Resorts
               {showDropdown === 1 && <DropDown list={list} />}
-            </a>
+            </p>
           </li>
           <li>
-            <a
+            <p
+              className="clickable"
               onClick={() => {
-                setShowDropdown(2);
-                setList(data.villas);
+                handleOpenDropDown(navData.villas, 2);
               }}
             >
               Villas
               {showDropdown === 2 && <DropDown list={list} />}
-            </a>
+            </p>
           </li>
           <li>
-            <a
+            <p
+              className="clickable"
               onClick={() => {
                 setShowDropdown(3);
-                setList(data.resorts);
+                setList(navData.resorts);
               }}
             >
               Holiday stays
               {showDropdown === 3 && <DropDown list={list} />}
-            </a>
+            </p>
           </li>
           <li>
-            <a
+            <p
+              className="clickable"
               onClick={() => {
                 setShowDropdown(!showDropdown);
-                setList(data.resorts);
+                setList(navData.resorts);
               }}
             >
               Magazine
               {showDropdown === 4 && <DropDown list={list} />}
-            </a>
+            </p>
           </li>
         </ul>
       </nav>

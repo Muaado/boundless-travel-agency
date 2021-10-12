@@ -10,18 +10,22 @@ const Layout = ({
   onShowNav,
   showNav,
   siteTitle,
-  data,
+  navData,
+  location,
 }) => (
   <>
     <Header
-      data={data}
+      location={location}
+      navData={navData}
       siteTitle={siteTitle}
       onHideNav={onHideNav}
       onShowNav={onShowNav}
       showNav={showNav}
     />
+
     <div>{children}</div>
     <GlobalStyle />
+
     {/* <footer>
       <div>
         <div>

@@ -33,19 +33,21 @@ function LayoutContainer(props) {
     setShowNav(false);
   }
 
-  const data = useStaticQuery(query);
-  if (!data.site) {
+  const navData = useStaticQuery(query);
+  if (!navData.site) {
     throw new Error(
       'Missing "Site settings". Open the Studio at http://localhost:3333 and some content in "Site settings"'
     );
   }
 
+  // cons;
+
   return (
     <Layout
-      data={{ resorts: data.resorts, villas: data.villas }}
+      navData={{ resorts: navData.resorts, villas: navData.villas }}
       {...props}
       showNav={showNav}
-      siteTitle={data.site.title}
+      siteTitle={navData.site.title}
       onHideNav={handleHideNav}
       onShowNav={handleShowNav}
     />

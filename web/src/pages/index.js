@@ -145,7 +145,7 @@ const IndexPage = (props) => {
   }
 
   return (
-    <Layout>
+    <Layout {...props}>
       <SEO
         title={site.title}
         description={site.description}
