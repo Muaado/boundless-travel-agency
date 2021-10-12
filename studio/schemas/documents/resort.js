@@ -27,6 +27,11 @@ export default {
       title: "Image",
     },
     {
+      name: "secondImage",
+      type: "mainImage",
+      title: "Second image",
+    },
+    {
       name: "description",
       type: "bodyPortableText",
       title: "Description",

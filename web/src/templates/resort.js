@@ -70,6 +70,11 @@ export const query = graphql`
         name
         _rawDescription
       }
+
+      secondImage {
+        ...SanityImage
+        alt
+      }
     }
 
     featuredSpa: sanitySpa(
@@ -305,6 +310,7 @@ const ResortStyles = styled.div`
       align-items: center;
       justify-content: center;
       position: relative;
+      overflow: hidden;
       .container {
         display: flex;
         align-self: center;
@@ -370,7 +376,7 @@ const ResortStyles = styled.div`
     &__reviews {
       display: flex;
       margin-top: 10rem;
-      margin-bottom: 10rem;
+      margin-bottom: 5rem;
       padding: 2rem 10%;
       min-width: fit-content;
 
@@ -410,6 +416,14 @@ const ResortStyles = styled.div`
         }
       }
     }
+
+    &__second-image {
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
   }
 `;
 
@@ -434,6 +448,7 @@ const ResortTemplate = (props) => {
     restaurants,
     reviews,
     gallery: galleries,
+    secondImage,
   } = resort;
 
   const firstImage = galleries[0].images[0];
@@ -689,6 +704,10 @@ const ResortTemplate = (props) => {
                 </div>
               ))}
             </Carousel>
+          </div>
+
+          <div className="resort__second-image">
+            <Image {...secondImage} alt={secondImage.alt} />
           </div>
         </ResortStyles>
       </Container>
