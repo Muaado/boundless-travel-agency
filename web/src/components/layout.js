@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./header";
 
 // import "../styles/layout.css";
-import { GlobalStyle } from "../styles/GlobayStyle";
+import { GlobalStyle } from "../styles/GlobalStyle";
 
 const Layout = ({
   children,

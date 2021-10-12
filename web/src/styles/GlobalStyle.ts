@@ -113,6 +113,13 @@ export const GlobalStyle = createGlobalStyle`
   h1,h2,h3,h4,h5,h6, p {
     margin: 0;
   }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   ::-moz-selection {
     background: #b3d4fc;
     text-shadow: none;
