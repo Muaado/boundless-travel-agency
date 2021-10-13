@@ -6,11 +6,10 @@ import Layout from "../containers/layout";
 import Container from "../components/container";
 import SEO from "../components/seo";
 
-import Carousel from "nuka-carousel";
-
 import Image from "gatsby-plugin-sanity-image";
 
 import PortableText from "../components/portableText";
+
 import ChevronRight from "../assets/icons/chevron-right.svg";
 
 import Reviews from "../components/Resort/Reviews";
@@ -20,6 +19,7 @@ import Gallery from "../components/Gallery";
 import Amenities from "../components/Resort/Amenities";
 import Activities from "../components/Resort/Activities";
 import Spa from "../components/Resort/Spa";
+import Accomodation from "../components/Resort/Accomodation";
 
 // import review from "../../../studio/schemas/documents/review";
 
@@ -211,49 +211,7 @@ const ResortTemplate = (props) => {
             </ul>
           </div>
 
-          <div className="resort__accomodation">
-            <h2>Accomodation</h2>
-            {/* <ul> */}
-            <Carousel
-              slidesToShow={3.2}
-              cellSpacing={10}
-              // enableKeyboardControls
-              // renderCenterLeftControls={null}
-              // renderBottomCenterControls={null}
-              // renderCenterRightControls={({ nextSlide }) => (
-              //   <button
-              //     type="button"
-              //     className="btn-right"
-              //     onClick={nextSlide}
-              //     aria-label="Next Slide"
-              //   >
-              //     <img src={chevron} alt="" />
-              //     <p className="eye-not-visible">Next Slide</p>
-              //   </button>
-              // )}
-              // dragging
-              // wrapAround
-            >
-              {villas.map(({ name, imageThumb }) => (
-                // <li key={name}>
-                <div key={name} className="image-container">
-                  <Image
-                    style={{
-                      width: "100%",
-                      height: "80%",
-                      objectFit: "cover",
-                    }}
-                    {...imageThumb}
-                    alt={imageThumb.alt}
-                  />
-                  <p>{name}</p>
-                </div>
-                // </li>
-              ))}
-            </Carousel>
-            {/* </ul> */}
-          </div>
-
+          <Accomodation villas={villas} />
           <div className="resort__restaurants">
             <div className="resort__restaurants__header">
               <h2>DINE</h2>

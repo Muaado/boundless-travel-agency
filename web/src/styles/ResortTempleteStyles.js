@@ -104,36 +104,9 @@ const ResortStyles = styled.div`
       }
     }
 
-    &__accomodation {
-      padding: 0 10%;
-      @media ${device.laptopL} {
-        padding: 0;
-      }
-      h2 {
-        text-align: center;
-        padding: 5rem;
-      }
-      ul {
-        display: flex;
-        gap: 2rem;
-      }
-
-      .image-container {
-        width: 100%;
-        @media ${device.laptopL} {
-        }
-        height: 70rem;
-        img {
-          height: 80%;
-        }
-        p {
-          font-family: "Playfair Display";
-          font-size: 3rem;
-          padding: 2rem 0;
-          text-align: right;
-        }
-      }
-    }
+    /* &__accomodation {
+     
+    } */
 
     &__restaurants {
       margin-top: 10rem;
@@ -153,6 +126,7 @@ const ResortStyles = styled.div`
 
           border-bottom: 2px solid var(--primary);
           margin-bottom: 2rem;
+          text-align: left;
         }
       }
       ul {
