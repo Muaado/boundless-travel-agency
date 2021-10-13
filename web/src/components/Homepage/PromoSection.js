@@ -6,7 +6,7 @@ import { device } from "../../styles/deviceSizes";
 
 export const PromoSectionStyles = styled.div`
   /* width: 100vw; */
-  margin: 0 -14%;
+  /* margin: 0 -14%; */
   position: relative;
   height: 60rem;
   color: #fff;

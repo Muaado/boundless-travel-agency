@@ -7,7 +7,8 @@ import styled from "styled-components";
 const AboutUsSectionStyles = styled.div`
   display: flex;
   align-items: center;
-  padding: 10rem 0;
+  padding: 10rem 10%;
+
   .about-us {
     &__image-container {
       width: 50rem;

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { device } from "../../styles/deviceSizes";
 
 const TailorMadeStyles = styled.div`
+  padding: 0 10%;
+  margin-bottom: 22rem;
   h2 {
     text-align: center;
     margin-bottom: 10rem;

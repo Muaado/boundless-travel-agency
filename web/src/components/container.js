@@ -21,10 +21,10 @@ const ContainerStyles = styled.main`
 
     @media ${device.desktop} {
       /* width: 1440px; */
-      padding: 0 10%;
+      /* padding: 0 10%; */
     }
     @media ${device.laptopL} {
-      width: 100vw;
+      /* width: 100vw; */
       padding: 0;
     }
     /* margin: 0 10%; */
@@ -33,7 +33,7 @@ const ContainerStyles = styled.main`
   /* .promo-section {
     
   } */
-  .about-us {
+  /* .about-us {
     display: flex;
     align-items: center;
     padding: 10rem 0;
@@ -62,10 +62,10 @@ const ContainerStyles = styled.main`
         margin: 2rem 0;
       }
     }
-  }
+  } */
 
   .second-image {
-    margin: 20rem -14%;
+    /* margin: 20rem -14%; */
     margin-bottom: 10rem;
     position: relative;
     height: 70rem;

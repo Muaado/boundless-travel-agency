@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 // import {
 //   filterOutDocsPublishedInTheFuture,
 //   filterOutDocsWithoutSlugs,
@@ -25,6 +25,16 @@ import Image from "gatsby-plugin-sanity-image";
 import Faq from "../components/Homepage/Faq";
 import TailorMade from "../components/Homepage/TailorMade";
 import { device } from "../styles/deviceSizes";
+import { ContactUs } from "../components/Homepage/ContactUs";
+import {
+  HeroStyles,
+  MagazineStyles,
+  NewsLetterStyles,
+  SearchBar,
+} from "../components/Homepage/styles";
+import PortableText from "../components/portableText";
+import { getBlogUrl } from "../lib/helpers";
+
 // import HomepageStaticImage from "../assets/homepage-image.png";
 
 export const query = graphql`
@@ -84,6 +94,24 @@ export const query = graphql`
         ...SanityImage
         alt
       }
+
+      contactUs {
+        address
+        email
+        phoneOne
+        contactPeople {
+          name
+          image {
+            ...SanityImage
+            alt
+          }
+        }
+        hours {
+          days
+          hours
+        }
+        businessHoursDescription
+      }
     }
 
     collections: allSanityVillasCollection {
@@ -99,6 +127,21 @@ export const query = graphql`
         }
       }
     }
+    magazinePosts: allSanityPost(limit: 3) {
+      nodes {
+        _rawExcerpt
+        title
+        mainImage {
+          ...SanityImage
+          alt
+        }
+        publishedAt
+        slug {
+          current
+        }
+      }
+    }
+
     # posts: allSanityPost(
     #   limit: 6
     #   sort: { fields: [publishedAt], order: DESC }
@@ -126,7 +169,6 @@ export const query = graphql`
 const IndexPage = (props) => {
   const { data, errors } = props;
 
-  console.log(data, "data");
   const { collections } = data;
 
   if (errors) {
@@ -138,6 +180,7 @@ const IndexPage = (props) => {
   }
 
   const site = (data || {}).site;
+  const magazinePosts = (data || {}).magazinePosts;
   // const postNodes = (data || {}).posts
   //   ? mapEdgesToNodes(data.posts)
   //       .filter(filterOutDocsWithoutSlugs)
@@ -179,6 +222,29 @@ const IndexPage = (props) => {
           <Journey collections={collections} />
           <PromoSection image={site.promoImageWeb} />
           <AboutUs aboutUs={site.aboutUs} />
+          <MagazineStyles>
+            <h2>Magazine</h2>
+            <p className="subtitle">Inspiration</p>
+            <ul>
+              {magazinePosts.nodes.map(
+                ({ title, _rawExcerpt, mainImage, publishedAt, slug }) => (
+                  <li key="title">
+                    <Link to={getBlogUrl(publishedAt, slug.current)}>
+                      <div className="image-container">
+                        <Image {...mainImage} alt={mainImage.alt} />
+                      </div>
+                      <h3>{title}</h3>
+                      <PortableText blocks={_rawExcerpt} />
+                    </Link>
+                  </li>
+                )
+              )}
+            </ul>
+
+            <Link to="/archive">
+              <button className="btn">View More...</button>
+            </Link>
+          </MagazineStyles>
           <TailorMade />
           <div className="second-image">
             <Image
@@ -196,12 +262,13 @@ const IndexPage = (props) => {
             />
             <form className="form">
               <h2>Subscribe to our newsletter</h2>
-              <div>
+              <div className="container">
                 <input placeholder="Enter your email here" />
                 <button className="btn">Subscribe</button>
               </div>
             </form>
           </NewsLetterStyles>
+          <ContactUs contactUs={site.contactUs} />
         </div>
       </Container>
     </Layout>
@@ -209,138 +276,3 @@ const IndexPage = (props) => {
 };
 
 export default IndexPage;
-
-const NewsLetterStyles = styled.div`
-  margin: 0 -12%;
-  margin-bottom: 10rem;
-  position: relative;
-  /* height: 70rem; */
-  color: #fff;
-  @media ${device.laptopL} {
-    margin: 20rem 0;
-    margin-bottom: 10rem;
-  }
-
-  h2 {
-    position: absolute;
-    top: 20%;
-    right: 25%;
-    color: #fff;
-    font-size: 4rem;
-    font-weight: bold;
-    text-transform: capitalize;
-  }
-
-  form {
-    position: absolute;
-    bottom: 0%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 2rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.45);
-    /* 
-    &:after {
-      padding: 4rem;
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -20%;
-      width: 120%;
-      height: 100%;
-      background: #000;
-      opacity: 0.4;
-    } */
-    h2 {
-      z-index: 100;
-      font-style: italic;
-      position: unset;
-      font-size: 3.2rem;
-      font-weight: normal;
-      width: max-content;
-      margin-right: 20rem;
-    }
-
-    div {
-      display: flex;
-      input {
-        width: 40rem;
-        padding: 0 2rem;
-      }
-      .btn {
-        background: var(--primary);
-      }
-    }
-  }
-`;
-
-const SearchBar = styled.form`
-  padding: 1rem;
-  position: absolute;
-  top: -3.5rem;
-
-  background: #fff;
-  align-self: center;
-
-  display: flex;
-  width: 80%;
-
-  filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.25));
-  input {
-    padding: 1rem;
-    border: none;
-    width: 20%;
-
-    &[name="location"] {
-      width: 60%;
-    }
-    &:focus {
-      outline: none;
-    }
-    &:not(:last-of-type) {
-      border-right: 1px solid #000;
-    }
-  }
-
-  button {
-    border-radius: 2px;
-  }
-`;
-const HeroStyles = styled.div`
-  text-align: center;
-
-  color: #fff;
-
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-
-  &:before {
-    content: "";
-    position: absolute;
-    opacity: 0.5;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-  }
-  h1 {
-    text-transform: uppercase;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  p {
-  }
-
-  video {
-    height: 100%;
-    width: 100vw;
-    object-fit: fill;
-  }
-`;

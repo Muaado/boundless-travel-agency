@@ -22,35 +22,6 @@ export default {
       title: "Description",
       description: "Describe your site for search engines and social media.",
     },
-    {
-      name: "address",
-      type: "string",
-      title: "Address",
-    },
-
-    {
-      name: "email",
-      type: "string",
-      title: "Email",
-    },
-
-    {
-      name: "phoneOne",
-      type: "string",
-      title: "Phone one",
-    },
-
-    {
-      name: "phoneTwo",
-      type: "string",
-      title: "Phone two",
-    },
-
-    {
-      name: "businessHoursDescription",
-      type: "string",
-      title: "Business hours description",
-    },
 
     {
       name: "promoImageMobile",
@@ -91,6 +62,12 @@ export default {
       name: "newsLetterBackground",
       type: "mainImage",
       title: "Newsletter Background",
+    },
+
+    {
+      name: "contactUs",
+      type: "contactUs",
+      title: "Contact us",
     },
 
     {

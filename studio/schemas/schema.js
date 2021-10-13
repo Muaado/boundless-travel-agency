@@ -51,6 +51,9 @@ import boundlessFaq from "./objects/homepage/boundlessFaq";
 import gallery from "./documents/gallery";
 import galleryType from "./documents/galleryType";
 import review from "./documents/review";
+import contactUs from "./objects/homepage/contactUs";
+import contactPerson from "./objects/homepage/contactPerson";
+import dayWithHour from "./objects/homepage/dayWithHour";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -65,6 +68,9 @@ export default createSchema({
 
     aboutUs,
     boundlessFaq,
+    contactUs,
+    contactPerson,
+    dayWithHour,
 
     post,
     category,

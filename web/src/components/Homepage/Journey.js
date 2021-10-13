@@ -16,6 +16,8 @@ const JourneyStyles = styled.div`
   font-family: "Playfair Display";
   text-align: center;
 
+  padding: 0 10%;
+
   width: 100%;
   /* max-width: 1440px; */
   @media ${device.laptopL} {

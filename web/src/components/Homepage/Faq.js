@@ -9,6 +9,7 @@ const FaqStyles = styled.div`
   margin-bottom: 10rem;
   text-align: center;
 
+  padding: 0 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
