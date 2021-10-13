@@ -6,10 +6,13 @@ export const GlobalStyle = createGlobalStyle`
     --darkRed: #5D0012;
     --lightOrange: #B39A6A;
     --darkGreen: #004743;
+    
+
 
 
 
     /* Define colors as colors */
+    --pureBlack: #000;
     --black: #2b2926;
     --cream: #eeeeee;
     /* --lightOrange: #ff9100; */
@@ -22,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
     --pureBlack: #000;
     --pureWhite: #fff;
     --lightGrey: #e8e8e8;
-    --lightGrey1: #f7f7f7;
+    --lightGrey1: #F5F3F3;
     --lightGrey2: #EBEAEA;
     --lightGrey3: #dbdbdb;
     --grey: #8e8e8e;

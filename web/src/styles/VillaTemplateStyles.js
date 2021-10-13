@@ -42,6 +42,64 @@ const VillaStyles = styled.div`
         }
       }
     }
+
+    &__restaurants {
+      margin-top: 10rem;
+      padding: 0 10%;
+      @media ${device.laptopL} {
+        padding: 0;
+      }
+
+      h2 {
+        margin-bottom: 7rem;
+      }
+      ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 6rem;
+
+        .image-container {
+          height: 50rem;
+        }
+      }
+
+      &__text {
+        position: relative;
+        top: -4rem;
+        align-self: center;
+        /* max-width: 25rem; */
+
+        display: flex;
+        flex-direction: column;
+        .name {
+          font-size: 2rem;
+          font-family: "Playfair Display";
+          text-transform: uppercase;
+          margin-bottom: 1.5rem;
+        }
+        .alternate-name {
+          font-size: 1.6rem;
+          font-weight: 100;
+          margin-bottom: 2rem;
+          color: var(--grey);
+          text-transform: uppercase;
+          letter-spacing: 0.3rem;
+        }
+
+        a {
+          margin-top: 2.5rem;
+          color: var(--grey);
+        }
+      }
+    }
+
+    &__spas {
+      /* height: 120rem; */
+
+      .slider {
+        height: 70rem;
+      }
+    }
   }
 `;
 export default VillaStyles;

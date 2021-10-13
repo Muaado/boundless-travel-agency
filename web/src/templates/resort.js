@@ -19,6 +19,7 @@ import ResortStyles from "../styles/ResortTempleteStyles";
 import Gallery from "../components/Gallery";
 import Amenities from "../components/Resort/Amenities";
 import Activities from "../components/Resort/Activities";
+import Spa from "../components/Resort/Spa";
 
 // import review from "../../../studio/schemas/documents/review";
 
@@ -290,28 +291,7 @@ const ResortTemplate = (props) => {
 
           <Gallery galleries={galleries} />
 
-          <div className="resort__spa">
-            <div className="container">
-              <div>
-                <div className="image-web">
-                  <Image
-                    {...featuredSpa.imageWeb}
-                    alt={featuredSpa.imageWeb.alt}
-                  />
-                </div>
-                <PortableText blocks={featuredSpa._rawDescription} />
-              </div>
-              <div>
-                <h2>{featuredSpa.name}</h2>
-                <div className="image-thumb">
-                  <Image
-                    {...featuredSpa.imageThumb}
-                    alt={featuredSpa.imageThumb.alt}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+          <Spa spa={featuredSpa} />
 
           <Activities activities={activities} />
 
