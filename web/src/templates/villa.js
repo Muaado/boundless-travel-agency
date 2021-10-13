@@ -25,7 +25,13 @@ export const query = graphql`
   query VillaTemplateQuery($id: String!, $resortId: String!) {
     villa: sanityVilla(_id: { eq: $id }) {
       name
-
+      alternateName
+      tagline
+      _rawDescription
+      imageWeb {
+        ...SanityImage
+        alt
+      }
       gallery {
         images {
           ...SanityImage
@@ -101,6 +107,12 @@ const VilaTemplate = (props) => {
   const spas = data && data.spas;
 
   const {
+    name,
+    alternateName,
+    tagline,
+    _rawDescription: _rawDescriptionVilla,
+    imageWeb,
+
     gallery: galleries,
     // gallery,
   } = villa;
@@ -122,6 +134,18 @@ const VilaTemplate = (props) => {
     <Layout>
       <Container>
         <VillaStyles>
+          <div className="villa__header">
+            <div className="container">
+              <div className="image-container">
+                <Image {...imageWeb} alt={imageWeb?.alt} />
+              </div>
+              <p className="alternate-name">{alternateName}</p>
+              <h1>{name}</h1>
+              <h3 className="tagline">{tagline}</h3>
+              <PortableText blocks={_rawDescriptionVilla} />
+              <button className="btn">ENQUIRE</button>
+            </div>
+          </div>
           <Gallery galleries={galleries} />
           <div className="villa__property-overview">
             <h2>Property Overview</h2>

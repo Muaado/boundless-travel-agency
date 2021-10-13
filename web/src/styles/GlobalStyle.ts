@@ -29,7 +29,7 @@ export const GlobalStyle = createGlobalStyle`
     --lightGrey2: #EBEAEA;
     --lightGrey3: #dbdbdb;
     --grey: #8e8e8e;
-    --grey1: #CBCBCB;
+    --grey1: #505050;
     --grey2: #CCCCCC;
     --darkGrey: #292929;
     /* Define colors intentions */
