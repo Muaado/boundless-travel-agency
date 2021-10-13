@@ -30,6 +30,12 @@ export default {
     },
 
     {
+      name: "whyBoundlessImage",
+      type: "mainImage",
+      title: "Why travel boundless image",
+    },
+
+    {
       name: "secondImage",
       type: "mainImage",
       title: "Second image",

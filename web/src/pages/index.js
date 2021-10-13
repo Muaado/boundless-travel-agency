@@ -24,7 +24,7 @@ import Journey from "../components/Homepage/Journey";
 import Image from "gatsby-plugin-sanity-image";
 import Faq from "../components/Homepage/Faq";
 import TailorMade from "../components/Homepage/TailorMade";
-import { device } from "../styles/deviceSizes";
+
 import { ContactUs } from "../components/Homepage/ContactUs";
 import {
   HeroStyles,
@@ -34,6 +34,7 @@ import {
 } from "../components/Homepage/styles";
 import PortableText from "../components/portableText";
 import { getBlogUrl } from "../lib/helpers";
+import WhyBoundlessSection from "../components/Homepage/WhyBoundlessSection";
 
 // import HomepageStaticImage from "../assets/homepage-image.png";
 
@@ -80,6 +81,10 @@ export const query = graphql`
           ...SanityImage
         }
         _rawDescription(resolveReferences: { maxDepth: 10 })
+      }
+      whyBoundlessImage {
+        ...SanityImage
+        alt
       }
 
       FAQ {
@@ -222,13 +227,14 @@ const IndexPage = (props) => {
           <Journey collections={collections} />
           <PromoSection image={site.promoImageWeb} />
           <AboutUs aboutUs={site.aboutUs} />
+          <WhyBoundlessSection whyBoundlessImage={site.whyBoundlessImage} />
           <MagazineStyles>
             <h2>Magazine</h2>
             <p className="subtitle">Inspiration</p>
             <ul>
               {magazinePosts.nodes.map(
                 ({ title, _rawExcerpt, mainImage, publishedAt, slug }) => (
-                  <li key="title">
+                  <li key={title}>
                     <Link to={getBlogUrl(publishedAt, slug.current)}>
                       <div className="image-container">
                         <Image {...mainImage} alt={mainImage.alt} />
