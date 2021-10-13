@@ -178,6 +178,7 @@ const ResortStyles = styled.div`
     } */
 
     &__spa {
+      margin-top: 12rem;
     }
 
     /* &__activities {

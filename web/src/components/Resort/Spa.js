@@ -85,9 +85,9 @@ const SpaStyles = styled.div`
   }
 `;
 
-const Spa = ({ spa }) => {
+const Spa = ({ spa, className }) => {
   return (
-    <SpaStyles>
+    <SpaStyles className={className}>
       <div className="container">
         <div className="left-section">
           <div className="image-web">
