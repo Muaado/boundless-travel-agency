@@ -82,6 +82,18 @@ export default {
     },
 
     {
+      name: "newsLetterTitle",
+      title: "Newsletter title",
+      type: "string",
+    },
+
+    {
+      name: "newsLetterBackground",
+      type: "mainImage",
+      title: "Newsletter Background",
+    },
+
+    {
       name: "keywords",
       type: "array",
       title: "Keywords",

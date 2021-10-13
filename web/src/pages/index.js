@@ -24,6 +24,7 @@ import Journey from "../components/Homepage/Journey";
 import Image from "gatsby-plugin-sanity-image";
 import Faq from "../components/Homepage/Faq";
 import TailorMade from "../components/Homepage/TailorMade";
+import { device } from "../styles/deviceSizes";
 // import HomepageStaticImage from "../assets/homepage-image.png";
 
 export const query = graphql`
@@ -77,6 +78,11 @@ export const query = graphql`
           answer
           question
         }
+      }
+      newsLetterTitle
+      newsLetterBackground {
+        ...SanityImage
+        alt
       }
     }
 
@@ -182,6 +188,20 @@ const IndexPage = (props) => {
             />
           </div>
           <Faq faq={site.FAQ.faqQuestionsAnswers} />
+          <NewsLetterStyles>
+            <h2>{site.newsLetterTitle}</h2>
+            <Image
+              {...site.newsLetterBackground}
+              alt={site.newsLetterBackground.alt}
+            />
+            <form className="form">
+              <h2>Subscribe to our newsletter</h2>
+              <div>
+                <input placeholder="Enter your email here" />
+                <button className="btn">Subscribe</button>
+              </div>
+            </form>
+          </NewsLetterStyles>
         </div>
       </Container>
     </Layout>
@@ -189,6 +209,72 @@ const IndexPage = (props) => {
 };
 
 export default IndexPage;
+
+const NewsLetterStyles = styled.div`
+  margin: 0 -12%;
+  margin-bottom: 10rem;
+  position: relative;
+  /* height: 70rem; */
+  color: #fff;
+  @media ${device.laptopL} {
+    margin: 20rem 0;
+    margin-bottom: 10rem;
+  }
+
+  h2 {
+    position: absolute;
+    top: 20%;
+    right: 25%;
+    color: #fff;
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+
+  form {
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.45);
+    /* 
+    &:after {
+      padding: 4rem;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -20%;
+      width: 120%;
+      height: 100%;
+      background: #000;
+      opacity: 0.4;
+    } */
+    h2 {
+      z-index: 100;
+      font-style: italic;
+      position: unset;
+      font-size: 3.2rem;
+      font-weight: normal;
+      width: max-content;
+      margin-right: 20rem;
+    }
+
+    div {
+      display: flex;
+      input {
+        width: 40rem;
+        padding: 0 2rem;
+      }
+      .btn {
+        background: var(--primary);
+      }
+    }
+  }
+`;
 
 const SearchBar = styled.form`
   padding: 1rem;
