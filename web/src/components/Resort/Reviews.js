@@ -6,6 +6,10 @@ import PortableText from "../portableText";
 import useWindowSize from "../../lib/useWindowSize";
 import styled from "styled-components";
 import { device } from "../../styles/deviceSizes";
+import { CarouselButton } from "../../styles/Ui";
+
+import ChevronRight from "../../assets/icons/chevron-right.svg";
+import ChevronLeft from "../../assets/icons/chevron-left.svg";
 
 const ReviewsStyles = styled.div`
   display: flex;
@@ -21,16 +25,26 @@ const ReviewsStyles = styled.div`
   }
 
   .carousel {
-    /* padding: 5rem; */
-    display: flex;
+    padding: 5rem;
+    display: flex !important;
     justify-content: center;
+    .slider-list {
+      /* padding: 0 5rem; */
+    }
     .slider-frame {
-      padding: 5rem !important;
+      align-self: center;
+      padding: 2rem !important;
+      width: 95%;
       display: flex;
       justify-content: center;
     }
 
+    .slide {
+      width: fit-content;
+    }
+
     .slider-slide {
+      width: fit-content;
       @media ${device.tablet} {
         display: flex !important;
         justify-content: center;
@@ -41,7 +55,6 @@ const ReviewsStyles = styled.div`
   .review {
     /* max-width: 25rem; */
     width: fit-content;
-
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -72,20 +85,22 @@ const Reviews = ({ reviews }) => {
     const isTablet = width > 576 && width < 992;
     const isSreenSM = width > 992 && width < 1200;
     const isSreenLG = width > 1200 && width < 1440;
-    const screenXL = width > 1440;
+    const screenXL = width > 1440 && width < 1600;
+    const screenXXL = width > 1600;
 
     const slides = () => {
       if (isMobileOnly) return 1;
       if (isTablet) return 2;
       if (isSreenSM) return 2.4;
       if (isSreenLG) return 2.8;
-      if (screenXL) return 4;
-      return 2;
+      if (screenXL) return 3.5;
+      if (screenXXL) return 4.2;
+      return 5.65;
     };
     const spacing = () => {
       if (isMobileOnly) return 50;
       if (isTablet) return 20;
-      return 0;
+      return 150;
     };
 
     setNumberOfSlides(slides);
@@ -98,22 +113,26 @@ const Reviews = ({ reviews }) => {
         className="carousel"
         slidesToShow={numberOfSlides}
         cellSpacing={cellSpacing}
-        // enableKeyboardControls
-        // renderCenterLeftControls={null}
-        // renderBottomCenterControls={null}
-        // renderCenterRightControls={({ nextSlide }) => (
-        //   <button
-        //     type="button"
-        //     className="btn-right"
-        //     onClick={nextSlide}
-        //     aria-label="Next Slide"
-        //   >
-        //     <img src={chevron} alt="" />
-        //     <p className="eye-not-visible">Next Slide</p>
-        //   </button>
-        // )}
-        // dragging
-        // wrapAround
+        renderCenterRightControls={({ nextSlide }) => (
+          <CarouselButton
+            type="button"
+            onClick={nextSlide}
+            aria-label="Next Slide"
+            bgColor="var(--darkGreen)"
+          >
+            <ChevronRight />
+          </CarouselButton>
+        )}
+        renderCenterLeftControls={({ previousSlide }) => (
+          <CarouselButton
+            type="button"
+            onClick={previousSlide}
+            aria-label="Next Slide"
+            bgColor="var(--darkGreen)"
+          >
+            <ChevronLeft />
+          </CarouselButton>
+        )}
       >
         {reviews.map(({ name, _rawDescription }) => (
           <div className="review" key={name}>
