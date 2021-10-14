@@ -186,6 +186,7 @@ const ResortStyles = styled.div`
     } */
 
     &__second-image {
+      margin-bottom: 3rem;
       img {
         width: 100%;
         height: 100%;

@@ -20,6 +20,7 @@ import Amenities from "../components/Resort/Amenities";
 import Activities from "../components/Resort/Activities";
 import Spa from "../components/Resort/Spa";
 import Accomodation from "../components/Resort/Accomodation";
+import { ContactUs } from "../components/Homepage/ContactUs";
 
 // import review from "../../../studio/schemas/documents/review";
 
@@ -116,6 +117,26 @@ export const query = graphql`
         }
       }
     }
+
+    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+      contactUs {
+        address
+        email
+        phoneOne
+        contactPeople {
+          name
+          image {
+            ...SanityImage
+            alt
+          }
+        }
+        hours {
+          days
+          hours
+        }
+        businessHoursDescription
+      }
+    }
   }
 `;
 
@@ -124,6 +145,7 @@ const ResortTemplate = (props) => {
   const resort = data && data.resort;
   const featuredSpa = data && data.featuredSpa;
   const activities = data && data.activities;
+  const site = data && data.site;
   // const highlights = data && data.highlights;
 
   const {
@@ -254,6 +276,7 @@ const ResortTemplate = (props) => {
           <div className="resort__second-image">
             <Image {...secondImage} alt={secondImage.alt} />
           </div>
+          <ContactUs contactUs={site.contactUs} />
         </ResortStyles>
       </Container>
     </Layout>
