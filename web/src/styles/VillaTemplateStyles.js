@@ -153,6 +153,85 @@ const VillaStyles = styled.div`
         }
       }
     }
+
+    &__highlights {
+      margin-top: 7rem;
+      background: #fff6f6;
+      padding: 15rem 5%;
+      display: grid;
+      align-items: center;
+      grid-template-columns: 35rem 1fr;
+      gap: 4rem;
+      h2 {
+        font-size: 2.5rem;
+        text-align: left;
+        margin-bottom: 5rem;
+        letter-spacing: 0.5rem;
+      }
+      h3 {
+        text-transform: unset;
+      }
+      ul {
+        /* height: 80rem; */
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 25rem 25rem 25rem;
+        li {
+          position: relative;
+          .text {
+            display: flex;
+            flex-direction: column;
+          }
+          &:hover {
+            transition: all 0.3s;
+
+            .text {
+              height: 100%;
+              width: 100%;
+              transition: all 0.3s;
+              opacity: 1;
+              color: #fff;
+              z-index: 100;
+              align-items: center;
+              justify-content: center;
+              padding: 2rem;
+            }
+            &:after {
+              content: "";
+              background: #000;
+              left: 0;
+              top: 0;
+              opacity: 0.4;
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              z-index: 50;
+              /* right: -55vw; */
+            }
+          }
+          &:first-of-type {
+            grid-row: 1/3;
+          }
+          &:nth-of-type(2) {
+            grid-row: 1/2;
+          }
+          &:nth-of-type(3) {
+            grid-row: 1/3;
+          }
+          &:nth-of-type(5) {
+            grid-row: 2/4;
+          }
+          .text {
+            opacity: 0;
+            position: absolute;
+          }
+          h3 {
+            color: #fff;
+          }
+        }
+      }
+    }
     &__property-overview {
       display: flex;
       flex-direction: column;

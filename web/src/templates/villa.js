@@ -70,6 +70,15 @@ export const query = graphql`
           }
         }
 
+        highlights {
+          name
+          _rawDescription
+          imageThumb {
+            ...SanityImage
+            alt
+          }
+        }
+
         restaurants {
           name
           alternateName
@@ -145,6 +154,7 @@ const VilaTemplate = (props) => {
     reviews,
     restaurants,
     gallery: galleries,
+    highlights,
   } = villa.resort;
 
   // console.log
@@ -204,6 +214,7 @@ const VilaTemplate = (props) => {
               </ul>
             </div>
           </div>
+
           <Gallery galleries={galleries} />
           <div className="villa__property-overview">
             <h2>Property Overview</h2>
@@ -217,6 +228,32 @@ const VilaTemplate = (props) => {
               timeToAirport={timeToAirport}
               _rawDescription={_rawDescription}
             />
+          </div>
+
+          <div className="villa__highlights">
+            <div>
+              <h2>Hightlights</h2>
+              <p>
+                Elegant mansions by the sea, our two-storey beach residence in
+                Maldives are sanctuaries of effortless chic. Each of our beach
+                residence in Maldives features curved walls and livi
+              </p>
+            </div>
+            <ul>
+              {highlights.map(({ name, imageThumb, _rawDescription }) => (
+                <li key={imageThumb?.alt}>
+                  {/* <a>
+                     <ChevronRight />
+                  </a> */}
+                  <div className="text">
+                    <h3>{name}</h3>
+                    {/* <PortableText blocks={_rawDescription} /> */}
+                  </div>
+
+                  <Image {...imageThumb} alt={imageThumb.alt} />
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="villa__restaurants">
             <h2>Dine</h2>
