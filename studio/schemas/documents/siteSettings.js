@@ -24,6 +24,17 @@ export default {
     },
 
     {
+      name: "handCraftedJourneys",
+      title: "Hand crafted journeys images",
+      type: "array",
+      of: [
+        {
+          type: "imageWithTitle",
+        },
+      ],
+    },
+
+    {
       name: "promoImageMobile",
       type: "mainImage",
       title: "Promo image mobile",

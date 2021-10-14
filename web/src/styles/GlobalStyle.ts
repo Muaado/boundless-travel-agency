@@ -89,7 +89,7 @@ export const GlobalStyle = createGlobalStyle`
     background: var(--secondary);
     color: var(--pureWhite);
     border: none;
-    padding: 1rem 1.75rem;
+    padding: 1.5rem 6rem;
     outline: none;
     cursor: pointer;
     font-size: 1.6rem;

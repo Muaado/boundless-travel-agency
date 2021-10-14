@@ -56,6 +56,7 @@ import tag from "./documents/tag";
 import idealFor from "./documents/idealFor";
 import alternateName from "./documents/alternateName";
 import review from "./objects/review";
+import imageWithTitle from "./objects/imageWithTitle";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -78,6 +79,7 @@ export default createSchema({
     tag,
     idealFor,
     alternateName,
+    imageWithTitle,
 
     post,
     category,

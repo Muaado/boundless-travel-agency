@@ -27,6 +27,7 @@ import TailorMade from "../components/Homepage/TailorMade";
 
 import { ContactUs } from "../components/Homepage/ContactUs";
 import {
+  HandCraftedJourneysStyles,
   HeroStyles,
   MagazineStyles,
   NewsLetterStyles,
@@ -67,6 +68,15 @@ export const query = graphql`
       description
       keywords
       description
+
+      handCraftedJourneys {
+        title
+        _rawDescription
+        image {
+          ...SanityImage
+          alt
+        }
+      }
       promoImageWeb {
         ...SanityImage
         alt
@@ -225,6 +235,33 @@ const IndexPage = (props) => {
           </SearchBar>
 
           <Journey collections={collections} />
+
+          <HandCraftedJourneysStyles>
+            <p className="subtitle">only the best</p>
+            <h2>hand-crafted journeys</h2>
+            <p className="description">
+              Our collection of Resorts and Villas are hand-picked for their
+              style, individuality, service, comfort and uniqueness. Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit. Donec dictum non eros
+              sed.
+            </p>
+            <ul>
+              {site.handCraftedJourneys.map(
+                ({ title, image, _rawDescription }) => (
+                  <li key={title}>
+                    {/* <Link to={getBlogUrl(publishedAt, slug.current)}> */}
+                    <div className="image-container">
+                      <Image {...image} alt={image.alt} />
+                    </div>
+                    <h3>{title}</h3>
+                    <PortableText blocks={_rawDescription} />
+                    {/* </Link> */}
+                  </li>
+                )
+              )}
+            </ul>
+            <button className="btn">Enquire</button>
+          </HandCraftedJourneysStyles>
           <PromoSection image={site.promoImageWeb} />
           <AboutUs aboutUs={site.aboutUs} />
           <WhyBoundlessSection whyBoundlessImage={site.whyBoundlessImage} />

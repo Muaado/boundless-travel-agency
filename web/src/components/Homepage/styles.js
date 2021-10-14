@@ -71,6 +71,81 @@ export const SearchBar = styled.form`
   }
 `;
 
+export const HandCraftedJourneysStyles = styled.div`
+  margin: 10rem 0;
+  padding: 0 10%;
+
+  @media ${device.laptopL} {
+    padding: 0 10%;
+  }
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2,
+  p {
+    text-align: center;
+  }
+
+  h2 {
+    text-transform: lowercase;
+    max-width: 50rem;
+    margin-bottom: 3rem;
+    letter-spacing: 1rem;
+  }
+
+  .subtitle {
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  .description {
+    margin-bottom: 10rem;
+    font-size: 1.6rem;
+    max-width: 55rem;
+    color: var(--grey);
+    line-height: 3rem;
+  }
+
+  ul {
+    margin-bottom: 7rem;
+    /* display: flex;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    .image-container {
+      width: 100%;
+    }
+    text-align: center;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h3 {
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      font-size: 2.4rem;
+      font-weight: bold;
+      color: #000;
+      text-transform: unset;
+    }
+    p {
+      max-width: 25rem;
+      text-align: center;
+      color: var(--grey1);
+      line-height: 3rem;
+    }
+  }
+
+  .btn {
+    text-transform: capitalize;
+  }
+`;
+
 export const MagazineStyles = styled.div`
   margin-bottom: 22rem;
   display: flex;
@@ -102,6 +177,8 @@ export const MagazineStyles = styled.div`
       width: 100%;
     }
     h3 {
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
       font-size: 2.4rem;
       font-weight: bold;
       color: #000;
