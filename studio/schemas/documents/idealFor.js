@@ -1,16 +1,16 @@
 export default {
-  name: "resortTag",
+  name: "idealFor",
   type: "document",
-  title: "Resort tag",
+  title: "Ideal for",
   fields: [
     {
-      name: "tag",
+      name: "idealFor",
       type: "string",
     },
   ],
   preview: {
     select: {
-      title: "tag",
+      title: "idealFor",
     },
   },
 };

@@ -12,22 +12,22 @@ export default {
       type: "bodyPortableText",
       title: "Description",
     },
-    {
-      title: "Resort",
-      name: "resort",
-      type: "reference",
-      to: [{ type: "resort" }],
-    },
+    // {
+    //   title: "Resort",
+    //   name: "resort",
+    //   type: "reference",
+    //   to: [{ type: "resort" }],
+    // },
     {
       name: "highlightAlternateName",
       title: "Highlight alternate name",
       type: "array",
       of: [
         {
-          type: "reference",
-          to: {
-            type: "highlightAlternateName",
-          },
+          type: "alternateName",
+          // type: "reference",
+          // to: {
+          // },
         },
       ],
     },
@@ -40,7 +40,7 @@ export default {
         {
           type: "reference",
           to: {
-            type: "highlightIdealFor",
+            type: "idealFor",
           },
         },
       ],
@@ -54,7 +54,7 @@ export default {
         {
           type: "reference",
           to: {
-            type: "highlightTag",
+            type: "tag",
           },
         },
       ],
@@ -69,17 +69,17 @@ export default {
     {
       name: "imageMobile",
       type: "mainImage",
-      title: "Restaurant image mobile",
+      title: "Highlight image mobile",
     },
     {
       name: "imageWeb",
       type: "mainImage",
-      title: "Restaurant image web",
+      title: "Highlight image web",
     },
     {
       name: "imageThumb",
       type: "mainImage",
-      title: "Restaurant image thumb",
+      title: "Highlight image thumb",
     },
   ],
   preview: {

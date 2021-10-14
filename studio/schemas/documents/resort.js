@@ -80,6 +80,17 @@ export default {
     },
 
     {
+      title: "Highlights",
+      name: "highlights",
+      type: "array",
+      of: [
+        {
+          type: "resortHighlight",
+        },
+      ],
+    },
+
+    {
       title: "Gallery",
       name: "gallery",
       type: "array",
@@ -97,8 +108,8 @@ export default {
       type: "array",
       of: [
         {
-          type: "reference",
-          to: { type: "review" },
+          type: "review",
+          // to: { type: "review" },
         },
       ],
     },
@@ -166,7 +177,7 @@ export default {
         {
           type: "reference",
           to: {
-            type: "resortTag",
+            type: "tag",
           },
         },
       ],

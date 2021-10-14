@@ -1,16 +1,16 @@
 export default {
-  name: "highlightAlternateName",
+  name: "tag",
   type: "document",
-  title: "Highlight alternate name",
+  title: "Tag",
   fields: [
     {
-      name: "name",
+      name: "tag",
       type: "string",
     },
   ],
   preview: {
     select: {
-      title: "name",
+      title: "tag",
     },
   },
 };

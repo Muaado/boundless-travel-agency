@@ -78,7 +78,7 @@ export default {
         {
           type: "reference",
           to: {
-            type: "spaTag",
+            type: "tag",
           },
         },
       ],

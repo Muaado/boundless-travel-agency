@@ -80,6 +80,15 @@ export const query = graphql`
         ...SanityImage
         alt
       }
+
+      highlights {
+        name
+        _rawDescription
+        imageThumb {
+          ...SanityImage
+          alt
+        }
+      }
     }
 
     featuredSpa: sanitySpa(
@@ -107,19 +116,6 @@ export const query = graphql`
         }
       }
     }
-
-    highlights: allSanityResortHighlight(
-      filter: { resort: { _id: { eq: $id } } }
-    ) {
-      nodes {
-        name
-        _rawDescription
-        imageThumb {
-          ...SanityImage
-          alt
-        }
-      }
-    }
   }
 `;
 
@@ -128,7 +124,7 @@ const ResortTemplate = (props) => {
   const resort = data && data.resort;
   const featuredSpa = data && data.featuredSpa;
   const activities = data && data.activities;
-  const highlights = data && data.highlights;
+  // const highlights = data && data.highlights;
 
   const {
     name,
@@ -147,6 +143,7 @@ const ResortTemplate = (props) => {
     reviews,
     gallery: galleries,
     secondImage,
+    highlights,
   } = resort;
 
   return (
@@ -199,8 +196,8 @@ const ResortTemplate = (props) => {
           <div className="resort__highlights">
             <h2>Highlights</h2>
             <ul>
-              {highlights.nodes.map(({ name, imageThumb, _rawDescription }) => (
-                <li key={imageThumb.alt}>
+              {highlights.map(({ name, imageThumb, _rawDescription }) => (
+                <li key={imageThumb?.alt}>
                   <a>
                     {name} <ChevronRight />
                   </a>

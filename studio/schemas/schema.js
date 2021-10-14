@@ -17,30 +17,26 @@ import excerptPortableText from "./objects/excerptPortableText";
 import mainImage from "./objects/mainImage";
 import authorReference from "./objects/authorReference";
 import resort from "./documents/resort";
+
 import restaurant from "./documents/restaurant";
 // import restauranta from "./documents/restaurant copy";
 import villa from "./documents/villa";
 
-import resortTag from "./documents/resortTag";
 import resortAccomodationType from "./documents/resortAccomodationType";
 import resortTransferType from "./documents/resortTransferType";
 // import resortCollection from "./documents/resortCollection";
 import restaurantCusinesServed from "./documents/restaurantCusinesServed";
 import spaServicesOffered from "./documents/spaServicesOffered";
 import spaTreatmentType from "./documents/spaTreatmentType";
-import spaTag from "./documents/spaTag";
+
 import spa from "./documents/spa";
 import spaFeaturedProductBrand from "./documents/spaFeaturedProductBrand";
 import villaPoolType from "./documents/villaPoolType";
-import villaTag from "./documents/villaTag";
-import resortHighlight from "./documents/resortHighlight";
-import highlightTag from "./documents/highlightTag";
-import hightlightAlternateName from "./documents/hightlightAlternateName";
-import highlightIdealFor from "./documents/highlightIdealFor";
+
+import resortHighlight from "./objects/resort/resortHighlight";
+
 import activity from "./documents/activity";
-import activityAlternateName from "./documents/activityAlternateName";
-import activityIdealFor from "./documents/activityIdealFor";
-import activityTag from "./documents/activityTag";
+
 import resortFaq from "./documents/resortFaq";
 import faqGroupTag from "./documents/faqGroupTag";
 import faqQuestionAnswer from "./objects/faqQuestionAnswer";
@@ -50,12 +46,16 @@ import aboutUs from "./objects/homepage/aboutUs";
 import boundlessFaq from "./objects/homepage/boundlessFaq";
 import gallery from "./documents/gallery";
 import galleryType from "./documents/galleryType";
-import review from "./documents/review";
+
 import contactUs from "./objects/homepage/contactUs";
 import contactPerson from "./objects/homepage/contactPerson";
 import dayWithHour from "./objects/homepage/dayWithHour";
 import roomFeatures from "./objects/villa/roomFeatures";
 import feature from "./objects/villa/feature";
+import tag from "./documents/tag";
+import idealFor from "./documents/idealFor";
+import alternateName from "./documents/alternateName";
+import review from "./objects/review";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -74,11 +74,16 @@ export default createSchema({
     contactPerson,
     dayWithHour,
 
+    // SHARED DOCS
+    tag,
+    idealFor,
+    alternateName,
+
     post,
     category,
     author,
     resort,
-    resortTag,
+
     resortAccomodationType,
     resortTransferType,
 
@@ -88,9 +93,6 @@ export default createSchema({
     galleryType,
 
     resortHighlight,
-    highlightTag,
-    hightlightAlternateName,
-    highlightIdealFor,
 
     resortFaq,
     faqGroupTag,
@@ -102,18 +104,15 @@ export default createSchema({
     spaServicesOffered,
     // spaService,
     spaTreatmentType,
-    spaTag,
+
     spaFeaturedProductBrand,
 
     activity,
-    activityAlternateName,
-    activityIdealFor,
-    activityTag,
 
     villa,
     villasCollection,
     villaPoolType,
-    villaTag,
+
     roomFeatures,
     feature,
 

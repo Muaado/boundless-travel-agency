@@ -1,11 +1,16 @@
 export default {
-  name: "activity",
+  name: "resortHighlight",
   type: "document",
-  title: "Activity",
+  title: "Resort highlight",
   fields: [
     {
       name: "name",
       type: "string",
+    },
+    {
+      name: "description",
+      type: "bodyPortableText",
+      title: "Description",
     },
     {
       title: "Resort",
@@ -14,54 +19,49 @@ export default {
       to: [{ type: "resort" }],
     },
     {
-      name: "description",
-      type: "bodyPortableText",
-      title: "Description",
-    },
-    {
-      name: "activityAlternateName",
-      title: "Activity alternate name",
+      name: "highlightAlternateName",
+      title: "Highlight alternate name",
       type: "array",
       of: [
         {
           type: "reference",
           to: {
-            type: "alternateName",
+            type: "highlightAlternateName",
           },
         },
       ],
     },
 
     {
-      name: "activityIdealFor",
-      title: "Activity ideal for",
+      name: "highlightIdealFor",
+      title: "Highlight ideal for",
       type: "array",
       of: [
         {
           type: "reference",
           to: {
-            type: "idealFor",
+            type: "highlightIdealFor",
           },
         },
       ],
     },
 
     {
-      name: "activityTags",
-      title: "Activity tags",
+      name: "highlightTags",
+      title: "Highlight tags",
       type: "array",
       of: [
         {
           type: "reference",
           to: {
-            type: "tag",
+            type: "highlightTag",
           },
         },
       ],
     },
 
     {
-      name: "ActivitySpecialityArticlePage",
+      name: "highlightSpecialityArticlePage",
       title: "Hightlight speciality article page",
       type: "string",
     },
@@ -69,17 +69,17 @@ export default {
     {
       name: "imageMobile",
       type: "mainImage",
-      title: "Activity image mobile",
+      title: "Highlight image mobile",
     },
     {
       name: "imageWeb",
       type: "mainImage",
-      title: "Activity image web",
+      title: "Highlight image web",
     },
     {
       name: "imageThumb",
       type: "mainImage",
-      title: "Activity image thumb",
+      title: "Highlight image thumb",
     },
   ],
   preview: {
