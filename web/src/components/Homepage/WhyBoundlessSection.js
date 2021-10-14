@@ -13,6 +13,10 @@ import Eclipse from "../../assets/icons/whyBoundlessIcons/eclipse.svg";
 const WhyBoundlessSectionStyles = styled.div`
   position: relative;
   margin-bottom: 10rem;
+
+  p {
+    color: #fff;
+  }
   .image-container {
     height: 80vh;
     img {

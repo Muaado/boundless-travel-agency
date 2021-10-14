@@ -111,6 +111,9 @@ const ResortStyles = styled.div`
     &__restaurants {
       margin-top: 10rem;
       padding: 0 10%;
+      p {
+        font-size: 1.4rem;
+      }
 
       &__header {
         position: absolute;

@@ -118,6 +118,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   p {
     font-size: 2rem;
+    color:var(--grey1)
   }
 
   img {

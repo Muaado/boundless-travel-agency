@@ -35,11 +35,14 @@ const HeaderStyles = styled.header`
     ul {
       display: flex;
       gap: 6rem;
+
       li {
         &.selected {
           font-weight: bold;
         }
-
+        p {
+          color: #fff;
+        }
         a {
           position: relative;
         }

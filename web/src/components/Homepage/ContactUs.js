@@ -12,6 +12,9 @@ const ContactUsSection = styled.div`
   grid-template-columns: 1fr 1fr;
   font-size: 2rem;
   padding: 0 10%;
+  p {
+    color: #000;
+  }
   @media ${device.laptopL} {
     padding: 0 5%;
   }
