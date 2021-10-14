@@ -1,5 +1,5 @@
 import { graphql } from "gatsby";
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../containers/layout";
 import Container from "../components/container";
 import SEO from "../components/seo";
@@ -18,6 +18,8 @@ import Carousel from "nuka-carousel";
 
 import ChevronRight from "../assets/icons/chevron-right.svg";
 import ChevronLeft from "../assets/icons/chevron-left.svg";
+import PlusIcon from "../assets/icons/plus-icon.svg";
+import MinusIcon from "../assets/icons/minus-icon.svg";
 // import styled from "styled-components";
 import { CarouselButton } from "../styles/Ui";
 
@@ -32,16 +34,18 @@ export const query = graphql`
         ...SanityImage
         alt
       }
-      gallery {
-        images {
+
+      roomFeatures {
+        backgroundImage {
           ...SanityImage
           alt
         }
-        name
-        type {
-          name
+        features {
+          _rawDescription
+          title
         }
       }
+
       resort {
         locationAtoll
         locationFull
@@ -53,6 +57,17 @@ export const query = graphql`
         _rawDescription
         resortTransferType {
           transferType
+        }
+
+        gallery {
+          images {
+            ...SanityImage
+            alt
+          }
+          name
+          type {
+            name
+          }
         }
 
         restaurants {
@@ -106,14 +121,16 @@ const VilaTemplate = (props) => {
   const activities = data && data.activities;
   const spas = data && data.spas;
 
+  const [openedFeature, setOpenedFeature] = useState(-1);
+
   const {
     name,
     alternateName,
     tagline,
     _rawDescription: _rawDescriptionVilla,
     imageWeb,
+    roomFeatures,
 
-    gallery: galleries,
     // gallery,
   } = villa;
 
@@ -127,9 +144,21 @@ const VilaTemplate = (props) => {
     _rawDescription,
     reviews,
     restaurants,
+    gallery: galleries,
   } = villa.resort;
 
-  console.log(spas);
+  // console.log
+
+  console.log(roomFeatures);
+  const handleOpenFeature = (index) => {
+    console.log(index);
+    if (openedFeature !== index) {
+      setOpenedFeature(index);
+    } else {
+      setOpenedFeature(-1);
+    }
+  };
+
   return (
     <Layout>
       <Container>
@@ -144,6 +173,35 @@ const VilaTemplate = (props) => {
               <h3 className="tagline">{tagline}</h3>
               <PortableText blocks={_rawDescriptionVilla} />
               <button className="btn">ENQUIRE</button>
+            </div>
+          </div>
+
+          <div className="villa__room-features">
+            <Image
+              {...roomFeatures.backgroundImage}
+              alt={roomFeatures.backgroundImage.alt}
+            />
+            <div className="content">
+              <h2>Room features</h2>
+              <ul>
+                {roomFeatures.features.map(
+                  ({ title, _rawDescription }, index) => (
+                    <li
+                      key={title}
+                      className="clickable"
+                      onClick={() => handleOpenFeature(index)}
+                    >
+                      <h3>
+                        {title}
+                        {openedFeature !== index ? <PlusIcon /> : <MinusIcon />}
+                      </h3>
+                      {openedFeature === index && (
+                        <PortableText blocks={_rawDescription} />
+                      )}
+                    </li>
+                  )
+                )}
+              </ul>
             </div>
           </div>
           <Gallery galleries={galleries} />

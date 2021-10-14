@@ -87,6 +87,72 @@ const VillaStyles = styled.div`
         font-size: 2rem;
       }
     }
+
+    &__room-features {
+      margin-bottom: 10rem;
+      position: relative;
+      h2,
+      h3 {
+        color: #fff;
+        text-transform: capitalize;
+      }
+      h2 {
+        margin-bottom: 8rem;
+      }
+
+      .content {
+        padding: 4rem 3rem;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        /* align-items: center; */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+
+        background: rgba(0, 0, 0, 0.34);
+        height: 100%;
+
+        h3 {
+          padding: 1rem 0;
+
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          font-size: 2.2rem;
+          border-bottom: 1px solid var(--primary);
+
+          svg {
+            margin-right: 4rem;
+          }
+        }
+
+        ul {
+          li {
+            width: 70rem;
+
+            & > * {
+              margin-top: 2rem;
+              font-size: 2.2rem;
+            }
+            /* h3 {
+              padding-left: 0 !important;
+            } */
+            ul {
+              padding-left: 4rem;
+              list-style: disc;
+              li {
+                margin-bottom: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
     &__property-overview {
       display: flex;
       flex-direction: column;

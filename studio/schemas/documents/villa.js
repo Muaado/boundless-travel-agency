@@ -35,6 +35,12 @@ export default {
     },
 
     {
+      name: "roomFeatures",
+      type: "roomFeatures",
+      title: "Room features",
+    },
+
+    {
       name: "sizeSqm",
       type: "number",
       title: "Size in sqm",
