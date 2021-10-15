@@ -16,12 +16,10 @@ import Reviews from "../components/Resort/Reviews";
 import Spa from "../components/Resort/Spa";
 import Carousel from "nuka-carousel";
 
-import ChevronRight from "../assets/icons/chevron-right.svg";
-import ChevronLeft from "../assets/icons/chevron-left.svg";
 import PlusIcon from "../assets/icons/plus-icon.svg";
 import MinusIcon from "../assets/icons/minus-icon.svg";
+import CarouselButton from "../components/Ui/CarouselButton";
 // import styled from "styled-components";
-import { CarouselButton } from "../styles/Ui";
 
 export const query = graphql`
   query VillaTemplateQuery($id: String!, $resortId: String!) {
@@ -121,6 +119,15 @@ export const query = graphql`
         }
       }
     }
+    resorts: allSanityResort(limit: 3) {
+      nodes {
+        name
+        image {
+          ...SanityImage
+          alt
+        }
+      }
+    }
   }
 `;
 
@@ -129,6 +136,8 @@ const VilaTemplate = (props) => {
   const villa = data && data.villa;
   const activities = data && data.activities;
   const spas = data && data.spas;
+  const resorts = data && data.resorts;
+  console.log(resorts);
 
   const [openedFeature, setOpenedFeature] = useState(-1);
 
@@ -288,24 +297,10 @@ const VilaTemplate = (props) => {
             slidesToShow={1}
             cellSpacing={0}
             renderCenterRightControls={({ nextSlide }) => (
-              <CarouselButton
-                type="button"
-                onClick={nextSlide}
-                aria-label="Next Slide"
-                bgColor="var(--darkGreen)"
-              >
-                <ChevronRight />
-              </CarouselButton>
+              <CarouselButton onClick={nextSlide} chevronRight={true} />
             )}
             renderCenterLeftControls={({ previousSlide }) => (
-              <CarouselButton
-                type="button"
-                onClick={previousSlide}
-                aria-label="Next Slide"
-                bgColor="var(--darkGreen)"
-              >
-                <ChevronLeft />
-              </CarouselButton>
+              <CarouselButton onClick={previousSlide} />
             )}
           >
             {spas.nodes.map((spa) => (
@@ -313,6 +308,33 @@ const VilaTemplate = (props) => {
             ))}
           </Carousel>
           <Activities activities={activities} />
+          <div className="villa__resorts">
+            <p className="title">
+              <span>ALL</span>
+              <span className="line"></span>
+              <span>PRODUCTS</span>
+            </p>
+            <Carousel
+              className="carousel"
+              slidesToShow={3}
+              cellSpacing={20}
+              renderCenterRightControls={({ nextSlide }) => (
+                <CarouselButton onClick={nextSlide} chevronRight={true} />
+              )}
+              renderCenterLeftControls={({ previousSlide }) => (
+                <CarouselButton onClick={previousSlide} />
+              )}
+            >
+              {resorts.nodes.map(({ name, image }) => (
+                <div className="carousel__node" key={name}>
+                  <div className="image-container">
+                    <Image {...image} alt={image.alt} />
+                  </div>
+                  <p>{name}</p>
+                </div>
+              ))}
+            </Carousel>
+          </div>
           <Reviews reviews={reviews} />
         </VillaStyles>
       </Container>

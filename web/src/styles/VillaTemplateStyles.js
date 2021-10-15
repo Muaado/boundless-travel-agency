@@ -314,6 +314,64 @@ const VillaStyles = styled.div`
         height: 70rem;
       }
     }
+
+    &__resorts {
+      margin-top: 5rem;
+      margin-bottom: 10rem;
+      padding: 10rem 10%;
+      background: #b39a6a;
+
+      .title {
+        font-family: "Playfair Display";
+        position: absolute;
+        left: 0;
+        transform: rotate(-90deg);
+        color: #fff;
+        font-size: 1.4rem;
+        /* position: relative; */
+        span {
+          margin-right: 5rem;
+          &.line {
+            position: absolute;
+            top: 1rem;
+            left: 3.5rem;
+            width: 3rem;
+            height: 1px;
+            background: #fff;
+            z-index: 100;
+          }
+        }
+      }
+
+      p {
+        color: #000;
+        margin-top: 2rem;
+        text-align: right;
+      }
+      .carousel {
+        &__node {
+          height: 100%;
+          height: 60rem;
+        }
+        .image-container {
+          height: 85%;
+        }
+        position: relative;
+        &__button {
+          &-right {
+            position: absolute;
+            left: 5rem;
+            top: -5rem;
+          }
+
+          &-left {
+            position: absolute;
+            right: 5rem;
+            top: -5rem;
+          }
+        }
+      }
+    }
   }
 `;
 export default VillaStyles;

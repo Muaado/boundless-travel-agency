@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CarouselButton = styled.button`
+export const CarouselButtonStyles = styled.button`
   cursor: pointer;
   background: var(--lightGrey1);
   border: none;

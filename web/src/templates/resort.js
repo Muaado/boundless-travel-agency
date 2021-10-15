@@ -44,13 +44,9 @@ export const query = graphql`
         transferType
       }
 
-      villas {
-        name
-        imageThumb {
-          ...SanityImage
-          alt
-        }
-      }
+      # villas {
+
+      # }
       restaurants {
         name
         alternateName
@@ -85,6 +81,15 @@ export const query = graphql`
       highlights {
         name
         _rawDescription
+        imageThumb {
+          ...SanityImage
+          alt
+        }
+      }
+    }
+    villas: allSanityVilla(limit: 3, filter: { resort: { _id: { eq: $id } } }) {
+      nodes {
+        name
         imageThumb {
           ...SanityImage
           alt
@@ -145,6 +150,7 @@ const ResortTemplate = (props) => {
   const resort = data && data.resort;
   const featuredSpa = data && data.featuredSpa;
   const activities = data && data.activities;
+  const villas = data && data.villas;
   const site = data && data.site;
   // const highlights = data && data.highlights;
 
@@ -160,7 +166,7 @@ const ResortTemplate = (props) => {
     resortTransferType,
     timeToAirport,
     image,
-    villas,
+    // villas,
     restaurants,
     reviews,
     gallery: galleries,
@@ -230,7 +236,7 @@ const ResortTemplate = (props) => {
             </ul>
           </div>
 
-          <Accomodation villas={villas} />
+          <Accomodation villas={villas.nodes} />
           <div className="resort__restaurants">
             <div className="resort__restaurants__header">
               <h2>DINE</h2>

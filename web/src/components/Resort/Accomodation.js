@@ -3,10 +3,11 @@ import Image from "gatsby-plugin-sanity-image";
 import Carousel from "nuka-carousel";
 import ChevronRight from "../../assets/icons/chevron-right.svg";
 import ChevronLeft from "../../assets/icons/chevron-left.svg";
-import { CarouselButton } from "../../styles/Ui";
+
 import styled from "styled-components";
 import { device } from "../../styles/deviceSizes";
 import useWindowSize from "../../lib/useWindowSize";
+import CarouselButton from "../Ui/CarouselButton";
 
 const AccomodationStyles = styled.div`
   padding: 0 10%;
@@ -89,24 +90,10 @@ const Accomodation = ({ villas }) => {
         slidesToShow={numberOfSlides}
         cellSpacing={cellSpacing}
         renderCenterRightControls={({ nextSlide }) => (
-          <CarouselButton
-            type="button"
-            onClick={nextSlide}
-            aria-label="Next Slide"
-            bgColor="var(--darkGreen)"
-          >
-            <ChevronRight />
-          </CarouselButton>
+          <CarouselButton onClick={nextSlide} chevronRight={true} />
         )}
         renderCenterLeftControls={({ previousSlide }) => (
-          <CarouselButton
-            type="button"
-            onClick={previousSlide}
-            aria-label="Next Slide"
-            bgColor="var(--darkGreen)"
-          >
-            <ChevronLeft />
-          </CarouselButton>
+          <CarouselButton onClick={previousSlide} />
         )}
       >
         {villas.map(({ name, imageThumb }) => (
