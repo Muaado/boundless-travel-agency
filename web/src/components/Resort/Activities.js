@@ -11,7 +11,7 @@ const ActivitiesStyles = styled.div`
   display: flex;
   flex-direction: column;
   @media ${device.laptopL} {
-    padding: 0;
+    /* padding: 0; */
   }
 
   h2 {

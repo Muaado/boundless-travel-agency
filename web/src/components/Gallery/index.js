@@ -11,7 +11,7 @@ const GalleryStyles = styled.div`
   text-align: center;
   padding: 0 10%;
   @media ${device.laptopL} {
-    padding: 0;
+    /* padding: 0; */
   }
 
   h2 {

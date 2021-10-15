@@ -208,7 +208,7 @@ export const NewsLetterStyles = styled.div`
   /* height: 70rem; */
   color: #fff;
   @media ${device.laptopL} {
-    margin: 20rem 0;
+    /* margin: 20rem 0; */
     margin-bottom: 10rem;
   }
 

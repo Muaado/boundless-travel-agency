@@ -280,7 +280,7 @@ const VillaStyles = styled.div`
       margin-top: 10rem;
       padding: 0 10%;
       @media ${device.laptopL} {
-        padding: 0;
+        /* padding: 0; */
       }
 
       h2 {

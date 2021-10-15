@@ -21,19 +21,45 @@ const ReviewsStyles = styled.div`
     text-align: center;
   }
 
+  .title {
+    font-weight: bold;
+    color: #000;
+  }
+  a {
+    margin-top: 7rem;
+    color: var(--darkGreen);
+    font-weight: bold;
+  }
+
   .carousel {
     padding: 5rem;
-    display: flex !important;
-    justify-content: center;
+    /* display: flex !important;
+    justify-content: center; */
+
+    &__button {
+      &-right {
+        position: absolute;
+        left: 3rem;
+        top: -5rem;
+      }
+
+      &-left {
+        position: absolute;
+        right: 3rem;
+        top: -5rem;
+      }
+    }
     .slider-list {
       /* padding: 0 5rem; */
     }
     .slider-frame {
+      /* margin: 0 2rem; */
       align-self: center;
-      padding: 2rem !important;
-      width: 95%;
-      display: flex;
-      justify-content: center;
+      padding: 2rem 4rem !important;
+      width: calc(100% + 10rem);
+      width: 100%;
+      /* display: flex;
+      justify-content: center; */
     }
 
     .slide {
@@ -61,7 +87,7 @@ const ReviewsStyles = styled.div`
     margin-right: 0;
 
     p {
-      width: 20rem;
+      width: 25rem;
     }
     p:first-of-type {
       font-weight: bold;
@@ -91,8 +117,8 @@ const Reviews = ({ reviews }) => {
       if (isSreenSM) return 2.4;
       if (isSreenLG) return 2.8;
       if (screenXL) return 3.5;
-      if (screenXXL) return 4.2;
-      return 5.65;
+      if (screenXXL) return 3.5;
+      return 5;
     };
     const spacing = () => {
       if (isMobileOnly) return 50;
@@ -114,13 +140,14 @@ const Reviews = ({ reviews }) => {
           <CarouselButton onClick={nextSlide} chevronRight={true} />
         )}
         renderCenterLeftControls={({ previousSlide }) => (
-          <CarouselButton onClick={previousSlide} chevronRight={true} />
+          <CarouselButton onClick={previousSlide} />
         )}
       >
         {reviews.map(({ name, _rawDescription }) => (
           <div className="review" key={name}>
-            <p>{name}</p>
+            <p className="title">{name}</p>
             <PortableText blocks={_rawDescription} />
+            <a>Read more</a>
           </div>
         ))}
       </Carousel>

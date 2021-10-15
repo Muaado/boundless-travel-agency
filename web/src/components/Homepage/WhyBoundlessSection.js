@@ -9,6 +9,7 @@ import Properties from "../../assets/icons/whyBoundlessIcons/properties.svg";
 import Concierge from "../../assets/icons/whyBoundlessIcons/concierge.svg";
 import Bellboy from "../../assets/icons/whyBoundlessIcons/bellboy.svg";
 import Eclipse from "../../assets/icons/whyBoundlessIcons/eclipse.svg";
+import { device } from "../../styles/deviceSizes";
 
 const WhyBoundlessSectionStyles = styled.div`
   position: relative;
@@ -19,6 +20,7 @@ const WhyBoundlessSectionStyles = styled.div`
   }
   .image-container {
     height: 80vh;
+    min-height: 50rem;
     img {
       object-position: top;
     }
@@ -32,6 +34,13 @@ const WhyBoundlessSectionStyles = styled.div`
     top: 10%;
     left: 60%;
     color: #fff;
+
+    @media ${device.laptopL} {
+      left: 50%;
+    }
+    @media ${device.laptop} {
+      left: 40%;
+    }
 
     h2 {
       margin-bottom: 7rem;
