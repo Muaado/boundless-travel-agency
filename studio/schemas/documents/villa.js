@@ -41,6 +41,24 @@ export default {
     },
 
     {
+      name: "maxOccupancy",
+      title: "Max occupancy options",
+      type: "array",
+      of: [
+        {
+          type: "maxOccupancy",
+        },
+      ],
+    },
+
+    {
+      title: "Showers",
+      name: "showers",
+      type: "array",
+      of: [{ type: "shower" }],
+    },
+
+    {
       name: "sizeSqm",
       type: "number",
       title: "Size in sqm",

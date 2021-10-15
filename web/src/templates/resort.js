@@ -274,7 +274,7 @@ const ResortTemplate = (props) => {
 
           <Gallery galleries={galleries} />
 
-          <Spa className="resort__spa" spa={featuredSpa} />
+          {featuredSpa && <Spa className="resort__spa" spa={featuredSpa} />}
 
           <Activities activities={activities} />
 

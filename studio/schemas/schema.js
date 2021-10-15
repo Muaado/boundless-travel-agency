@@ -57,6 +57,9 @@ import idealFor from "./documents/idealFor";
 import alternateName from "./documents/alternateName";
 import review from "./objects/review";
 import imageWithTitle from "./objects/imageWithTitle";
+import maxOccupancy from "./objects/villa/maxOccupancy";
+
+import shower from "./objects/villa/shower";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -115,6 +118,8 @@ export default createSchema({
     villasCollection,
     villaPoolType,
 
+    shower,
+    maxOccupancy,
     roomFeatures,
     feature,
 

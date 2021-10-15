@@ -66,7 +66,7 @@ const VillaStyles = styled.div`
         position: relative;
         height: 100rem;
         margin-left: 50rem;
-        padding: 15rem 12rem 15rem 15rem;
+        padding: 15rem 8rem 15rem 15rem;
         border: 1px solid var(--primary);
         p {
           max-width: 40rem;
@@ -81,8 +81,26 @@ const VillaStyles = styled.div`
         font-size: 2.4rem;
       }
 
+      ul {
+        padding: 3rem 4rem;
+        display: flex;
+        li {
+          margin-right: 4rem;
+          height: 8rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          &:first-of-type {
+            svg {
+              margin-top: 1rem;
+            }
+          }
+        }
+      }
+
       .btn {
-        margin-top: 7rem;
+        margin-top: 4rem;
         padding: 1.5rem 4rem;
         font-size: 2rem;
       }
@@ -238,6 +256,7 @@ const VillaStyles = styled.div`
       align-items: center;
       margin-top: 5rem;
       h2 {
+        text-transform: capitalize;
         color: var(--primary);
         position: relative;
         &:before,

@@ -19,6 +19,12 @@ import Carousel from "nuka-carousel";
 import PlusIcon from "../assets/icons/plus-icon.svg";
 import MinusIcon from "../assets/icons/minus-icon.svg";
 import CarouselButton from "../components/Ui/CarouselButton";
+
+import Measure from "../assets/icons/villaSpecifications/measure.svg";
+import TwoPeople from "../assets/icons/villaSpecifications/two-people.svg";
+import Bed from "../assets/icons/villaSpecifications/bed.svg";
+import Shower from "../assets/icons/villaSpecifications/shower.svg";
+import SwimmingPool from "../assets/icons/villaSpecifications/swimming-pool.svg";
 // import styled from "styled-components";
 
 export const query = graphql`
@@ -42,6 +48,20 @@ export const query = graphql`
           _rawDescription
           title
         }
+      }
+      sizeSqm
+      showers {
+        option
+        number
+      }
+
+      villaPoolTypes {
+        poolType
+      }
+
+      maxOccupancy {
+        option
+        number
       }
 
       resort {
@@ -137,7 +157,6 @@ const VilaTemplate = (props) => {
   const activities = data && data.activities;
   const spas = data && data.spas;
   const resorts = data && data.resorts;
-  console.log(resorts);
 
   const [openedFeature, setOpenedFeature] = useState(-1);
 
@@ -148,6 +167,10 @@ const VilaTemplate = (props) => {
     _rawDescription: _rawDescriptionVilla,
     imageWeb,
     roomFeatures,
+    maxOccupancy,
+    sizeSqm,
+    showers,
+    villaPoolTypes,
 
     // gallery,
   } = villa;
@@ -166,11 +189,11 @@ const VilaTemplate = (props) => {
     highlights,
   } = villa.resort;
 
-  // console.log
+  let numberOfShowers = 0;
 
-  console.log(roomFeatures);
+  showers.forEach(({ number }) => (numberOfShowers += number));
+
   const handleOpenFeature = (index) => {
-    console.log(index);
     if (openedFeature !== index) {
       setOpenedFeature(index);
     } else {
@@ -191,6 +214,31 @@ const VilaTemplate = (props) => {
               <h1>{name}</h1>
               <h3 className="tagline">{tagline}</h3>
               <PortableText blocks={_rawDescriptionVilla} />
+              <ul>
+                <li>
+                  <Measure />
+                  {sizeSqm}m2
+                </li>
+                <li>
+                  <TwoPeople />
+                  {maxOccupancy.map(
+                    ({ number }, index) =>
+                      `${number}${
+                        index + 1 !== maxOccupancy.length ? "," : ""
+                      } `
+                  )}
+                </li>
+                <li>
+                  <Shower />
+                  {numberOfShowers}
+                </li>
+                {villaPoolTypes[0] && (
+                  <li>
+                    <SwimmingPool />
+                    {villaPoolTypes[0].poolType}
+                  </li>
+                )}
+              </ul>
               <button className="btn">ENQUIRE</button>
             </div>
           </div>
