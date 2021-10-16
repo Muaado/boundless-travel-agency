@@ -9,14 +9,23 @@ const TailorMadeStyles = styled.div`
     text-align: center;
     margin-bottom: 10rem;
   }
+  @media ${device.laptopL} {
+    padding: 0 10%;
+  }
+
+  @media ${device.laptopL} {
+    margin-bottom: 10rem;
+  }
 
   ul {
     display: flex;
     justify-content: space-between;
+    @media ${device.laptopM} {
+      /* display: flex; */
+      flex-direction: column;
+    }
   }
-  @media ${device.laptopL} {
-    padding: 0 10%;
-  }
+
   .tailor-made {
     &__line {
       margin-top: 2rem;
@@ -24,6 +33,9 @@ const TailorMadeStyles = styled.div`
       height: 0.3rem;
       border-radius: 10px;
       background: #000;
+      @media ${device.laptopM} {
+        display: none;
+      }
     }
 
     &__step {
@@ -34,6 +46,12 @@ const TailorMadeStyles = styled.div`
       text-align: center;
 
       position: relative;
+
+      @media ${device.laptopM} {
+        &:not(:last-of-type) {
+          margin-bottom: 4rem;
+        }
+      }
 
       &-num {
         background: var(--darkRed);

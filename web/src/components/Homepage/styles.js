@@ -75,13 +75,16 @@ export const HandCraftedJourneysStyles = styled.div`
   margin: 10rem 0;
   padding: 0 10%;
 
-  @media ${device.laptopL} {
-    padding: 0 10%;
-  }
-
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media ${device.laptopL} {
+    padding: 0 10%;
+  }
+  @media ${device.tablet} {
+    margin: 5rem 0;
+  }
 
   h2,
   p {
@@ -115,6 +118,11 @@ export const HandCraftedJourneysStyles = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
+
+    @media ${device.tablet} {
+      grid-template-columns: 1fr;
+    }
+
     .image-container {
       width: 100%;
     }
@@ -156,6 +164,11 @@ export const MagazineStyles = styled.div`
   @media ${device.laptopL} {
     padding: 0 10%;
   }
+
+  @media ${device.tablet} {
+    margin-bottom: 7rem;
+  }
+
   h2,
   .subtitle {
     text-align: center;
@@ -173,6 +186,17 @@ export const MagazineStyles = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
+
+    @media ${device.tablet} {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    a {
+      display: flex;
+      flex-direction: column;
+    }
+
     .image-container {
       width: 100%;
     }
@@ -186,6 +210,10 @@ export const MagazineStyles = styled.div`
     }
     p {
       max-width: 25rem;
+      @media ${device.tablet} {
+        align-self: center;
+        /* max-width: unset; */
+      }
     }
   }
 
@@ -212,25 +240,43 @@ export const NewsLetterStyles = styled.div`
     margin-bottom: 10rem;
   }
 
+  @media ${device.tablet} {
+    height: 50rem;
+    margin-bottom: 5rem;
+  }
+
   h2 {
     position: absolute;
     top: 20%;
-    right: 25%;
+    right: 15%;
     color: #fff;
-    font-size: 4rem;
+    /* font-size: 4rem; */
     font-weight: bold;
     text-transform: capitalize;
+    text-align: center;
+    @media ${device.tablet} {
+      right: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
   }
 
   .container {
     display: flex;
     width: 50%;
+
+    @media ${device.tablet} {
+      width: 90%;
+    }
     input {
       width: 100%;
       padding: 0 2rem;
     }
     .btn {
       background: var(--primary);
+      @media ${device.laptopM} {
+        padding: 1.2rem 2rem;
+      }
     }
   }
 
@@ -246,25 +292,35 @@ export const NewsLetterStyles = styled.div`
     width: 80vw;
     display: flex;
     justify-content: space-between;
-    /* 
-  &:after {
-    padding: 4rem;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -20%;
-    width: 120%;
-    height: 100%;
-    background: #000;
-    opacity: 0.4;
-  } */
-    h2 {
+
+    @media ${device.tabletL} {
+      padding: 1.2rem 2rem;
+      width: 90vw;
+    }
+    @media ${device.tablet} {
+      width: 70vw;
+
+      flex-direction: column;
+    }
+
+    @media ${device.mobileXL} {
+      width: 100vw;
+    }
+    h3 {
       z-index: 100;
       font-style: italic;
       position: unset;
       font-size: 3.2rem;
       font-weight: normal;
       width: max-content;
+      color: #fff;
+
+      @media ${device.laptopM} {
+        font-size: 2.4rem;
+      }
+      @media ${device.tablet} {
+        margin-bottom: 1rem;
+      }
       /* margin-right: 20rem; */
     }
   }

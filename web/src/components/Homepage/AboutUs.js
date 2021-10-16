@@ -3,11 +3,15 @@ import Image from "gatsby-plugin-sanity-image";
 import PortableText from "../portableText";
 
 import styled from "styled-components";
+import { device } from "../../styles/deviceSizes";
 
 const AboutUsSectionStyles = styled.div`
   display: flex;
   align-items: center;
   padding: 10rem 10%;
+  @media ${device.tablet} {
+    padding: 5rem 10%;
+  }
 
   .about-us {
     &__image-container {
@@ -15,14 +19,21 @@ const AboutUsSectionStyles = styled.div`
       height: 50rem;
       height: auto;
       margin-right: 4rem;
+      @media ${device.tablet} {
+        display: none;
+      }
     }
     &__text {
       h2 {
         font-family: "Playfair display";
         text-transform: uppercase;
-        font-size: 5rem;
+        /* font-size: 5rem; */
         margin-bottom: 2rem;
         color: var(--darkGreen);
+        text-align: left;
+        @media ${device.tabletL} {
+          text-align: center;
+        }
       }
 
       p {

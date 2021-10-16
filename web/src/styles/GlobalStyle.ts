@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { device } from "./deviceSizes";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -113,12 +114,49 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    /* font-weight: normal; */
+    font-family: "Playfair Display";
+    font-size: 5rem;
+    
+    
+  }
+
   h1,h2,h3,h4,h5,h6, p {
     margin: 0;
+    
   }
+
+  h1 {
+    color: var(--primary);
+    /* text-transform: unset; */
+    font-size: 7.2rem;
+    font-weight: bold;
+    @media ${device.tablet} {
+      font-size: 3.6rem;
+    }
+  }
+  h2,h3,h4,h5,h6 {
+    text-transform: capitalize;
+    color: var(--darkGreen);
+    font-size: 5rem;
+    @media ${device.tablet} {
+      font-size: 3rem;
+    }
+  }
+
   p {
     font-size: 2rem;
-    color:var(--grey1)
+    color: var(--grey1);
+      @media ${device.tablet} {
+      font-size: 1.6rem;
+    }
   }
 
   img {
@@ -222,18 +260,7 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: normal;
-    font-family: "Playfair Display";
-    font-size: 5rem;
-    color: var(--darkGreen);
-    text-transform: uppercase;
-  }
+  
 
   @media print,
     (-webkit-min-device-pixel-ratio: 1.25),

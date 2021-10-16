@@ -15,10 +15,17 @@ export const PromoSectionStyles = styled.div`
     margin: 0;
   }
 
+  @media ${device.tabletL} {
+    margin: 0;
+  }
+
   img {
     height: 100%;
     width: 100%;
     object-fit: contain;
+    @media ${device.tablet} {
+      object-position: right;
+    }
   }
 
   h2 {
@@ -32,7 +39,17 @@ export const PromoSectionStyles = styled.div`
     text-align: center;
     letter-spacing: 1rem;
     font-family: "Playfair display";
-    font-size: 4.8rem;
+    /* font-size: 4.8rem; */
+    text-transform: lowercase;
+
+    @media ${device.tabletL} {
+      left: 70%;
+    }
+    @media ${device.tablet} {
+      left: 50%;
+      width: unset;
+      text-transform: uppercase;
+    }
   }
   p {
     width: 45rem;
@@ -40,8 +57,18 @@ export const PromoSectionStyles = styled.div`
     top: 75%;
     left: 75%;
     transform: translate(-50%, -50%);
+    color: #fff;
 
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    @media ${device.tabletL} {
+      left: 70%;
+    }
+    @media ${device.tablet} {
+      left: 50%;
+      width: 100%;
+      padding: 0 10%;
+    }
   }
 `;
 

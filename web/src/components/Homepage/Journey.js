@@ -7,6 +7,8 @@ import Image from "gatsby-plugin-sanity-image";
 import styled from "styled-components";
 import { device } from "../../styles/deviceSizes";
 
+import Carousel from "nuka-carousel";
+
 const JourneyStyles = styled.div`
   margin-top: 15rem;
   margin-bottom: 2rem;
@@ -25,17 +27,25 @@ const JourneyStyles = styled.div`
   }
 
   h1 {
-    font-size: 7rem;
     letter-spacing: 2rem;
     line-height: 10rem;
     color: var(--primary);
     margin-bottom: 1rem;
+
+    @media ${device.tablet} {
+      letter-spacing: 1rem;
+      line-height: 5rem;
+    }
   }
 
   .header {
     align-self: center;
     display: flex;
     align-items: center;
+
+    @media ${device.tablet} {
+      display: none;
+    }
 
     li {
       padding: 0 2rem;
@@ -100,9 +110,30 @@ const JourneyStyles = styled.div`
       position: relative;
     }
   }
+
+  .carousel {
+    margin-top: 4rem;
+    .slider-slide,
+    .slider-list {
+      height: 34rem !important;
+    }
+    &__image-container {
+      height: 30rem;
+      img {
+        object-position: center;
+      }
+    }
+  }
 `;
 
 const Journey = ({ collections }) => {
+  const windowGlobal = typeof window !== "undefined";
+
+  let windowWidth = 1440;
+
+  if (windowGlobal) {
+    windowWidth = window.innerWidth;
+  }
   return (
     <JourneyStyles>
       <h1>Start your journey</h1>
@@ -114,26 +145,44 @@ const Journey = ({ collections }) => {
         <li>view all</li>
       </ul>
 
-      <ul className="images">
-        {collections.edges
-          .sort((a, b) => a.node.rank - b.node.rank)
-          .map(({ node }) => (
-            <li key={node.name}>
-              <p>{node.name}</p>
-              {console.log(node.rank, node.name)}
-              <Image
-                {...node.imageThumb}
-                // src={imageUrlFor(buildImageObj(node.imageThumb))
-                //   .width(1200)
-                //   .height(Math.floor((9 / 16) * 1200))
-                //   .fit("crop")
-                //   .auto("format")
-                //   .url()}
-                alt={node.imageThumb.alt}
-              />
-            </li>
-          ))}
-      </ul>
+      {windowWidth >= 805 ? (
+        <ul className="images">
+          {collections.edges
+            .sort((a, b) => a.node.rank - b.node.rank)
+            .map(({ node }) => (
+              <li className="clickable" key={node.name}>
+                <p>{node.name}</p>
+                {console.log(node.rank, node.name)}
+                <Image
+                  {...node.imageThumb}
+                  // src={imageUrlFor(buildImageObj(node.imageThumb))
+                  //   .width(1200)
+                  //   .height(Math.floor((9 / 16) * 1200))
+                  //   .fit("crop")
+                  //   .auto("format")
+                  //   .url()}
+                  alt={node.imageThumb.alt}
+                />
+              </li>
+            ))}
+        </ul>
+      ) : (
+        <Carousel
+          className="carousel"
+          slidesToShow={1}
+          // cellSpacing={cellSpacing}
+          renderCenterRightControls={() => ""}
+          renderCenterLeftControls={() => ""}
+        >
+          {collections.edges
+            .sort((a, b) => a.node.rank - b.node.rank)
+            .map(({ node }) => (
+              <div key={node.alt} className="carousel__image-container">
+                <Image {...node.imageThumb} alt={node.imageThumb.alt} />
+              </div>
+            ))}
+        </Carousel>
+      )}
     </JourneyStyles>
   );
 };

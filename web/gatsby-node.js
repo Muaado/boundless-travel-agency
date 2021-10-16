@@ -128,10 +128,48 @@ async function createVillaPages(graphql, actions) {
   });
 }
 
+async function createCollectionPages(graphql, actions) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allSanityCollection {
+        nodes {
+          name
+          _id
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const resortEdges = (result.data.allSanityCollection || {}).nodes || [];
+
+  resortEdges
+    // .filter((edge) => !isFuture(new Date(edge.node.publishedAt)))
+    .forEach((node) => {
+      const { _id, name } = node;
+      // const dateSegment = format(new Date(publishedAt), "yyyy/MM");
+
+      let path;
+      if (typeof name === "string") {
+        path = `collection/${name.toLowerCase().split(" ").join("-")}`;
+      }
+      // console.log(path, "path");
+
+      if (path)
+        createPage({
+          path,
+          component: require.resolve("./src/templates/collection.js"),
+          context: { id: _id },
+        });
+    });
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   // await createBlogPostPages(graphql, actions);
 
-  console.log("here");
   await createResortPages(graphql, actions);
   await createVillaPages(graphql, actions);
+  await createCollectionPages(graphql, actions);
 };

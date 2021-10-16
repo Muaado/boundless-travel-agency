@@ -1,8 +1,8 @@
 export default {
   // type of rooms(villa)
-  name: "villasCollection",
+  name: "collection",
   type: "document",
-  title: "Villas Collection",
+  title: "Collection",
   fields: [
     {
       name: "name",

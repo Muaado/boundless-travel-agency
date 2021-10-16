@@ -129,7 +129,7 @@ export const query = graphql`
       }
     }
 
-    collections: allSanityVillasCollection {
+    collections: allSanityCollection {
       edges {
         node {
           name
@@ -304,7 +304,7 @@ const IndexPage = (props) => {
               alt={site.newsLetterBackground.alt}
             />
             <form className="form">
-              <h2>Subscribe to our newsletter</h2>
+              <h3>Subscribe to our newsletter</h3>
               <div className="container">
                 <input placeholder="Enter your email here" />
                 <button className="btn">Subscribe</button>

@@ -15,6 +15,9 @@ const WhyBoundlessSectionStyles = styled.div`
   position: relative;
   margin-bottom: 10rem;
 
+  @media ${device.tablet} {
+    margin-bottom: 5rem;
+  }
   p {
     color: #fff;
   }
@@ -23,6 +26,9 @@ const WhyBoundlessSectionStyles = styled.div`
     min-height: 50rem;
     img {
       object-position: top;
+      @media ${device.tablet} {
+        object-position: top;
+      }
     }
   }
   .content {
@@ -40,6 +46,10 @@ const WhyBoundlessSectionStyles = styled.div`
     }
     @media ${device.laptop} {
       left: 40%;
+    }
+
+    @media ${device.mobileXL} {
+      left: 0%;
     }
 
     h2 {
@@ -60,6 +70,10 @@ const WhyBoundlessSectionStyles = styled.div`
         svg {
           width: 10rem;
           margin-bottom: 2rem;
+
+          @media ${device.laptopM} {
+            width: 8rem;
+          }
         }
       }
     }

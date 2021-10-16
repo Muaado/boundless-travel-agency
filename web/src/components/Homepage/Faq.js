@@ -17,6 +17,9 @@ const FaqStyles = styled.div`
   @media ${device.laptopL} {
     padding: 0 10%;
   }
+  @media ${device.tablet} {
+    margin-bottom: 5rem;
+  }
 
   h2 {
     text-transform: capitalize;
@@ -27,6 +30,10 @@ const FaqStyles = styled.div`
     margin-bottom: 5rem;
     font-size: 1.8rem;
     color: var(--grey);
+
+    @media ${device.tablet} {
+      width: unset;
+    }
   }
 
   ul {

@@ -70,9 +70,9 @@ const ContainerStyles = styled.main`
     position: relative;
     height: 70rem;
     color: #fff;
-    @media ${device.laptopL} {
+    @media ${device.tablet} {
       /* margin: 20rem 0; */
-      margin-bottom: 10rem;
+      margin-bottom: 5rem;
     }
     img {
       height: 100%;

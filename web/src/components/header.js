@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Logo from "../assets/logo.svg";
 
 import styled from "styled-components";
+import { device } from "../styles/deviceSizes";
 const HeaderStyles = styled.header`
   padding: 2rem 4rem;
   height: 18rem;
@@ -30,6 +31,9 @@ const HeaderStyles = styled.header`
     margin-left: -8rem;
     /* align-self: center;
     justify-self: center; */
+    @media ${device.tablet} {
+      display: none;
+    }
 
     font-size: 1.6rem;
     ul {

@@ -19,12 +19,27 @@ const ContactUsSection = styled.div`
     padding: 0 5%;
   }
 
+  @media ${device.laptop} {
+    grid-template-columns: 1fr;
+    /* align-content: center;
+    align-items: center;
+    justify-content: center; */
+    justify-items: center;
+  }
+
   .links {
     margin-bottom: 4rem;
     display: flex;
+    @media ${device.mobileXL} {
+      flex-direction: column;
+    }
     a {
       display: flex;
       align-items: center;
+      @media ${device.mobileXL} {
+        margin-bottom: 2rem;
+      }
+
       &:first-of-type {
         margin-right: 5rem;
       }
@@ -43,6 +58,18 @@ const ContactUsSection = styled.div`
 
     li {
       width: 12rem;
+
+      @media ${device.tablet} {
+        width: 10rem;
+      }
+
+      @media ${device.mobileXL} {
+        width: 8rem;
+      }
+      @media ${device.mobileL} {
+        width: 6rem;
+      }
+
       &:not(:last-of-type) {
         margin-right: 2.5rem;
       }
@@ -54,12 +81,21 @@ const ContactUsSection = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    width: 100%;
     ul {
       margin-bottom: 4rem;
       width: 50rem;
       @media ${device.laptopM} {
         width: 42rem;
       }
+      @media ${device.laptop} {
+        width: 100%;
+      }
+
+      @media ${device.tablet} {
+        width: 100%;
+      }
+
       li {
         display: flex;
         justify-content: space-between;
