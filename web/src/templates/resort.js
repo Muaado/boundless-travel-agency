@@ -1,6 +1,6 @@
 import { graphql } from "gatsby";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import GraphQLErrorList from "../components/graphql-error-list";
 import Layout from "../containers/layout";
 import Container from "../components/container";
@@ -174,6 +174,27 @@ const ResortTemplate = (props) => {
     highlights,
   } = resort;
 
+  const navRef = useRef();
+
+  window.addEventListener("scroll", () => {
+    let fromTop = window.scrollY + 100;
+
+    // console.log(navRef.current.childNodes[0].childNodes);
+
+    navRef.current.childNodes[0].childNodes.forEach((link) => {
+      let section = document.querySelector(link.firstChild.hash);
+
+      if (section)
+        if (
+          section.offsetTop <= fromTop &&
+          section.offsetTop + section.offsetHeight > fromTop
+        ) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");
+        }
+    });
+  });
   return (
     <Layout>
       {errors && <SEO title="GraphQL Error" />}
@@ -186,21 +207,48 @@ const ResortTemplate = (props) => {
       )}
       <Container>
         <ResortStyles>
-          <h1>Island overview</h1>
-
           <div className="resort__image">
             <Image {...image} width={1440} alt={image.alt} />
+            <div className="text">
+              <p>{locationAtoll}</p>
+              <h1>{name}</h1>
+            </div>
           </div>
 
-          <Amenities
-            locationAtoll={locationAtoll}
-            numberOfBars={numberOfBars}
-            numberOfRestaurants={numberOfRestaurants}
-            numberOfRooms={numberOfRooms}
-            resortTransferType={resortTransferType}
-            timeToAirport={timeToAirport}
-            _rawDescription={_rawDescription}
-          />
+          <div ref={navRef} className="left-nav">
+            <ul>
+              <li>
+                <a href="#overview">Overview</a>
+              </li>
+              <li>
+                <a href="#accomodation">Accomodation</a>
+              </li>
+              <li>
+                <a href="#highlights">Highlights</a>
+              </li>
+              <li>
+                <a href="#dine">Dine</a>
+              </li>
+              <li>
+                <a href="#gallery">Gallery</a>
+              </li>
+            </ul>
+          </div>
+
+          <div id="overview">
+            <h2 className="title">Island overview</h2>
+
+            <Amenities
+              locationAtoll={locationAtoll}
+              numberOfBars={numberOfBars}
+              numberOfRestaurants={numberOfRestaurants}
+              numberOfRooms={numberOfRooms}
+              resortTransferType={resortTransferType}
+              timeToAirport={timeToAirport}
+              _rawDescription={_rawDescription}
+            />
+          </div>
+          <Accomodation id="accomodation" villas={villas.nodes} />
           {/* <div className="resort__description">
             <PortableText blocks={_rawDescription} />
           </div>
@@ -221,7 +269,7 @@ const ResortTemplate = (props) => {
             </li>
           </ul> */}
 
-          <div className="resort__highlights">
+          <div id="highlights" className="resort__highlights">
             <h2>Highlights</h2>
             <ul>
               {highlights.map(({ name, imageThumb, _rawDescription }) => (
@@ -236,8 +284,7 @@ const ResortTemplate = (props) => {
             </ul>
           </div>
 
-          <Accomodation villas={villas.nodes} />
-          <div className="resort__restaurants">
+          <div id="dine" className="resort__restaurants">
             <div className="resort__restaurants__header">
               <h2>DINE</h2>
               <p>
@@ -272,7 +319,7 @@ const ResortTemplate = (props) => {
             </ul>
           </div>
 
-          <Gallery galleries={galleries} />
+          <Gallery id="gallery" galleries={galleries} />
 
           {featuredSpa && <Spa className="resort__spa" spa={featuredSpa} />}
 

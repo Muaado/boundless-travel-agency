@@ -49,7 +49,7 @@ const AccomodationStyles = styled.div`
   }
 `;
 
-const Accomodation = ({ villas }) => {
+const Accomodation = ({ villas, id }) => {
   const [numberOfSlides, setNumberOfSlides] = useState(3);
   const [cellSpacing, setCellSpacing] = useState(10);
   const size = useWindowSize();
@@ -82,7 +82,7 @@ const Accomodation = ({ villas }) => {
     setCellSpacing(spacing);
   }, [size]);
   return (
-    <AccomodationStyles className="resort__accomodation">
+    <AccomodationStyles id={id} className="resort__accomodation">
       <h2>Accomodation</h2>
 
       <Carousel

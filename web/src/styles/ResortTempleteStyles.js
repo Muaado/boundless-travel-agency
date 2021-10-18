@@ -3,13 +3,11 @@ import { device } from "../styles/deviceSizes";
 const ResortStyles = styled.div`
   display: flex;
   flex-direction: column;
+  /* overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scroll-snap-type: y proximity; */
+
   h1 {
-    text-align: center;
-    color: var(--primary);
-    font-weight: bold;
-    font-size: 7.2rem;
-    padding: 7rem 0;
-    letter-spacing: 1rem;
   }
 
   h2 {
@@ -17,11 +15,68 @@ const ResortStyles = styled.div`
     text-align: center;
   }
 
+  #overview {
+    margin: 10rem 0;
+  }
+  .title {
+    text-align: center;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 7.2rem;
+    padding-bottom: 7rem;
+    letter-spacing: 1rem;
+  }
+
+  .left-nav {
+    width: fit-content;
+    /* background: #fff; */
+    position: fixed;
+    left: 5rem;
+    top: 20%;
+    z-index: 100;
+    li {
+      color: var(--grey);
+      margin-bottom: 2rem;
+
+      &.current {
+        font-weight: bold;
+        color: var(--brown);
+        position: relative;
+
+        &:before {
+          content: "";
+          width: 3rem;
+          height: 0.5rem;
+          background: var(--brown);
+          position: absolute;
+          left: -4rem;
+          top: 0.8rem;
+        }
+      }
+    }
+  }
+
   .resort {
     &__image {
-      padding: 0 10%;
-      @media ${device.laptopL} {
-        padding: 0;
+      /* scroll-snap-align: center; */
+      /* max-height: 100vh; */
+      /* position: relative;
+      top: -18rem; */
+      z-index: -1;
+
+      .text {
+        position: absolute;
+        bottom: 10rem;
+        left: 10%;
+        h1,
+        p {
+          color: #fff;
+        }
+        h1 {
+          font-family: "Roboto";
+          text-transform: uppercase;
+          font-weight: normal;
+        }
       }
     }
 
@@ -30,7 +85,7 @@ const ResortStyles = styled.div`
     } */
 
     &__highlights {
-      margin: 10rem 0;
+      margin-bottom: 10rem;
       text-align: center;
       padding: 0 10%;
       display: flex;

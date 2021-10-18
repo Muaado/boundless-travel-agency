@@ -6,6 +6,8 @@ import Logo from "../assets/logo.svg";
 import styled from "styled-components";
 import { device } from "../styles/deviceSizes";
 const HeaderStyles = styled.header`
+  position: absolute;
+  top: 0;
   padding: 2rem 4rem;
   height: 18rem;
   display: flex;
@@ -17,9 +19,8 @@ const HeaderStyles = styled.header`
   top: 0;
 
   color: #fff;
+  z-index: 1000;
 
-  background: ${(props) =>
-    props.pathname !== "/" ? "var(--primary)" : "transparent"};
   .logo {
     align-self: flex-start;
     height: 100%;

@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     --darkRed: #5D0012;
     --lightOrange: #B39A6A;
     --darkGreen: #004743;
+    --brown: #76622E;
     
 
 
@@ -74,7 +75,8 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-size: 62.5%;
     color: #222;
-    line-height: 1.4;   
+    line-height: 1.4;
+    scroll-behavior: smooth;
   }
 
   body {

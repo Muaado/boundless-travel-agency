@@ -63,13 +63,13 @@ const GalleryStyles = styled.div`
   }
 `;
 
-const Gallery = ({ galleries }) => {
+const Gallery = ({ id, galleries }) => {
   const firstImage = galleries[0].images[0];
   const types = galleries.map((galleryItem) => galleryItem.type.name);
   const [selectedGallery, setSelectedGallery] = useState(null);
 
   return (
-    <GalleryStyles>
+    <GalleryStyles id={id}>
       <h2>Gallery</h2>
       <ul className="filters">
         {types?.map((type) => (
