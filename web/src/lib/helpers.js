@@ -47,3 +47,13 @@ export function toPlainText(blocks) {
     })
     .join("\n\n");
 }
+
+export const getResortUrl = ({ name }) => {
+  return `/${name.toLowerCase().split(" ").join("-")}`;
+};
+export const getVillaUrl = ({ name, resortName }) => {
+  return `/${resortName.toLowerCase().split(" ").join("-")}/${name
+    .toLowerCase()
+    .split(" ")
+    .join("-")}`;
+};

@@ -10,6 +10,7 @@ const ContactUsSection = styled.div`
   margin-bottom: 18rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  width: 100%;
   font-size: 2rem;
   padding: 0 10%;
   p {

@@ -39,6 +39,11 @@ export const query = graphql`
         alt
       }
 
+      heroImage {
+        ...SanityImage
+        alt
+      }
+
       roomFeatures {
         backgroundImage {
           ...SanityImage
@@ -65,6 +70,7 @@ export const query = graphql`
       }
 
       resort {
+        name
         locationAtoll
         locationFull
         numberOfBars
@@ -171,11 +177,13 @@ const VilaTemplate = (props) => {
     sizeSqm,
     showers,
     villaPoolTypes,
+    heroImage,
 
     // gallery,
   } = villa;
 
   const {
+    name: resortName,
     locationAtoll,
     numberOfBars,
     numberOfRestaurants,
@@ -205,6 +213,12 @@ const VilaTemplate = (props) => {
     <Layout>
       <Container>
         <VillaStyles>
+          {heroImage && (
+            <div className="villa__image">
+              <Image {...heroImage} alt={heroImage.alt} />
+              <h1 className="villa__image-title">{resortName}</h1>
+            </div>
+          )}
           <div className="villa__header">
             <div className="container">
               <div className="image-container">

@@ -22,6 +22,11 @@ const query = graphql`
         }
       }
     }
+    collections: allSanityCollection {
+      nodes {
+        name
+      }
+    }
   }
 `;
 
@@ -63,9 +68,17 @@ function LayoutContainer(props) {
     })
     .filter((item) => item !== undefined);
 
+  const collections = navData.collections.nodes.map(({ name }) => {
+    if (typeof name === "string")
+      return {
+        name: name,
+        url: `/collection/${name.toLowerCase().split(" ").join("-")}`,
+      };
+  });
+
   return (
     <Layout
-      navData={{ resorts, villas }}
+      navData={{ resorts, villas, collections }}
       {...props}
       showNav={showNav}
       siteTitle={navData.site.title}

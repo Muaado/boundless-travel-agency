@@ -15,19 +15,53 @@ export default {
       title: "Rank",
     },
 
-    // {
-    //   name: "villas",
-    //   title: "Villas",
-    //   type: "array",
-    //   of: [
-    //     {
-    //       type: "reference",
-    //       to: {
-    //         type: "villa",
-    //       },
-    //     },
-    //   ],
-    // },
+    {
+      name: "type",
+      title: "Type",
+      type: "reference",
+      to: [{ type: "collectionType" }],
+    },
+
+    {
+      name: "villas",
+      title: "Villas",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "villa",
+          },
+        },
+      ],
+    },
+
+    {
+      name: "resorts",
+      title: "Resorts",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "resort",
+          },
+        },
+      ],
+    },
+    {
+      name: "spas",
+      title: "Spas",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "spa",
+          },
+        },
+      ],
+    },
 
     {
       name: "imageMobile",

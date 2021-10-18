@@ -128,6 +128,11 @@ export default {
     },
 
     {
+      name: "heroImage",
+      type: "mainImage",
+      title: "Hero image",
+    },
+    {
       name: "imageMobile",
       type: "mainImage",
       title: "Villa image mobile",

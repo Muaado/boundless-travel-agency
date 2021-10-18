@@ -12,7 +12,7 @@ const ContainerStyles = styled.main`
   align-items: center;
 
   .page-content {
-    margin-top: 82vh;
+    /* margin-top: 82vh; */
     position: relative;
     display: flex;
     flex-direction: column;

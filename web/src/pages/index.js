@@ -129,7 +129,10 @@ export const query = graphql`
       }
     }
 
-    collections: allSanityCollection {
+    collections: allSanityCollection(
+      filter: { type: { type: { eq: "villa" } } }
+      limit: 5
+    ) {
       edges {
         node {
           name

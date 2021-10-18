@@ -9,14 +9,24 @@ const HeaderStyles = styled.header`
   position: absolute;
   top: 0;
   padding: 2rem 4rem;
-  height: 18rem;
+  height: 40rem;
   display: flex;
   width: 100%;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   z-index: 100;
   /* position: fixed; */
   top: 0;
+
+  /* background: linear-gradient(183deg, #1c2238 24.5%, rgba(28, 34, 56, 0) 69.2%);
+  opacity: 0.77; */
+
+  background: linear-gradient(
+    188.95deg,
+    #1c2238 24.5%,
+    rgba(28, 34, 56, 0) 69.2%
+  );
+  opacity: 0.77;
 
   color: #fff;
   z-index: 1000;
@@ -28,7 +38,7 @@ const HeaderStyles = styled.header`
 
   nav {
     position: relative;
-    margin-top: 6rem;
+    margin-top: 12rem;
     margin-left: -8rem;
     /* align-self: center;
     justify-self: center; */
@@ -152,8 +162,7 @@ const Header = ({
             <p
               className="clickable"
               onClick={() => {
-                setShowDropdown(3);
-                setList(navData.resorts);
+                handleOpenDropDown(navData.collections, 3);
               }}
             >
               Holiday stays

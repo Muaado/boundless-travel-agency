@@ -61,6 +61,7 @@ import maxOccupancy from "./objects/villa/maxOccupancy";
 
 import shower from "./objects/villa/shower";
 import collection from "./documents/collection";
+import collectionType from "./documents/collectionType";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -86,6 +87,7 @@ export default createSchema({
     imageWithTitle,
 
     collection,
+    collectionType,
 
     post,
     category,

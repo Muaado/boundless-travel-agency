@@ -143,9 +143,9 @@ async function createCollectionPages(graphql, actions) {
 
   if (result.errors) throw result.errors;
 
-  const resortEdges = (result.data.allSanityCollection || {}).nodes || [];
+  const collectionNodes = (result.data.allSanityCollection || {}).nodes || [];
 
-  resortEdges
+  collectionNodes
     // .filter((edge) => !isFuture(new Date(edge.node.publishedAt)))
     .forEach((node) => {
       const { _id, name } = node;

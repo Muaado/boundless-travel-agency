@@ -18,8 +18,44 @@ const VillaStyles = styled.div`
   }
 
   .villa {
+    &__image {
+      max-height: 80vh;
+      overflow-y: hidden;
+      position: relative;
+      /* &:after {
+        content: "";
+
+        background: linear-gradient(
+          188.95deg,
+          #1c2238 30.5%,
+          rgba(28, 34, 56, 0) 93.2%
+        );
+        /* opacity: */
+      /* left: 0;
+      top: 0;
+      opacity: 0.2;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 50; */
+      /* right: -55vw; */
+      /* } */
+
+      &-title {
+        position: absolute;
+
+        font-family: "Roboto";
+        font-weight: normal;
+        text-transform: uppercase;
+        color: #fff;
+        left: 10%;
+        bottom: 10%;
+        z-index: 100;
+      }
+    }
     &__header {
       margin: 7rem 0;
+      margin-top: 10rem;
       display: flex;
       padding: 0 10%;
       position: relative;

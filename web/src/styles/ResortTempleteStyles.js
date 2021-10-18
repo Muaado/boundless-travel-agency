@@ -59,7 +59,8 @@ const ResortStyles = styled.div`
   .resort {
     &__image {
       /* scroll-snap-align: center; */
-      /* max-height: 100vh; */
+      max-height: 100vh;
+      overflow-y: hidden;
       /* position: relative;
       top: -18rem; */
       z-index: -1;
@@ -85,6 +86,7 @@ const ResortStyles = styled.div`
     } */
 
     &__highlights {
+      margin-top: 20rem;
       margin-bottom: 10rem;
       text-align: center;
       padding: 0 10%;

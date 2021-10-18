@@ -6,7 +6,7 @@ export const HeroStyles = styled.div`
 
   color: #fff;
 
-  position: absolute;
+  /* position: absolute; */
   z-index: -1;
   top: 0;
   left: 0;

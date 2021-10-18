@@ -1,6 +1,6 @@
 import { graphql } from "gatsby";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 // import GraphQLErrorList from "../components/graphql-error-list";
 import Layout from "../containers/layout";
 import Container from "../components/container";
@@ -175,26 +175,28 @@ const ResortTemplate = (props) => {
   } = resort;
 
   const navRef = useRef();
+  const windowGlobal = typeof window !== "undefined";
+  if (windowGlobal) {
+    window.addEventListener("scroll", () => {
+      let fromTop = window?.scrollY + 100;
 
-  window.addEventListener("scroll", () => {
-    let fromTop = window.scrollY + 100;
+      // console.log(navRef.current.childNodes[0].childNodes);
 
-    // console.log(navRef.current.childNodes[0].childNodes);
+      navRef.current?.childNodes?.[0]?.childNodes?.forEach((link) => {
+        let section = document.querySelector(link.firstChild.hash);
 
-    navRef.current.childNodes[0].childNodes.forEach((link) => {
-      let section = document.querySelector(link.firstChild.hash);
-
-      if (section)
-        if (
-          section.offsetTop <= fromTop &&
-          section.offsetTop + section.offsetHeight > fromTop
-        ) {
-          link.classList.add("current");
-        } else {
-          link.classList.remove("current");
-        }
+        if (section)
+          if (
+            section.offsetTop <= fromTop &&
+            section.offsetTop + section.offsetHeight > fromTop
+          ) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");
+          }
+      });
     });
-  });
+  }
   return (
     <Layout>
       {errors && <SEO title="GraphQL Error" />}
