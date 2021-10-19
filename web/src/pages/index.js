@@ -36,6 +36,7 @@ import PortableText from "../components/portableText";
 import { getBlogUrl } from "../lib/helpers";
 import WhyBoundlessSection from "../components/Homepage/WhyBoundlessSection";
 import NewsletterSection from "../components/Homepage/NewsletterSection";
+import LeftSidebar from "../components/LeftSidebar";
 
 // import HomepageStaticImage from "../assets/homepage-image.png";
 
@@ -224,6 +225,7 @@ const IndexPage = (props) => {
         keywords={site.keywords}
       />
       <Container>
+        <LeftSidebar />
         <HeroStyles>
           {/* <h1> {site.description}</h1> */}
           <Video videoSrcURL={VideoBg} />
@@ -304,7 +306,7 @@ const IndexPage = (props) => {
               alt={site.secondImage.alt}
             />
           </div>
-          <Faq faq={site.faq[0]} />
+          <Faq path="/" faq={site.faq[0]} />
           <NewsletterSection site={site} />
           <ContactUs contactUs={site.contactUs} />
         </div>

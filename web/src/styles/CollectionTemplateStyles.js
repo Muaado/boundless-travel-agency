@@ -7,7 +7,7 @@ export const CollectionStyles = styled.div`
 
   .collection {
     &__image {
-      max-height: 100vh;
+      max-height: 80vh;
       overflow-y: hidden;
       img {
         object-position: bottom !important;

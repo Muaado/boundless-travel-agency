@@ -14,10 +14,6 @@ const FaqStyles = styled.div`
   flex-direction: column;
   align-items: center;
 
-  &:nth-of-type(odd) {
-    background: #faf7f7;
-  }
-
   @media ${device.laptopL} {
     padding: 0 10%;
   }
@@ -91,10 +87,10 @@ const FaqStyles = styled.div`
 
 const Faq = (props) => {
   const [selectedQuestion, setSelectedQuestion] = useState(-1);
-  const { faq, path, onClick, slice } = props;
+  const { faq, path, onClick, slice, className } = props;
 
   return (
-    <FaqStyles className="faq__section">
+    <FaqStyles className={`faq__section ${className}`}>
       <h2>{faq.name}</h2>
       <p className="description">
         Browse our FAQ's below, if you can not find the answer you're looking

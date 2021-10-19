@@ -14,6 +14,7 @@ import Amenities from "../components/Resort/Amenities";
 import Activities from "../components/Resort/Activities";
 import Reviews from "../components/Resort/Reviews";
 import Spa from "../components/Resort/Spa";
+import LeftSidebar from "../components/LeftSidebar";
 import Carousel from "nuka-carousel";
 
 import PlusIcon from "../assets/icons/plus-icon.svg";
@@ -222,6 +223,9 @@ const VilaTemplate = (props) => {
   return (
     <Layout>
       <Container>
+        <LeftSidebar
+          list={["overview", "room-features", "gallery", "highlights", "dine"]}
+        />
         <VillaStyles>
           {heroImage && (
             <div className="villa__image">
@@ -229,7 +233,8 @@ const VilaTemplate = (props) => {
               <h1 className="villa__image-title">{resortName}</h1>
             </div>
           )}
-          <div className="villa__header">
+
+          <div className="villa__header" id="overview">
             <div className="container">
               <Carousel
                 className="carousel"
@@ -279,7 +284,7 @@ const VilaTemplate = (props) => {
             </div>
           </div>
 
-          <div className="villa__room-features">
+          <div className="villa__room-features" id="room-features">
             <Image
               {...roomFeatures.backgroundImage}
               alt={roomFeatures.backgroundImage.alt}
@@ -308,7 +313,7 @@ const VilaTemplate = (props) => {
             </div>
           </div>
 
-          <Gallery galleries={galleries} />
+          <Gallery galleries={galleries} id="gallery" />
           <div className="villa__property-overview">
             <h2>Property Overview</h2>
 
@@ -323,7 +328,7 @@ const VilaTemplate = (props) => {
             />
           </div>
 
-          <div className="villa__highlights">
+          <div className="villa__highlights" id="highlights">
             <div>
               <h2>Hightlights</h2>
               <p>
@@ -348,7 +353,7 @@ const VilaTemplate = (props) => {
               ))}
             </ul>
           </div>
-          <div className="villa__restaurants">
+          <div className="villa__restaurants" id="dine">
             <h2>Dine</h2>
             <ul>
               {restaurants.map(({ name, alternateName, imageThumb }) => (

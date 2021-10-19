@@ -227,6 +227,7 @@ const VillaStyles = styled.div`
         text-align: left;
         margin-bottom: 5rem;
         letter-spacing: 0.5rem;
+        text-transform: capitalize;
       }
       h3 {
         text-transform: unset;
@@ -370,6 +371,10 @@ const VillaStyles = styled.div`
 
     &__spas {
       /* height: 120rem; */
+
+      h2 {
+        text-transform: capitalize;
+      }
 
       .slider {
         height: 70rem;

@@ -27,34 +27,9 @@ const ResortStyles = styled.div`
     letter-spacing: 1rem;
   }
 
-  .left-nav {
-    width: fit-content;
-    /* background: #fff; */
-    position: fixed;
-    left: 5rem;
-    top: 20%;
-    z-index: 100;
-    li {
-      color: var(--grey);
-      margin-bottom: 2rem;
-
-      &.current {
-        font-weight: bold;
-        color: var(--brown);
-        position: relative;
-
-        &:before {
-          content: "";
-          width: 3rem;
-          height: 0.5rem;
-          background: var(--brown);
-          position: absolute;
-          left: -4rem;
-          top: 0.8rem;
-        }
-      }
-    }
-  }
+  /* .left-nav {
+   
+  } */
 
   .resort {
     &__image {
@@ -215,6 +190,7 @@ const ResortStyles = styled.div`
       }
 
       &__text {
+        margin-top: 4rem;
         align-self: center;
         max-width: 25rem;
 
@@ -251,6 +227,12 @@ const ResortStyles = styled.div`
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+    }
+
+    &__faq {
+      &:nth-of-type(odd) {
+        background: #faf7f7;
       }
     }
   }

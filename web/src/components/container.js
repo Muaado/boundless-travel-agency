@@ -36,13 +36,13 @@ const ContainerStyles = styled.main`
 
   .second-image {
     /* margin: 20rem -14%; */
-    margin-bottom: 10rem;
+    /* margin-bottom: 10rem; */
     position: relative;
     height: 70rem;
     color: #fff;
     @media ${device.tablet} {
       /* margin: 20rem 0; */
-      margin-bottom: 5rem;
+      /* margin-bottom: 5rem; */
     }
     img {
       height: 100%;

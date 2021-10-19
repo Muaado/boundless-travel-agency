@@ -145,7 +145,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
   h2,h3,h4,h5,h6 {
-    text-transform: capitalize;
+    text-transform: uppercase;
     color: var(--darkGreen);
     font-size: 5rem;
     @media ${device.tablet} {

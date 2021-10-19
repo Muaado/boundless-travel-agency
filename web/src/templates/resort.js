@@ -22,6 +22,7 @@ import Spa from "../components/Resort/Spa";
 import Accomodation from "../components/Resort/Accomodation";
 import { ContactUs } from "../components/Homepage/ContactUs";
 import Faq from "../components/Homepage/Faq";
+import LeftSidebar from "../components/LeftSidebar";
 
 // import review from "../../../studio/schemas/documents/review";
 
@@ -188,27 +189,6 @@ const ResortTemplate = (props) => {
     faq,
   } = resort;
 
-  const navRef = useRef();
-  const windowGlobal = typeof window !== "undefined";
-  if (windowGlobal) {
-    window.addEventListener("scroll", () => {
-      let fromTop = window?.scrollY + 100;
-
-      navRef.current?.childNodes?.[0]?.childNodes?.forEach((link) => {
-        let section = document.querySelector(link.firstChild.hash);
-
-        if (section)
-          if (
-            section.offsetTop <= fromTop &&
-            section.offsetTop + section.offsetHeight > fromTop
-          ) {
-            link.classList.add("current");
-          } else {
-            link.classList.remove("current");
-          }
-      });
-    });
-  }
   return (
     <Layout>
       {errors && <SEO title="GraphQL Error" />}
@@ -229,25 +209,9 @@ const ResortTemplate = (props) => {
             </div>
           </div>
 
-          <div ref={navRef} className="left-nav">
-            <ul>
-              <li>
-                <a href="#overview">Overview</a>
-              </li>
-              <li>
-                <a href="#accomodation">Accomodation</a>
-              </li>
-              <li>
-                <a href="#highlights">Highlights</a>
-              </li>
-              <li>
-                <a href="#dine">Dine</a>
-              </li>
-              <li>
-                <a href="#gallery">Gallery</a>
-              </li>
-            </ul>
-          </div>
+          <LeftSidebar
+            list={["overview", "accomodation", "highlights", "dine", "gallery"]}
+          />
 
           <div id="overview">
             <h2 className="title">Island overview</h2>
@@ -339,6 +303,7 @@ const ResortTemplate = (props) => {
           </div>
           {faq.slice(0, slice ? slice : 1).map((faq) => (
             <Faq
+              className="resort__faq"
               key={faq.name}
               faq={faq}
               path="/resort"
