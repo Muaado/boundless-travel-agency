@@ -37,13 +37,13 @@ import resortHighlight from "./objects/resort/resortHighlight";
 
 import activity from "./documents/activity";
 
-import resortFaq from "./documents/resortFaq";
+// import resortFaq from "./documents/resortFaq";
 import faqGroupTag from "./documents/faqGroupTag";
 import faqQuestionAnswer from "./objects/faqQuestionAnswer";
 
 // import spaService from "./objects/spaService";
 import aboutUs from "./objects/homepage/aboutUs";
-import boundlessFaq from "./objects/homepage/boundlessFaq";
+// import boundlessFaq from "./objects/homepage/boundlessFaq";
 import gallery from "./documents/gallery";
 import galleryType from "./documents/galleryType";
 
@@ -62,6 +62,7 @@ import maxOccupancy from "./objects/villa/maxOccupancy";
 import shower from "./objects/villa/shower";
 import collection from "./documents/collection";
 import collectionType from "./documents/collectionType";
+import faq from "./objects/faq";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -75,7 +76,7 @@ export default createSchema({
     siteSettings,
 
     aboutUs,
-    boundlessFaq,
+    // boundlessFaq,
     contactUs,
     contactPerson,
     dayWithHour,
@@ -85,6 +86,7 @@ export default createSchema({
     idealFor,
     alternateName,
     imageWithTitle,
+    faq,
 
     collection,
     collectionType,
@@ -104,7 +106,7 @@ export default createSchema({
 
     resortHighlight,
 
-    resortFaq,
+    // resortFaq,
     faqGroupTag,
     faqQuestionAnswer,
 

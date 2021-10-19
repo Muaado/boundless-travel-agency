@@ -78,6 +78,12 @@ export default {
       type: "string",
       title: "Time to airport",
     },
+    {
+      title: "FAQ",
+      name: "faq",
+      type: "array",
+      of: [{ type: "faq" }],
+    },
 
     {
       title: "Highlights",

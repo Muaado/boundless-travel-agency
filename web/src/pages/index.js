@@ -30,12 +30,12 @@ import {
   HandCraftedJourneysStyles,
   HeroStyles,
   MagazineStyles,
-  NewsLetterStyles,
   SearchBar,
 } from "../components/Homepage/styles";
 import PortableText from "../components/portableText";
 import { getBlogUrl } from "../lib/helpers";
 import WhyBoundlessSection from "../components/Homepage/WhyBoundlessSection";
+import NewsletterSection from "../components/Homepage/NewsletterSection";
 
 // import HomepageStaticImage from "../assets/homepage-image.png";
 
@@ -97,7 +97,9 @@ export const query = graphql`
         alt
       }
 
-      FAQ {
+      faq {
+        name
+        _rawDescription
         faqQuestionsAnswers {
           # _id
           answer
@@ -299,21 +301,8 @@ const IndexPage = (props) => {
               alt={site.secondImage.alt}
             />
           </div>
-          <Faq faq={site.FAQ.faqQuestionsAnswers} />
-          <NewsLetterStyles>
-            <h2>{site.newsLetterTitle}</h2>
-            <Image
-              {...site.newsLetterBackground}
-              alt={site.newsLetterBackground.alt}
-            />
-            <form className="form">
-              <h3>Subscribe to our newsletter</h3>
-              <div className="container">
-                <input placeholder="Enter your email here" />
-                <button className="btn">Subscribe</button>
-              </div>
-            </form>
-          </NewsLetterStyles>
+          <Faq faq={site.faq[0]} />
+          <NewsletterSection site={site} />
           <ContactUs contactUs={site.contactUs} />
         </div>
       </Container>

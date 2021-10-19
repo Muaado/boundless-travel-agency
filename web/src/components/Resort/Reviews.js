@@ -19,6 +19,7 @@ const ReviewsStyles = styled.div`
   h2 {
     letter-spacing: 1rem;
     text-align: center;
+    color: #000;
   }
 
   .title {
@@ -77,7 +78,7 @@ const ReviewsStyles = styled.div`
 
   .review {
     /* max-width: 25rem; */
-    width: fit-content;
+    width: max-content;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -85,10 +86,17 @@ const ReviewsStyles = styled.div`
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
 
     margin-right: 0;
+    /* h2 {
+      
+      le
+    } */
 
     p {
       width: 25rem;
+      text-align: left;
+      letter-spacing: 0.1rem;
     }
+
     p:first-of-type {
       font-weight: bold;
       font-size: 2rem;
@@ -109,15 +117,17 @@ const Reviews = ({ reviews }) => {
     const isSreenSM = width > 992 && width < 1200;
     const isSreenLG = width > 1200 && width < 1440;
     const screenXL = width > 1440 && width < 1600;
-    const screenXXL = width > 1600;
+    const screenXXL = width > 1600 && width < 1700;
+    const screenXXXL = width > 1700;
 
     const slides = () => {
       if (isMobileOnly) return 1;
       if (isTablet) return 2;
-      if (isSreenSM) return 2.4;
-      if (isSreenLG) return 2.8;
-      if (screenXL) return 3.5;
-      if (screenXXL) return 3.5;
+      if (isSreenSM) return 2.8;
+      if (isSreenLG) return 3.4;
+      if (screenXL) return 4;
+      if (screenXXL) return 4.3;
+      if (screenXXXL) return 4.8;
       return 5;
     };
     const spacing = () => {

@@ -295,27 +295,21 @@ const ResortTemplate = (props) => {
               </p>
             </div>
             <ul>
-              {restaurants.map(({ name, alternateName, imageThumb }) => (
-                <li key={name}>
-                  <div key={name} className="image-container">
-                    <Image
-                      style={{
-                        width: "100%",
-                        height: "90%",
-                        objectFit: "cover",
-                      }}
-                      {...imageThumb}
-                      alt={imageThumb.alt}
-                    />
-                  </div>
-                  <div className="resort__restaurants__text">
-                    <span className="name">{name}</span>
-                    <span className="alternate-name">{alternateName}</span>
+              {restaurants.map(
+                ({ name, alternateName, imageThumb, _rawDescription }) => (
+                  <li key={name}>
+                    <div key={name} className="image-container">
+                      <Image {...imageThumb} alt={imageThumb.alt} />
+                    </div>
+                    <div className="resort__restaurants__text">
+                      <span className="name">{name}</span>
+                      <span className="alternate-name">{alternateName}</span>
 
-                    <PortableText blocks={_rawDescription} />
-                  </div>
-                </li>
-              ))}
+                      <PortableText blocks={_rawDescription} />
+                    </div>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 

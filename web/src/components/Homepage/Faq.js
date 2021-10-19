@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React, { useState } from "react";
 import styled from "styled-components";
 
@@ -85,47 +86,54 @@ const FaqStyles = styled.div`
   }
 `;
 
-const Faq = ({ faq }) => {
+const Faq = (props) => {
   const [selectedQuestion, setSelectedQuestion] = useState(-1);
+  const { faq, path } = props;
 
   return (
-    <FaqStyles>
-      <h2>Frequently Asked Questions (FAQ)</h2>
+    <FaqStyles className="faq__section">
+      <h2>{faq.name}</h2>
       <p className="description">
         Browse our FAQ's below, if you can not find the answer you're looking
         for please contact us
       </p>
 
       <ul>
-        {faq.slice(0, 5).map(({ question, answer }, index) => (
-          <li
-            className={`clickable ${
-              selectedQuestion === index ? "selected" : ""
-            }`}
-            key={question}
-            onClick={() => {
-              if (selectedQuestion !== index) {
-                setSelectedQuestion(index);
-              } else {
-                setSelectedQuestion(-1);
-              }
-            }}
-          >
-            <p className="question">
-              {question} {selectedQuestion !== index ? <ChevronDown /> : ""}
-            </p>
-
-            {selectedQuestion === index && (
-              <p className="answer">
-                {" "}
-                {answer} <ChevronUp />
+        {faq?.faqQuestionsAnswers
+          .slice(0, 5)
+          .map(({ question, answer }, index) => (
+            <li
+              className={`clickable ${
+                selectedQuestion === index ? "selected" : ""
+              }`}
+              key={question}
+              onClick={() => {
+                if (selectedQuestion !== index) {
+                  setSelectedQuestion(index);
+                } else {
+                  setSelectedQuestion(-1);
+                }
+              }}
+            >
+              <p className="question">
+                {question} {selectedQuestion !== index ? <ChevronDown /> : ""}
               </p>
-            )}
-          </li>
-        ))}
+
+              {selectedQuestion === index && (
+                <p className="answer">
+                  {" "}
+                  {answer} <ChevronUp />
+                </p>
+              )}
+            </li>
+          ))}
       </ul>
 
-      <button className="btn">View more...</button>
+      {path !== "/faq" && (
+        <Link to="/faq">
+          <button className="btn">View more...</button>
+        </Link>
+      )}
     </FaqStyles>
   );
 };

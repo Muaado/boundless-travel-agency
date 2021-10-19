@@ -64,9 +64,9 @@ export default {
       // to: [{ type: "aboutUs" }],
     },
     {
-      name: "FAQ",
-      type: "boundlessFaq",
-      // to: [{ type: "aboutUs" }],
+      name: "faq",
+      type: "array",
+      of: [{ type: "faq" }],
     },
 
     {
