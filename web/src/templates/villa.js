@@ -218,7 +218,6 @@ const VilaTemplate = (props) => {
       setOpenedFeature(-1);
     }
   };
-  console.log(headerImages);
 
   return (
     <Layout>

@@ -11,35 +11,39 @@ import Image from "gatsby-plugin-sanity-image";
 import { ContactUs } from "../components/Homepage/ContactUs";
 
 export const query = graphql`
-  query CollectionTemplateQuery($id: String!) {
-    collection: sanityCollection(_id: { eq: $id }) {
-      name
-      imageWeb {
-        ...SanityImage
-        alt
-      }
-      type {
-        type
-      }
-      resorts {
+  query CollectionTemplateQuery($type: String!) {
+    collections: allSanityCollection(
+      filter: { type: { type: { eq: $type } } }
+    ) {
+      nodes {
         name
-        locationAtoll
-
-        image {
-          ...SanityImage
-          alt
-        }
-      }
-      villas {
-        name
-        alternateName
-
-        resort {
-          name
-        }
         imageWeb {
           ...SanityImage
           alt
+        }
+        type {
+          type
+        }
+        resorts {
+          name
+          locationAtoll
+
+          image {
+            ...SanityImage
+            alt
+          }
+        }
+        villas {
+          name
+          alternateName
+
+          resort {
+            name
+          }
+          imageWeb {
+            ...SanityImage
+            alt
+          }
         }
       }
     }
@@ -66,72 +70,93 @@ export const query = graphql`
 `;
 
 const CollectionTemplate = (props) => {
-  const { data, errors } = props;
-  console.log(props);
+  const { data, errors, pageContext } = props;
 
-  const collection = data && data.collection;
+  const collections = data && data.collections;
   const site = data && data.site;
-
-  const { name, type, imageWeb } = collection;
 
   const collectionData = {};
   let items = [];
 
-  switch (type.type) {
+  switch (pageContext.type) {
     case "resort":
-      items = collection.resorts;
+      collections.nodes?.forEach(({ resorts }) =>
+        items.push({ name: "", records: resorts })
+      );
+
       collectionData.getUrl = (data) => getResortUrl(data);
       break;
     case "villa":
-      items = collection.villas;
+      collections.nodes?.forEach(({ name, villas }) =>
+        items.push({ name, records: villas })
+      );
       collectionData.getUrl = (data) => getVillaUrl(data);
       break;
   }
-
+  items = items.flat();
+  console.log(items);
   return (
     <Layout>
       <CollectionStyles>
-        {imageWeb && (
+        {collections.nodes[0]?.imageWeb && (
           <div className="collection__image">
-            <Image {...imageWeb} alt={imageWeb.alt} />
+            <Image
+              {...collections.nodes[0].imageWeb}
+              alt={collections.nodes[0].imageWeb.alt}
+            />
           </div>
         )}
+
         <h1 className="collection__title">Our resorts collection</h1>
         <div className="collection__list">
           <ul>
-            {items.map(
-              ({
-                name,
-                image,
-                locationAtoll,
-                imageWeb,
-                alternateName,
-                resort,
-              }) => (
-                <li key={name}>
-                  {image ? (
-                    <Image {...image} alt={image.alt} />
-                  ) : (
-                    <Image {...imageWeb} alt={imageWeb.alt} />
-                  )}
-                  <div className="text">
-                    <h3>{name}</h3>
-                    {locationAtoll ? (
-                      <p>{locationAtoll}</p>
-                    ) : (
-                      <p>{alternateName}</p>
-                    )}
-
-                    <Link
-                      to={collectionData.getUrl({
+            {items.map(({ name, records }) =>
+              records.length ? (
+                <li
+                  key={name}
+                  id={name ? name.toLowerCase().split(" ").join("-") : ""}
+                >
+                  <h2 className="collection__list__title">{name}</h2>
+                  <ul className="records">
+                    {records.map(
+                      ({
                         name,
-                        resortName: resort?.name,
-                      })}
-                    >
-                      <a>Read more...</a>
-                    </Link>
-                  </div>
+                        image,
+                        locationAtoll,
+                        imageWeb,
+                        alternateName,
+                        resort,
+                      }) => (
+                        <li key={name}>
+                          {image ? (
+                            <Image {...image} alt={image.alt} />
+                          ) : (
+                            <Image {...imageWeb} alt={imageWeb.alt} />
+                          )}
+                          <div className="text">
+                            <h3>{name}</h3>
+                            {locationAtoll ? (
+                              <p>{locationAtoll}</p>
+                            ) : (
+                              <p>{alternateName}</p>
+                            )}
+
+                            <Link
+                              to={collectionData.getUrl({
+                                name,
+                                resortName: resort?.name,
+                              })}
+                            >
+                              <a>Read more...</a>
+                            </Link>
+                          </div>
+                        </li>
+                      )
+                    )}
+                  </ul>
                 </li>
+              ) : (
+                ""
               )
             )}
           </ul>

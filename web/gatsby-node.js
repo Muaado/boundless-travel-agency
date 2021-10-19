@@ -136,6 +136,9 @@ async function createCollectionPages(graphql, actions) {
         nodes {
           name
           _id
+          type {
+            type
+          }
         }
       }
     }
@@ -145,23 +148,29 @@ async function createCollectionPages(graphql, actions) {
 
   const collectionNodes = (result.data.allSanityCollection || {}).nodes || [];
 
-  collectionNodes
+  const types = [];
+  collectionNodes.forEach((collection) => {
+    const typeAdded = types.find((value) => value === collection.type.type);
+    if (!typeAdded) types.push(collection.type.type);
+  });
+
+  types
     // .filter((edge) => !isFuture(new Date(edge.node.publishedAt)))
-    .forEach((node) => {
-      const { _id, name } = node;
+    .forEach((type) => {
+      // const { _id, name } = node;
       // const dateSegment = format(new Date(publishedAt), "yyyy/MM");
 
       let path;
-      if (typeof name === "string") {
-        path = `collection/${name.toLowerCase().split(" ").join("-")}`;
-      }
+      // if (typeof name === "string") {
+      path = `collection/${type}`;
+      // }
       // console.log(path, "path");
 
       if (path)
         createPage({
           path,
           component: require.resolve("./src/templates/collection.js"),
-          context: { id: _id },
+          context: { type },
         });
     });
 }

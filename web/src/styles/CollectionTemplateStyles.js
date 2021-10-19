@@ -15,7 +15,7 @@ export const CollectionStyles = styled.div`
     }
     &__title {
       margin-top: 7rem;
-      margin-bottom: 10rem;
+      /* margin-bottom: 10rem; */
       letter-spacing: 1rem;
       text-transform: capitalize;
     }
@@ -24,7 +24,16 @@ export const CollectionStyles = styled.div`
       padding: 0 10%;
       margin-bottom: 10rem;
       width: 100%;
-      ul {
+
+      &__title {
+        margin-top: 10rem;
+        margin-bottom: 7rem;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1.5rem;
+        font-weight: lighter;
+      }
+      .records {
         /* width: 100%; */
         display: grid;
         grid-template-columns: 1fr 1fr;

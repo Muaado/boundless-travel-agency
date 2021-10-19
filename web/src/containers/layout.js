@@ -25,6 +25,9 @@ const query = graphql`
     collections: allSanityCollection {
       nodes {
         name
+        type {
+          type
+        }
       }
     }
   }
@@ -68,11 +71,13 @@ function LayoutContainer(props) {
     })
     .filter((item) => item !== undefined);
 
-  const collections = navData.collections.nodes.map(({ name }) => {
+  const collections = navData.collections.nodes.map(({ name, type }) => {
     if (typeof name === "string")
       return {
         name: name,
-        url: `/collection/${name.toLowerCase().split(" ").join("-")}`,
+        url: `/collection/${type.type}#${
+          type.type === "villa" ? name.toLowerCase().split(" ").join("-") : ""
+        }`,
       };
   });
 
