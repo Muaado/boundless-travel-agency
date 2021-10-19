@@ -59,6 +59,8 @@ export const getVillaUrl = ({ name, resortName }) => {
     .join("-")}`;
 };
 
-export const getCollectionUrl = ({ name }) => {
-  return `/collection/${name.toLowerCase().split(" ").join("-")}`;
+export const getCollectionUrl = ({ name, type }) => {
+  return `/collection/${type.type}#${
+    type.type === "villa" ? name.toLowerCase().split(" ").join("-") : ""
+  }`;
 };

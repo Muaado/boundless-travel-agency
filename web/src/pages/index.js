@@ -139,6 +139,9 @@ export const query = graphql`
         node {
           name
           rank
+          type {
+            type
+          }
 
           imageThumb {
             ...SanityImage

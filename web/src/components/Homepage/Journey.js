@@ -153,7 +153,7 @@ const Journey = ({ collections }) => {
             .sort((a, b) => a.node.rank - b.node.rank)
             .map(({ node }) => (
               <Link
-                to={getCollectionUrl({ name: node.name })}
+                to={getCollectionUrl({ name: node.name, type: node.type })}
                 className="clickable"
                 key={node.name}
               >

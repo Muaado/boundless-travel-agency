@@ -1,6 +1,6 @@
 import { graphql } from "gatsby";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 // import GraphQLErrorList from "../components/graphql-error-list";
 import Layout from "../containers/layout";
 import Container from "../components/container";
@@ -21,6 +21,7 @@ import Activities from "../components/Resort/Activities";
 import Spa from "../components/Resort/Spa";
 import Accomodation from "../components/Resort/Accomodation";
 import { ContactUs } from "../components/Homepage/ContactUs";
+import Faq from "../components/Homepage/Faq";
 
 // import review from "../../../studio/schemas/documents/review";
 
@@ -84,6 +85,16 @@ export const query = graphql`
         imageThumb {
           ...SanityImage
           alt
+        }
+      }
+
+      faq {
+        name
+        _rawDescription
+        faqQuestionsAnswers {
+          # _id
+          answer
+          question
         }
       }
     }
@@ -152,6 +163,8 @@ const ResortTemplate = (props) => {
   const activities = data && data.activities;
   const villas = data && data.villas;
   const site = data && data.site;
+
+  const [slice, setSlice] = useState(Number);
   // const highlights = data && data.highlights;
 
   const {
@@ -172,6 +185,7 @@ const ResortTemplate = (props) => {
     gallery: galleries,
     secondImage,
     highlights,
+    faq,
   } = resort;
 
   const navRef = useRef();
@@ -323,6 +337,17 @@ const ResortTemplate = (props) => {
           <div className="resort__second-image">
             <Image {...secondImage} alt={secondImage.alt} />
           </div>
+          {faq.slice(0, slice ? slice : 1).map((faq) => (
+            <Faq
+              key={faq.name}
+              faq={faq}
+              path="/resort"
+              onClick={() => {
+                setSlice(100);
+              }}
+              slice={slice}
+            />
+          ))}
           <ContactUs contactUs={site.contactUs} />
         </ResortStyles>
       </Container>

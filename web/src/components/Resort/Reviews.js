@@ -95,6 +95,7 @@ const ReviewsStyles = styled.div`
       width: 25rem;
       text-align: left;
       letter-spacing: 0.1rem;
+      color: #000;
     }
 
     p:first-of-type {

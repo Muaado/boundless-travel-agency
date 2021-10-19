@@ -7,13 +7,16 @@ import ChevronUp from "../../assets/icons/chevron-up.svg";
 import { device } from "../../styles/deviceSizes";
 
 const FaqStyles = styled.div`
-  margin-bottom: 10rem;
   text-align: center;
 
-  padding: 0 10%;
+  padding: 15rem 10% 10rem 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &:nth-of-type(odd) {
+    background: #faf7f7;
+  }
 
   @media ${device.laptopL} {
     padding: 0 10%;
@@ -88,7 +91,7 @@ const FaqStyles = styled.div`
 
 const Faq = (props) => {
   const [selectedQuestion, setSelectedQuestion] = useState(-1);
-  const { faq, path } = props;
+  const { faq, path, onClick, slice } = props;
 
   return (
     <FaqStyles className="faq__section">
@@ -100,7 +103,7 @@ const Faq = (props) => {
 
       <ul>
         {faq?.faqQuestionsAnswers
-          .slice(0, 5)
+          .slice(0, slice ? slice : 4)
           .map(({ question, answer }, index) => (
             <li
               className={`clickable ${
@@ -129,10 +132,16 @@ const Faq = (props) => {
           ))}
       </ul>
 
-      {path !== "/faq" && (
+      {!slice && path === "/" ? (
         <Link to="/faq">
           <button className="btn">View more...</button>
         </Link>
+      ) : slice < 100 && path === "/resort" ? (
+        <button className="btn" onClick={onClick}>
+          View more...
+        </button>
+      ) : (
+        ""
       )}
     </FaqStyles>
   );

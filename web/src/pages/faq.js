@@ -90,6 +90,9 @@ const FaqStyles = styled.div`
       &:nth-of-type(even) {
         background: #faf7f7;
       }
+      &:nth-of-type(odd) {
+        background: #fff;
+      }
     }
   }
 `;
