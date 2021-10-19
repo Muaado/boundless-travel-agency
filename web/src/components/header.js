@@ -170,16 +170,17 @@ const Header = ({
             </p>
           </li>
           <li>
-            <p
+            <Link
+              to="/magazine"
               className="clickable"
-              onClick={() => {
-                setShowDropdown(!showDropdown);
-                setList(navData.resorts);
-              }}
+              // onClick={() => {
+              //   setShowDropdown(!showDropdown);
+              //   setList(navData.resorts);
+              // }}
             >
               Magazine
               {showDropdown === 4 && <DropDown list={list} />}
-            </p>
+            </Link>
           </li>
         </ul>
       </nav>
