@@ -51,9 +51,14 @@ export function toPlainText(blocks) {
 export const getResortUrl = ({ name }) => {
   return `/${name.toLowerCase().split(" ").join("-")}`;
 };
+
 export const getVillaUrl = ({ name, resortName }) => {
   return `/${resortName.toLowerCase().split(" ").join("-")}/${name
     .toLowerCase()
     .split(" ")
     .join("-")}`;
+};
+
+export const getCollectionUrl = ({ name }) => {
+  return `/collection/${name.toLowerCase().split(" ").join("-")}`;
 };

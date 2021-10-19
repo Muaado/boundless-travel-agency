@@ -30,7 +30,7 @@ const AboutUsSectionStyles = styled.div`
         /* font-size: 5rem; */
         margin-bottom: 2rem;
         color: var(--darkGreen);
-        text-align: left;
+        text-align: left !important;
         @media ${device.tabletL} {
           text-align: center;
         }

@@ -17,6 +17,12 @@ export default {
     },
 
     {
+      title: "Header Images",
+      type: "gallery",
+      name: "headerImages",
+    },
+
+    {
       name: "alternateName",
       type: "string",
       title: "Alternate name",

@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import Image from "gatsby-plugin-sanity-image";
 import { device } from "../../styles/deviceSizes";
+import Carousel from "nuka-carousel";
+import CarouselButton from "../Ui/CarouselButton";
 
 const GalleryStyles = styled.div`
   display: flex;
@@ -37,7 +39,7 @@ const GalleryStyles = styled.div`
     object-fit: cover;
   }
   .main-image-container {
-    /* height: 70rem; */
+    height: 90vh;
   }
 
   .image-grid {
@@ -88,12 +90,8 @@ const Gallery = ({ id, galleries }) => {
         ))}
       </ul>
       {!selectedGallery ? (
-        <div className="main-image-container">
-          <Image {...firstImage} alt={firstImage.alt} />
-        </div>
-      ) : (
         <ul className="image-grid">
-          {selectedGallery.images.slice(0, 4).map((image) => {
+          {galleries[0].images.slice(0, 4).map((image) => {
             return (
               <li key={image.alt}>
                 <Image {...image} alt={image.alt} />
@@ -101,6 +99,21 @@ const Gallery = ({ id, galleries }) => {
             );
           })}
         </ul>
+      ) : (
+        <Carousel
+          renderCenterRightControls={({ nextSlide }) => (
+            <CarouselButton onClick={nextSlide} chevronRight={true} />
+          )}
+          renderCenterLeftControls={({ previousSlide }) => (
+            <CarouselButton onClick={previousSlide} />
+          )}
+        >
+          {selectedGallery.images.slice(0, 4).map((image) => (
+            <div key={image.alt} className="main-image-container">
+              <Image {...image} alt={image.alt} />
+            </div>
+          ))}
+        </Carousel>
       )}
     </GalleryStyles>
   );

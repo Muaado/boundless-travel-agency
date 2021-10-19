@@ -8,6 +8,8 @@ import styled from "styled-components";
 import { device } from "../../styles/deviceSizes";
 
 import Carousel from "nuka-carousel";
+import { Link } from "gatsby";
+import { getCollectionUrl } from "../../lib/helpers";
 
 const JourneyStyles = styled.div`
   margin-top: 15rem;
@@ -65,7 +67,7 @@ const JourneyStyles = styled.div`
 
     gap: 1rem;
 
-    li {
+    a {
       position: relative;
       /* height: 40rem;
       width: 40rem; */
@@ -150,8 +152,13 @@ const Journey = ({ collections }) => {
           {collections.edges
             .sort((a, b) => a.node.rank - b.node.rank)
             .map(({ node }) => (
-              <li className="clickable" key={node.name}>
+              <Link
+                to={getCollectionUrl({ name: node.name })}
+                className="clickable"
+                key={node.name}
+              >
                 <p>{node.name}</p>
+
                 {console.log(node.rank, node.name)}
                 <Image
                   {...node.imageThumb}
@@ -163,7 +170,7 @@ const Journey = ({ collections }) => {
                   //   .url()}
                   alt={node.imageThumb.alt}
                 />
-              </li>
+              </Link>
             ))}
         </ul>
       ) : (

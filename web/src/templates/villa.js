@@ -1,9 +1,9 @@
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import React, { useState } from "react";
 import Layout from "../containers/layout";
 import Container from "../components/container";
 import SEO from "../components/seo";
-import { toPlainText } from "../lib/helpers";
+import { getResortUrl, toPlainText } from "../lib/helpers";
 
 import Image from "gatsby-plugin-sanity-image";
 
@@ -33,6 +33,14 @@ export const query = graphql`
       name
       alternateName
       tagline
+
+      headerImages {
+        images {
+          ...SanityImage
+          alt
+        }
+      }
+
       _rawDescription
       imageWeb {
         ...SanityImage
@@ -179,6 +187,8 @@ const VilaTemplate = (props) => {
     villaPoolTypes,
     heroImage,
 
+    headerImages,
+
     // gallery,
   } = villa;
 
@@ -208,6 +218,7 @@ const VilaTemplate = (props) => {
       setOpenedFeature(-1);
     }
   };
+  console.log(headerImages);
 
   return (
     <Layout>
@@ -221,9 +232,21 @@ const VilaTemplate = (props) => {
           )}
           <div className="villa__header">
             <div className="container">
-              <div className="image-container">
-                <Image {...imageWeb} alt={imageWeb?.alt} />
-              </div>
+              <Carousel
+                className="carousel"
+                renderCenterRightControls={({ nextSlide }) => (
+                  <CarouselButton onClick={nextSlide} chevronRight={true} />
+                )}
+                renderCenterLeftControls={({ previousSlide }) => (
+                  <CarouselButton onClick={previousSlide} />
+                )}
+              >
+                {headerImages.images.map((image) => (
+                  <div key={image.alt} className="carousel__image-container">
+                    <Image {...image} alt={image.alt} />
+                  </div>
+                ))}
+              </Carousel>
               <p className="alternate-name">{alternateName}</p>
               <h1>{name}</h1>
               <h3 className="tagline">{tagline}</h3>
@@ -388,12 +411,18 @@ const VilaTemplate = (props) => {
               )}
             >
               {resorts.nodes.map(({ name, image }) => (
-                <div className="carousel__node" key={name}>
+                <Link
+                  className="carousel__node"
+                  to={getResortUrl({ name })}
+                  key={name}
+                >
+                  {/* <a className="carousel__node" key={name}> */}
                   <div className="image-container">
                     <Image {...image} alt={image.alt} />
                   </div>
                   <p>{name}</p>
-                </div>
+                  {/* </a> */}
+                </Link>
               ))}
             </Carousel>
           </div>

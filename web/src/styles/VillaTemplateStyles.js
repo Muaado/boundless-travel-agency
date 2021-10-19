@@ -65,6 +65,33 @@ const VillaStyles = styled.div`
         padding: 0;
       }
 
+      .carousel {
+        height: 80rem !important;
+        width: 60rem !important;
+        position: absolute !important;
+        top: 10rem;
+        left: -55rem;
+        z-index: 100;
+
+        &__image-container {
+          height: 80rem !important;
+          width: 60rem !important;
+        }
+      }
+      .container {
+        /* background: black; */
+        position: relative;
+        height: 100rem;
+        margin-left: 50rem;
+        padding: 15rem 8rem 15rem 15rem;
+        border: 1px solid var(--primary);
+        p {
+          max-width: 40rem;
+          font-size: 2.2rem;
+          color: var(--grey1);
+        }
+      }
+
       .alternate-name {
         transform: rotate(90deg);
         position: absolute;
@@ -86,29 +113,6 @@ const VillaStyles = styled.div`
 
       h3 {
         padding: 3rem 0;
-      }
-
-      .image-container {
-        max-height: 80rem;
-        max-width: 60rem;
-        position: absolute;
-        top: 6rem;
-        left: -50rem;
-        /* left: -10rem; */
-      }
-
-      .container {
-        /* background: black; */
-        position: relative;
-        height: 100rem;
-        margin-left: 50rem;
-        padding: 15rem 8rem 15rem 15rem;
-        border: 1px solid var(--primary);
-        p {
-          max-width: 40rem;
-          font-size: 2.2rem;
-          color: var(--grey1);
-        }
       }
 
       .tagline {
@@ -188,7 +192,9 @@ const VillaStyles = styled.div`
         ul {
           li {
             width: 70rem;
-
+            p {
+              color: #fff;
+            }
             & > * {
               margin-top: 2rem;
               font-size: 2.2rem;
@@ -376,6 +382,7 @@ const VillaStyles = styled.div`
       padding: 10rem 10%;
       background: #b39a6a;
 
+      /* height: fit-content; */
       .title {
         font-family: "Playfair Display";
         position: absolute;
@@ -404,8 +411,12 @@ const VillaStyles = styled.div`
         text-align: right;
       }
       .carousel {
+        /* .slider-frame {
+          height: max-content !important;
+        } */
         &__node {
-          height: 100%;
+          display: block;
+          /* height: 100%; */
           height: 60rem;
         }
         .image-container {

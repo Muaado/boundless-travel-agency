@@ -180,8 +180,6 @@ const ResortTemplate = (props) => {
     window.addEventListener("scroll", () => {
       let fromTop = window?.scrollY + 100;
 
-      // console.log(navRef.current.childNodes[0].childNodes);
-
       navRef.current?.childNodes?.[0]?.childNodes?.forEach((link) => {
         let section = document.querySelector(link.firstChild.hash);
 
