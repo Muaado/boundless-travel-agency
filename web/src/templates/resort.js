@@ -106,6 +106,9 @@ export const query = graphql`
           ...SanityImage
           alt
         }
+        resort {
+          name
+        }
       }
     }
 

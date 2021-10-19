@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Layout from "../containers/layout";
 import Container from "../components/container";
 import SEO from "../components/seo";
-import { getResortUrl, toPlainText } from "../lib/helpers";
+import { getResortUrl, getRestaurantUrl, toPlainText } from "../lib/helpers";
 
 import Image from "gatsby-plugin-sanity-image";
 
@@ -119,6 +119,10 @@ export const query = graphql`
           imageThumb {
             ...SanityImage
             alt
+          }
+
+          resort {
+            name
           }
         }
 
@@ -356,28 +360,34 @@ const VilaTemplate = (props) => {
           <div className="villa__restaurants" id="dine">
             <h2>Dine</h2>
             <ul>
-              {restaurants.map(({ name, alternateName, imageThumb }) => (
-                <li key={name}>
-                  <div key={name} className="image-container">
-                    <Image
-                      style={{
-                        width: "100%",
-                        height: "90%",
-                        objectFit: "cover",
-                      }}
-                      {...imageThumb}
-                      alt={imageThumb.alt}
-                    />
-                  </div>
-                  <div className="villa__restaurants__text">
-                    <span className="name">{name}</span>
-                    <span className="alternate-name">{alternateName}</span>
+              {restaurants.map(
+                ({ name, alternateName, imageThumb, resort }) => (
+                  <li key={name}>
+                    <div key={name} className="image-container">
+                      <Image
+                        style={{
+                          width: "100%",
+                          height: "90%",
+                          objectFit: "cover",
+                        }}
+                        {...imageThumb}
+                        alt={imageThumb.alt}
+                      />
+                    </div>
+                    <div className="villa__restaurants__text">
+                      <span className="name">{name}</span>
+                      <span className="alternate-name">{alternateName}</span>
 
-                    <PortableText blocks={_rawDescription} />
-                    <a>Read more...</a>
-                  </div>
-                </li>
-              ))}
+                      <PortableText blocks={_rawDescription} />
+                      <Link
+                        to={getRestaurantUrl({ name, resortName: resort.name })}
+                      >
+                        Read more...
+                      </Link>
+                    </div>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 

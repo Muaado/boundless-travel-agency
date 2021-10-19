@@ -58,6 +58,12 @@ export const getVillaUrl = ({ name, resortName }) => {
     .split(" ")
     .join("-")}`;
 };
+export const getRestaurantUrl = ({ name, resortName }) => {
+  return `/${resortName.toLowerCase().split(" ").join("-")}/restaurant/${name
+    .toLowerCase()
+    .split(" ")
+    .join("-")}`;
+};
 
 export const getCollectionUrl = ({ name, type }) => {
   return `/collection/${type.type}#${

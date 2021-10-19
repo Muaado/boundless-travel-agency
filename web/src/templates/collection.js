@@ -9,6 +9,7 @@ import { getResortUrl, getVillaUrl, toPlainText } from "../lib/helpers";
 import { CollectionStyles } from "../styles/CollectionTemplateStyles";
 import Image from "gatsby-plugin-sanity-image";
 import { ContactUs } from "../components/Homepage/ContactUs";
+import LeftSidebar from "../components/LeftSidebar";
 
 export const query = graphql`
   query CollectionTemplateQuery($type: String!) {
@@ -94,9 +95,10 @@ const CollectionTemplate = (props) => {
       break;
   }
   items = items.flat();
-  console.log(items);
+
   return (
     <Layout>
+      <LeftSidebar />
       <CollectionStyles>
         {collections.nodes[0]?.imageWeb && (
           <div className="collection__image">

@@ -8,6 +8,8 @@ import styled from "styled-components";
 import { device } from "../../styles/deviceSizes";
 import useWindowSize from "../../lib/useWindowSize";
 import CarouselButton from "../Ui/CarouselButton";
+import { getVillaUrl } from "../../lib/helpers";
+import { Link } from "gatsby";
 
 const AccomodationStyles = styled.div`
   padding: 0 10%;
@@ -34,6 +36,7 @@ const AccomodationStyles = styled.div`
   }
   .image-container {
     width: 100%;
+    display: block;
     @media ${device.laptopL} {
     }
     height: 70rem;
@@ -96,9 +99,13 @@ const Accomodation = ({ villas, id }) => {
           <CarouselButton onClick={previousSlide} />
         )}
       >
-        {villas.map(({ name, imageThumb }) => (
+        {villas.map(({ name, imageThumb, resort }) => (
           // <li key={name}>
-          <div key={name} className="image-container">
+          <Link
+            to={getVillaUrl({ name, resortName: resort.name })}
+            key={name}
+            className="image-container"
+          >
             <Image
               style={{
                 width: "100%",
@@ -108,8 +115,9 @@ const Accomodation = ({ villas, id }) => {
               {...imageThumb}
               alt={imageThumb.alt}
             />
+
             <p>{name}</p>
-          </div>
+          </Link>
           // </li>
         ))}
       </Carousel>

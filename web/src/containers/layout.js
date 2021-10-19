@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import Layout from "../components/layout";
+import { getCollectionUrl, getResortUrl, getVillaUrl } from "../lib/helpers";
 
 const query = graphql`
   query SiteTitleQuery {
@@ -54,10 +55,7 @@ function LayoutContainer(props) {
   const villas = navData.villas.nodes.map(
     ({ name, resort }) =>
       resort && {
-        url: `/${resort.name.toLowerCase().split(" ").join("-")}/${name
-          .toLowerCase()
-          .split(" ")
-          .join("-")}`,
+        url: getVillaUrl({ name, resortName: resort.name }),
         name: name,
       }
   );
@@ -66,7 +64,7 @@ function LayoutContainer(props) {
       if (typeof name === "string")
         return {
           name: name,
-          url: `/${name.toLowerCase().split(" ").join("-")}`,
+          url: getResortUrl({ name }),
         };
     })
     .filter((item) => item !== undefined);
@@ -75,9 +73,7 @@ function LayoutContainer(props) {
     if (typeof name === "string")
       return {
         name: name,
-        url: `/collection/${type.type}#${
-          type.type === "villa" ? name.toLowerCase().split(" ").join("-") : ""
-        }`,
+        url: getCollectionUrl({ name, type }),
       };
   });
 

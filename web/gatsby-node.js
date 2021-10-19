@@ -105,7 +105,6 @@ async function createVillaPages(graphql, actions) {
 
   const villaEdges = (result.data.allSanityVilla || {}).nodes || [];
 
-  console.log(villaEdges);
   villaEdges.forEach((node) => {
     const { _id, name, resort } = node;
 
@@ -175,10 +174,52 @@ async function createCollectionPages(graphql, actions) {
     });
 }
 
+async function createRestaurantPages(graphql, actions) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allSanityRestaurant {
+        nodes {
+          _id
+          name
+          resort {
+            _id
+            name
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const restaurantNodes = (result.data.allSanityRestaurant || {}).nodes || [];
+
+  restaurantNodes.forEach((node) => {
+    const { _id, name, resort } = node;
+
+    let path;
+    if (typeof name === "string" && resort) {
+      path = `/${resort.name
+        .toLowerCase()
+        .split(" ")
+        .join("-")}/restaurant/${name.toLowerCase().split(" ").join("-")}`;
+    }
+
+    if (path)
+      createPage({
+        path,
+        component: require.resolve("./src/templates/restaurant.js"),
+        context: { id: _id, resortId: resort._id },
+      });
+  });
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   // await createBlogPostPages(graphql, actions);
 
   await createResortPages(graphql, actions);
   await createVillaPages(graphql, actions);
   await createCollectionPages(graphql, actions);
+  await createRestaurantPages(graphql, actions);
 };
