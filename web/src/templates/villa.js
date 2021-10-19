@@ -249,11 +249,12 @@ const VilaTemplate = (props) => {
                   <CarouselButton onClick={previousSlide} />
                 )}
               >
-                {headerImages.images.map((image) => (
-                  <div key={image.alt} className="carousel__image-container">
-                    <Image {...image} alt={image.alt} />
-                  </div>
-                ))}
+                {headerImages &&
+                  headerImages.images.map((image) => (
+                    <div key={image.alt} className="carousel__image-container">
+                      <Image {...image} alt={image.alt} />
+                    </div>
+                  ))}
               </Carousel>
               <p className="alternate-name">{alternateName}</p>
               <h1>{name}</h1>
