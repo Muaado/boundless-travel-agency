@@ -1,3 +1,6 @@
+import "core-js/es/map";
+import "core-js/es/set";
+
 import React, { useState } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import Layout from "../components/layout";
