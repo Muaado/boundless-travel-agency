@@ -1,3 +1,7 @@
+import "raf/polyfill";
+import "core-js/es/map";
+import "core-js/es/set";
+
 import React from "react";
 import Header from "./header";
 
