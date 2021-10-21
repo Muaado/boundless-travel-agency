@@ -15,6 +15,8 @@ import styled from "styled-components";
 
 import Video from "../components/Video";
 
+import SanityMuxPlayer from "sanity-mux-player";
+
 import VideoBg from "../assets/videobg.mp4";
 
 import PromoSection from "../components/Homepage/PromoSection";
@@ -68,7 +70,20 @@ export const query = graphql`
       title
       description
       keywords
-      description
+
+      video {
+        asset {
+          filename
+          playbackId
+          status
+          thumbTime
+          _type
+          _key
+          assetId
+        }
+        _type
+        _key
+      }
 
       handCraftedJourneys {
         title
@@ -228,7 +243,19 @@ const IndexPage = (props) => {
         <LeftSidebar />
         <HeroStyles>
           {/* <h1> {site.description}</h1> */}
-          <Video videoSrcURL={VideoBg} />
+          <SanityMuxPlayer
+            assetDocument={site.video.asset}
+            autoload={true}
+            autoplay={true}
+            // className={string}
+            height={"100%"}
+            loop={true}
+            muted={true}
+            showControls={false}
+            style={{}}
+            width={"100%"}
+          />
+          {/* <Video videoSrcURL={VideoBg} /> */}
         </HeroStyles>
         <div className="page-content">
           <SearchBar>

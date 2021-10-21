@@ -17,6 +17,12 @@ export default {
     },
 
     {
+      title: "Hero video",
+      name: "video",
+      type: "mux.video",
+    },
+
+    {
       name: "description",
       type: "text",
       title: "Description",

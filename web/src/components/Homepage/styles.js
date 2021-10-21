@@ -11,16 +11,16 @@ export const HeroStyles = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
-  &:before {
+  /* &:before {
     content: "";
     position: absolute;
     opacity: 0.3;
     width: 100%;
     height: 100%;
     background-color: #000;
-  }
+  } */
   h1 {
     text-transform: uppercase;
     position: absolute;
