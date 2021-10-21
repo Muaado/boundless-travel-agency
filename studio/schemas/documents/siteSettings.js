@@ -16,11 +16,11 @@ export default {
       title: "Full name",
     },
 
-    {
-      title: "Hero video",
-      name: "video",
-      type: "mux.video",
-    },
+    // {
+    //   title: "Hero video",
+    //   name: "video",
+    //   type: "mux.video",
+    // },
 
     {
       name: "description",
