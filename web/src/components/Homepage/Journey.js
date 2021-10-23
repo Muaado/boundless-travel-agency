@@ -85,6 +85,10 @@ const JourneyStyles = styled.div`
         top: 90%;
         left: 50%;
         transform: translate(-50%, -50%);
+
+        @media ${device.laptopM} {
+          top: 80%;
+        }
       }
       grid-column: 1 / span;
       &:first-of-type {
@@ -144,13 +148,13 @@ const Journey = ({ collections }) => {
       data-aos-easing="ease-in-out"
     >
       <h1>Start your journey</h1>
-      <ul className="header">
+      {/* <ul className="header">
         <li>most popular</li>
         <li>experiences</li>
         <li>by traveler</li>
         <li>unique</li>
         <li>view all</li>
-      </ul>
+      </ul> */}
 
       {windowWidth >= 805 ? (
         <ul className="images">

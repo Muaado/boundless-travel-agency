@@ -73,7 +73,7 @@ const Accomodation = ({ villas, id }) => {
       if (isSreenLG) return 2.8;
       if (screenXL) return 3;
       if (screenXXL) return 2.9;
-      // return 5.65;
+      return 2.9;
     };
     const spacing = () => {
       // if (isMobileOnly) return 50;
@@ -98,7 +98,7 @@ const Accomodation = ({ villas, id }) => {
       <Carousel
         speed={1000}
         className="carousel"
-        slidesToShow={numberOfSlides}
+        slidesToShow={numberOfSlides || 2.9}
         cellSpacing={cellSpacing}
         renderCenterRightControls={({ nextSlide }) => (
           <CarouselButton onClick={nextSlide} chevronRight={true} />

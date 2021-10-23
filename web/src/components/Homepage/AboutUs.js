@@ -9,17 +9,22 @@ const AboutUsSectionStyles = styled.div`
   display: flex;
   align-items: center;
   padding: 10rem 15%;
+
+  @media ${device.laptopM} {
+    padding: 5rem 10%;
+  }
+
   @media ${device.tablet} {
     padding: 5rem 15%;
   }
-
   .about-us {
     &__image-container {
       width: 50rem;
       height: 50rem;
       height: auto;
       margin-right: 4rem;
-      @media ${device.tablet} {
+
+      @media ${device.tabletL} {
         display: none;
       }
     }

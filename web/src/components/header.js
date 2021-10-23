@@ -110,7 +110,7 @@ const DropDown = ({ list }) => {
         {list.map(
           (item) =>
             item.url && (
-              <Link key={item} to={item.url}>
+              <Link key={item.url} to={item.url}>
                 <a>{item.name}</a>
               </Link>
             )
@@ -144,9 +144,9 @@ const Header = ({
     <HeaderStyles className="disappear-on-scroll" pathname={location?.pathname}>
       <div className="logo">
         <Link to="/">
-          <a>
+          <p>
             <Logo />
-          </a>
+          </p>
         </Link>
       </div>
 

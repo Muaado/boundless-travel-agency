@@ -3,12 +3,12 @@ import Header from "./header";
 
 import AOS from "aos";
 
+import { GlobalStyle } from "../styles/GlobalStyle";
 import "aos/dist/aos.css";
 const windowGlobal = typeof window !== "undefined";
 if (windowGlobal) AOS.init();
 
 // import "../styles/layout.css";
-import { GlobalStyle } from "../styles/GlobalStyle";
 
 const Layout = ({
   children,

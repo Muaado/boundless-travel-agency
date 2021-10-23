@@ -32,6 +32,7 @@ const WhyBoundlessSectionStyles = styled.div`
     &__layer--base {
       transform: translateZ(0);
     }
+
     &__layer--back {
       width: fit-content;
       /* height: 90vh; */
@@ -41,13 +42,14 @@ const WhyBoundlessSectionStyles = styled.div`
       transform: translateZ(-1px);
 
       @media ${device.laptopL} {
-        left: 30% !important;
-      }
-      @media ${device.laptop} {
         left: 30%;
       }
+      @media ${device.laptopM} {
+        left: 20%;
+      }
 
-      @media ${device.mobileXL} {
+      @media ${device.tablet} {
+        top: -15%;
         left: 0%;
       }
     }
