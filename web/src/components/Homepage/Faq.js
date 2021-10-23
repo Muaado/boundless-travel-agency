@@ -9,13 +9,13 @@ import { device } from "../../styles/deviceSizes";
 const FaqStyles = styled.div`
   text-align: center;
 
-  padding: 15rem 15% 10rem 15%;
+  padding: 10rem 15% 10rem 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   @media ${device.laptopL} {
-    padding: 0 15%;
+    padding: 10rem 15% 10rem 15%;
   }
   @media ${device.tablet} {
     margin-bottom: 5rem;

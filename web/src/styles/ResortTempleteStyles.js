@@ -147,7 +147,7 @@ const ResortStyles = styled.div`
 
     &__restaurants {
       margin-top: 10rem;
-      margin-bottom: 20rem;
+      margin-bottom: 12rem;
       padding: 0 15%;
       p {
         font-size: 1.4rem;
@@ -202,12 +202,16 @@ const ResortStyles = styled.div`
       }
 
       &__text {
-        margin-top: -10rem;
+        margin-top: -8rem;
         align-self: center;
         max-width: 25rem;
 
         display: flex;
         flex-direction: column;
+
+        @media ${device.laptopL} {
+          margin-top: -6rem;
+        }
         .name {
           font-size: 2rem;
         }

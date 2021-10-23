@@ -194,7 +194,7 @@ const Header = ({
               //   setList(navData.resorts);
               // }}
             >
-              Magazine
+              <p>Magazine</p>
               {showDropdown === 4 && <DropDown list={list} />}
             </Link>
           </li>

@@ -81,12 +81,12 @@ export const query = graphql`
 `;
 
 const FaqStyles = styled.div`
-  margin-top: 7rem;
+  /* margin-top: 7rem; */
 
   .faq {
     &__section {
       margin: 0;
-      padding: 15rem 10% 10rem 10%;
+      /* padding: 15rem 10% 10rem 10%; */
       &:nth-of-type(even) {
         background: #faf7f7;
       }

@@ -35,6 +35,7 @@ const ContainerStyles = styled.main`
   } */
 
   .second-image {
+    /* margin-bottom: 5rem; */
     /* margin: 20rem -14%; */
     /* margin-bottom: 10rem; */
     position: relative;
