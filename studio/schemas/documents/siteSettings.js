@@ -15,7 +15,11 @@ export default {
       type: "string",
       title: "Full name",
     },
-
+    {
+      type: "cloudinary.asset",
+      name: "heroVideo",
+      description: "This asset is served from Cloudinary",
+    },
     {
       name: "description",
       type: "text",
