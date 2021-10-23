@@ -77,6 +77,33 @@ function LayoutContainer(props) {
       };
   });
 
+  const windowGlobal = typeof window !== "undefined";
+  if (windowGlobal) {
+    window.addEventListener("scroll", () => {
+      let fromTop = window?.scrollY;
+
+      const elements = document.querySelectorAll(".disappear-on-scroll");
+      // console.log(elements);
+      if (elements) {
+        elements.forEach((element) => {
+          if (
+            element.nodeName !== "HEADER" &&
+            element.offsetTop < fromTop + 50
+          ) {
+            element.classList.add("hide");
+          } else if (
+            element.nodeName === "HEADER" &&
+            element.offsetTop + 200 < fromTop + 100
+          ) {
+            element.classList.add("hide");
+          } else {
+            element.classList.remove("hide");
+          }
+        });
+      }
+    });
+  }
+
   return (
     <Layout
       navData={{ resorts, villas, collections }}

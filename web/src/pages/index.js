@@ -37,6 +37,7 @@ import { getBlogUrl } from "../lib/helpers";
 import WhyBoundlessSection from "../components/Homepage/WhyBoundlessSection";
 import NewsletterSection from "../components/Homepage/NewsletterSection";
 import LeftSidebar from "../components/LeftSidebar";
+import { MouseScroll } from "../components/Ui/MouseScroll";
 
 // import HomepageStaticImage from "../assets/homepage-image.png";
 
@@ -228,7 +229,16 @@ const IndexPage = (props) => {
         <LeftSidebar />
         <HeroStyles>
           {/* <h1> {site.description}</h1> */}
-          <Video videoSrcURL={VideoBg} />
+          <Video
+            videoSrcURL={
+              // VideoBg
+              "https://res.cloudinary.com/dqh4ewsaz/video/upload/v1634911148/Tes%20images/hero_vdo_for_boundless_2_-_Large_540p_afaw8u.mov"
+            }
+          />
+          <h1 className="disappear-on-scroll">
+            A WORLD WHERE ANYTHING IS POSSIBLE
+          </h1>
+          <MouseScroll />
         </HeroStyles>
         <div className="page-content">
           <SearchBar>
@@ -246,7 +256,12 @@ const IndexPage = (props) => {
 
           <Journey collections={collections} />
 
-          <HandCraftedJourneysStyles>
+          <HandCraftedJourneysStyles
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+          >
             <p className="subtitle">only the best</p>
             <h2>hand-crafted journeys</h2>
             <p className="description">
@@ -275,7 +290,12 @@ const IndexPage = (props) => {
           <PromoSection image={site.promoImageWeb} />
           <AboutUs aboutUs={site.aboutUs} />
           <WhyBoundlessSection whyBoundlessImage={site.whyBoundlessImage} />
-          <MagazineStyles>
+          <MagazineStyles
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+          >
             <h2>Magazine</h2>
             <p className="subtitle">Inspiration</p>
             <ul>
@@ -299,7 +319,13 @@ const IndexPage = (props) => {
             </Link>
           </MagazineStyles>
           <TailorMade />
-          <div className="second-image">
+          <div
+            className="second-image"
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+          >
             <Image
               {...site.secondImage}
               width={1440}

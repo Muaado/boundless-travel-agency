@@ -8,9 +8,9 @@ import { device } from "../../styles/deviceSizes";
 const AboutUsSectionStyles = styled.div`
   display: flex;
   align-items: center;
-  padding: 10rem 10%;
+  padding: 10rem 15%;
   @media ${device.tablet} {
-    padding: 5rem 10%;
+    padding: 5rem 15%;
   }
 
   .about-us {
@@ -46,7 +46,13 @@ const AboutUsSectionStyles = styled.div`
 
 const AboutUs = ({ aboutUs }) => {
   return (
-    <AboutUsSectionStyles className="about-us">
+    <AboutUsSectionStyles
+      className="about-us"
+      data-aos="fade-up"
+      data-aos-delay="50"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+    >
       <div className="about-us__image-container">
         <Image
           {...aboutUs.image}

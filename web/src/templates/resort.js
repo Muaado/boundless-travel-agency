@@ -23,6 +23,7 @@ import Accomodation from "../components/Resort/Accomodation";
 import { ContactUs } from "../components/Homepage/ContactUs";
 import Faq from "../components/Homepage/Faq";
 import LeftSidebar from "../components/LeftSidebar";
+import { MouseScroll } from "../components/Ui/MouseScroll";
 
 // import review from "../../../studio/schemas/documents/review";
 
@@ -206,17 +207,31 @@ const ResortTemplate = (props) => {
         <ResortStyles>
           <div className="resort__image">
             <Image {...image} width={1440} alt={image.alt} />
-            <div className="text">
+            <div
+              // id="header-text"
+              className="text disappear-on-scroll"
+              data-aos="zoom-out-up"
+              data-aos-delay="50"
+              data-aos-duration="1000"
+              data-aos-easing="ease-in-out"
+            >
               <p>{locationAtoll}</p>
               <h1>{name}</h1>
             </div>
+            <MouseScroll />
           </div>
 
           <LeftSidebar
             list={["overview", "accomodation", "highlights", "dine", "gallery"]}
           />
 
-          <div id="overview">
+          <div
+            id="overview"
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+          >
             <h2 className="title">Island overview</h2>
 
             <Amenities
@@ -250,7 +265,14 @@ const ResortTemplate = (props) => {
             </li>
           </ul> */}
 
-          <div id="highlights" className="resort__highlights">
+          <div
+            id="highlights"
+            className="resort__highlights"
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+          >
             <h2>Highlights</h2>
             <ul>
               {highlights.map(({ name, imageThumb, _rawDescription }) => (
@@ -265,7 +287,14 @@ const ResortTemplate = (props) => {
             </ul>
           </div>
 
-          <div id="dine" className="resort__restaurants">
+          <div
+            id="dine"
+            className="resort__restaurants"
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+          >
             <div className="resort__restaurants__header">
               <h2>DINE</h2>
               <p>
@@ -301,7 +330,13 @@ const ResortTemplate = (props) => {
           <Activities activities={activities} />
 
           <Reviews reviews={reviews} />
-          <div className="resort__second-image">
+          <div
+            className="resort__second-image"
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+          >
             <Image {...secondImage} alt={secondImage.alt} />
           </div>
           {faq.slice(0, slice ? slice : 1).map((faq) => (

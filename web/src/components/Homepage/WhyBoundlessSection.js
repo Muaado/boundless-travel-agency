@@ -12,60 +12,91 @@ import Eclipse from "../../assets/icons/whyBoundlessIcons/eclipse.svg";
 import { device } from "../../styles/deviceSizes";
 
 const WhyBoundlessSectionStyles = styled.div`
-  position: relative;
   margin-bottom: 10rem;
+  perspective: 2px;
+  height: 75vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 
-  @media ${device.tablet} {
-    margin-bottom: 5rem;
-  }
-  p {
-    color: #fff;
-  }
-  .image-container {
-    height: 80vh;
-    min-height: 50rem;
-    img {
-      object-position: top;
-      @media ${device.tablet} {
-        object-position: top;
+  position: relative;
+
+  .parallax {
+    &__layer {
+      height: 105%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    &__layer--base {
+      transform: translateZ(0);
+    }
+    &__layer--back {
+      width: fit-content;
+      /* height: 90vh; */
+      left: 50%;
+      top: 0%;
+      margin-bottom: 10rem;
+      transform: translateZ(-1px);
+
+      @media ${device.laptopL} {
+        left: 30% !important;
+      }
+      @media ${device.laptop} {
+        left: 30%;
+      }
+
+      @media ${device.mobileXL} {
+        left: 0%;
       }
     }
   }
+
   .content {
-    display: flex;
-    flex-direction: column;
+    /* margin-top: 12rem;
+    /* display: flex; */
+    /* flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 10%;
-    left: 60%;
-    color: #fff;
+    top: 0%;
+    left: 58%;
+    color: #fff; */
+    /* transform: translateZ(1px); */
+    /*
+    
 
-    @media ${device.laptopL} {
-      left: 50%;
-    }
-    @media ${device.laptop} {
-      left: 40%;
-    }
+    
+/*    */
 
-    @media ${device.mobileXL} {
-      left: 0%;
-    }
+    /* transform: translateZ(3px); */
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     h2 {
+      align-self: center;
       margin-bottom: 7rem;
       color: #fff;
       text-transform: lowercase;
-      max-width: 50rem;
+      max-width: 70rem;
+
+      font-size: 7rem;
       text-align: center;
       font-weight: 100;
     }
 
     ul {
+      /* height: 100vh; */
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 2rem;
+      gap: 4rem;
       text-align: center;
+      p {
+        font-size: 3.2rem;
+        color: #fff;
+      }
       li {
         svg {
           width: 10rem;
@@ -82,12 +113,13 @@ const WhyBoundlessSectionStyles = styled.div`
 
 const WhyBoundlessSection = ({ whyBoundlessImage }) => {
   return (
-    <WhyBoundlessSectionStyles>
-      <div className="image-container">
+    <WhyBoundlessSectionStyles className="parallax-container">
+      <div className="image-container parallax__layer parallax__layer--base">
         <Image {...whyBoundlessImage} alt={whyBoundlessImage.alt} />
       </div>
 
-      <div className="content">
+      {/* <div className="dot">.</div> */}
+      <div className="content foreground parallax__layer parallax__layer--back">
         <h2>why travel with boundless</h2>
         <ul>
           <li>

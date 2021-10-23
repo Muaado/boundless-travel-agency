@@ -8,11 +8,15 @@ import { device } from "../styles/deviceSizes";
 const HeaderStyles = styled.header`
   position: absolute;
   top: 0;
-  padding: 2rem 4rem;
-  height: 40rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  /* padding: 2rem 4rem; */
+  /* height: 40rem; */
   display: flex;
+  flex-direction: column;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   /* align-items: center; */
   z-index: 100;
   /* position: fixed; */
@@ -24,7 +28,7 @@ const HeaderStyles = styled.header`
   background: linear-gradient(
     188.95deg,
     #1c2238 24.5%,
-    rgba(28, 34, 56, 0) 69.2%
+    rgba(28, 34, 56, 0) 59.2%
   );
   opacity: 0.77;
 
@@ -32,14 +36,26 @@ const HeaderStyles = styled.header`
   z-index: 1000;
 
   .logo {
-    align-self: flex-start;
+    /* align-self: flex-start; */
     height: 100%;
+    width: 65%;
+    /* margin: 0 15%; */
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      margin-bottom: 2rem;
+    }
   }
 
   nav {
     position: relative;
-    margin-top: 12rem;
-    margin-left: -8rem;
+    /* margin-top: 12rem; */
+    /* margin-left: -8rem;/ */
     /* align-self: center;
     justify-self: center; */
     @media ${device.tablet} {
@@ -125,7 +141,7 @@ const Header = ({
   };
 
   return (
-    <HeaderStyles pathname={location?.pathname}>
+    <HeaderStyles className="disappear-on-scroll" pathname={location?.pathname}>
       <div className="logo">
         <Link to="/">
           <a>
@@ -185,7 +201,7 @@ const Header = ({
         </ul>
       </nav>
 
-      <div></div>
+      {/* <div></div> */}
     </HeaderStyles>
   );
 };

@@ -12,7 +12,7 @@ const ContactUsSection = styled.div`
   grid-template-columns: 1fr 1fr;
   width: 100%;
   font-size: 2rem;
-  padding: 0 10%;
+  padding: 0 15%;
   p {
     color: #000;
   }
@@ -113,7 +113,12 @@ export const ContactUs = ({ contactUs }) => {
   const { email, phoneOne, contactPeople, hours, businessHoursDescription } =
     contactUs;
   return (
-    <ContactUsSection>
+    <ContactUsSection
+      data-aos="fade-up"
+      data-aos-delay="50"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+    >
       <div>
         <p>Need a little help?</p>
         <p>Our luxury hotel specialists are only a call or click away.</p>

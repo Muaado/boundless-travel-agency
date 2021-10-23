@@ -9,13 +9,13 @@ import { device } from "../../styles/deviceSizes";
 const FaqStyles = styled.div`
   text-align: center;
 
-  padding: 15rem 10% 10rem 10%;
+  padding: 15rem 15% 10rem 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   @media ${device.laptopL} {
-    padding: 0 10%;
+    padding: 0 15%;
   }
   @media ${device.tablet} {
     margin-bottom: 5rem;
@@ -90,7 +90,13 @@ const Faq = (props) => {
   const { faq, path, onClick, slice, className } = props;
 
   return (
-    <FaqStyles className={`faq__section ${className}`}>
+    <FaqStyles
+      className={`faq__section ${className}`}
+      data-aos="fade-up"
+      data-aos-delay="50"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+    >
       <h2>{faq.name}</h2>
       <p className="description">
         Browse our FAQ's below, if you can not find the answer you're looking

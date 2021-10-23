@@ -15,6 +15,7 @@ import Activities from "../components/Resort/Activities";
 import Reviews from "../components/Resort/Reviews";
 import Spa from "../components/Resort/Spa";
 import LeftSidebar from "../components/LeftSidebar";
+import PopUpGallery from "../components/PopUpGallery";
 import Carousel from "nuka-carousel";
 
 import PlusIcon from "../assets/icons/plus-icon.svg";
@@ -26,6 +27,7 @@ import TwoPeople from "../assets/icons/villaSpecifications/two-people.svg";
 import Bed from "../assets/icons/villaSpecifications/bed.svg";
 import Shower from "../assets/icons/villaSpecifications/shower.svg";
 import SwimmingPool from "../assets/icons/villaSpecifications/swimming-pool.svg";
+import { MouseScroll } from "../components/Ui/MouseScroll";
 // import styled from "styled-components";
 
 export const query = graphql`
@@ -234,28 +236,24 @@ const VilaTemplate = (props) => {
           {heroImage && (
             <div className="villa__image">
               <Image {...heroImage} alt={heroImage.alt} />
-              <h1 className="villa__image-title">{resortName}</h1>
+              <h1 className="villa__image-title" id="header-text">
+                {resortName}
+              </h1>
+              <MouseScroll />
             </div>
           )}
 
-          <div className="villa__header" id="overview">
+          <div
+            className="villa__header"
+            id="overview"
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+          >
             <div className="container">
-              <Carousel
-                className="carousel"
-                renderCenterRightControls={({ nextSlide }) => (
-                  <CarouselButton onClick={nextSlide} chevronRight={true} />
-                )}
-                renderCenterLeftControls={({ previousSlide }) => (
-                  <CarouselButton onClick={previousSlide} />
-                )}
-              >
-                {headerImages &&
-                  headerImages.images.map((image) => (
-                    <div key={image.alt} className="carousel__image-container">
-                      <Image {...image} alt={image.alt} />
-                    </div>
-                  ))}
-              </Carousel>
+              <PopUpGallery className="carousel" images={headerImages} />
+
               <p className="alternate-name">{alternateName}</p>
               <h1>{name}</h1>
               <h3 className="tagline">{tagline}</h3>
@@ -289,7 +287,14 @@ const VilaTemplate = (props) => {
             </div>
           </div>
 
-          <div className="villa__room-features" id="room-features">
+          <div
+            className="villa__room-features"
+            id="room-features"
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+          >
             <Image
               {...roomFeatures.backgroundImage}
               alt={roomFeatures.backgroundImage.alt}
@@ -319,7 +324,13 @@ const VilaTemplate = (props) => {
           </div>
 
           <Gallery galleries={galleries} id="gallery" />
-          <div className="villa__property-overview">
+          <div
+            className="villa__property-overview"
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+          >
             <h2>Property Overview</h2>
 
             <Amenities
@@ -333,7 +344,14 @@ const VilaTemplate = (props) => {
             />
           </div>
 
-          <div className="villa__highlights" id="highlights">
+          <div
+            className="villa__highlights"
+            id="highlights"
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+          >
             <div>
               <h2>Hightlights</h2>
               <p>
@@ -358,7 +376,14 @@ const VilaTemplate = (props) => {
               ))}
             </ul>
           </div>
-          <div className="villa__restaurants" id="dine">
+          <div
+            className="villa__restaurants"
+            id="dine"
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+          >
             <h2>Dine</h2>
             <ul>
               {restaurants.map(
@@ -393,6 +418,11 @@ const VilaTemplate = (props) => {
           </div>
 
           <Carousel
+            speed={1000}
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
             className="villa__spas"
             slidesToShow={1}
             cellSpacing={0}
@@ -408,13 +438,20 @@ const VilaTemplate = (props) => {
             ))}
           </Carousel>
           <Activities activities={activities} />
-          <div className="villa__resorts">
+          <div
+            className="villa__resorts"
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+          >
             <p className="title">
               <span>ALL</span>
               <span className="line"></span>
               <span>PRODUCTS</span>
             </p>
             <Carousel
+              speed={1000}
               className="carousel"
               slidesToShow={3}
               cellSpacing={20}

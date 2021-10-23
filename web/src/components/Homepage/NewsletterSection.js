@@ -9,6 +9,9 @@ export const NewsLetterStyles = styled.div`
   position: relative;
   /* height: 70rem; */
   color: #fff;
+
+  perspective: 8px;
+  perspective-origin: 50%;
   @media ${device.laptopL} {
     /* margin: 20rem 0; */
     margin-bottom: 10rem;

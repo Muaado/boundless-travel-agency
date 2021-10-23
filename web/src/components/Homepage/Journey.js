@@ -20,12 +20,12 @@ const JourneyStyles = styled.div`
   font-family: "Playfair Display";
   text-align: center;
 
-  padding: 0 10%;
+  padding: 0 15%;
 
   width: 100%;
   /* max-width: 1440px; */
   @media ${device.laptopL} {
-    padding: 0 10%;
+    padding: 0 15%;
   }
 
   h1 {
@@ -71,7 +71,7 @@ const JourneyStyles = styled.div`
       position: relative;
       /* height: 40rem;
       width: 40rem; */
-      height: 40rem;
+      height: 35rem;
       /* width: 40rem; */
       p {
         z-index: 100;
@@ -137,7 +137,12 @@ const Journey = ({ collections }) => {
     windowWidth = window.innerWidth;
   }
   return (
-    <JourneyStyles>
+    <JourneyStyles
+      data-aos="fade-up"
+      data-aos-delay="50"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+    >
       <h1>Start your journey</h1>
       <ul className="header">
         <li>most popular</li>
@@ -175,6 +180,7 @@ const Journey = ({ collections }) => {
         </ul>
       ) : (
         <Carousel
+          speed={1000}
           className="carousel"
           slidesToShow={1}
           // cellSpacing={cellSpacing}

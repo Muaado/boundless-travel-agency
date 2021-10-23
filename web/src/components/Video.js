@@ -1,7 +1,7 @@
 import React from "react";
-const Video = ({ videoSrcURL }) => (
+const Video = ({ videoSrcURL, className }) => (
   <video
-    className="video-player"
+    className={`video-player ${className}`}
     // height="100%"
     // width="100%"
     loop

@@ -12,7 +12,7 @@ import { getVillaUrl } from "../../lib/helpers";
 import { Link } from "gatsby";
 
 const AccomodationStyles = styled.div`
-  padding: 0 10%;
+  padding: 0 15%;
   @media ${device.laptopL} {
     padding: 0;
   }
@@ -39,7 +39,7 @@ const AccomodationStyles = styled.div`
     display: block;
     @media ${device.laptopL} {
     }
-    height: 70rem;
+    height: 60rem;
     img {
       height: 80%;
     }
@@ -85,10 +85,18 @@ const Accomodation = ({ villas, id }) => {
     setCellSpacing(spacing);
   }, [size]);
   return (
-    <AccomodationStyles id={id} className="resort__accomodation">
+    <AccomodationStyles
+      id={id}
+      className="resort__accomodation"
+      data-aos="fade-up"
+      data-aos-delay="50"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+    >
       <h2>Accomodation</h2>
 
       <Carousel
+        speed={1000}
         className="carousel"
         slidesToShow={numberOfSlides}
         cellSpacing={cellSpacing}

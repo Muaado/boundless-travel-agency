@@ -167,6 +167,14 @@ export const GlobalStyle = createGlobalStyle`
     object-fit: cover;
   }
 
+  .disappear-on-scroll {
+    transition: 1s all;
+    &.hide {
+      opacity: 0 !important;
+      /* transform: translateY(-50px); */
+    }
+  }
+
   ::-moz-selection {
     background: #b3d4fc;
     text-shadow: none;

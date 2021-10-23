@@ -24,9 +24,14 @@ export const HeroStyles = styled.div`
   h1 {
     text-transform: uppercase;
     position: absolute;
+    width: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    font-family: "Roboto";
+    font-size: 3.4rem;
+    color: #fff;
   }
   p {
   }
@@ -73,14 +78,14 @@ export const SearchBar = styled.form`
 
 export const HandCraftedJourneysStyles = styled.div`
   margin: 10rem 0;
-  padding: 0 10%;
+  padding: 0 15%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
   @media ${device.laptopL} {
-    padding: 0 10%;
+    padding: 0 15%;
   }
   @media ${device.tablet} {
     margin: 5rem 0;
@@ -159,10 +164,10 @@ export const MagazineStyles = styled.div`
   display: flex;
   flex-direction: column;
 
-  padding: 0 10%;
+  padding: 0 15%;
 
   @media ${device.laptopL} {
-    padding: 0 10%;
+    padding: 0 15%;
   }
 
   @media ${device.tablet} {

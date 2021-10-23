@@ -33,6 +33,7 @@ const ResortStyles = styled.div`
 
   .resort {
     &__image {
+      position: relative;
       /* scroll-snap-align: center; */
       max-height: 100vh;
       overflow-y: hidden;
@@ -40,10 +41,14 @@ const ResortStyles = styled.div`
       top: -18rem; */
       z-index: -1;
 
+      transition: 1s all;
+      opacity: 1;
+
       .text {
         position: absolute;
         bottom: 10rem;
         left: 10%;
+
         h1,
         p {
           color: #fff;
@@ -61,10 +66,10 @@ const ResortStyles = styled.div`
     } */
 
     &__highlights {
-      margin-top: 20rem;
+      margin-top: 10rem;
       margin-bottom: 10rem;
       text-align: center;
-      padding: 0 10%;
+      padding: 0 15%;
       display: flex;
       flex-direction: column;
       @media ${device.laptopL} {
@@ -142,7 +147,8 @@ const ResortStyles = styled.div`
 
     &__restaurants {
       margin-top: 10rem;
-      padding: 0 10%;
+      margin-bottom: 20rem;
+      padding: 0 15%;
       p {
         font-size: 1.4rem;
       }
@@ -171,11 +177,17 @@ const ResortStyles = styled.div`
 
         position: relative;
         li {
+          max-height: 80vh;
           display: flex;
           flex-direction: column;
           position: relative;
+
+          img {
+            height: 80%;
+            object-position: top;
+          }
           &:nth-of-type(odd) {
-            margin-top: 15rem;
+            margin-top: 10rem;
           }
           &:nth-of-type(even) {
             top: -15rem;
@@ -190,7 +202,7 @@ const ResortStyles = styled.div`
       }
 
       &__text {
-        margin-top: 4rem;
+        margin-top: -10rem;
         align-self: center;
         max-width: 25rem;
 

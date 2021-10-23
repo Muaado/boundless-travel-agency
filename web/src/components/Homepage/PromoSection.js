@@ -22,6 +22,7 @@ export const PromoSectionStyles = styled.div`
   img {
     height: 100%;
     width: 100%;
+
     object-fit: contain;
     @media ${device.tablet} {
       object-position: right;
@@ -29,6 +30,7 @@ export const PromoSectionStyles = styled.div`
   }
 
   h2 {
+    /* z-index: 100; */
     width: 45rem;
     position: absolute;
     top: 45%;
@@ -74,13 +76,21 @@ export const PromoSectionStyles = styled.div`
 
 const PromoSection = ({ image }) => {
   return (
-    <PromoSectionStyles>
-      <h2>we specialise in the maldives</h2>
-      <p>
+    <PromoSectionStyles
+      className="parallax"
+      data-aos="fade-up"
+      data-aos-delay="50"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+    >
+      <h2 className="parallax__layer--back">we specialise in the maldives</h2>
+      <p className="parallax__layer--back">
         hand-picked portfolio of the world’s most luxurious resorts and Villas
         in the most stunning locations.
       </p>
+      {/* <div > */}
       <Image
+        className="parallax__layer--base"
         {...image}
         // tell Sanity how large to make the image (does not set any CSS)
         width={1440}
@@ -98,6 +108,7 @@ const PromoSection = ({ image }) => {
         //   .url()}
         alt={image.alt}
       />
+      {/* </div> */}
     </PromoSectionStyles>
   );
 };

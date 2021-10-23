@@ -15,6 +15,13 @@ const SpaStyles = styled.div`
   position: relative;
   overflow: hidden;
   height: 70rem;
+
+  background-size: 100vw;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
   /* height: max-content; */
   .container {
     display: flex;
@@ -87,7 +94,13 @@ const SpaStyles = styled.div`
 
 const Spa = ({ spa, className }) => {
   return (
-    <SpaStyles className={className}>
+    <SpaStyles
+      className={className}
+      data-aos="fade-up"
+      data-aos-delay="50"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+    >
       <div className="container">
         <div className="left-section">
           <div className="image-web">

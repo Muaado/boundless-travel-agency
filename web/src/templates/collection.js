@@ -115,6 +115,10 @@ const CollectionTemplate = (props) => {
             {items.map(({ name, records }) =>
               records.length ? (
                 <li
+                  data-aos="fade-in"
+                  data-aos-delay="50"
+                  data-aos-duration="1000"
+                  data-aos-easing="ease-in-out"
                   key={name}
                   id={name ? name.toLowerCase().split(" ").join("-") : ""}
                 >

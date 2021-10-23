@@ -2,10 +2,13 @@ import styled from "styled-components";
 
 export const CarouselButtonStyles = styled.button`
   cursor: pointer;
-  background: var(--lightGrey1);
+  /* background-color: ${(props) => `${`'var(--lightGrey1)'`}`}; */
+  background: var(--lightGrey);
   border: none;
   padding: 1.7rem 2rem;
   margin: 0 2rem;
+  /* bacg */
+  opacity: 0.7;
 
   border-radius: 50%;
 

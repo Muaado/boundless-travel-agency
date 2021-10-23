@@ -141,9 +141,16 @@ const Reviews = ({ reviews }) => {
     setCellSpacing(spacing);
   }, [size]);
   return (
-    <ReviewsStyles className="resort__reviews">
+    <ReviewsStyles
+      className="resort__reviews"
+      data-aos="fade-up"
+      data-aos-delay="50"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+    >
       <h2>Reviews</h2>
       <Carousel
+        speed={1000}
         className="carousel"
         slidesToShow={numberOfSlides}
         cellSpacing={cellSpacing}

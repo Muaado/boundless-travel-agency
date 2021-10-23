@@ -47,6 +47,7 @@ const VillaStyles = styled.div`
         font-family: "Roboto";
         font-weight: normal;
         text-transform: uppercase;
+        font-size: 4rem;
         color: #fff;
         left: 10%;
         bottom: 10%;
@@ -73,9 +74,43 @@ const VillaStyles = styled.div`
         left: -55rem;
         z-index: 100;
 
+        &__button-right,
+        &__button-left {
+          display: none;
+        }
+
         &__image-container {
           height: 80rem !important;
           width: 60rem !important;
+        }
+
+        .slider-control-bottomcenter {
+          position: absolute;
+          bottom: -10rem !important;
+
+          ul {
+            /* display: flex !important;
+            align-items: center;
+            justify-content: center; */
+            li {
+              margin: 0;
+            }
+          }
+
+          .paging-item {
+            /* height: fit-content !important; */
+            button {
+              height: fit-content !important;
+              display: flex !important;
+              align-items: center;
+
+              svg {
+                /* height: 3rem;
+                width: 3rem; */
+                margin: 0;
+              }
+            }
+          }
         }
       }
       .container {
@@ -149,6 +184,7 @@ const VillaStyles = styled.div`
     &__room-features {
       margin-bottom: 10rem;
       position: relative;
+      overflow-y: hidden;
       h2,
       h3 {
         color: #fff;
@@ -171,7 +207,10 @@ const VillaStyles = styled.div`
         transform: translate(-50%, -50%);
         color: #fff;
 
-        background: rgba(0, 0, 0, 0.34);
+        background: rgba(0, 0, 0, 0.3);
+        /* box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.5); */
+        box-shadow: 5px 33px 42px rgb(0 0 0 / 60%);
+
         height: 100%;
 
         h3 {
@@ -217,7 +256,7 @@ const VillaStyles = styled.div`
     &__highlights {
       margin-top: 7rem;
       background: #fff6f6;
-      padding: 15rem 5%;
+      padding: 15rem 15%;
       display: grid;
       align-items: center;
       grid-template-columns: 35rem 1fr;
@@ -321,7 +360,7 @@ const VillaStyles = styled.div`
 
     &__restaurants {
       margin-top: 10rem;
-      padding: 0 10%;
+      padding: 0 15%;
       @media ${device.laptopL} {
         /* padding: 0; */
       }
@@ -378,6 +417,23 @@ const VillaStyles = styled.div`
 
       .slider {
         height: 70rem;
+      }
+
+      .slider-control-bottomcenter {
+        position: absolute;
+        bottom: -3rem !important;
+
+        .paging-item {
+          /* height: fit-content !important; */
+          button {
+            height: fit-content !important;
+            display: flex !important;
+            align-items: center;
+            svg {
+              margin: 0;
+            }
+          }
+        }
       }
     }
 

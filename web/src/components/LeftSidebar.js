@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ChevronUp from "../assets/icons/chevron-up.svg";
 
 const LeftSidebarStyles = styled.div`
+  opacity: 0;
   height: 50vh;
   display: flex;
   flex-direction: column;
@@ -14,6 +15,13 @@ const LeftSidebarStyles = styled.div`
   left: 5rem;
   top: 30%;
   z-index: 100;
+
+  transition: all 1s;
+
+  &.show {
+    opacity: 1;
+  }
+
   li {
     color: var(--grey);
     margin-bottom: 2rem;
@@ -62,7 +70,16 @@ const LeftSidebar = ({ list }) => {
   const windowGlobal = typeof window !== "undefined";
   if (windowGlobal) {
     window.addEventListener("scroll", () => {
-      let fromTop = window?.scrollY + 100;
+      let fromTop = window?.scrollY + 50;
+
+      // console.log();
+      // console.log(fromTop - 100);
+
+      if (navRef.current && window.innerHeight - 100 < fromTop) {
+        navRef.current.classList.add("show");
+      } else if (navRef.current) {
+        navRef.current.classList.remove("show");
+      }
 
       navRef.current?.childNodes?.[0]?.childNodes?.forEach((link) => {
         let section = document.querySelector(link.firstChild.hash);

@@ -3,14 +3,14 @@ import styled from "styled-components";
 import { device } from "../../styles/deviceSizes";
 
 const TailorMadeStyles = styled.div`
-  padding: 0 10%;
+  padding: 0 15%;
   margin-bottom: 22rem;
   h2 {
     text-align: center;
     margin-bottom: 10rem;
   }
   @media ${device.laptopL} {
-    padding: 0 10%;
+    padding: 0 15%;
   }
 
   @media ${device.laptopL} {
@@ -78,7 +78,13 @@ const TailorMadeStyles = styled.div`
 
 const TailorMade = () => {
   return (
-    <TailorMadeStyles className="tailor-made">
+    <TailorMadeStyles
+      className="tailor-made"
+      data-aos="fade-up"
+      data-aos-delay="50"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+    >
       <h2>100% Tailor-Made Holidays</h2>
       <ul>
         <li className="tailor-made__step">

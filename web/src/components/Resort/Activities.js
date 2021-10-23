@@ -7,7 +7,7 @@ import { device } from "../../styles/deviceSizes";
 const ActivitiesStyles = styled.div`
   margin: 10rem 0;
   text-align: center;
-  padding: 0 10%;
+  padding: 0 15%;
   display: flex;
   flex-direction: column;
   @media ${device.laptopL} {
@@ -29,6 +29,9 @@ const ActivitiesStyles = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.6rem;
+    li {
+      max-height: 35rem;
+    }
 
     img {
       width: 100%;
@@ -40,7 +43,12 @@ const ActivitiesStyles = styled.div`
 
 const Activities = ({ activities }) => {
   return (
-    <ActivitiesStyles>
+    <ActivitiesStyles
+      data-aos="fade-up"
+      data-aos-delay="50"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+    >
       <h2>Activities</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
