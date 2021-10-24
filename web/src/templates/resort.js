@@ -206,7 +206,7 @@ const ResortTemplate = (props) => {
       <Container>
         <ResortStyles>
           <div className="resort__image">
-            <Image {...image} width={1440} alt={image.alt} />
+            {image && <Image {...image} width={1440} alt={image?.alt} />}
             <div
               // id="header-text"
               className="text disappear-on-scroll"
@@ -337,7 +337,7 @@ const ResortTemplate = (props) => {
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
           >
-            <Image {...secondImage} alt={secondImage.alt} />
+            {secondImage && <Image {...secondImage} alt={secondImage?.alt} />}
           </div>
           {faq.slice(0, slice ? slice : 1).map((faq) => (
             <Faq

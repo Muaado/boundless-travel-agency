@@ -124,13 +124,14 @@ const Gallery = ({ id, galleries }) => {
       </ul>
       {!selectedGallery ? (
         <ul className="image-grid">
-          {galleries[0].images.slice(0, 4).map((image) => {
-            return (
-              <li key={image.alt}>
-                <Image {...image} alt={image.alt} />
-              </li>
-            );
-          })}
+          {galleries.length &&
+            galleries[0]?.images.slice(0, 4).map((image) => {
+              return (
+                <li key={image.alt}>
+                  <Image {...image} alt={image.alt} />
+                </li>
+              );
+            })}
         </ul>
       ) : (
         <Carousel
