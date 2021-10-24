@@ -235,7 +235,7 @@ const VilaTemplate = (props) => {
         <VillaStyles>
           {heroImage && (
             <div className="villa__image">
-              <Image {...heroImage} alt={heroImage.alt} />
+              {heroImage && <Image {...heroImage} alt={heroImage.alt} />}
               <h1 className="villa__image-title" id="header-text">
                 {resortName}
               </h1>
@@ -462,20 +462,21 @@ const VilaTemplate = (props) => {
                 <CarouselButton onClick={previousSlide} />
               )}
             >
-              {resorts.nodes.map(({ name, image }) => (
-                <Link
-                  className="carousel__node"
-                  to={getResortUrl({ name })}
-                  key={name}
-                >
-                  {/* <a className="carousel__node" key={name}> */}
-                  <div className="image-container">
-                    <Image {...image} alt={image.alt} />
-                  </div>
-                  <p>{name}</p>
-                  {/* </a> */}
-                </Link>
-              ))}
+              {resorts.nodes.length &&
+                resorts.nodes.map(({ name, image }) => (
+                  <Link
+                    className="carousel__node"
+                    to={getResortUrl({ name })}
+                    key={name}
+                  >
+                    {/* <a className="carousel__node" key={name}> */}
+                    <div className="image-container">
+                      {image && <Image {...image} alt={image.alt} />}
+                    </div>
+                    <p>{name}</p>
+                    {/* </a> */}
+                  </Link>
+                ))}
             </Carousel>
           </div>
           <Reviews reviews={reviews} />
