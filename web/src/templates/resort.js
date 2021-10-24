@@ -323,7 +323,7 @@ const ResortTemplate = (props) => {
             </ul>
           </div>
 
-          <Gallery id="gallery" galleries={galleries} />
+          {galleries && <Gallery id="gallery" galleries={galleries} />}
 
           {featuredSpa && <Spa className="resort__spa" spa={featuredSpa} />}
 
