@@ -70,7 +70,7 @@ export const query = graphql`
       description
       keywords
       description
-
+      videoURL
       handCraftedJourneys {
         title
         _rawDescription
@@ -232,7 +232,8 @@ const IndexPage = (props) => {
           <Video
             videoSrcURL={
               // VideoBg
-              "https://res.cloudinary.com/dqh4ewsaz/video/upload/v1634911148/Tes%20images/hero_vdo_for_boundless_2_-_Large_540p_afaw8u.mov"
+
+              site.videoURL
             }
           />
           <h1 className="disappear-on-scroll">
