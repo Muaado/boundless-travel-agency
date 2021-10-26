@@ -293,6 +293,7 @@ const VillaStyles = styled.div`
               opacity: 1;
               color: #fff;
               z-index: 100;
+              text-align: center;
               align-items: center;
               justify-content: center;
               padding: 2rem;

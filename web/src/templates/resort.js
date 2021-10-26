@@ -1,4 +1,4 @@
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 
 import React, { useRef, useState } from "react";
 // import GraphQLErrorList from "../components/graphql-error-list";
@@ -24,6 +24,7 @@ import { ContactUs } from "../components/Homepage/ContactUs";
 import Faq from "../components/Homepage/Faq";
 import LeftSidebar from "../components/LeftSidebar";
 import { MouseScroll } from "../components/Ui/MouseScroll";
+import { getHighlightUrl } from "../lib/helpers";
 
 // import review from "../../../studio/schemas/documents/review";
 
@@ -281,9 +282,9 @@ const ResortTemplate = (props) => {
             <ul>
               {highlights.map(({ name, imageThumb, _rawDescription }) => (
                 <li key={imageThumb?.alt}>
-                  <a>
+                  <Link to={getHighlightUrl({ name, resortName: resort.name })}>
                     {name} <ChevronRight />
-                  </a>
+                  </Link>
                   <PortableText blocks={_rawDescription} />
                   <Image {...imageThumb} alt={imageThumb.alt} />
                 </li>

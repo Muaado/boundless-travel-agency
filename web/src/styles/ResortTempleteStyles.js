@@ -126,10 +126,17 @@ const ResortStyles = styled.div`
         transform: translate(-50%, -50%);
         border: 1px solid #fff;
         z-index: 100;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        svg {
+          margin-left: 1rem;
+        }
       }
       p {
+        width: 90%;
         position: absolute;
-        top: 50%;
+        top: 20%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 100;

@@ -91,7 +91,8 @@ export default {
       type: "array",
       of: [
         {
-          type: "resortHighlight",
+          type: "reference",
+          to: { type: "resortHighlight" },
         },
       ],
     },

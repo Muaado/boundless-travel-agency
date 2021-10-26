@@ -26,11 +26,11 @@ const HeaderStyles = styled.header`
   opacity: 0.77; */
 
   background: linear-gradient(
-    188.95deg,
-    #1c2238 24.5%,
-    rgba(28, 34, 56, 0) 59.2%
+    183.95deg,
+    #1c2238 26.5%,
+    rgba(35, 51, 60, 0) 68.2%
   );
-  opacity: 0.77;
+  opacity: 0.66;
 
   color: #fff;
   z-index: 1000;

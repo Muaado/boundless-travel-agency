@@ -12,22 +12,22 @@ export default {
       type: "bodyPortableText",
       title: "Description",
     },
-    // {
-    //   title: "Resort",
-    //   name: "resort",
-    //   type: "reference",
-    //   to: [{ type: "resort" }],
-    // },
+    {
+      title: "Resort",
+      name: "resort",
+      type: "reference",
+      to: [{ type: "resort" }],
+    },
     {
       name: "highlightAlternateName",
       title: "Highlight alternate name",
       type: "array",
       of: [
         {
-          type: "alternateName",
-          // type: "reference",
-          // to: {
-          // },
+          type: "reference",
+          to: {
+            type: "alternateName",
+          },
         },
       ],
     },

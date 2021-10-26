@@ -256,6 +256,50 @@ async function createActivityPages(graphql, actions) {
   });
 }
 
+async function createHighlightPage(graphql, actions) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allSanityResortHighlight {
+        nodes {
+          _id
+          name
+          resort {
+            _id
+            name
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const highlightNodes =
+    (result.data.allSanityResortHighlight || {}).nodes || [];
+
+  console.log(highlightNodes, "nodes highlihgts");
+
+  highlightNodes.forEach((node) => {
+    const { _id, name, resort } = node;
+
+    let path;
+    if (typeof name === "string" && resort) {
+      path = `/${resort.name
+        .toLowerCase()
+        .split(" ")
+        .join("-")}/highlight/${name.toLowerCase().split(" ").join("-")}`;
+    }
+
+    if (path)
+      createPage({
+        path,
+        component: require.resolve("./src/templates/highlight.js"),
+        context: { id: _id, resortId: resort._id },
+      });
+  });
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   await createResortPages(graphql, actions);
   await createVillaPages(graphql, actions);
@@ -263,4 +307,5 @@ exports.createPages = async ({ graphql, actions }) => {
   await createRestaurantPages(graphql, actions);
   await createActivityPages(graphql, actions);
   await createBlogPostPages(graphql, actions);
+  await createHighlightPage(graphql, actions);
 };

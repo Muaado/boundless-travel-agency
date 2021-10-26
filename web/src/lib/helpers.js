@@ -71,6 +71,13 @@ export const getActivityUrl = ({ name, resortName }) => {
     .join("-")}`;
 };
 
+export const getHighlightUrl = ({ name, resortName }) => {
+  return `/${resortName.toLowerCase().split(" ").join("-")}/highlight/${name
+    .toLowerCase()
+    .split(" ")
+    .join("-")}`;
+};
+
 export const getCollectionUrl = ({ name, type }) => {
   return `/collection/${type.type}#${
     type.type === "villa" ? name.toLowerCase().split(" ").join("-") : ""

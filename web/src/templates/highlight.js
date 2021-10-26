@@ -14,17 +14,17 @@ import PortableText from "../components/portableText";
 import { ContactUs } from "../components/Homepage/ContactUs";
 
 export const query = graphql`
-  query ActivityTemplateQuery($id: String!) {
-    activity: sanityActivity(_id: { eq: $id }) {
+  query HighlightTemplateQuery($id: String!) {
+    highlight: sanityResortHighlight(_id: { eq: $id }) {
       name
       _rawDescription
-      activityIdealFor {
+      highlightIdealFor {
         idealFor
       }
-      activityAlternateName {
+      highlightAlternateName {
         name
       }
-      activityTags {
+      highlightTags {
         tag
       }
       imageWeb {
@@ -63,7 +63,7 @@ export const query = graphql`
   }
 `;
 
-const ActivityPageStyles = styled.div`
+const HighlightPageStyles = styled.div`
   .content {
     margin: 10rem 0;
     padding: 0 15%;
@@ -120,7 +120,7 @@ const ActivityPageStyles = styled.div`
 
 const Restaurant = (props) => {
   const { data, errors } = props;
-  const activity = data && data.activity;
+  const highlight = data && data.highlight;
   const site = data && data.site;
   const {
     name,
@@ -128,15 +128,15 @@ const Restaurant = (props) => {
     tagline,
     _rawDescription,
     imageWeb,
-    activityIdealFor,
-    activityTags,
-    activityAlternateName,
+    highlightIdealFor,
+    highlightTags,
+    highlightAlternateName,
     resort,
-  } = activity;
+  } = highlight;
 
   return (
     <Layout>
-      <ActivityPageStyles>
+      <HighlightPageStyles>
         <HeroStyles>
           {imageWeb && <Image {...imageWeb} alt={imageWeb.alt} />}
           <h1 className="disappear-on-scroll">{resort.name}</h1>
@@ -151,10 +151,10 @@ const Restaurant = (props) => {
           <div>
             <h1>{name}</h1>
             <h2>
-              {activityAlternateName.map(
+              {highlightAlternateName.map(
                 ({ name }, index) =>
                   `${name}${
-                    index + 1 !== activityAlternateName.length ? ", " : ""
+                    index + 1 !== highlightAlternateName.length ? ", " : ""
                   }`
               )}
             </h2>
@@ -164,7 +164,7 @@ const Restaurant = (props) => {
               <div>
                 <h2>Ideal for</h2>
                 <ul>
-                  {activityIdealFor.map(({ idealFor }) => (
+                  {highlightIdealFor.map(({ idealFor }) => (
                     <li key={idealFor}>{idealFor}</li>
                   ))}
                 </ul>
@@ -172,7 +172,7 @@ const Restaurant = (props) => {
               <div>
                 <h2>Tags</h2>
                 <ul>
-                  {activityTags.map(({ tag }) => (
+                  {highlightTags.map(({ tag }) => (
                     <li key={tag}>{tag}</li>
                   ))}
                 </ul>
@@ -186,7 +186,7 @@ const Restaurant = (props) => {
           </Link>
         </div>
         <ContactUs contactUs={site.contactUs} />
-      </ActivityPageStyles>
+      </HighlightPageStyles>
     </Layout>
   );
 };

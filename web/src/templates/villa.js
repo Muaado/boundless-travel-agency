@@ -3,7 +3,12 @@ import React, { useState } from "react";
 import Layout from "../containers/layout";
 import Container from "../components/container";
 import SEO from "../components/seo";
-import { getResortUrl, getRestaurantUrl, toPlainText } from "../lib/helpers";
+import {
+  getHighlightUrl,
+  getResortUrl,
+  getRestaurantUrl,
+  toPlainText,
+} from "../lib/helpers";
 
 import Image from "gatsby-plugin-sanity-image";
 
@@ -365,17 +370,19 @@ const VilaTemplate = (props) => {
               </p>
             </div>
             <ul>
-              {highlights.map(({ name, imageThumb, _rawDescription }) => (
+              {highlights.map(({ name, imageThumb }) => (
                 <li key={imageThumb?.alt}>
-                  {/* <a>
+                  <Link to={getHighlightUrl({ name, resortName })}>
+                    {/* <a>
                      <ChevronRight />
                   </a> */}
-                  <div className="text">
-                    <h3>{name}</h3>
-                    {/* <PortableText blocks={_rawDescription} /> */}
-                  </div>
+                    <div className="text">
+                      <h3>{name}</h3>
+                      {/* <PortableText blocks={_rawDescription} /> */}
+                    </div>
 
-                  <Image {...imageThumb} alt={imageThumb.alt} />
+                    <Image {...imageThumb} alt={imageThumb.alt} />
+                  </Link>
                 </li>
               ))}
             </ul>
