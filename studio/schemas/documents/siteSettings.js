@@ -58,6 +58,18 @@ export default {
     },
 
     {
+      name: "collectionPageImage",
+      type: "mainImage",
+      title: "Collection page image",
+    },
+
+    {
+      name: "magazinePageImage",
+      type: "mainImage",
+      title: "Magazine page image",
+    },
+
+    {
       name: "promoImageWeb",
       type: "mainImage",
       title: "Promo image web",

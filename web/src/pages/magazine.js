@@ -8,6 +8,10 @@ import { graphql } from "gatsby";
 import { mapEdgesToNodes } from "../lib/helpers";
 
 import { responsiveTitle1 } from "../components/typography.module.css";
+import styled from "styled-components";
+import { HeroStyles } from "../components/Homepage/styles";
+
+import Image from "gatsby-plugin-sanity-image";
 
 export const query = graphql`
   query MagazinePageQuery {
@@ -31,7 +35,18 @@ export const query = graphql`
         }
       }
     }
+
+    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+      magazinePageImage {
+        ...SanityImage
+        alt
+      }
+    }
   }
+`;
+
+const MagazinePageStyles = styled.div`
+  padding: 0 15%;
 `;
 
 const MagazinePage = (props) => {
@@ -51,10 +66,18 @@ const MagazinePage = (props) => {
     <Layout>
       <SEO title="Magazine" />
       <Container>
-        <h1 className={responsiveTitle1}>Magazine</h1>
-        {postNodes && postNodes.length > 0 && (
-          <BlogPostPreviewGrid nodes={postNodes} />
-        )}
+        <HeroStyles>
+          <Image
+            {...data.site.magazinePageImage}
+            alt={data.site.magazinePageImage.alt}
+          />
+        </HeroStyles>
+        <MagazinePageStyles>
+          {/* <h1>Magazine</h1> */}
+          {postNodes && postNodes.length > 0 && (
+            <BlogPostPreviewGrid nodes={postNodes} />
+          )}
+        </MagazinePageStyles>
       </Container>
     </Layout>
   );

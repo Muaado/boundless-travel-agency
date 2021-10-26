@@ -216,10 +216,9 @@ async function createRestaurantPages(graphql, actions) {
 }
 
 exports.createPages = async ({ graphql, actions }) => {
-  // await createBlogPostPages(graphql, actions);
-
   await createResortPages(graphql, actions);
   await createVillaPages(graphql, actions);
   await createCollectionPages(graphql, actions);
   await createRestaurantPages(graphql, actions);
+  await createBlogPostPages(graphql, actions);
 };

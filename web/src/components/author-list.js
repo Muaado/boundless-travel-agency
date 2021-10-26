@@ -1,39 +1,51 @@
 import * as styles from "./author-list.module.css";
 import React from "react";
-import { buildImageObj } from "../lib/helpers";
-import { imageUrlFor } from "../lib/image-url";
+import Image from "gatsby-plugin-sanity-image";
+import styled from "styled-components";
+
+const AuthorListStyles = styled.div`
+  ul {
+    li {
+      display: flex;
+      align-items: center;
+
+      .image {
+        margin-right: 2rem;
+        width: 7rem;
+        height: 7rem;
+        img {
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+`;
 
 function AuthorList({ items, title }) {
   return (
-    <div className={styles.root}>
-      <h2 className={styles.headline}>{title}</h2>
-      <ul className={styles.list}>
+    <AuthorListStyles>
+      <h2>{title}</h2>
+      <ul>
         {items.map(({ author, _key }) => {
           const authorName = author && author.name;
           return (
-            <li key={_key} className={styles.listItem}>
-              <div>
-                <div className={styles.avatar}>
-                  {author && author.image && author.image.asset && (
-                    <img
-                      src={imageUrlFor(buildImageObj(author.image))
-                        .width(100)
-                        .height(100)
-                        .fit("crop")
-                        .url()}
-                      alt=""
-                    />
-                  )}
-                </div>
+            <li key={_key}>
+              <div className="image">
+                {author && author.image && author.image.asset && (
+                  <Image {...author.image} alt={author.image.alt} />
+                )}
               </div>
+
               <div>
-                <div>{authorName || <em>Missing name</em>}</div>
+                <div className="name">
+                  {authorName || <em>Missing name</em>}
+                </div>
               </div>
             </li>
           );
         })}
       </ul>
-    </div>
+    </AuthorListStyles>
   );
 }
 

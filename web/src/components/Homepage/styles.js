@@ -214,7 +214,7 @@ export const MagazineStyles = styled.div`
       text-transform: unset;
     }
     p {
-      max-width: 25rem;
+      /* max-width: 25rem; */
       @media ${device.tablet} {
         align-self: center;
         /* max-width: unset; */

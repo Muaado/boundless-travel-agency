@@ -6,37 +6,70 @@ import React from "react";
 import { format } from "date-fns";
 import { imageUrlFor } from "../lib/image-url";
 
+import Image from "gatsby-plugin-sanity-image";
+
 import { responsiveTitle3 } from "./typography.module.css";
+import styled from "styled-components";
+
+const BlogPostPreviewStyles = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  width: 100%;
+  margin-bottom: 5rem;
+
+  .image-container {
+    /* max-height: 70rem; */
+    /* height: 80rem; */
+    overflow: hidden;
+    width: 100%;
+  }
+  img {
+    /* height: 60rem; */
+    /* max-height: 60rem; */
+    min-width: 100%;
+    object-position: bottom;
+  }
+
+  .content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .date {
+    margin-top: 10rem;
+    font-style: italic;
+    align-self: flex-end;
+    justify-self: flex-end;
+  }
+`;
 
 function BlogPostPreview(props) {
   return (
-    <Link
-      className={props.isInList ? styles.inList : styles.inGrid}
-      to={getBlogUrl(props.publishedAt, props.slug.current)}
-    >
-      <div className={styles.leadMediaThumb}>
-        {props.mainImage && props.mainImage.asset && (
-          <img
-            src={imageUrlFor(buildImageObj(props.mainImage))
-              .width(600)
-              .height(Math.floor((9 / 16) * 600))
-              .auto("format")
-              .url()}
-            alt={props.mainImage.alt}
-          />
-        )}
-      </div>
-      <div className={styles.text}>
-        <h3 className={cn(responsiveTitle3, styles.title)}>{props.title}</h3>
-        {props._rawExcerpt && (
-          <div className={styles.excerpt}>
-            <PortableText blocks={props._rawExcerpt} />
-          </div>
-        )}
-        <div className={styles.date}>
-          {format(new Date(props.publishedAt), "MMMM Mo, yyyy")}
+    <Link to={getBlogUrl(props.publishedAt, props.slug.current)}>
+      <BlogPostPreviewStyles>
+        <div className="image-container">
+          {props.mainImage && props.mainImage.asset && (
+            <Image {...props.mainImage} alt={props.mainImage.alt} />
+          )}
         </div>
-      </div>
+        <div className="content">
+          <h2>{props.title}</h2>
+          {props._rawExcerpt && (
+            <div>
+              <PortableText blocks={props._rawExcerpt} />
+            </div>
+          )}
+          <div className="date">
+            {format(new Date(props.publishedAt), "MMMM Mo, yyyy")}
+          </div>
+        </div>
+      </BlogPostPreviewStyles>
     </Link>
   );
 }
