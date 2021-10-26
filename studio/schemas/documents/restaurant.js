@@ -57,6 +57,13 @@ export default {
     },
 
     {
+      name: "descriptionLong",
+      type: "bodyPortableText",
+      title: "Description long",
+      description: "Description for page",
+    },
+
+    {
       name: "imageMobile",
       type: "mainImage",
       title: "Restaurant image mobile",

@@ -30,7 +30,7 @@ export const HeroStyles = styled.div`
     transform: translate(-50%, -50%);
 
     font-family: "Roboto";
-    font-size: 3.4rem;
+    font-size: 5rem;
     color: #fff;
   }
   p {

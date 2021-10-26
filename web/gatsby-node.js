@@ -197,6 +197,7 @@ async function createRestaurantPages(graphql, actions) {
 
   restaurantNodes.forEach((node) => {
     const { _id, name, resort } = node;
+    console.log(node, "restaurant");
 
     let path;
     if (typeof name === "string" && resort) {
