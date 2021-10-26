@@ -64,6 +64,12 @@ export const getRestaurantUrl = ({ name, resortName }) => {
     .split(" ")
     .join("-")}`;
 };
+export const getActivityUrl = ({ name, resortName }) => {
+  return `/${resortName.toLowerCase().split(" ").join("-")}/activity/${name
+    .toLowerCase()
+    .split(" ")
+    .join("-")}`;
+};
 
 export const getCollectionUrl = ({ name, type }) => {
   return `/collection/${type.type}#${

@@ -154,6 +154,10 @@ export const query = graphql`
       filter: { resort: { _id: { eq: $resortId } } }
     ) {
       nodes {
+        name
+        resort {
+          name
+        }
         imageThumb {
           ...SanityImage
           alt

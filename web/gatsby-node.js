@@ -197,7 +197,6 @@ async function createRestaurantPages(graphql, actions) {
 
   restaurantNodes.forEach((node) => {
     const { _id, name, resort } = node;
-    console.log(node, "restaurant");
 
     let path;
     if (typeof name === "string" && resort) {
@@ -216,10 +215,52 @@ async function createRestaurantPages(graphql, actions) {
   });
 }
 
+async function createActivityPages(graphql, actions) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allSanityActivity {
+        nodes {
+          _id
+          name
+          resort {
+            _id
+            name
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const activityNodes = (result.data.allSanityActivity || {}).nodes || [];
+
+  activityNodes.forEach((node) => {
+    const { _id, name, resort } = node;
+
+    let path;
+    if (typeof name === "string" && resort) {
+      path = `/${resort.name.toLowerCase().split(" ").join("-")}/activity/${name
+        .toLowerCase()
+        .split(" ")
+        .join("-")}`;
+    }
+
+    if (path)
+      createPage({
+        path,
+        component: require.resolve("./src/templates/activity.js"),
+        context: { id: _id, resortId: resort._id },
+      });
+  });
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   await createResortPages(graphql, actions);
   await createVillaPages(graphql, actions);
   await createCollectionPages(graphql, actions);
   await createRestaurantPages(graphql, actions);
+  await createActivityPages(graphql, actions);
   await createBlogPostPages(graphql, actions);
 };

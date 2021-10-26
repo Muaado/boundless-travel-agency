@@ -132,6 +132,10 @@ export const query = graphql`
 
     activities: allSanityActivity(filter: { resort: { _id: { eq: $id } } }) {
       nodes {
+        name
+        resort {
+          name
+        }
         imageThumb {
           ...SanityImage
           alt

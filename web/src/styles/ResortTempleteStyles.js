@@ -147,7 +147,7 @@ const ResortStyles = styled.div`
 
     &__restaurants {
       margin-top: 10rem;
-      margin-bottom: 12rem;
+      margin-bottom: 22rem;
       padding: 0 15%;
       p {
         font-size: 1.4rem;
@@ -187,7 +187,7 @@ const ResortStyles = styled.div`
             object-position: top;
           }
           &:nth-of-type(odd) {
-            margin-top: 10rem;
+            margin-top: 20rem;
           }
           &:nth-of-type(even) {
             top: -15rem;

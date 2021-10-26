@@ -14,13 +14,19 @@ import PortableText from "../components/portableText";
 import { ContactUs } from "../components/Homepage/ContactUs";
 
 export const query = graphql`
-  query RestaurantTemplateQuery($id: String!) {
-    restaurant: sanityRestaurant(_id: { eq: $id }) {
+  query ActivityTemplateQuery($id: String!) {
+    activity: sanityActivity(_id: { eq: $id }) {
       name
-      alternateName
-      tagline
-      halalAvailable
-      _rawDescriptionLong
+      _rawDescription
+      activityIdealFor {
+        idealFor
+      }
+      activityAlternateName {
+        name
+      }
+      activityTags {
+        tag
+      }
       imageWeb {
         ...SanityImage
         alt
@@ -57,7 +63,7 @@ export const query = graphql`
   }
 `;
 
-const RestaurantPageStyles = styled.div`
+const ActivityPageStyles = styled.div`
   .content {
     margin: 10rem 0;
     padding: 0 15%;
@@ -69,6 +75,7 @@ const RestaurantPageStyles = styled.div`
     h2 {
       font-size: 3rem;
       margin-bottom: 1rem;
+      text-transform: capitalize;
     }
     .tagline {
       font-style: italic;
@@ -77,6 +84,22 @@ const RestaurantPageStyles = styled.div`
       color: #000;
       margin-top: 2rem;
       /* max-width: 50%; */
+    }
+
+    .lists {
+      display: flex;
+      margin-top: 5rem;
+      div {
+        margin-right: 3rem;
+      }
+      ul {
+        li {
+          font-size: 1.6rem;
+        }
+      }
+      h2 {
+        text-transform: capitalize;
+      }
     }
 
     .resort {
@@ -94,21 +117,23 @@ const RestaurantPageStyles = styled.div`
 
 const Restaurant = (props) => {
   const { data, errors } = props;
-  const restaurant = data && data.restaurant;
+  const activity = data && data.activity;
   const site = data && data.site;
   const {
     name,
     alternateName,
     tagline,
-    halalAvailable,
-    _rawDescriptionLong,
+    _rawDescription,
     imageWeb,
+    activityIdealFor,
+    activityTags,
+    activityAlternateName,
     resort,
-  } = restaurant;
+  } = activity;
 
   return (
     <Layout>
-      <RestaurantPageStyles>
+      <ActivityPageStyles>
         <HeroStyles>
           {imageWeb && <Image {...imageWeb} alt={imageWeb.alt} />}
           <h1 className="disappear-on-scroll">{resort.name}</h1>
@@ -122,9 +147,34 @@ const Restaurant = (props) => {
         >
           <div>
             <h1>{name}</h1>
-            <h2>{alternateName}</h2>
+            <h2>
+              {activityAlternateName.map(
+                ({ name }, index) =>
+                  `${name} ${
+                    index + 1 !== activityAlternateName.length ? "," : ""
+                  }`
+              )}
+            </h2>
             <p className="tagline">{tagline}</p>
-            <PortableText blocks={_rawDescriptionLong} />
+            <PortableText blocks={_rawDescription} />
+            <div className="lists">
+              <div>
+                <h2>Ideal for</h2>
+                <ul>
+                  {activityIdealFor.map(({ idealFor }) => (
+                    <li key={idealFor}>{idealFor}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h2>Tags</h2>
+                <ul>
+                  {activityTags.map(({ tag }) => (
+                    <li key={tag}>{tag}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
 
           <Link to={getResortUrl({ name: resort.name })} className="resort">
@@ -133,7 +183,7 @@ const Restaurant = (props) => {
           </Link>
         </div>
         <ContactUs contactUs={site.contactUs} />
-      </RestaurantPageStyles>
+      </ActivityPageStyles>
     </Layout>
   );
 };
