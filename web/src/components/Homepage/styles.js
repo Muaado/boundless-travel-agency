@@ -3,7 +3,7 @@ import { device } from "../../styles/deviceSizes";
 
 export const HeroStyles = styled.div`
   text-align: center;
-
+  overflow: hidden;
   color: #fff;
 
   /* position: absolute; */
@@ -17,6 +17,8 @@ export const HeroStyles = styled.div`
     content: "";
     position: absolute;
     opacity: 0.3;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background-color: #000;

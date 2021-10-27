@@ -248,12 +248,12 @@ const IndexPage = (props) => {
             autoload={true | false}
             autoplay={true | false}
             className="video"
-            height={"100%"}
+            height={"100vh"}
             loop={true | false}
-            muted={true | false}
-            showControls={true | false}
+            muted={true}
+            showControls={false}
             style={{}}
-            width={"100%"}
+            width={"100vh"}
           />
           {/* <Video
             videoSrcURL={
