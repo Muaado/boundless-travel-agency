@@ -26,6 +26,7 @@ import LeftSidebar from "../components/LeftSidebar";
 import { MouseScroll } from "../components/Ui/MouseScroll";
 import { getHighlightUrl } from "../lib/helpers";
 
+import { toPlainText } from "../lib/helpers";
 // import review from "../../../studio/schemas/documents/review";
 
 export const query = graphql`
@@ -204,8 +205,8 @@ const ResortTemplate = (props) => {
       {resort && (
         <SEO
           title={resort.name || "Untitled"}
-          // description={toPlainText(resort._rawExcerpt)}
-          // image={resort.mainImage}
+          description={toPlainText(resort._rawDescription)}
+          image={resort.image}
         />
       )}
       <Container>

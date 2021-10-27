@@ -43,9 +43,11 @@ const NotFoundPage = (props) => {
   let pagesByType = [];
 
   pages.nodes.forEach(({ context }) => {
-    const typeAdded = pagesByType.find((value) => value.type === context._type);
-    if (!typeAdded && context._type !== null)
-      pagesByType.push({ type: context._type, items: [] });
+    const typeAdded = pagesByType.find(
+      (value) => value.type === context?._type
+    );
+    if (!typeAdded && context?._type !== null)
+      pagesByType.push({ type: context?._type || "", items: [] });
   });
 
   pages.nodes.forEach(({ path, context }) => {
