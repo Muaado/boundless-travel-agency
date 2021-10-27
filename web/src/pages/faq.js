@@ -127,11 +127,11 @@ const FAQPage = (props) => {
       <Container>
         <HeroStyles>
           {/* <h1> {site.description}</h1> */}
-          <Video
+          {/* <Video
             videoSrcURL={
               "https://res.cloudinary.com/dqh4ewsaz/video/upload/v1634911148/Tes%20images/hero_vdo_for_boundless_2_-_Large_540p_afaw8u.mov"
             }
-          />
+          /> */}
         </HeroStyles>
         <FaqStyles className="page-content">
           {site.faq.map((faq) => (
