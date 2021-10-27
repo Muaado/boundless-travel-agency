@@ -59,24 +59,16 @@ const AboutUs = ({ aboutUs }) => {
       data-aos-easing="ease-in-out"
     >
       <div className="about-us__image-container">
-        <Image
-          {...aboutUs.image}
-          // tell Sanity how large to make the image (does not set any CSS)
-          width={500}
-          // style it how you want it
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-          // fluid={imageUrlFor(buildImageObj(site.promoImageWeb))
-          //   .width(1200)
-          //   .height(Math.floor((9 / 16) * 1200))
-          //   .fit("crop")
-          //   .auto("format")
-          //   .url()}
-          alt={aboutUs.image.alt}
-        />
+        {aboutUs.image && (
+          <Image
+            {...aboutUs.image}
+            // tell Sanity how large to make the image (does not set any CSS)
+            width={500}
+            // style it how you want it
+
+            alt={aboutUs.image.alt}
+          />
+        )}
       </div>
       <div className="about-us__text">
         <h2>{aboutUs.title}</h2>

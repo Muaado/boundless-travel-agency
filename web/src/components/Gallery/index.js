@@ -128,7 +128,7 @@ const Gallery = ({ id, galleries }) => {
             galleries[0]?.images.slice(0, 4).map((image) => {
               return (
                 <li key={image.alt}>
-                  <Image {...image} alt={image.alt} />
+                  {image && <Image {...image} alt={image.alt} />}
                 </li>
               );
             })}

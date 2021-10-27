@@ -98,7 +98,7 @@ const Activities = ({ activities }) => {
         {activities.nodes.map(({ name, imageThumb, resort }) => (
           <li key={imageThumb.alt}>
             <Link to={getActivityUrl({ name, resortName: resort.name })}>
-              <Image {...imageThumb} alt={imageThumb.alt} />
+              {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
               <p>{name}</p>
             </Link>
           </li>

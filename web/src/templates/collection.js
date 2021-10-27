@@ -102,10 +102,12 @@ const CollectionTemplate = (props) => {
       <CollectionStyles>
         {collections.nodes[0]?.imageWeb && (
           <div className="collection__image">
-            <Image
-              {...collections.nodes[0].imageWeb}
-              alt={collections.nodes[0].imageWeb.alt}
-            />
+            {collections.nodes[0].imageWeb && (
+              <Image
+                {...collections.nodes[0].imageWeb}
+                alt={collections.nodes[0].imageWeb.alt}
+              />
+            )}
           </div>
         )}
 
@@ -137,7 +139,9 @@ const CollectionTemplate = (props) => {
                           {image ? (
                             <Image {...image} alt={image.alt} />
                           ) : (
-                            <Image {...imageWeb} alt={imageWeb.alt} />
+                            imageWeb && (
+                              <Image {...imageWeb} alt={imageWeb.alt} />
+                            )
                           )}
                           <div className="text">
                             <h3>{name}</h3>

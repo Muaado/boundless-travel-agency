@@ -287,7 +287,7 @@ const ResortTemplate = (props) => {
                     {name} <ChevronRight />
                   </Link>
                   <PortableText blocks={_rawDescription} />
-                  <Image {...imageThumb} alt={imageThumb.alt} />
+                  {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
                 </li>
               ))}
             </ul>
@@ -315,7 +315,9 @@ const ResortTemplate = (props) => {
                 ({ name, alternateName, imageThumb, _rawDescription }) => (
                   <li key={name}>
                     <div key={name} className="image-container">
-                      <Image {...imageThumb} alt={imageThumb.alt} />
+                      {imageThumb && (
+                        <Image {...imageThumb} alt={imageThumb.alt} />
+                      )}
                     </div>
                     <div className="resort__restaurants__text">
                       <span className="name">{name}</span>

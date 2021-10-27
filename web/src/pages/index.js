@@ -277,7 +277,7 @@ const IndexPage = (props) => {
                   <li key={title}>
                     {/* <Link to={getBlogUrl(publishedAt, slug.current)}> */}
                     <div className="image-container">
-                      <Image {...image} alt={image.alt} />
+                      {image && <Image {...image} alt={image.alt} />}
                     </div>
                     <h3>{title}</h3>
                     <PortableText blocks={_rawDescription} />
@@ -305,7 +305,9 @@ const IndexPage = (props) => {
                   <li key={title}>
                     <Link to={getBlogUrl(publishedAt, slug.current)}>
                       <div className="image-container">
-                        <Image {...mainImage} alt={mainImage.alt} />
+                        {mainImage && (
+                          <Image {...mainImage} alt={mainImage.alt} />
+                        )}
                       </div>
                       <h3>{title}</h3>
                       <PortableText blocks={_rawExcerpt} />

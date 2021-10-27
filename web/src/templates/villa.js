@@ -304,10 +304,12 @@ const VilaTemplate = (props) => {
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
           >
-            <Image
-              {...roomFeatures.backgroundImage}
-              alt={roomFeatures.backgroundImage.alt}
-            />
+            {roomFeatures.backgroundImage && (
+              <Image
+                {...roomFeatures.backgroundImage}
+                alt={roomFeatures.backgroundImage.alt}
+              />
+            )}
             <div className="content">
               <h2>Room features</h2>
               <ul>
@@ -381,7 +383,9 @@ const VilaTemplate = (props) => {
                       {/* <PortableText blocks={_rawDescription} /> */}
                     </div>
 
-                    <Image {...imageThumb} alt={imageThumb.alt} />
+                    {imageThumb && (
+                      <Image {...imageThumb} alt={imageThumb.alt} />
+                    )}
                   </Link>
                 </li>
               ))}
@@ -401,15 +405,9 @@ const VilaTemplate = (props) => {
                 ({ name, alternateName, imageThumb, resort }) => (
                   <li key={name}>
                     <div key={name} className="image-container">
-                      <Image
-                        style={{
-                          width: "100%",
-                          height: "90%",
-                          objectFit: "cover",
-                        }}
-                        {...imageThumb}
-                        alt={imageThumb.alt}
-                      />
+                      {imageThumb && (
+                        <Image {...imageThumb} alt={imageThumb.alt} />
+                      )}
                     </div>
                     <div className="villa__restaurants__text">
                       <span className="name">{name}</span>

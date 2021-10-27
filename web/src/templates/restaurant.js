@@ -141,7 +141,7 @@ const Restaurant = (props) => {
           </div>
 
           <Link to={getResortUrl({ name: resort.name })} className="resort">
-            <Image {...resort.image} />
+            {resort.image && <Image {...resort.image} alt={resort.image.alt} />}
             <p>{resort.name}</p>
           </Link>
         </div>

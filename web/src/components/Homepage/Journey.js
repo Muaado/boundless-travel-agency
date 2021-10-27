@@ -168,17 +168,9 @@ const Journey = ({ collections }) => {
               >
                 <p>{node.name}</p>
 
-                {console.log(node.rank, node.name)}
-                <Image
-                  {...node.imageThumb}
-                  // src={imageUrlFor(buildImageObj(node.imageThumb))
-                  //   .width(1200)
-                  //   .height(Math.floor((9 / 16) * 1200))
-                  //   .fit("crop")
-                  //   .auto("format")
-                  //   .url()}
-                  alt={node.imageThumb.alt}
-                />
+                {node.imageThumb && (
+                  <Image {...node.imageThumb} alt={node.imageThumb.alt} />
+                )}
               </Link>
             ))}
         </ul>
@@ -195,7 +187,9 @@ const Journey = ({ collections }) => {
             .sort((a, b) => a.node.rank - b.node.rank)
             .map(({ node }) => (
               <div key={node.alt} className="carousel__image-container">
-                <Image {...node.imageThumb} alt={node.imageThumb.alt} />
+                {node.imageThumb && (
+                  <Image {...node.imageThumb} alt={node.imageThumb.alt} />
+                )}
               </div>
             ))}
         </Carousel>
