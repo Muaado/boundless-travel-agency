@@ -52,11 +52,11 @@ const NotFoundPage = (props) => {
 
   pages.nodes.forEach(({ path, context }) => {
     const foundElement = pagesByType.findIndex(
-      ({ type }) => type === context._type
+      ({ type }) => type === context?._type
     );
     if (foundElement > -1) {
       // console.log(pagesByType)
-      pagesByType[foundElement].items.push({ path, name: context.name });
+      pagesByType[foundElement].items.push({ path, name: context?.name });
     }
   });
   console.log(pagesByType);
