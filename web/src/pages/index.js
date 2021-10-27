@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
+import SanityMuxPlayer from "sanity-mux-player";
 // import {
 //   filterOutDocsPublishedInTheFuture,
 //   filterOutDocsWithoutSlugs,
@@ -71,6 +72,18 @@ export const query = graphql`
       keywords
       description
       videoURL
+      video {
+        asset {
+          _key
+          _type
+          assetId
+          filename
+          playbackId
+          status
+          thumbTime
+        }
+      }
+
       handCraftedJourneys {
         title
         _rawDescription
@@ -205,6 +218,7 @@ const IndexPage = (props) => {
   }
 
   const site = (data || {}).site;
+  console.log(site);
   const magazinePosts = (data || {}).magazinePosts;
   // const postNodes = (data || {}).posts
   //   ? mapEdgesToNodes(data.posts)
@@ -229,13 +243,25 @@ const IndexPage = (props) => {
         <LeftSidebar />
         <HeroStyles>
           {/* <h1> {site.description}</h1> */}
-          <Video
+          <SanityMuxPlayer
+            assetDocument={site.video.asset}
+            autoload={true | false}
+            autoplay={true | false}
+            className="video"
+            height={"100%"}
+            loop={true | false}
+            muted={true | false}
+            showControls={true | false}
+            style={{}}
+            width={"100%"}
+          />
+          {/* <Video
             videoSrcURL={
               // VideoBg
 
               site.videoURL
             }
-          />
+          /> */}
           <h1 className="disappear-on-scroll">
             A WORLD WHERE ANYTHING IS POSSIBLE
           </h1>

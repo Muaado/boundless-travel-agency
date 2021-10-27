@@ -21,6 +21,12 @@ export default {
       name: "videoURL",
       description: "Url for homepage video",
     },
+
+    {
+      type: "mux.video",
+      name: "video",
+      description: "Video",
+    },
     {
       name: "description",
       type: "text",
