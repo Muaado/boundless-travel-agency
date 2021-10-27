@@ -12,6 +12,7 @@ import Image from "gatsby-plugin-sanity-image";
 import styled from "styled-components";
 import PortableText from "../components/portableText";
 import { ContactUs } from "../components/Homepage/ContactUs";
+import { device } from "../styles/deviceSizes";
 
 export const query = graphql`
   query HighlightTemplateQuery($id: String!) {
@@ -71,6 +72,14 @@ const HighlightPageStyles = styled.div`
     display: grid;
     gap: 5rem;
     grid-template-columns: 1fr 1fr;
+    @media ${device.laptopM} {
+      padding: 0 10%;
+    }
+
+    @media ${device.tablet} {
+      grid-template-columns: 1fr;
+    }
+
     h1,
     h2 {
       font-size: 3rem;
@@ -113,6 +122,10 @@ const HighlightPageStyles = styled.div`
       img {
         width: 80%;
         max-height: 40rem;
+
+        @media ${device.tablet} {
+          width: 100%;
+        }
       }
     }
   }

@@ -8,6 +8,7 @@ import React from "react";
 import Image from "gatsby-plugin-sanity-image";
 import styled from "styled-components";
 import { HeroStyles } from "./Homepage/styles";
+import { device } from "../styles/deviceSizes";
 
 const BlogPostStyles = styled.article`
   display: flex;
@@ -29,6 +30,24 @@ const BlogPostStyles = styled.article`
     display: grid;
     grid-template-columns: 1fr 25rem;
     gap: 2rem;
+    @media ${device.laptopM} {
+      padding: 0 10%;
+      h1 {
+        font-size: 4rem;
+      }
+    }
+
+    @media ${device.laptop} {
+      grid-template-columns: 1fr 20rem;
+    }
+
+    @media ${device.tablet} {
+      grid-template-columns: 1fr;
+      margin-bottom: 3rem;
+      .content__text {
+        border: none;
+      }
+    }
 
     .title {
       margin-bottom: 5rem;
@@ -44,7 +63,7 @@ const BlogPostStyles = styled.article`
 
     &__text {
       border-right: 1px solid #000;
-      padding-right: 2rem;
+      padding-right: 4rem;
     }
   }
   .date {

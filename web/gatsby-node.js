@@ -17,7 +17,9 @@ async function createBlogPostPages(graphql, actions) {
         edges {
           node {
             id
+            _type
             publishedAt
+            title
             slug {
               current
             }
@@ -34,14 +36,14 @@ async function createBlogPostPages(graphql, actions) {
   postEdges
     .filter((edge) => !isFuture(new Date(edge.node.publishedAt)))
     .forEach((edge) => {
-      const { id, slug = {}, publishedAt } = edge.node;
+      const { id, slug = {}, publishedAt, _type, title } = edge.node;
       const dateSegment = format(new Date(publishedAt), "yyyy/MM");
       const path = `/blog/${dateSegment}/${slug.current}/`;
 
       createPage({
         path,
         component: require.resolve("./src/templates/blog-post.js"),
-        context: { id },
+        context: { id, _type, name: title },
       });
     });
 }
@@ -54,6 +56,7 @@ async function createResortPages(graphql, actions) {
         nodes {
           name
           _id
+          _type
         }
       }
     }
@@ -66,7 +69,7 @@ async function createResortPages(graphql, actions) {
   resortEdges
     // .filter((edge) => !isFuture(new Date(edge.node.publishedAt)))
     .forEach((node) => {
-      const { _id, name } = node;
+      const { _id, name, _type } = node;
       // const dateSegment = format(new Date(publishedAt), "yyyy/MM");
 
       let path;
@@ -79,7 +82,7 @@ async function createResortPages(graphql, actions) {
         createPage({
           path,
           component: require.resolve("./src/templates/resort.js"),
-          context: { id: _id },
+          context: { id: _id, _type: _type, name },
         });
     });
 }
@@ -92,6 +95,7 @@ async function createVillaPages(graphql, actions) {
         nodes {
           _id
           name
+          _type
           resort {
             _id
             name
@@ -106,7 +110,7 @@ async function createVillaPages(graphql, actions) {
   const villaEdges = (result.data.allSanityVilla || {}).nodes || [];
 
   villaEdges.forEach((node) => {
-    const { _id, name, resort } = node;
+    const { _id, name, resort, _type } = node;
 
     console.log(node);
 
@@ -122,7 +126,7 @@ async function createVillaPages(graphql, actions) {
       createPage({
         path,
         component: require.resolve("./src/templates/villa.js"),
-        context: { id: _id, resortId: resort._id },
+        context: { id: _id, resortId: resort._id, _type, name },
       });
   });
 }
@@ -135,6 +139,7 @@ async function createCollectionPages(graphql, actions) {
         nodes {
           name
           _id
+          _type
           type {
             type
           }
@@ -150,12 +155,17 @@ async function createCollectionPages(graphql, actions) {
   const types = [];
   collectionNodes.forEach((collection) => {
     const typeAdded = types.find((value) => value === collection.type.type);
-    if (!typeAdded) types.push(collection.type.type);
+    if (!typeAdded)
+      types.push({
+        type: collection.type.type,
+        _type: collection._type,
+        name: collection.name,
+      });
   });
 
   types
     // .filter((edge) => !isFuture(new Date(edge.node.publishedAt)))
-    .forEach((type) => {
+    .forEach(({ type, _type }) => {
       // const { _id, name } = node;
       // const dateSegment = format(new Date(publishedAt), "yyyy/MM");
 
@@ -169,7 +179,7 @@ async function createCollectionPages(graphql, actions) {
         createPage({
           path,
           component: require.resolve("./src/templates/collection.js"),
-          context: { type },
+          context: { type, _type },
         });
     });
 }
@@ -182,6 +192,7 @@ async function createRestaurantPages(graphql, actions) {
         nodes {
           _id
           name
+          _type
           resort {
             _id
             name
@@ -196,7 +207,7 @@ async function createRestaurantPages(graphql, actions) {
   const restaurantNodes = (result.data.allSanityRestaurant || {}).nodes || [];
 
   restaurantNodes.forEach((node) => {
-    const { _id, name, resort } = node;
+    const { _id, name, resort, _type } = node;
 
     let path;
     if (typeof name === "string" && resort) {
@@ -210,7 +221,7 @@ async function createRestaurantPages(graphql, actions) {
       createPage({
         path,
         component: require.resolve("./src/templates/restaurant.js"),
-        context: { id: _id, resortId: resort._id },
+        context: { id: _id, resortId: resort._id, _type, name },
       });
   });
 }
@@ -223,6 +234,7 @@ async function createActivityPages(graphql, actions) {
         nodes {
           _id
           name
+          _type
           resort {
             _id
             name
@@ -237,7 +249,7 @@ async function createActivityPages(graphql, actions) {
   const activityNodes = (result.data.allSanityActivity || {}).nodes || [];
 
   activityNodes.forEach((node) => {
-    const { _id, name, resort } = node;
+    const { _id, name, resort, _type } = node;
 
     let path;
     if (typeof name === "string" && resort) {
@@ -251,7 +263,7 @@ async function createActivityPages(graphql, actions) {
       createPage({
         path,
         component: require.resolve("./src/templates/activity.js"),
-        context: { id: _id, resortId: resort._id },
+        context: { id: _id, resortId: resort._id, _type, name },
       });
   });
 }
@@ -264,6 +276,7 @@ async function createHighlightPage(graphql, actions) {
         nodes {
           _id
           name
+          _type
           resort {
             _id
             name
@@ -281,7 +294,7 @@ async function createHighlightPage(graphql, actions) {
   console.log(highlightNodes, "nodes highlihgts");
 
   highlightNodes.forEach((node) => {
-    const { _id, name, resort } = node;
+    const { _id, name, resort, _type } = node;
 
     let path;
     if (typeof name === "string" && resort) {
@@ -295,7 +308,7 @@ async function createHighlightPage(graphql, actions) {
       createPage({
         path,
         component: require.resolve("./src/templates/highlight.js"),
-        context: { id: _id, resortId: resort._id },
+        context: { id: _id, resortId: resort._id, _type, name },
       });
   });
 }
