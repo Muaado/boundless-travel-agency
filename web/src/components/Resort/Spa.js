@@ -14,7 +14,8 @@ const SpaStyles = styled.div`
   justify-content: center;
   position: relative;
   overflow: hidden;
-  height: 70rem;
+  min-height: 70rem;
+  padding: 2rem;
 
   background-size: 100vw;
   background-attachment: fixed;
@@ -28,8 +29,9 @@ const SpaStyles = styled.div`
     align-self: center;
     justify-content: center;
     max-width: 1400px;
-    padding-bottom: 5rem;
-    height: 70rem;
+    /* padding-bottom: 20rem; */
+    /* padding: 2rem; */
+    min-height: 70rem;
     .left-section {
       /* height: 100rem; */
       width: 80rem;
@@ -45,8 +47,8 @@ const SpaStyles = styled.div`
       }
     }
     .right-section {
-      height: 100%;
-      padding-top: 10rem;
+      /* height: 100%; */
+      padding: 6rem 0;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -82,6 +84,7 @@ const SpaStyles = styled.div`
 
   .image-thumb {
     max-width: 30rem;
+    justify-self: flex-end;
     z-index: 100;
   }
 
@@ -96,10 +99,10 @@ const Spa = ({ spa, className }) => {
   return (
     <SpaStyles
       className={className}
-      data-aos="fade-up"
-      data-aos-delay="50"
-      data-aos-duration="1000"
-      data-aos-easing="ease-in-out"
+      // data-aos="fade-up"
+      // data-aos-delay="50"
+      // data-aos-duration="1000"
+      // data-aos-easing="ease-in-out"
     >
       <div className="container">
         <div className="left-section">

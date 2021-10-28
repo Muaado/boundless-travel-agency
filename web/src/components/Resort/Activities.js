@@ -55,20 +55,18 @@ const ActivitiesStyles = styled.div`
       }
 
       &:hover {
-        a {
-          &:before {
-            /* transform: translate(-50%, -50%); */
-            content: "";
-            position: absolute;
-            opacity: 0.3;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-          }
+        &:before {
+          /* transform: translate(-50%, -50%); */
+          content: "";
+          position: absolute;
+          opacity: 0.3;
+          width: 100%;
+          height: 100%;
+          background-color: #000;
         }
-        p {
-          opacity: 1;
-        }
+      }
+      p {
+        opacity: 1;
       }
     }
 
@@ -97,10 +95,10 @@ const Activities = ({ activities }) => {
       <ul>
         {activities.nodes.map(({ name, imageThumb, resort }) => (
           <li key={imageThumb.alt}>
-            <Link to={getActivityUrl({ name, resortName: resort.name })}>
-              {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
-              <p>{name}</p>
-            </Link>
+            {/* <Link to={getActivityUrl({ name, resortName: resort.name })}> */}
+            {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
+            <p>{name}</p>
+            {/* </Link> */}
           </li>
         ))}
       </ul>

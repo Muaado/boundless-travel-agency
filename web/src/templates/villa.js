@@ -169,7 +169,7 @@ export const query = graphql`
         }
       }
     }
-    resorts: allSanityResort(limit: 3) {
+    resorts: allSanityResort {
       nodes {
         name
         image {
@@ -374,19 +374,17 @@ const VilaTemplate = (props) => {
             <ul>
               {highlights.map(({ name, imageThumb }) => (
                 <li key={imageThumb?.alt}>
-                  <Link to={getHighlightUrl({ name, resortName })}>
-                    {/* <a>
+                  {/* <Link to={getHighlightUrl({ name, resortName })}> */}
+                  {/* <a>
                      <ChevronRight />
                   </a> */}
-                    <div className="text">
-                      <h3>{name}</h3>
-                      {/* <PortableText blocks={_rawDescription} /> */}
-                    </div>
+                  <div className="text">
+                    <h3>{name}</h3>
+                    {/* <PortableText blocks={_rawDescription} /> */}
+                  </div>
 
-                    {imageThumb && (
-                      <Image {...imageThumb} alt={imageThumb.alt} />
-                    )}
-                  </Link>
+                  {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
+                  {/* </Link> */}
                 </li>
               ))}
             </ul>
@@ -473,9 +471,9 @@ const VilaTemplate = (props) => {
             >
               {resorts.nodes.length &&
                 resorts.nodes.map(({ name, image }) => (
-                  <Link
+                  <div
                     className="carousel__node"
-                    to={getResortUrl({ name })}
+                    // to={getResortUrl({ name })}
                     key={name}
                   >
                     {/* <a className="carousel__node" key={name}> */}
@@ -484,7 +482,7 @@ const VilaTemplate = (props) => {
                     </div>
                     <p>{name}</p>
                     {/* </a> */}
-                  </Link>
+                  </div>
                 ))}
             </Carousel>
           </div>

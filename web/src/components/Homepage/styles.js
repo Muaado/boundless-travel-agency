@@ -1,6 +1,16 @@
 import styled from "styled-components";
 import { device } from "../../styles/deviceSizes";
 
+// .parallax-wrapper {
+//   height: 100vh;
+//   overflow-x: hidden;
+//   overflow-y: scroll;
+//   perspective: 10px;
+// }
+
+// .parallax-content {
+//
+
 export const HeroStyles = styled.div`
   text-align: center;
   overflow: hidden;

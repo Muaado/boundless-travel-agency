@@ -283,9 +283,11 @@ const ResortTemplate = (props) => {
             <ul>
               {highlights.map(({ name, imageThumb, _rawDescription }) => (
                 <li key={imageThumb?.alt}>
-                  <Link to={getHighlightUrl({ name, resortName: resort.name })}>
+                  {/* <Link to={getHighlightUrl({ name, resortName: resort.name })}> */}
+                  <a>
                     {name} <ChevronRight />
-                  </Link>
+                  </a>
+                  {/* </Link> */}
                   <PortableText blocks={_rawDescription} />
                   {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
                 </li>

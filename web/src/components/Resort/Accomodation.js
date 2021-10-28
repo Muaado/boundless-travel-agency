@@ -22,19 +22,32 @@ const AccomodationStyles = styled.div`
     margin-bottom: 7rem;
   }
   .carousel {
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr; */
     display: flex !important;
-    justify-content: center;
+    gap: 2rem;
+    /* justify-content: center; */ /*
+    
+
+    
+     */
+    /* .slider-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    } */
+    .slider-slide {
+      margin-right: 2rem;
+      /* width: 100% !important; */
+      min-width: 30rem !important;
+    }
 
     .slider-frame {
       align-self: center;
-      width: 100%;
-    }
-
-    .slider-slide {
-      min-width: max-content !important;
+      width: 100% !important;
     }
   }
   .image-container {
+    /* min-width: 40rem; */
     width: 100%;
     display: block;
     @media ${device.laptopL} {
@@ -88,18 +101,18 @@ const Accomodation = ({ villas, id }) => {
     <AccomodationStyles
       id={id}
       className="resort__accomodation"
-      data-aos="fade-up"
-      data-aos-delay="50"
-      data-aos-duration="1000"
-      data-aos-easing="ease-in-out"
+      // data-aos="fade-up"
+      // data-aos-delay="50"
+      // data-aos-duration="1000"
+      // data-aos-easing="ease-in-out"
     >
       <h2>Accomodation</h2>
 
       <Carousel
         speed={1000}
         className="carousel"
-        slidesToShow={numberOfSlides || 2.9}
-        cellSpacing={cellSpacing}
+        slidesToShow={2.5}
+        cellSpacing={20}
         renderCenterRightControls={({ nextSlide }) => (
           <CarouselButton onClick={nextSlide} chevronRight={true} />
         )}

@@ -184,141 +184,141 @@ async function createCollectionPages(graphql, actions) {
     });
 }
 
-async function createRestaurantPages(graphql, actions) {
-  const { createPage } = actions;
-  const result = await graphql(`
-    {
-      allSanityRestaurant {
-        nodes {
-          _id
-          name
-          _type
-          resort {
-            _id
-            name
-          }
-        }
-      }
-    }
-  `);
-
-  if (result.errors) throw result.errors;
-
-  const restaurantNodes = (result.data.allSanityRestaurant || {}).nodes || [];
-
-  restaurantNodes.forEach((node) => {
-    const { _id, name, resort, _type } = node;
-
-    let path;
-    if (typeof name === "string" && resort) {
-      path = `/${resort.name
-        .toLowerCase()
-        .split(" ")
-        .join("-")}/restaurant/${name.toLowerCase().split(" ").join("-")}`;
-    }
-
-    if (path)
-      createPage({
-        path,
-        component: require.resolve("./src/templates/restaurant.js"),
-        context: { id: _id, resortId: resort._id, _type, name },
-      });
-  });
-}
-
-async function createActivityPages(graphql, actions) {
-  const { createPage } = actions;
-  const result = await graphql(`
-    {
-      allSanityActivity {
-        nodes {
-          _id
-          name
-          _type
-          resort {
-            _id
-            name
-          }
-        }
-      }
-    }
-  `);
-
-  if (result.errors) throw result.errors;
-
-  const activityNodes = (result.data.allSanityActivity || {}).nodes || [];
-
-  activityNodes.forEach((node) => {
-    const { _id, name, resort, _type } = node;
-
-    let path;
-    if (typeof name === "string" && resort) {
-      path = `/${resort.name.toLowerCase().split(" ").join("-")}/activity/${name
-        .toLowerCase()
-        .split(" ")
-        .join("-")}`;
-    }
-
-    if (path)
-      createPage({
-        path,
-        component: require.resolve("./src/templates/activity.js"),
-        context: { id: _id, resortId: resort._id, _type, name },
-      });
-  });
-}
-
-async function createHighlightPage(graphql, actions) {
-  const { createPage } = actions;
-  const result = await graphql(`
-    {
-      allSanityResortHighlight {
-        nodes {
-          _id
-          name
-          _type
-          resort {
-            _id
-            name
-          }
-        }
-      }
-    }
-  `);
-
-  if (result.errors) throw result.errors;
-
-  const highlightNodes =
-    (result.data.allSanityResortHighlight || {}).nodes || [];
-
-  console.log(highlightNodes, "nodes highlihgts");
-
-  highlightNodes.forEach((node) => {
-    const { _id, name, resort, _type } = node;
-
-    let path;
-    if (typeof name === "string" && resort) {
-      path = `/${resort.name
-        .toLowerCase()
-        .split(" ")
-        .join("-")}/highlight/${name.toLowerCase().split(" ").join("-")}`;
-    }
-
-    if (path)
-      createPage({
-        path,
-        component: require.resolve("./src/templates/highlight.js"),
-        context: { id: _id, resortId: resort._id, _type, name },
-      });
-  });
-}
-
 exports.createPages = async ({ graphql, actions }) => {
   await createResortPages(graphql, actions);
   await createVillaPages(graphql, actions);
   await createCollectionPages(graphql, actions);
-  await createRestaurantPages(graphql, actions);
-  await createActivityPages(graphql, actions);
   await createBlogPostPages(graphql, actions);
-  await createHighlightPage(graphql, actions);
+  // await createRestaurantPages(graphql, actions);
+  // await createActivityPages(graphql, actions);
+  // await createHighlightPage(graphql, actions);
 };
+
+// async function createRestaurantPages(graphql, actions) {
+//   const { createPage } = actions;
+//   const result = await graphql(`
+//     {
+//       allSanityRestaurant {
+//         nodes {
+//           _id
+//           name
+//           _type
+//           resort {
+//             _id
+//             name
+//           }
+//         }
+//       }
+//     }
+//   `);
+
+//   if (result.errors) throw result.errors;
+
+//   const restaurantNodes = (result.data.allSanityRestaurant || {}).nodes || [];
+
+//   restaurantNodes.forEach((node) => {
+//     const { _id, name, resort, _type } = node;
+
+//     let path;
+//     if (typeof name === "string" && resort) {
+//       path = `/${resort.name
+//         .toLowerCase()
+//         .split(" ")
+//         .join("-")}/restaurant/${name.toLowerCase().split(" ").join("-")}`;
+//     }
+
+//     if (path)
+//       createPage({
+//         path,
+//         component: require.resolve("./src/templates/restaurant.js"),
+//         context: { id: _id, resortId: resort._id, _type, name },
+//       });
+//   });
+// }
+
+// async function createActivityPages(graphql, actions) {
+//   const { createPage } = actions;
+//   const result = await graphql(`
+//     {
+//       allSanityActivity {
+//         nodes {
+//           _id
+//           name
+//           _type
+//           resort {
+//             _id
+//             name
+//           }
+//         }
+//       }
+//     }
+//   `);
+
+//   if (result.errors) throw result.errors;
+
+//   const activityNodes = (result.data.allSanityActivity || {}).nodes || [];
+
+//   activityNodes.forEach((node) => {
+//     const { _id, name, resort, _type } = node;
+
+//     let path;
+//     if (typeof name === "string" && resort) {
+//       path = `/${resort.name.toLowerCase().split(" ").join("-")}/activity/${name
+//         .toLowerCase()
+//         .split(" ")
+//         .join("-")}`;
+//     }
+
+//     if (path)
+//       createPage({
+//         path,
+//         component: require.resolve("./src/templates/activity.js"),
+//         context: { id: _id, resortId: resort._id, _type, name },
+//       });
+//   });
+// }
+
+// async function createHighlightPage(graphql, actions) {
+//   const { createPage } = actions;
+//   const result = await graphql(`
+//     {
+//       allSanityResortHighlight {
+//         nodes {
+//           _id
+//           name
+//           _type
+//           resort {
+//             _id
+//             name
+//           }
+//         }
+//       }
+//     }
+//   `);
+
+//   if (result.errors) throw result.errors;
+
+//   const highlightNodes =
+//     (result.data.allSanityResortHighlight || {}).nodes || [];
+
+//   console.log(highlightNodes, "nodes highlihgts");
+
+//   highlightNodes.forEach((node) => {
+//     const { _id, name, resort, _type } = node;
+
+//     let path;
+//     if (typeof name === "string" && resort) {
+//       path = `/${resort.name
+//         .toLowerCase()
+//         .split(" ")
+//         .join("-")}/highlight/${name.toLowerCase().split(" ").join("-")}`;
+//     }
+
+//     if (path)
+//       createPage({
+//         path,
+//         component: require.resolve("./src/templates/highlight.js"),
+//         context: { id: _id, resortId: resort._id, _type, name },
+//       });
+//   });
+// }
