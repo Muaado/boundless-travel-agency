@@ -10,66 +10,96 @@ import styled from "styled-components";
 import { HeroStyles } from "./Homepage/styles";
 import { device } from "../styles/deviceSizes";
 
+import TimeIcon from "../assets//icons/time.svg";
+import CategoryIcon from "../assets//icons/category.svg";
+
 const BlogPostStyles = styled.article`
   display: flex;
   flex-direction: column;
   /* padding: 0 15%; */
+  padding: 0 15%;
+  width: 80%;
 
-  .header {
-    max-height: 80vh;
-    width: 100%;
-    overflow: hidden;
+  margin-top: 25rem;
+  /* padding: 0 15%; */
+  display: flex;
+  h1 {
+    font-size: 4rem;
+  }
+  /* grid-template-columns: 1fr 25rem; */
+  gap: 2rem;
+  @media ${device.laptopM} {
+    padding: 0 10%;
+    h1 {
+      font-size: 4rem;
+    }
+  }
+
+  @media ${device.laptop} {
+    grid-template-columns: 1fr 20rem;
+  }
+
+  @media ${device.tablet} {
+    grid-template-columns: 1fr;
+    margin-bottom: 3rem;
+    .content__text {
+      border: none;
+    }
+  }
+
+  .image {
+    width: 70rem;
+    height: 50rem;
+    /* overflow: hidden; */
     img {
+      height: 90%;
       object-position: bottom;
     }
   }
+  .title {
+    margin-bottom: 5rem;
+  }
 
-  .content {
-    margin-top: 5rem;
-    padding: 0 15%;
-    display: grid;
-    grid-template-columns: 1fr 25rem;
-    gap: 2rem;
-    @media ${device.laptopM} {
-      padding: 0 10%;
-      h1 {
-        font-size: 4rem;
-      }
-    }
+  img {
+    width: 100%;
+  }
+  p {
+    margin: 2rem 0;
+    color: #000;
+  }
 
-    @media ${device.laptop} {
-      grid-template-columns: 1fr 20rem;
-    }
-
-    @media ${device.tablet} {
-      grid-template-columns: 1fr;
-      margin-bottom: 3rem;
-      .content__text {
-        border: none;
-      }
-    }
-
-    .title {
-      margin-bottom: 5rem;
-    }
-
-    img {
-      width: 100%;
-    }
-    p {
-      margin: 2rem 0;
-      color: #000;
-    }
-
-    &__text {
+  /* &__text {
       border-right: 1px solid #000;
       padding-right: 4rem;
-    }
-  }
+    } */
+
   .date {
     font-style: italic;
   }
 
+  .footer {
+    margin-top: 2rem;
+    display: flex;
+
+    span {
+      margin-right: 5rem;
+      min-width: max-content;
+      font-style: italic;
+      font-weight: bold;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+
+      svg {
+        height: 2rem;
+        width: 2rem;
+        margin-right: 1rem;
+
+        path {
+          fill: var(--darkGreen);
+        }
+      }
+    }
   aside {
     h2 {
       font-size: 2.4rem;
@@ -86,30 +116,30 @@ function BlogPost(props) {
     props;
   return (
     <BlogPostStyles>
-      <div className="header">
+      {/* <Container> */}
+
+      <div className="image">
         {mainImage && mainImage.asset && (
-          <div className="image-container">
-            <Image {...mainImage} alt={mainImage.alt} />
-            {/* <img
-            src={imageUrlFor(buildImageObj(mainImage))
-              .width(1200)
-              .height(Math.floor((9 / 16) * 1200))
-              .fit("crop")
-              .auto("format")
-              .url()}
-            alt={mainImage.alt}
-          /> */}
-          </div>
+          // <div className="image-container">
+          <Image {...mainImage} alt={mainImage.alt} />
         )}
+        <div className="footer">
+          <span>
+            <TimeIcon />
+            {format(new Date(publishedAt), "MMMM Mo, yyyy")}
+          </span>
+          <span>
+            <CategoryIcon />
+            {categories?.[0]?.title}
+          </span>
+        </div>
+      </div>
+      <div className="content__text">
+        <h1 className="title">{title}</h1>
+        {_rawBody && <PortableText blocks={_rawBody} />}
       </div>
 
-      {/* <Container> */}
-      <div className="content">
-        <div className="content__text">
-          <h1 className="title">{title}</h1>
-          {_rawBody && <PortableText blocks={_rawBody} />}
-        </div>
-        <aside>
+      {/* <aside>
           {publishedAt && (
             <div className="date">
               {differenceInDays(new Date(publishedAt), new Date()) > 3
@@ -130,8 +160,8 @@ function BlogPost(props) {
               </ul>
             </div>
           )}
-        </aside>
-      </div>
+        </aside> */}
+
       {/* </Container> */}
     </BlogPostStyles>
   );

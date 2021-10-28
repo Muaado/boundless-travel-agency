@@ -7,11 +7,12 @@ import SEO from "../components/seo";
 import { graphql } from "gatsby";
 import { mapEdgesToNodes } from "../lib/helpers";
 
-import { responsiveTitle1 } from "../components/typography.module.css";
 import styled from "styled-components";
 import { HeroStyles } from "../components/Homepage/styles";
 
 import Image from "gatsby-plugin-sanity-image";
+import { device } from "../styles/deviceSizes";
+import { MouseScroll } from "../components/Ui/MouseScroll";
 
 export const query = graphql`
   query MagazinePageQuery {
@@ -32,6 +33,10 @@ export const query = graphql`
           slug {
             current
           }
+
+          categories {
+            title
+          }
         }
       }
     }
@@ -47,6 +52,14 @@ export const query = graphql`
 
 const MagazinePageStyles = styled.div`
   padding: 0 15%;
+
+  @media ${device.laptopM} {
+    padding: 0 10%;
+  }
+
+  .post-list {
+    max-width: 80%;
+  }
 `;
 
 const MagazinePage = (props) => {
@@ -71,12 +84,16 @@ const MagazinePage = (props) => {
             {...data.site.magazinePageImage}
             alt={data.site.magazinePageImage.alt}
           />
+          <MouseScroll />
         </HeroStyles>
+
         <MagazinePageStyles>
           {/* <h1>Magazine</h1> */}
-          {postNodes && postNodes.length > 0 && (
-            <BlogPostPreviewGrid nodes={postNodes} />
-          )}
+          <div className="post-list">
+            {postNodes && postNodes.length > 0 && (
+              <BlogPostPreviewGrid nodes={postNodes} />
+            )}
+          </div>
         </MagazinePageStyles>
       </Container>
     </Layout>
