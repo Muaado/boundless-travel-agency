@@ -127,15 +127,17 @@ const Accomodation = ({ villas, id }) => {
             key={name}
             className="image-container"
           >
-            <Image
-              style={{
-                width: "100%",
-                height: "80%",
-                objectFit: "cover",
-              }}
-              {...imageThumb}
-              alt={imageThumb.alt}
-            />
+            {imageThumb && (
+              <Image
+                style={{
+                  width: "100%",
+                  height: "80%",
+                  objectFit: "cover",
+                }}
+                {...imageThumb}
+                alt={imageThumb.alt}
+              />
+            )}
 
             <p>{name}</p>
           </Link>

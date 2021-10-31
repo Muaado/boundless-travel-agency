@@ -304,7 +304,7 @@ const VilaTemplate = (props) => {
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
           >
-            {roomFeatures.backgroundImage && (
+            {roomFeatures?.backgroundImage && (
               <Image
                 {...roomFeatures.backgroundImage}
                 alt={roomFeatures.backgroundImage.alt}
@@ -313,7 +313,7 @@ const VilaTemplate = (props) => {
             <div className="content">
               <h2>Room features</h2>
               <ul>
-                {roomFeatures.features.map(
+                {roomFeatures?.features?.map(
                   ({ title, _rawDescription }, index) => (
                     <li
                       key={title}
