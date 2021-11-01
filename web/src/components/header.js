@@ -25,15 +25,23 @@ const HeaderStyles = styled.header`
   /* background: linear-gradient(183deg, #1c2238 24.5%, rgba(28, 34, 56, 0) 69.2%);
   opacity: 0.77; */
 
-  background: linear-gradient(
-    183.95deg,
-    #1c2238 26.5%,
-    rgba(35, 51, 60, 0) 68.2%
-  );
-  opacity: 0.66;
-
   color: #fff;
   z-index: 1000;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      183.95deg,
+      #1c2238 26.5%,
+      rgba(35, 51, 60, 0) 68.2%
+    );
+    opacity: 0.66;
+  }
 
   .logo {
     /* align-self: flex-start; */
@@ -62,6 +70,7 @@ const HeaderStyles = styled.header`
       display: none;
     }
 
+    opacity: 1;
     font-size: 1.6rem;
     ul {
       display: flex;
@@ -93,12 +102,17 @@ const HeaderStyles = styled.header`
 
     ul {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: max-content max-content;
       gap: 2rem;
+    }
+    li {
+      min-width: max-content;
     }
     a {
       word-break: keep-all;
       width: max-content;
+      display: inline-block;
+      /* width: 100%; */
     }
   }
 `;
@@ -111,7 +125,7 @@ const DropDown = ({ list }) => {
           (item) =>
             item.url && (
               <Link key={item.url} to={item.url}>
-                <a>{item.name}</a>
+                {item.name}
               </Link>
             )
         )}

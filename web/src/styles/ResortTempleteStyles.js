@@ -44,6 +44,9 @@ const ResortStyles = styled.div`
       transition: 1s all;
       opacity: 1;
 
+      /* img {
+        object-position: bottom;
+      } */
       .text {
         position: absolute;
         bottom: 10rem;
