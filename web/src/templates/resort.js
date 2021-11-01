@@ -6,6 +6,9 @@ import Layout from "../containers/layout";
 import Container from "../components/container";
 import SEO from "../components/seo";
 
+import Carousel from "nuka-carousel";
+import CarouselButton from "../components/Ui/CarouselButton";
+
 import Image from "gatsby-plugin-sanity-image";
 
 import PortableText from "../components/portableText";
@@ -132,6 +135,21 @@ export const query = graphql`
       }
     }
 
+    spas: allSanitySpa(filter: { resort: { _id: { eq: $id } } }) {
+      nodes {
+        id
+        _rawDescription
+        name
+        imageWeb {
+          ...SanityImage
+          alt
+        }
+        imageThumb {
+          ...SanityImage
+          alt
+        }
+      }
+    }
     activities: allSanityActivity(filter: { resort: { _id: { eq: $id } } }) {
       nodes {
         name
@@ -170,7 +188,8 @@ export const query = graphql`
 const ResortTemplate = (props) => {
   const { data, errors } = props;
   const resort = data && data.resort;
-  const featuredSpa = data && data.featuredSpa;
+  // const featuredSpa = data && data.featuredSpa;
+  const spas = data && data.spas;
   const activities = data && data.activities;
   const villas = data && data.villas;
   const site = data && data.site;
@@ -335,7 +354,29 @@ const ResortTemplate = (props) => {
 
           {galleries && <Gallery id="gallery" galleries={galleries} />}
 
-          {featuredSpa && <Spa className="resort__spa" spa={featuredSpa} />}
+          {spas.nodes && (
+            <Carousel
+              speed={1000}
+              data-aos="fade-up"
+              data-aos-delay="50"
+              data-aos-duration="1000"
+              data-aos-easing="ease-in-out"
+              className="resort__spas"
+              slidesToShow={1}
+              cellSpacing={0}
+              renderCenterRightControls={({ nextSlide }) => (
+                <CarouselButton onClick={nextSlide} chevronRight={true} />
+              )}
+              renderCenterLeftControls={({ previousSlide }) => (
+                <CarouselButton onClick={previousSlide} />
+              )}
+            >
+              {spas.nodes.map((spa) => (
+                <Spa spa={spa} key={spa._id} />
+              ))}
+            </Carousel>
+          )}
+          {/* {featuredSpa && <Spa className="resort__spa" spa={featuredSpa} />} */}
 
           <Activities activities={activities} />
 

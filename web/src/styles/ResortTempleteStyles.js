@@ -239,8 +239,36 @@ const ResortStyles = styled.div`
      
     } */
 
-    &__spa {
-      margin-top: 12rem;
+    &__spas {
+      /* height: 120rem; */
+
+      h2 {
+        text-transform: capitalize;
+      }
+
+      .slider {
+        height: 70rem;
+      }
+      .slider-slide {
+        width: 100% !important;
+      }
+
+      .slider-control-bottomcenter {
+        position: absolute;
+        bottom: -3rem !important;
+
+        .paging-item {
+          /* height: fit-content !important; */
+          button {
+            height: fit-content !important;
+            display: flex !important;
+            align-items: center;
+            svg {
+              margin: 0;
+            }
+          }
+        }
+      }
     }
 
     /* &__activities {
