@@ -67,7 +67,7 @@ const HeaderStyles = styled.header`
     /* align-self: center;
     justify-self: center; */
     @media ${device.tablet} {
-      display: none;
+      /* display: none; */
     }
 
     opacity: 1;
@@ -75,6 +75,10 @@ const HeaderStyles = styled.header`
     ul {
       display: flex;
       gap: 6rem;
+
+      @media ${device.tablet} {
+        gap: 1rem;
+      }
 
       li {
         &.selected {
@@ -100,10 +104,22 @@ const HeaderStyles = styled.header`
     padding: 2rem 3rem;
     margin-top: 2rem;
 
+    @media ${device.tablet} {
+      overflow-x: hidden !important;
+      max-width: 70vw;
+      overflow-y: scroll;
+      height: 70vh;
+    }
+
     ul {
       display: grid;
       grid-template-columns: max-content max-content;
       gap: 2rem;
+
+      @media ${device.tablet} {
+        grid-template-columns: 1fr;
+        overflow-x: hidden;
+      }
     }
     li {
       min-width: max-content;

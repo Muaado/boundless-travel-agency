@@ -25,6 +25,12 @@ const ResortStyles = styled.div`
     font-size: 7.2rem;
     padding-bottom: 7rem;
     letter-spacing: 1rem;
+
+    @media ${device.tablet} {
+      font-size: 4rem;
+      /* padding-bottom: 2rem; */
+      padding: 2rem;
+    }
   }
 
   /* .left-nav {
@@ -44,6 +50,9 @@ const ResortStyles = styled.div`
       transition: 1s all;
       opacity: 1;
 
+      @media ${device.laptop} {
+        height: 80vh;
+      }
       /* img {
         object-position: bottom;
       } */
@@ -52,6 +61,9 @@ const ResortStyles = styled.div`
         bottom: 10rem;
         left: 10%;
 
+        @media ${device.tablet} {
+          bottom: 0;
+        }
         h1,
         p {
           color: #fff;
@@ -75,8 +87,11 @@ const ResortStyles = styled.div`
       padding: 0 15%;
       display: flex;
       flex-direction: column;
-      @media ${device.laptopL} {
-        /* padding: 0; */
+      @media ${device.laptopM} {
+        padding: 0 10%;
+      }
+      @media ${device.tablet} {
+        margin-top: 0;
       }
 
       h2 {
@@ -88,6 +103,14 @@ const ResortStyles = styled.div`
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 1.6rem;
+
+        @media ${device.laptop} {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        @media ${device.tablet} {
+          grid-template-columns: 1fr;
+        }
 
         li {
           position: relative;
@@ -135,6 +158,10 @@ const ResortStyles = styled.div`
         svg {
           margin-left: 1rem;
         }
+
+        @media ${device.tabletL} {
+          padding: 1rem 2.5rem;
+        }
       }
       p {
         width: 90%;
@@ -143,6 +170,11 @@ const ResortStyles = styled.div`
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 100;
+
+        @media ${device.tabletL} {
+          top: 30%;
+          font-size: 1.4rem;
+        }
 
         opacity: 0;
         color: #fff;
@@ -157,8 +189,13 @@ const ResortStyles = styled.div`
 
     &__restaurants {
       margin-top: 10rem;
-      margin-bottom: 22rem;
+      margin-bottom: 15rem;
       padding: 0 15%;
+
+      @media ${device.tablet} {
+        margin-top: 0;
+        margin-bottom: 8rem;
+      }
       p {
         font-size: 1.4rem;
       }
@@ -166,6 +203,16 @@ const ResortStyles = styled.div`
       &__header {
         position: absolute;
         width: 40rem;
+
+        @media ${device.laptop} {
+          position: unset;
+          width: unset;
+          text-align: center;
+
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 5rem;
+        }
 
         h2 {
           color: var(--primary);
@@ -178,6 +225,11 @@ const ResortStyles = styled.div`
           border-bottom: 2px solid var(--primary);
           margin-bottom: 2rem;
           text-align: left;
+
+          @media ${device.laptop} {
+            text-align: center;
+            align-self: center;
+          }
         }
       }
       ul {
@@ -186,15 +238,53 @@ const ResortStyles = styled.div`
         column-gap: 20rem;
 
         position: relative;
+
+        @media ${device.laptop} {
+          grid-template-columns: 1fr;
+          align-items: center;
+        }
         li {
           max-height: 80vh;
           display: flex;
           flex-direction: column;
           position: relative;
+          @media ${device.laptop} {
+            max-height: unset;
+            flex-direction: row;
+            margin-bottom: 3rem;
+          }
 
+          @media ${device.tablet} {
+            max-height: unset !important;
+            flex-direction: column;
+            margin-bottom: 6rem;
+          }
+
+          .image-container {
+            @media ${device.laptop} {
+              max-height: 50rem;
+              overflow: hidden;
+              margin-right: 2rem;
+            }
+            @media ${device.tablet} {
+              max-height: unset;
+              margin-right: 0;
+            }
+
+            /* @media ${device.ta} {
+              max-height: unset;
+            } */
+          }
           img {
             height: 80%;
             object-position: top;
+
+            @media ${device.laptop} {
+              height: unset;
+            }
+            @media ${device.laptop} {
+              height: 100%;
+            }
           }
           &:nth-of-type(odd) {
             margin-top: 20rem;
@@ -207,6 +297,13 @@ const ResortStyles = styled.div`
           }
           &:nth-of-type(2) {
             top: 0;
+          }
+
+          @media ${device.laptop} {
+            margin-top: unset !important;
+            top: unset !important;
+            max-height: unset;
+            max-height: 50vh;
           }
         }
       }
@@ -221,6 +318,10 @@ const ResortStyles = styled.div`
 
         @media ${device.laptopL} {
           margin-top: -6rem;
+        }
+
+        @media ${device.tablet} {
+          margin-top: 3rem;
         }
         .name {
           font-size: 2rem;
@@ -241,6 +342,7 @@ const ResortStyles = styled.div`
 
     &__spas {
       /* height: 120rem; */
+      margin-top: 10rem;
 
       h2 {
         text-transform: capitalize;

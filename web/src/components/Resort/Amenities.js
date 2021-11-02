@@ -2,13 +2,14 @@ import React from "react";
 
 import PortableText from "../portableText";
 import styled from "styled-components";
+import { device } from "../../styles/deviceSizes";
 // import { device } from "../styles/deviceSizes";
 
 const AmenitiesStyles = styled.div`
   display: flex;
   flex-direction: column;
   .description {
-    max-width: 80rem;
+    max-width: 50rem;
     font-size: 2.4rem;
     font-weight: 100;
     text-align: center;
@@ -16,6 +17,10 @@ const AmenitiesStyles = styled.div`
     padding: 5rem 0;
 
     line-height: 3.6rem;
+
+    @media ${device.mobileXL} {
+      padding: 3rem 2rem;
+    }
   }
   ul {
     align-self: center;

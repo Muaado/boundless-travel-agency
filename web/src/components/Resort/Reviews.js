@@ -33,21 +33,39 @@ const ReviewsStyles = styled.div`
   }
 
   .carousel {
-    padding: 5rem;
+    /* padding: 5rem; */
     /* display: flex !important;
     justify-content: center; */
 
     &__button {
+      @media ${device.laptop} {
+        position: unset;
+        top: unset;
+        left: unset;
+        right: unset;
+      }
       &-right {
         position: absolute;
         left: 3rem;
         top: -5rem;
+        @media ${device.laptop} {
+          position: unset;
+          top: unset;
+          left: unset;
+          right: unset;
+        }
       }
 
       &-left {
         position: absolute;
         right: 3rem;
         top: -5rem;
+        @media ${device.laptop} {
+          position: unset;
+          top: unset;
+          left: unset;
+          right: unset;
+        }
       }
     }
     .slider-list {
@@ -70,9 +88,15 @@ const ReviewsStyles = styled.div`
     .slider-slide {
       width: fit-content;
       @media ${device.tablet} {
+        width: 100% !important;
+        margin: unset !important;
         display: flex !important;
         justify-content: center;
       }
+    }
+
+    .slider-control-bottomcenter {
+      bottom: -4rem !important;
     }
   }
 
@@ -114,7 +138,8 @@ const Reviews = ({ reviews }) => {
   useEffect(() => {
     const { width } = size;
     const isMobileOnly = width <= 576;
-    const isTablet = width > 576 && width < 992;
+    const isTablet = width > 576 && width < 780;
+    const isTabletL = width > 780 && width < 992;
     const isSreenSM = width > 992 && width < 1200;
     const isSreenLG = width > 1200 && width < 1440;
     const screenXL = width > 1440 && width < 1600;
@@ -123,18 +148,19 @@ const Reviews = ({ reviews }) => {
 
     const slides = () => {
       if (isMobileOnly) return 1;
-      if (isTablet) return 2;
+      if (isTablet) return 1.5;
+      if (isTabletL) return 2.5;
       if (isSreenSM) return 2.8;
       if (isSreenLG) return 3.4;
       if (screenXL) return 4;
       if (screenXXL) return 4.3;
-      if (screenXXXL) return 4.8;
+      if (screenXXXL) return 5.2;
       return 5;
     };
     const spacing = () => {
       if (isMobileOnly) return 50;
       if (isTablet) return 20;
-      return 150;
+      return 200;
     };
 
     setNumberOfSlides(slides);

@@ -25,6 +25,9 @@ const ActivitiesStyles = styled.div`
     width: 70rem;
     color: var(--grey);
     align-self: center;
+    @media ${device.laptop} {
+      width: unset;
+    }
   }
 
   ul {
@@ -32,11 +35,19 @@ const ActivitiesStyles = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.6rem;
     width: 100%;
+
+    @media ${device.tabletL} {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media ${device.mobileXL} {
+      grid-template-columns: 1fr;
+    }
+
     li {
       position: relative;
       /* width: 10rem; */
 
-      transition: all 1s;
+      transition: all 2s;
       max-height: 35rem;
       a {
         height: 100%;
@@ -64,9 +75,13 @@ const ActivitiesStyles = styled.div`
           height: 100%;
           background-color: #000;
         }
+
+        p {
+          opacity: 1;
+        }
       }
       p {
-        opacity: 1;
+        opacity: 0;
       }
     }
 

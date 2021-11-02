@@ -424,26 +424,6 @@ const VilaTemplate = (props) => {
             </ul>
           </div>
 
-          <Carousel
-            speed={1000}
-            data-aos="fade-up"
-            data-aos-delay="50"
-            data-aos-duration="1000"
-            data-aos-easing="ease-in-out"
-            className="villa__spas"
-            slidesToShow={1}
-            cellSpacing={0}
-            renderCenterRightControls={({ nextSlide }) => (
-              <CarouselButton onClick={nextSlide} chevronRight={true} />
-            )}
-            renderCenterLeftControls={({ previousSlide }) => (
-              <CarouselButton onClick={previousSlide} />
-            )}
-          >
-            {spas.nodes.map((spa) => (
-              <Spa spa={spa} key={spa._id} />
-            ))}
-          </Carousel>
           <Activities activities={activities} />
           <div
             className="villa__resorts"

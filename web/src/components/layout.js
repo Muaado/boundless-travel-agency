@@ -5,6 +5,7 @@ import AOS from "aos";
 
 import { GlobalStyle } from "../styles/GlobalStyle";
 import "aos/dist/aos.css";
+import Footer from "./Footer";
 const windowGlobal = typeof window !== "undefined";
 if (windowGlobal) AOS.init();
 
@@ -30,17 +31,17 @@ const Layout = ({
     />
 
     <div>{children}</div>
-    <GlobalStyle />
-
+    {/* <Footer /> */}
     {/* <footer>
       <div>
-        <div>
-          &copy; {new Date().getFullYear()}, Built with{" "}
-          <a href="https://www.sanity.io">Sanity</a> &amp;{" "}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </div>
+      <div>
+      &copy; {new Date().getFullYear()}, Built with{" "}
+      <a href="https://www.sanity.io">Sanity</a> &amp;{" "}
+      <a href="https://www.gatsbyjs.org">Gatsby</a>
+      </div>
       </div>
     </footer> */}
+    <GlobalStyle />
   </>
 );
 

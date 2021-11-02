@@ -12,8 +12,8 @@ const GalleryStyles = styled.div`
 
   text-align: center;
   padding: 0 15%;
-  @media ${device.laptopL} {
-    /* padding: 0; */
+  @media ${device.laptopM} {
+    padding: 0 10%;
   }
 
   h2 {
@@ -40,6 +40,10 @@ const GalleryStyles = styled.div`
   }
   .main-image-container {
     height: 90vh;
+
+    @media ${device.tablet} {
+      height: 70vh;
+    }
   }
 
   .image-grid {
@@ -49,11 +53,43 @@ const GalleryStyles = styled.div`
     gap: 1.5rem;
     grid-template-columns: 1fr 1fr 1fr;
 
+    @media ${device.mobileXL} {
+      gap: 1rem;
+    }
     li {
       height: 35rem;
+      @media ${device.laptopM} {
+        height: 30rem;
+      }
+
+      @media ${device.tablet} {
+        height: 25rem;
+      }
+
+      @media ${device.tabletS} {
+        height: 20rem;
+      }
+
+      @media ${device.mobileXL} {
+        height: 15rem;
+      }
       &:nth-of-type(1) {
         grid-row: 1/3;
         height: 71.5rem;
+        @media ${device.laptopM} {
+          height: 61.5rem;
+        }
+
+        @media ${device.tablet} {
+          height: 51.5rem;
+        }
+
+        @media ${device.tabletS} {
+          height: 41.5rem;
+        }
+        @media ${device.mobileXL} {
+          height: 31rem;
+        }
       }
 
       &:nth-of-type(4) {
@@ -86,6 +122,10 @@ const GalleryStyles = styled.div`
 
   .carousel {
     height: 70vh !important;
+
+    @media ${device.tablet} {
+      height: 60vh !important;
+    }
     img {
       height: 80%;
     }
@@ -100,10 +140,10 @@ const Gallery = ({ id, galleries }) => {
   return (
     <GalleryStyles
       id={id}
-      // data-aos="fade-up"
-      // data-aos-delay="50"
-      // data-aos-duration="1000"
-      // data-aos-easing="ease-in-out"
+      data-aos="fade-up"
+      data-aos-delay="50"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
     >
       <h2>Gallery</h2>
       <ul className="filters">
