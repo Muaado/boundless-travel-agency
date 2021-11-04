@@ -161,19 +161,19 @@ const Footer = ({ logo, contactUs }) => {
         <p>Copyright Boundless Maldives</p>
         <ul>
           <li>
-            <a href={`mailto:${contactUs.email}`}>
+            <a>
               <Location />
-              {contactUs.address}
+              {contactUs?.address}
             </a>
           </li>
           <li>
-            <a href={`tel:${contactUs.phoneOne}`}>
+            <a href={`tel:${contactUs?.phoneOne}`}>
               <PhoneIcon />
-              {contactUs.phoneOne}
+              {contactUs?.phoneOne}
             </a>
           </li>
           <li>
-            <a href={`mailto:${contactUs.email}`}>
+            <a href={`mailto:${contactUs?.email}`}>
               <EmailIcon />
               Send us an email
             </a>
