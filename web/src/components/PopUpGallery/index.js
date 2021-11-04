@@ -70,7 +70,7 @@ const GalleryComponent = ({ images }) => {
 
   return (
     <GalleryImage className="gallery carousel">
-      <div className="image-wrapper">
+      <div className="image-container">
         <Carousel
           speed={1000}
           cellSpacing={cellSpacing}

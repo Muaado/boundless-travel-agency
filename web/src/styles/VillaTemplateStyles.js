@@ -84,6 +84,15 @@ const VillaStyles = styled.div`
           width: 100% !important;
           height: 100% !important;
         }
+        @media ${device.tablet} {
+          position: unset !important;
+          width: 100% !important;
+          height: 70vh !important;
+
+          .slider-list {
+            height: 70vh !important;
+          }
+        }
 
         &__button-right,
         &__button-left {
@@ -99,6 +108,10 @@ const VillaStyles = styled.div`
           }
           @media ${device.laptop} {
             height: inherit !important;
+            width: 100% !important;
+          }
+          @media ${device.tablet} {
+            height: 70vh !important;
             width: 100% !important;
           }
         }

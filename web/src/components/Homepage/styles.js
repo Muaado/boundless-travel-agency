@@ -23,6 +23,10 @@ export const HeroStyles = styled.div`
   width: 100%;
   height: 100vh;
 
+  @media ${device.laptop} {
+    height: 80vh;
+  }
+
   &:before {
     content: "";
     position: absolute;
@@ -32,6 +36,10 @@ export const HeroStyles = styled.div`
     width: 100%;
     height: 100%;
     background-color: #000;
+
+    @media ${device.laptop} {
+      height: inherit;
+    }
   }
   h1 {
     text-transform: uppercase;
@@ -48,10 +56,20 @@ export const HeroStyles = styled.div`
   p {
   }
 
+  .video {
+    height: inherit;
+  }
+
   video {
     height: 100%;
     width: 100vw;
     object-fit: fill;
+
+    @media ${device.laptop} {
+      width: 120%;
+      position: relative;
+      left: -10%;
+    }
   }
 `;
 

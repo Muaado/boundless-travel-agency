@@ -15,7 +15,7 @@ const LeftSidebarStyles = styled.div`
   position: fixed;
   left: 5rem;
   top: 30%;
-  z-index: 100;
+  z-index: 10000;
 
   transition: all 1s;
 
@@ -24,7 +24,7 @@ const LeftSidebarStyles = styled.div`
   }
 
   li {
-    @media ${device.mobileXL} {
+    @media ${device.tablet} {
       display: none;
     }
     color: var(--grey);
