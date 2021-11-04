@@ -179,9 +179,7 @@ const Header = ({
   return (
     <HeaderStyles className="disappear-on-scroll" pathname={location?.pathname}>
       <div className="logo">
-        <Link to="/">
-          <Image {...logo} alt={logo.alt} />
-        </Link>
+        <Link to="/">{logo && <Image {...logo} alt={logo.alt} />}</Link>
       </div>
 
       <nav>
