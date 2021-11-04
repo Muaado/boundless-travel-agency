@@ -11,6 +11,11 @@ const query = graphql`
         ...SanityImage
         alt
       }
+      contactUs {
+        address
+        email
+        phoneOne
+      }
     }
 
     resorts: allSanityResort {
@@ -117,6 +122,7 @@ function LayoutContainer(props) {
       onHideNav={handleHideNav}
       onShowNav={handleShowNav}
       logo={navData.site.logo}
+      contactUs={navData.site.contactUs}
     />
   );
 }

@@ -3,23 +3,45 @@ import styled from "styled-components";
 
 import LogoIcon from "../assets/logo.svg";
 import { device } from "../styles/deviceSizes";
+import PhoneIcon from "../assets/icons/phone.svg";
+import EmailIcon from "../assets/icons/email.svg";
+import Location from "../assets/icons/location.svg";
+import { Logo } from "./header";
 
 const FooterStyles = styled.footer`
   background: var(--lightOrange);
-  padding: 10rem 15%;
+  padding: 10rem 10%;
 
   .header-section {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #fff;
     padding-bottom: 4rem;
-    @media ${device.laptopM} {
+    @media ${device.laptop} {
       flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .logo {
+    width: 14rem;
+    height: 17rem;
+    a {
+      width: 14rem;
+      height: 17rem;
+
+      img {
+        object-fit: contain;
+      }
     }
   }
 
   .form {
     /* dis */
+    @media ${device.laptop} {
+      display: none;
+    }
 
     .container {
       display: flex;
@@ -61,6 +83,50 @@ const FooterStyles = styled.footer`
     color: #fff;
   }
 
+  .bottom-section {
+    margin-top: 2rem;
+
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+
+    @media ${device.laptop} {
+      flex-direction: column-reverse;
+      align-items: center;
+      p {
+        margin-top: 2rem;
+      }
+    }
+
+    p {
+      font-size: 1.6rem;
+    }
+
+    ul {
+      display: flex;
+      gap: 2rem;
+
+      @media ${device.tablet} {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        svg {
+          margin-right: 1rem;
+        }
+      }
+    }
+
+    svg {
+      path {
+        fill: #fff;
+      }
+    }
+  }
+
   /* svg {
     width: 20rem;
     height: 20rem;
@@ -71,11 +137,11 @@ const FooterStyles = styled.footer`
   } */
 `;
 
-const Footer = () => {
+const Footer = ({ logo, contactUs }) => {
   return (
     <FooterStyles>
       <div className="header-section">
-        <LogoIcon />
+        <Logo logo={logo} />
 
         <form className="form">
           <p>Join our newsletter</p>
@@ -91,8 +157,28 @@ const Footer = () => {
         </form>
       </div>
 
-      <div>
+      <div className="bottom-section">
         <p>Copyright Boundless Maldives</p>
+        <ul>
+          <li>
+            <a href={`mailto:${contactUs.email}`}>
+              <Location />
+              {contactUs.address}
+            </a>
+          </li>
+          <li>
+            <a href={`tel:${contactUs.phoneOne}`}>
+              <PhoneIcon />
+              {contactUs.phoneOne}
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${contactUs.email}`}>
+              <EmailIcon />
+              Send us an email
+            </a>
+          </li>
+        </ul>
       </div>
     </FooterStyles>
   );

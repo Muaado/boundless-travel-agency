@@ -7,7 +7,7 @@ import PhoneIcon from "../../assets/icons/phone.svg";
 import EmailIcon from "../../assets/icons/email.svg";
 
 const ContactUsSection = styled.div`
-  margin-bottom: 18rem;
+  margin-bottom: 10rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;

@@ -12,98 +12,59 @@ import Eclipse from "../../assets/icons/whyBoundlessIcons/eclipse.svg";
 import { device } from "../../styles/deviceSizes";
 
 const WhyBoundlessSectionStyles = styled.div`
-  margin-bottom: 10rem;
-  perspective: 2px;
-  height: 75vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-
   position: relative;
-
-  .parallax {
-    &__layer {
-      height: 105%;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    }
-    &__layer--base {
-      transform: translateZ(0);
-    }
-
-    &__layer--back {
-      width: fit-content;
-      /* height: 90vh; */
-      left: 50%;
-      top: 0%;
-      margin-bottom: 10rem;
-      transform: translateZ(-1px);
-
-      @media ${device.laptopL} {
-        left: 30%;
-      }
-      @media ${device.laptopM} {
-        left: 20%;
-      }
-
+  margin-bottom: 10rem;
+  @media ${device.tablet} {
+    margin-bottom: 5rem;
+  }
+  p {
+    color: #fff;
+  }
+  .image-container {
+    height: 80vh;
+    min-height: 50rem;
+    img {
+      object-position: top;
       @media ${device.tablet} {
-        top: -15%;
-        left: 0%;
+        object-position: top;
       }
     }
   }
-
   .content {
-    /* margin-top: 12rem;
-    /* display: flex; */
-    /* flex-direction: column;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 0%;
-    left: 58%;
-    color: #fff; */
-    /* transform: translateZ(1px); */
-    /*
-    
-
-    
-/*    */
-
-    /* transform: translateZ(3px); */
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    top: 10%;
+    left: 60%;
+    color: #fff;
+    @media ${device.laptopL} {
+      left: 50%;
+    }
+    @media ${device.laptop} {
+      left: 40%;
+    }
+    @media ${device.mobileXL} {
+      left: 0%;
+    }
     h2 {
-      align-self: center;
       margin-bottom: 7rem;
       color: #fff;
       text-transform: lowercase;
-      max-width: 70rem;
-
-      font-size: 7rem;
+      max-width: 50rem;
       text-align: center;
       font-weight: 100;
     }
-
     ul {
-      /* height: 100vh; */
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 4rem;
+      gap: 2rem;
       text-align: center;
-      p {
-        font-size: 3.2rem;
-        color: #fff;
-      }
       li {
         svg {
           width: 10rem;
           margin-bottom: 2rem;
-
           @media ${device.laptopM} {
             width: 8rem;
           }

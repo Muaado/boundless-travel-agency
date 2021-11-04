@@ -20,6 +20,7 @@ const Layout = ({
   navData,
   logo,
   location,
+  contactUs,
 }) => (
   <>
     <Header
@@ -33,7 +34,7 @@ const Layout = ({
     />
 
     <div>{children}</div>
-    {/* <Footer /> */}
+    <Footer logo={logo} contactUs={contactUs} />
     {/* <footer>
       <div>
       <div>

@@ -27,6 +27,9 @@ const JourneyStyles = styled.div`
   @media ${device.laptopL} {
     padding: 0 15%;
   }
+  @media ${device.laptop} {
+    margin-top: 10rem;
+  }
 
   h1 {
     letter-spacing: 2rem;
@@ -34,9 +37,17 @@ const JourneyStyles = styled.div`
     color: var(--primary);
     margin-bottom: 1rem;
 
+    @media ${device.laptop} {
+      font-size: 5rem;
+    }
+
     @media ${device.tablet} {
+      font-size: 3.6rem;
       letter-spacing: 1rem;
       line-height: 5rem;
+    }
+
+    @media ${device.tablet} {
     }
   }
 

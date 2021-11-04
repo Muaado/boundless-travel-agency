@@ -23,6 +23,10 @@ const LeftSidebarStyles = styled.div`
     opacity: 1;
   }
 
+  @media ${device.mobileXL} {
+    left: 1rem;
+  }
+
   li {
     @media ${device.tablet} {
       display: none;

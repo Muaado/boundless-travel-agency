@@ -90,7 +90,19 @@ export const SearchBar = styled.form`
   align-self: center;
 
   display: flex;
-  width: 80%;
+  /* width: 80%; */
+  justify-content: space-between;
+  width: 40vw;
+
+  @media ${device.laptop} {
+    width: 60vw;
+  }
+  @media ${device.tablet} {
+    width: 80vw;
+  }
+  @media ${device.mobileXL} {
+    width: 100vw;
+  }
 
   filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.25));
   input {

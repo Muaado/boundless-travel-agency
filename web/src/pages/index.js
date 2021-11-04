@@ -274,10 +274,10 @@ const IndexPage = (props) => {
               type="text"
               name="location"
             />
-            <input placeholder="Check in" type="date" />
+            {/* <input placeholder="Check in" type="date" />
             <input placeholder="Check out" type="date" />
             <input placeholder="Adults" type="number" />
-            <input placeholder="Children" type="number" />
+            <input placeholder="Children" type="number" /> */}
             <button className="btn">SEARCH</button>
           </SearchBar>
 

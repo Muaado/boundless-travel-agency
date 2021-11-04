@@ -59,8 +59,11 @@ const HeaderStyles = styled.header`
 
     a {
       margin-bottom: 2rem;
-      width: 8rem;
-      height: 10.5rem;
+      width: 8.6rem;
+      height: 11.8rem;
+      img {
+        object-fit: contain;
+      }
     }
   }
 
@@ -136,6 +139,11 @@ const HeaderStyles = styled.header`
     }
   }
 `;
+export const Logo = ({ logo }) => (
+  <div className="logo">
+    <Link to="/">{logo && <Image {...logo} alt={logo.alt} />}</Link>
+  </div>
+);
 
 const DropDown = ({ list }) => {
   return (
@@ -178,10 +186,7 @@ const Header = ({
 
   return (
     <HeaderStyles className="disappear-on-scroll" pathname={location?.pathname}>
-      <div className="logo">
-        <Link to="/">{logo && <Image {...logo} alt={logo.alt} />}</Link>
-      </div>
-
+      <Logo logo={logo} />
       <nav>
         <ul>
           <li>
