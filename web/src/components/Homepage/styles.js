@@ -52,6 +52,11 @@ export const HeroStyles = styled.div`
     font-family: "Roboto";
     font-size: 5rem;
     color: #fff;
+
+    @media ${device.laptop} {
+      font-size: 3rem;
+      padding: 0 2rem;
+    }
   }
   p {
   }
