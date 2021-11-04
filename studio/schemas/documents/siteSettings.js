@@ -11,6 +11,12 @@ export default {
     },
 
     {
+      name: "logo",
+      type: "mainImage",
+      title: "Boundless logo",
+    },
+
+    {
       name: "fullName",
       type: "string",
       title: "Full name",

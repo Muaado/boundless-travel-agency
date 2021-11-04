@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 import ChevronUp from "../assets/icons/chevron-up.svg";
+import { device } from "../styles/deviceSizes";
 
 const LeftSidebarStyles = styled.div`
   opacity: 0;
@@ -23,6 +24,9 @@ const LeftSidebarStyles = styled.div`
   }
 
   li {
+    @media ${device.mobileXL} {
+      display: none;
+    }
     color: var(--grey);
     margin-bottom: 2rem;
     a {

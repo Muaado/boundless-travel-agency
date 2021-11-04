@@ -1,7 +1,8 @@
 import { Link } from "gatsby";
 import React, { useState } from "react";
 
-import Logo from "../assets/logo.svg";
+import Image from "gatsby-plugin-sanity-image";
+// import Logo from "../assets/logo.svg";
 
 import styled from "styled-components";
 import { device } from "../styles/deviceSizes";
@@ -54,9 +55,12 @@ const HeaderStyles = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 
     a {
       margin-bottom: 2rem;
+      width: 8rem;
+      height: 10.5rem;
     }
   }
 
@@ -139,6 +143,7 @@ const DropDown = ({ list }) => {
       <ul>
         {list.map(
           (item) =>
+            item &&
             item.url && (
               <Link key={item.url} to={item.url}>
                 {item.name}
@@ -156,6 +161,7 @@ const Header = ({
   showNav,
   siteTitle,
   navData,
+  logo,
   location,
 }) => {
   const [showDropdown, setShowDropdown] = useState(0);
@@ -174,9 +180,7 @@ const Header = ({
     <HeaderStyles className="disappear-on-scroll" pathname={location?.pathname}>
       <div className="logo">
         <Link to="/">
-          <p>
-            <Logo />
-          </p>
+          <Image {...logo} alt={logo.alt} />
         </Link>
       </div>
 

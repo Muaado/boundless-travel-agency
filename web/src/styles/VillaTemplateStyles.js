@@ -22,24 +22,10 @@ const VillaStyles = styled.div`
       max-height: 80vh;
       overflow-y: hidden;
       position: relative;
-      /* &:after {
-        content: "";
 
-        background: linear-gradient(
-          188.95deg,
-          #1c2238 30.5%,
-          rgba(28, 34, 56, 0) 93.2%
-        );
-        /* opacity: */
-      /* left: 0;
-      top: 0;
-      opacity: 0.2;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      z-index: 50; */
-      /* right: -55vw; */
-      /* } */
+      @media ${device.tabletL} {
+        height: 80vh;
+      }
 
       &-title {
         position: absolute;
@@ -52,6 +38,12 @@ const VillaStyles = styled.div`
         left: 10%;
         bottom: 10%;
         z-index: 100;
+
+        @media ${device.tabletL} {
+          font-size: 2rem;
+          bottom: 1rem;
+          letter-spacing: 0.8rem;
+        }
       }
     }
     &__header {
@@ -66,13 +58,32 @@ const VillaStyles = styled.div`
         padding: 0;
       }
 
+      @media ${device.mobileXl} {
+        width: 100vw;
+      }
+
       .carousel {
-        height: 80rem !important;
-        width: 60rem !important;
+        height: 70rem !important;
+        width: 55rem !important;
         position: absolute !important;
         top: 10rem;
         left: -55rem;
         z-index: 100;
+
+        @media ${device.laptopM} {
+          /* display: none; */
+          /* position: unset !important; */
+          left: -45rem;
+          height: 65rem !important;
+          width: 45rem !important;
+          top: 10rem;
+        }
+
+        @media ${device.laptop} {
+          position: unset !important;
+          width: 100% !important;
+          height: 100% !important;
+        }
 
         &__button-right,
         &__button-left {
@@ -82,6 +93,14 @@ const VillaStyles = styled.div`
         &__image-container {
           height: 80rem !important;
           width: 60rem !important;
+
+          @media ${device.laptopM} {
+            height: 65rem !important;
+          }
+          @media ${device.laptop} {
+            height: inherit !important;
+            width: 100% !important;
+          }
         }
 
         .slider-control-bottomcenter {
@@ -120,10 +139,34 @@ const VillaStyles = styled.div`
         margin-left: 50rem;
         padding: 15rem 8rem 15rem 15rem;
         border: 1px solid var(--primary);
+
+        @media ${device.laptopM} {
+          /* margin: 0; */
+          height: 95vh;
+          padding: 5rem;
+          border: none;
+        }
+
+        @media ${device.laptop} {
+          display: flex;
+          flex-direction: column;
+          margin: 0;
+          height: fit-content;
+          width: 100%;
+          align-items: center;
+        }
+
+        @media ${device.mobileXL} {
+          padding: 0 5%;
+        }
+
         p {
           max-width: 40rem;
           font-size: 2.2rem;
           color: var(--grey1);
+          @media ${device.laptop} {
+            text-align: center;
+          }
         }
       }
 
@@ -137,6 +180,11 @@ const VillaStyles = styled.div`
         font-family: "Playfair Display";
         font-size: 1.5rem !important;
         letter-spacing: 0.5rem;
+
+        @media ${device.laptopM} {
+          transform: unset;
+          left: 5rem;
+        }
       }
 
       h1 {
@@ -144,10 +192,17 @@ const VillaStyles = styled.div`
         font-size: 3.6rem;
         font-weight: normal;
         color: #76622e;
+
+        @media ${device.mobileXL} {
+          text-align: center;
+        }
       }
 
       h3 {
         padding: 3rem 0;
+        @media ${device.mobileXL} {
+          text-align: center;
+        }
       }
 
       .tagline {
@@ -159,8 +214,13 @@ const VillaStyles = styled.div`
       ul {
         padding: 3rem 4rem;
         display: flex;
+
+        @media ${device.laptop} {
+          align-items: center;
+          justify-content: center;
+        }
+
         li {
-          margin-right: 4rem;
           height: 8rem;
           display: flex;
           flex-direction: column;
@@ -170,6 +230,10 @@ const VillaStyles = styled.div`
             svg {
               margin-top: 1rem;
             }
+          }
+
+          &:not(:last-of-type) {
+            margin-right: 4rem;
           }
         }
       }
@@ -185,6 +249,7 @@ const VillaStyles = styled.div`
       margin-bottom: 10rem;
       position: relative;
       overflow-y: hidden;
+
       h2,
       h3 {
         color: #fff;
@@ -192,6 +257,15 @@ const VillaStyles = styled.div`
       }
       h2 {
         margin-bottom: 8rem;
+
+        @media ${device.laptopM} {
+          margin-bottom: 1rem;
+          font-size: 3rem;
+        }
+      }
+
+      .image-container {
+        height: 80vh;
       }
 
       .content {
@@ -223,6 +297,11 @@ const VillaStyles = styled.div`
           font-size: 2.2rem;
           border-bottom: 1px solid var(--primary);
 
+          @media ${device.laptopM} {
+            margin-top: 0.5rem !important;
+            font-size: 1.6rem !important;
+          }
+
           svg {
             margin-right: 4rem;
           }
@@ -231,12 +310,25 @@ const VillaStyles = styled.div`
         ul {
           li {
             width: 70rem;
+
+            @media ${device.tabletL} {
+              width: 80vw;
+            }
             p {
               color: #fff;
+              @media ${device.laptopM} {
+                /* margin-bottom: 1rem; */
+                font-size: 1.6rem !important;
+              }
             }
             & > * {
               margin-top: 2rem;
               font-size: 2.2rem;
+
+              @media ${device.laptopM} {
+                margin-top: 1rem;
+                font-size: 1.6rem !important;
+              }
             }
             /* h3 {
               padding-left: 0 !important;
@@ -261,6 +353,25 @@ const VillaStyles = styled.div`
       align-items: center;
       grid-template-columns: 35rem 1fr;
       gap: 4rem;
+      align-self: center;
+
+      @media ${device.laptopL} {
+        grid-template-columns: 1fr;
+        padding: 10rem 5%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100vw;
+      }
+
+      /* @media ${device.mobileXL} {
+        width: 100vw;
+      }
+      div {
+        width: 100vw;
+      } */
+
       h2 {
         font-size: 2.5rem;
         text-align: left;
@@ -277,6 +388,15 @@ const VillaStyles = styled.div`
         gap: 1rem;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 25rem 25rem 25rem;
+
+        @media ${device.tablet} {
+          grid-template-rows: 20rem 20rem 20rem;
+        }
+        @media ${device.mobileXL} {
+          grid-template-rows: 12rem 12rem 12rem;
+          /* max-width: 90vw; */
+          align-self: center;
+        }
         li {
           position: relative;
           .text {
@@ -329,6 +449,12 @@ const VillaStyles = styled.div`
           }
           h3 {
             color: #fff;
+            @media ${device.mobileXL} {
+              font-size: 1.6rem;
+            }
+            @media ${device.mobileL} {
+              font-size: 1.4rem;
+            }
           }
         }
       }
@@ -338,6 +464,9 @@ const VillaStyles = styled.div`
       flex-direction: column;
       align-items: center;
       margin-top: 5rem;
+      @media ${device.mobileXL} {
+        padding: 0 2rem;
+      }
       h2 {
         text-transform: capitalize;
         color: var(--primary);
@@ -351,6 +480,9 @@ const VillaStyles = styled.div`
           background: var(--primary);
           width: 4rem;
           height: 2px;
+          @media ${device.tablet} {
+            content: unset;
+          }
         }
         &:after {
           left: unset;
@@ -363,10 +495,13 @@ const VillaStyles = styled.div`
       margin-top: 10rem;
       margin-bottom: 5rem;
       padding: 0 15%;
-      @media ${device.laptopL} {
-        /* padding: 0; */
+      @media ${device.laptop} {
+        padding: 0 10%;
       }
 
+      @media ${device.tablet} {
+        margin-bottom: 0;
+      }
       h2 {
         margin-bottom: 7rem;
       }
@@ -376,8 +511,24 @@ const VillaStyles = styled.div`
         column-gap: 6rem;
         row-gap: 2rem;
 
+        @media ${device.laptop} {
+          grid-template-columns: 1fr;
+        }
+
         .image-container {
           height: 50rem;
+        }
+
+        li {
+          @media ${device.laptop} {
+            display: grid;
+            grid-template-columns: 1fr 25rem;
+            gap: 4rem;
+          }
+
+          @media ${device.tablet} {
+            grid-template-columns: 1fr;
+          }
         }
       }
 
@@ -390,6 +541,11 @@ const VillaStyles = styled.div`
 
         display: flex;
         flex-direction: column;
+
+        @media ${device.laptop} {
+          /* max-height: 25rem; */
+        }
+
         .name {
           font-size: 2rem;
           font-family: "Playfair Display";
@@ -446,6 +602,7 @@ const VillaStyles = styled.div`
       margin-bottom: 10rem;
       padding: 10rem 10%;
       background: #b39a6a;
+      position: relative;
 
       /* height: fit-content; */
       .title {
@@ -456,6 +613,13 @@ const VillaStyles = styled.div`
         color: #fff;
         font-size: 1.4rem;
         /* position: relative; */
+
+        @media ${device.laptop} {
+          transform: unset;
+          left: 10%;
+          top: 5rem;
+        }
+
         span {
           margin-right: 5rem;
           &.line {
@@ -479,6 +643,11 @@ const VillaStyles = styled.div`
         /* .slider-frame {
           height: max-content !important;
         } */
+
+        .slider-control-bottomcenter {
+          max-width: 80vw;
+          overflow: hidden;
+        }
         &__node {
           display: block;
           /* height: 100%; */
@@ -490,15 +659,15 @@ const VillaStyles = styled.div`
         position: relative;
         &__button {
           &-right {
-            position: absolute;
-            left: 5rem;
-            top: -5rem;
+            /* position: absolute; */
+            /* left: 5rem; */
+            /* top: -5rem; */
           }
 
           &-left {
-            position: absolute;
-            right: 5rem;
-            top: -5rem;
+            /* position: absolute; */
+            /* right: -2rem; */
+            /* top: -5rem; */
           }
         }
       }

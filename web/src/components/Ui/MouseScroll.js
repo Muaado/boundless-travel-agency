@@ -1,11 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import { device } from "../../styles/deviceSizes";
 
 const MouseScrollStyles = styled.div`
   position: absolute;
   bottom: 5rem;
   left: 50%;
   transform: translate(-50%, 0);
+
+  @media ${device.tabletL} {
+    /* bottom: 1rem; */
+  }
   body {
     background: #333;
   }

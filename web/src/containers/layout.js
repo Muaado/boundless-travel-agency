@@ -7,6 +7,10 @@ const query = graphql`
   query SiteTitleQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
+      logo {
+        ...SanityImage
+        alt
+      }
     }
 
     resorts: allSanityResort {
@@ -112,6 +116,7 @@ function LayoutContainer(props) {
       siteTitle={navData.site.title}
       onHideNav={handleHideNav}
       onShowNav={handleShowNav}
+      logo={navData.site.logo}
     />
   );
 }

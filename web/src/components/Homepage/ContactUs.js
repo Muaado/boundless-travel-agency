@@ -17,7 +17,7 @@ const ContactUsSection = styled.div`
     color: #000;
   }
   @media ${device.laptopL} {
-    padding: 0 5%;
+    padding: 0 10%;
   }
 
   @media ${device.laptop} {
@@ -65,10 +65,10 @@ const ContactUsSection = styled.div`
       }
 
       @media ${device.mobileXL} {
-        width: 8rem;
+        width: 6rem;
       }
       @media ${device.mobileL} {
-        width: 6rem;
+        width: 5rem;
       }
 
       &:not(:last-of-type) {
@@ -95,6 +95,7 @@ const ContactUsSection = styled.div`
 
       @media ${device.tablet} {
         width: 100%;
+        font-size: 1.6rem;
       }
 
       li {

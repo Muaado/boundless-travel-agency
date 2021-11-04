@@ -18,10 +18,12 @@ const Layout = ({
   showNav,
   siteTitle,
   navData,
+  logo,
   location,
 }) => (
   <>
     <Header
+      logo={logo}
       location={location}
       navData={navData}
       siteTitle={siteTitle}

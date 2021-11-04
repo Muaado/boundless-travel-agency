@@ -21,11 +21,9 @@ import Reviews from "../components/Resort/Reviews";
 import Spa from "../components/Resort/Spa";
 import LeftSidebar from "../components/LeftSidebar";
 import PopUpGallery from "../components/PopUpGallery";
-import Carousel from "nuka-carousel";
 
 import PlusIcon from "../assets/icons/plus-icon.svg";
 import MinusIcon from "../assets/icons/minus-icon.svg";
-import CarouselButton from "../components/Ui/CarouselButton";
 
 import Measure from "../assets/icons/villaSpecifications/measure.svg";
 import TwoPeople from "../assets/icons/villaSpecifications/two-people.svg";
@@ -33,6 +31,7 @@ import Bed from "../assets/icons/villaSpecifications/bed.svg";
 import Shower from "../assets/icons/villaSpecifications/shower.svg";
 import SwimmingPool from "../assets/icons/villaSpecifications/swimming-pool.svg";
 import { MouseScroll } from "../components/Ui/MouseScroll";
+import Resorts from "../components/Villa/Resorts";
 // import styled from "styled-components";
 
 export const query = graphql`
@@ -304,12 +303,14 @@ const VilaTemplate = (props) => {
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
           >
-            {roomFeatures?.backgroundImage && (
-              <Image
-                {...roomFeatures.backgroundImage}
-                alt={roomFeatures.backgroundImage.alt}
-              />
-            )}
+            <div className="image-container">
+              {roomFeatures?.backgroundImage && (
+                <Image
+                  {...roomFeatures.backgroundImage}
+                  alt={roomFeatures.backgroundImage.alt}
+                />
+              )}
+            </div>
             <div className="content">
               <h2>Room features</h2>
               <ul>
@@ -425,47 +426,7 @@ const VilaTemplate = (props) => {
           </div>
 
           <Activities activities={activities} />
-          <div
-            className="villa__resorts"
-            data-aos="fade-up"
-            data-aos-delay="50"
-            data-aos-duration="1000"
-            data-aos-easing="ease-in-out"
-          >
-            <p className="title">
-              <span>ALL</span>
-              <span className="line"></span>
-              <span>PRODUCTS</span>
-            </p>
-            <Carousel
-              speed={1000}
-              className="carousel"
-              slidesToShow={3}
-              cellSpacing={20}
-              renderCenterRightControls={({ nextSlide }) => (
-                <CarouselButton onClick={nextSlide} chevronRight={true} />
-              )}
-              renderCenterLeftControls={({ previousSlide }) => (
-                <CarouselButton onClick={previousSlide} />
-              )}
-            >
-              {resorts.nodes.length &&
-                resorts.nodes.map(({ name, image }) => (
-                  <div
-                    className="carousel__node"
-                    // to={getResortUrl({ name })}
-                    key={name}
-                  >
-                    {/* <a className="carousel__node" key={name}> */}
-                    <div className="image-container">
-                      {image && <Image {...image} alt={image.alt} />}
-                    </div>
-                    <p>{name}</p>
-                    {/* </a> */}
-                  </div>
-                ))}
-            </Carousel>
-          </div>
+          <Resorts resorts={resorts.nodes} />
           <Reviews reviews={reviews} />
         </VillaStyles>
       </Container>
