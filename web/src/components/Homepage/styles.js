@@ -58,6 +58,9 @@ export const HeroStyles = styled.div`
 
   .video {
     height: inherit;
+    div {
+      height: inherit;
+    }
   }
 
   video {
