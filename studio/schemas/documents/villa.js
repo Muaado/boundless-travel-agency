@@ -28,6 +28,18 @@ export default {
       title: "Alternate name",
     },
 
+    // {
+    //   name: "villaPriceRange",
+    //   type: "villaPriceRange",
+    //   title: "Villa price range",
+    // },
+
+    {
+      name: "price",
+      type: "number",
+      title: "Price",
+    },
+
     {
       name: "tagline",
       type: "string",

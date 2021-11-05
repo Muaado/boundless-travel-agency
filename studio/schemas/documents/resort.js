@@ -10,6 +10,12 @@ export default {
     },
 
     {
+      name: "externalId",
+      type: "string",
+      title: "Hotels API ID",
+    },
+
+    {
       name: "locationFull",
       type: "string",
       title: "Location full",
