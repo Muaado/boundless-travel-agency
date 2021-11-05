@@ -37,36 +37,58 @@ const WhyBoundlessSectionStyles = styled.div`
     align-items: center;
     position: absolute;
     top: 10%;
-    left: 60%;
+    left: 50%;
     color: #fff;
     @media ${device.laptopL} {
-      left: 50%;
-    }
-    @media ${device.laptop} {
       left: 40%;
     }
-    @media ${device.mobileXL} {
+    @media ${device.laptop} {
+      left: 30%;
+    }
+    @media ${device.tablet} {
       left: 0%;
     }
     h2 {
-      margin-bottom: 7rem;
+      margin-bottom: 3rem;
       color: #fff;
       text-transform: lowercase;
       max-width: 50rem;
       text-align: center;
       font-weight: 100;
+
+      @media ${device.laptopM} {
+        font-size: 4rem;
+      }
     }
     ul {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 2rem;
       text-align: center;
+
+      p {
+        font-size: 2.4rem;
+        color: #fff;
+
+        @media ${device.laptopM} {
+          gap: 1rem;
+        }
+      }
       li {
         svg {
-          width: 10rem;
+          width: 7rem;
           margin-bottom: 2rem;
           @media ${device.laptopM} {
-            width: 8rem;
+            margin-bottom: 1rem;
+            width: 7rem;
+          }
+
+          @media ${device.laptop} {
+            width: 6rem;
+          }
+
+          @media ${device.tablet} {
+            width: 6rem;
           }
         }
       }

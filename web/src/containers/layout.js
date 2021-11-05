@@ -24,7 +24,7 @@ const query = graphql`
       }
     }
 
-    villas: allSanityVilla {
+    villas: allSanityVilla(filter: { featuredInNav: { eq: true } }) {
       nodes {
         name
         resort {

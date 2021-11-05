@@ -58,7 +58,7 @@ const ContactUsSection = styled.div`
     display: flex;
 
     li {
-      width: 12rem;
+      width: 10rem;
 
       @media ${device.tablet} {
         width: 10rem;

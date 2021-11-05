@@ -28,11 +28,11 @@ export default {
       title: "Alternate name",
     },
 
-    // {
-    //   name: "villaPriceRange",
-    //   type: "villaPriceRange",
-    //   title: "Villa price range",
-    // },
+    {
+      name: "featuredInNav",
+      type: "boolean",
+      title: "Feature villa in navigation",
+    },
 
     {
       name: "price",
