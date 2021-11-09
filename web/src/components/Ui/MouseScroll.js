@@ -4,7 +4,7 @@ import { device } from "../../styles/deviceSizes";
 
 const MouseScrollStyles = styled.div`
   position: absolute;
-  bottom: 5rem;
+  bottom: 12rem;
   left: 50%;
   transform: translate(-50%, 0);
 
@@ -64,6 +64,14 @@ const MouseScrollStyles = styled.div`
     animation-delay: alternate;
   } */
 
+  .container {
+    position: absolute;
+    top: -5rem;
+    -webkit-animation: mouse-wheel 1s infinite;
+    -moz-animation: mouse-wheel 1s infinite;
+    animation: mouse-wheel 1s infinite;
+  }
+
   .doi {
     -webkit-animation-delay: 0.2s;
     -moz-animation-delay: 0.2s;
@@ -74,9 +82,11 @@ const MouseScrollStyles = styled.div`
     animation-delay: 0.2s;
     animation-direction: alternate;
 
+    animation: mouse-wheel;
     height: 60px;
     width: 9.5px;
     margin-top: -6px;
+    margin-right: 1px;
   }
 
   .trei {
@@ -92,10 +102,11 @@ const MouseScrollStyles = styled.div`
     animation-direction: alternate;
 
     margin-top: -20px;
-    /* -webkit-animation: mouse-scroll 1.5s infinite;
+    margin-left: 4.8px;
+  }
+  /* -webkit-animation: mouse-scroll 1.5s infinite;
     -moz-animation: mouse-scroll 1.5s infinite;
     animation: mouse-scroll 0.5s infinite; */
-  }
 
   .mouse {
     height: 42px;
@@ -144,54 +155,75 @@ const MouseScrollStyles = styled.div`
   }
   @-moz-keyframes mouse-wheel {
     0% {
-      top: 1px;
+      top: 0px;
     }
-    25% {
-      top: 2px;
-    }
+
     50% {
-      top: 3px;
-    }
-    75% {
       top: 2px;
     }
+
     100% {
-      top: 1px;
+      top: 0px;
     }
   }
   @-o-keyframes mouse-wheel {
     0% {
-      top: 1px;
+      top: 0px;
     }
-    25% {
-      top: 2px;
-    }
+
     50% {
-      top: 3px;
-    }
-    75% {
       top: 2px;
     }
+
     100% {
-      top: 1px;
+      top: 0px;
     }
   }
   @keyframes mouse-wheel {
     0% {
+      top: 0px;
+    }
+
+    50% {
+      top: 2px;
+    }
+
+    100% {
+      top: 0px;
+    }
+    /* 0% {
+      top: 0px;
+    }
+    10% {
+      top: 0.5px;
+    }
+    20% {
       top: 1px;
     }
-    25% {
+    30% {
+      top: 1.5px;
+    }
+    40% {
       top: 2px;
     }
     50% {
-      top: 3px;
+      top: 2.5px;
     }
-    75% {
+    60% {
       top: 2px;
     }
-    100% {
+    70% {
+      top: 1.5px;
+    }
+    80% {
       top: 1px;
     }
+    90% {
+      top: 0.5px;
+    }
+    100% {
+      top: 0px;
+    } */
   }
 
   @-webkit-keyframes mouse-scroll {
@@ -245,7 +277,7 @@ export const MouseScroll = () => (
     {/* <div className="mouse">
       <div className="wheel"></div>
     </div> */}
-    <div>
+    <div className="container">
       {/* <span className="m_scroll_arrows unu"></span> */}
       <span className="m_scroll_arrows doi"></span>
       <span className="m_scroll_arrows trei"></span>

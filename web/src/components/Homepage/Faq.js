@@ -51,9 +51,14 @@ const FaqStyles = styled.div`
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px;
 
+      transition: all 1s;
+      box-shadow: none;
+      min-height: 10rem;
+
       &.selected {
         box-shadow: 0px 59px 107px rgba(0, 0, 0, 0.05);
-        border: none;
+        border-color: #fff;
+        min-height: 15rem;
       }
 
       &:not(:last-of-type) {
@@ -93,10 +98,10 @@ const Faq = (props) => {
   return (
     <FaqStyles
       className={`faq__section ${className}`}
-      data-aos="fade-up"
-      data-aos-delay="50"
-      data-aos-duration="1000"
-      data-aos-easing="ease-in-out"
+      // data-aos="fade-up"
+      // data-aos-delay="50"
+      // data-aos-duration="1000"
+      // data-aos-easing="ease-in-out"
     >
       <h2>{faq.name}</h2>
       <p className="description">

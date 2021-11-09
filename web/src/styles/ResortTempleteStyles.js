@@ -102,6 +102,12 @@ const ResortStyles = styled.div`
         padding: 0 3rem;
       }
 
+      .carousel {
+        display: none !important;
+        @media ${device.tablet} {
+          display: unset !important;
+        }
+      }
       h2 {
         margin-bottom: 7rem;
         /* letter-spacing: 1rem; */
