@@ -355,11 +355,13 @@ const IndexPage = (props) => {
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
           >
-            <Image
-              {...site.secondImage}
-              width={1440}
-              alt={site.secondImage.alt}
-            />
+            {site.secondImage && (
+              <Image
+                {...site.secondImage}
+                width={1440}
+                alt={site.secondImage.alt}
+              />
+            )}
           </div>
           <Faq path="/" faq={site.faq[0]} />
           <NewsletterSection site={site} />

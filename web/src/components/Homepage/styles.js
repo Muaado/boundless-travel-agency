@@ -26,6 +26,9 @@ export const HeroStyles = styled.div`
   @media ${device.laptop} {
     height: 80vh;
   }
+  @media ${device.tablet} {
+    height: 65vh;
+  }
 
   &:before {
     content: "";
@@ -139,6 +142,7 @@ export const HandCraftedJourneysStyles = styled.div`
   }
   @media ${device.tablet} {
     margin: 5rem 0;
+    padding: 0 3rem;
   }
 
   h2,
@@ -222,6 +226,7 @@ export const MagazineStyles = styled.div`
 
   @media ${device.tablet} {
     margin-bottom: 7rem;
+    padding: 0 3rem;
   }
 
   h2,

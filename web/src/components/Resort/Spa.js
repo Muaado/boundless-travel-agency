@@ -24,6 +24,11 @@ const SpaStyles = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 
+  @media ${device.tablet} {
+    min-height: unset;
+    padding: 6rem 2rem 10rem 2rem;
+  }
+
   /* height: max-content; */
   .container {
     display: flex;
@@ -35,6 +40,9 @@ const SpaStyles = styled.div`
     @media ${device.laptopM} {
       align-items: center;
       flex-direction: column-reverse;
+    }
+    @media ${device.tablet} {
+      min-height: unset;
     }
 
     @media ${device.mobileXL} {
@@ -94,6 +102,9 @@ const SpaStyles = styled.div`
       @media ${device.laptopM} {
         align-items: center;
       }
+      @media ${device.tablet} {
+        padding: 0;
+      }
     }
   }
 
@@ -104,9 +115,16 @@ const SpaStyles = styled.div`
     height: 100%;
     position: absolute;
     right: -55vw;
+
+    @media ${device.tablet} {
+      background: transparent;
+    }
   }
 
   background: #fff6f6;
+  @media ${device.tablet} {
+    background: #b39a6a !important;
+  }
   h2 {
     width: max-content;
     text-transform: capitalize;
@@ -124,7 +142,7 @@ const SpaStyles = styled.div`
     max-width: 30rem;
     justify-self: flex-end;
     z-index: 100;
-    @media ${device.mobileXL} {
+    @media ${device.tablet} {
       display: none;
     }
   }
@@ -138,10 +156,10 @@ const Spa = ({ spa, className }) => {
   return (
     <SpaStyles
       className={className}
-      data-aos="fade-up"
-      data-aos-delay="50"
-      data-aos-duration="1000"
-      data-aos-easing="ease-in-out"
+      // data-aos="fade-up"
+      // data-aos-delay="50"
+      // data-aos-duration="1000"
+      // data-aos-easing="ease-in-out"
     >
       <div className="container">
         <div className="left-section">

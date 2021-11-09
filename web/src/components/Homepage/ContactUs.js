@@ -27,6 +27,9 @@ const ContactUsSection = styled.div`
     justify-content: center; */
     justify-items: center;
   }
+  @media ${device.tablet} {
+    padding: 0 3rem;
+  }
 
   .links {
     margin-bottom: 4rem;
@@ -136,7 +139,7 @@ export const ContactUs = ({ contactUs }) => {
         <ul className="contact-people">
           {contactPeople.map(({ image }) => (
             <li key={image._id}>
-              <Image {...image} alt={image.alt} />
+              {image && <Image {...image} alt={image.alt} />}
             </li>
           ))}
         </ul>

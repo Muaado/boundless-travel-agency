@@ -17,6 +17,10 @@ const ResortStyles = styled.div`
 
   #overview {
     margin: 10rem 0;
+
+    @media ${device.tablet} {
+      margin: 5rem 0;
+    }
   }
   .title {
     text-align: center;
@@ -52,6 +56,9 @@ const ResortStyles = styled.div`
 
       @media ${device.laptop} {
         height: 80vh;
+      }
+      @media ${device.tablet} {
+        height: 65vh;
       }
       /* img {
         object-position: bottom;
@@ -91,7 +98,8 @@ const ResortStyles = styled.div`
         padding: 0 10%;
       }
       @media ${device.tablet} {
-        margin-top: 0;
+        margin-top: 5rem;
+        padding: 0 3rem;
       }
 
       h2 {
@@ -110,6 +118,7 @@ const ResortStyles = styled.div`
 
         @media ${device.tablet} {
           grid-template-columns: 1fr;
+          display: none;
         }
 
         li {
@@ -195,6 +204,7 @@ const ResortStyles = styled.div`
       @media ${device.tablet} {
         margin-top: 0;
         margin-bottom: 8rem;
+        padding: 0 3rem;
       }
       p {
         font-size: 1.4rem;
@@ -243,6 +253,7 @@ const ResortStyles = styled.div`
           grid-template-columns: 1fr;
           align-items: center;
         }
+
         li {
           max-height: 80vh;
           display: flex;
@@ -257,7 +268,9 @@ const ResortStyles = styled.div`
           @media ${device.tablet} {
             max-height: unset !important;
             flex-direction: column;
-            margin-bottom: 6rem;
+            &:not(:last-of-type) {
+              margin-bottom: 6rem;
+            }
           }
 
           .image-container {
@@ -268,7 +281,14 @@ const ResortStyles = styled.div`
             }
             @media ${device.tablet} {
               max-height: unset;
+              height: 28rem;
               margin-right: 0;
+
+              img {
+                height: 100%;
+                object-fit: cover;
+                object-position: top;
+              }
             }
 
             /* @media ${device.ta} {
@@ -322,6 +342,7 @@ const ResortStyles = styled.div`
 
         @media ${device.tablet} {
           margin-top: 3rem;
+          max-width: unset;
         }
         .name {
           font-size: 2rem;

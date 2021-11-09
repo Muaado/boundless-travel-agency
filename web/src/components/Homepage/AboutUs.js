@@ -15,7 +15,7 @@ const AboutUsSectionStyles = styled.div`
   }
 
   @media ${device.tablet} {
-    padding: 5rem 15%;
+    padding: 5rem 3rem;
   }
   .about-us {
     &__image-container {
@@ -37,7 +37,7 @@ const AboutUsSectionStyles = styled.div`
         color: var(--darkGreen);
         text-align: left !important;
         @media ${device.tabletL} {
-          text-align: center;
+          text-align: center !important;
         }
       }
 

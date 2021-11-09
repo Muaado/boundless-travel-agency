@@ -1,12 +1,16 @@
 import { Link } from "gatsby";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import Image from "gatsby-plugin-sanity-image";
 // import Logo from "../assets/logo.svg";
+import HamburgerIcon from "../assets/icons/menu-solid.svg";
+import CloseIcon from "../assets/icons/close.svg";
 
 import styled from "styled-components";
 import { device } from "../styles/deviceSizes";
 const HeaderStyles = styled.header`
+  width: 100vw;
+
   position: absolute;
   top: 0;
   left: 50%;
@@ -28,6 +32,19 @@ const HeaderStyles = styled.header`
 
   color: #fff;
   z-index: 1000;
+
+  @media ${device.tablet} {
+    padding: 0 4rem;
+    flex-direction: row;
+    justify-content: space-between;
+    svg {
+      width: 3rem;
+      z-index: 2000;
+      g {
+        fill: #fff;
+      }
+    }
+  }
 
   &:before {
     content: "";
@@ -57,6 +74,12 @@ const HeaderStyles = styled.header`
     align-items: center;
     z-index: 1000;
 
+    @media ${device.tablet} {
+      border: none;
+      padding: 0;
+      width: fit-content;
+    }
+
     a {
       margin-bottom: 2rem;
       width: 8.6rem;
@@ -67,14 +90,51 @@ const HeaderStyles = styled.header`
     }
   }
 
+  .icon {
+    display: none;
+    @media ${device.tablet} {
+      display: unset;
+    }
+  }
+
   nav {
     position: relative;
     /* margin-top: 12rem; */
     /* margin-left: -8rem;/ */
     /* align-self: center;
     justify-self: center; */
+    transition: all 1s;
+
+    .icon {
+      position: absolute;
+      top: 1.5rem;
+      right: 3rem;
+      width: 2rem;
+    }
+
     @media ${device.tablet} {
+      &.show {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      &.hide {
+        transform: translateX(50vw);
+        opacity: 0;
+      }
       /* display: none; */
+
+      background: var(--darkGreen);
+      top: 0;
+      right: 0;
+      position: absolute;
+      z-index: 10000;
+      height: 100vh;
+      width: 50vw;
+      display: flex;
+      justify-content: center;
+      /* align-items: center; */
+      text-align: center;
+      padding-top: 5rem;
     }
 
     opacity: 1;
@@ -84,10 +144,13 @@ const HeaderStyles = styled.header`
       gap: 6rem;
 
       @media ${device.tablet} {
+        /* font-size: 2.6rem; */
         gap: 1rem;
+        flex-direction: column;
       }
 
       li {
+        /* position: relative; */
         &.selected {
           font-weight: bold;
         }
@@ -100,43 +163,46 @@ const HeaderStyles = styled.header`
       }
     }
   }
+`;
 
-  .dropdown {
-    position: absolute;
-    top: 2rem;
-    left: 0;
-    background: #fff;
-    color: #000;
-    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
-    padding: 2rem 3rem;
-    margin-top: 2rem;
+const DropdownListStyles = styled.div`
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  background: #fff;
+  color: #000;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+  margin-top: 2rem;
+  padding: 2rem 3rem;
+
+  z-index: 2000;
+
+  @media ${device.tablet} {
+    margin-top: ${(props) => `${props.marginTop}rem`};
+    overflow-x: hidden !important;
+    width: 50vw;
+    overflow-y: scroll;
+    height: 70vh;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    gap: 2rem;
 
     @media ${device.tablet} {
-      overflow-x: hidden !important;
-      max-width: 70vw;
-      overflow-y: scroll;
-      height: 70vh;
+      grid-template-columns: 1fr;
+      overflow-x: hidden;
     }
-
-    ul {
-      display: grid;
-      grid-template-columns: max-content max-content;
-      gap: 2rem;
-
-      @media ${device.tablet} {
-        grid-template-columns: 1fr;
-        overflow-x: hidden;
-      }
-    }
-    li {
-      min-width: max-content;
-    }
-    a {
-      word-break: keep-all;
-      width: max-content;
-      display: inline-block;
-      /* width: 100%; */
-    }
+  }
+  li {
+    min-width: max-content;
+  }
+  a {
+    word-break: keep-all;
+    width: max-content;
+    display: inline-block;
+    /* width: 100%; */
   }
 `;
 export const Logo = ({ logo }) => (
@@ -145,9 +211,9 @@ export const Logo = ({ logo }) => (
   </div>
 );
 
-const DropDown = ({ list }) => {
+const DropDown = ({ list, marginTop }) => {
   return (
-    <div className="dropdown">
+    <DropdownListStyles marginTop={marginTop} className="dropdown">
       <ul>
         {list.map(
           (item) =>
@@ -159,7 +225,7 @@ const DropDown = ({ list }) => {
             )
         )}
       </ul>
-    </div>
+    </DropdownListStyles>
   );
 };
 
@@ -175,6 +241,7 @@ const Header = ({
   const [showDropdown, setShowDropdown] = useState(0);
   const [list, setList] = useState([]);
 
+  // const [marginTop, setMarginTop] = useState(2);
   const handleOpenDropDown = (list, index) => {
     if (showDropdown !== index) {
       setShowDropdown(index);
@@ -184,32 +251,74 @@ const Header = ({
     }
   };
 
+  // const headerRef = useRef();
+  const windowGlobal = typeof window !== "undefined";
+  // if (windowGlobal) {
+  //   if (window.innerWidth <= 805) {
+  //     headerRef.current.classes.remove("mobile-header");
+  //   }
+  // }
+
   return (
-    <HeaderStyles className="disappear-on-scroll" pathname={location?.pathname}>
+    <HeaderStyles
+      // ref={headerRef}
+      className="disappear-on-scroll"
+      pathname={location?.pathname}
+    >
       <Logo logo={logo} />
-      <nav>
+      {/* <button
+        onClick={() => {
+          onShowNav();
+          console.log("cliked");
+        }}
+      > */}
+      <HamburgerIcon
+        className="icon"
+        onClick={() => {
+          console.log("panelija", showNav);
+          if (!showNav) {
+            onShowNav();
+          } else {
+            onHideNav();
+          }
+        }}
+      />
+      {/* </button> */}
+
+      <nav
+        className={`${showNav ? "show" : "hide"} ${
+          windowGlobal && window.innerWidth > 805 ? "show" : ""
+        }`}
+      >
+        <CloseIcon
+          className="icon"
+          onClick={() => {
+            console.log("panelija", showNav);
+            if (!showNav) {
+              onShowNav();
+            } else {
+              onHideNav();
+            }
+          }}
+        />
         <ul>
-          <li>
-            <p
-              className="clickable"
-              onClick={() => {
-                handleOpenDropDown(navData.resorts, 1);
-              }}
-            >
-              Resorts
-              {showDropdown === 1 && <DropDown list={list} />}
-            </p>
+          <li
+            className="clickable"
+            onClick={() => {
+              handleOpenDropDown(navData.resorts, 1);
+            }}
+          >
+            Resorts
+            {showDropdown === 1 && <DropDown marginTop={6} list={list} />}
           </li>
-          <li>
-            <p
-              className="clickable"
-              onClick={() => {
-                handleOpenDropDown(navData.villas, 2);
-              }}
-            >
-              Villas
-              {showDropdown === 2 && <DropDown list={list} />}
-            </p>
+          <li
+            className="clickable"
+            onClick={() => {
+              handleOpenDropDown(navData.villas, 2);
+            }}
+          >
+            Villas
+            {showDropdown === 2 && <DropDown marginTop={9} list={list} />}
           </li>
           <li>
             <p
@@ -219,7 +328,7 @@ const Header = ({
               }}
             >
               Holiday stays
-              {showDropdown === 3 && <DropDown list={list} />}
+              {showDropdown === 3 && <DropDown marginTop={12} list={list} />}
             </p>
           </li>
           <li>
@@ -237,7 +346,7 @@ const Header = ({
           </li>
         </ul>
       </nav>
-
+      {/* )} */}
       {/* <div></div> */}
     </HeaderStyles>
   );

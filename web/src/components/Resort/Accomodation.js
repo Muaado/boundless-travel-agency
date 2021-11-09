@@ -14,7 +14,10 @@ import { Link } from "gatsby";
 const AccomodationStyles = styled.div`
   padding: 0 15%;
   @media ${device.laptopL} {
-    padding: 0;
+    padding: 0 10%;
+  }
+  @media ${device.tablet} {
+    padding: 0 3rem;
   }
   h2 {
     text-align: center;
@@ -61,6 +64,10 @@ const AccomodationStyles = styled.div`
       font-size: 3rem;
       padding: 2rem 0;
       text-align: right;
+
+      @media ${device.tablet} {
+        text-align: left;
+      }
     }
   }
 `;

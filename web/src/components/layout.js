@@ -33,7 +33,7 @@ const Layout = ({
       showNav={showNav}
     />
 
-    <div>{children}</div>
+    <div onClick={() => onHideNav()}> {children}</div>
     <Footer logo={logo} contactUs={contactUs} />
     {/* <footer>
       <div>

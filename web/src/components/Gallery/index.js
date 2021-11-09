@@ -5,6 +5,7 @@ import Image from "gatsby-plugin-sanity-image";
 import { device } from "../../styles/deviceSizes";
 import Carousel from "nuka-carousel";
 import CarouselButton from "../Ui/CarouselButton";
+import useWindowSize from "../../lib/useWindowSize";
 
 const GalleryStyles = styled.div`
   display: flex;
@@ -16,6 +17,10 @@ const GalleryStyles = styled.div`
     padding: 0 10%;
   }
 
+  @media ${device.tablet} {
+    padding: 0 3rem;
+  }
+
   h2 {
     margin-bottom: 7rem;
   }
@@ -24,6 +29,10 @@ const GalleryStyles = styled.div`
     margin-bottom: 3rem;
     align-self: center;
     display: flex;
+
+    @media ${device.tablet} {
+      display: none;
+    }
 
     li {
       color: var(--grey);
@@ -121,10 +130,10 @@ const GalleryStyles = styled.div`
   }
 
   .carousel {
-    height: 70vh !important;
+    height: 60vh !important;
 
     @media ${device.tablet} {
-      height: 60vh !important;
+      height: 50vh !important;
     }
     img {
       height: 80%;
@@ -136,6 +145,14 @@ const Gallery = ({ id, galleries }) => {
   // const firstImage = galleries[0].images[0];
   const types = galleries.map((galleryItem) => galleryItem.type.name);
   const [selectedGallery, setSelectedGallery] = useState(null);
+
+  const allImages = galleries.map((galleryItem) => galleryItem.images).flat();
+
+  let isTablet;
+  const windowGlobal = typeof window !== "undefined";
+  if (windowGlobal) {
+    isTablet = window.innerWidth <= 805 ? true : false;
+  }
 
   return (
     <GalleryStyles
@@ -162,7 +179,7 @@ const Gallery = ({ id, galleries }) => {
           </li>
         ))}
       </ul>
-      {!selectedGallery ? (
+      {!selectedGallery && !isTablet ? (
         <ul className="image-grid">
           {galleries.length &&
             galleries[0]?.images.slice(0, 4).map((image) => {
@@ -184,11 +201,17 @@ const Gallery = ({ id, galleries }) => {
             <CarouselButton onClick={previousSlide} />
           )}
         >
-          {selectedGallery.images.slice(0, 4).map((image) => (
-            <div key={image.alt} className="main-image-container">
-              <Image {...image} alt={image.alt} />
-            </div>
-          ))}
+          {!isTablet
+            ? selectedGallery.images.map((image) => (
+                <div key={image.alt} className="main-image-container">
+                  {image && <Image {...image} alt={image.alt} />}
+                </div>
+              ))
+            : allImages.map((image) => (
+                <div key={image.alt} className="main-image-container">
+                  {image && <Image {...image} alt={image.alt} />}
+                </div>
+              ))}
         </Carousel>
       )}
     </GalleryStyles>

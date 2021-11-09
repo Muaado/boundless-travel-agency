@@ -100,7 +100,9 @@ const WhyBoundlessSection = ({ whyBoundlessImage }) => {
   return (
     <WhyBoundlessSectionStyles className="parallax-container">
       <div className="image-container parallax__layer parallax__layer--base">
-        <Image {...whyBoundlessImage} alt={whyBoundlessImage.alt} />
+        {whyBoundlessImage && (
+          <Image {...whyBoundlessImage} alt={whyBoundlessImage.alt} />
+        )}
       </div>
 
       {/* <div className="dot">.</div> */}

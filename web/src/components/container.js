@@ -42,6 +42,7 @@ const ContainerStyles = styled.main`
     height: 70rem;
     color: #fff;
     @media ${device.tablet} {
+      height: 30rem;
       /* margin: 20rem 0; */
       /* margin-bottom: 5rem; */
     }

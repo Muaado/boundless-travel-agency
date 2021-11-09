@@ -19,6 +19,14 @@ export const PromoSectionStyles = styled.div`
     margin: 0;
   }
 
+  @media ${device.tablet} {
+    height: 50rem;
+  }
+
+  @media ${device.mobileXL} {
+    height: 40rem;
+  }
+
   img {
     height: 100%;
     width: 100%;
@@ -49,6 +57,7 @@ export const PromoSectionStyles = styled.div`
     }
     @media ${device.tablet} {
       left: 50%;
+      top: 35%;
       width: unset;
       text-transform: uppercase;
     }
@@ -69,7 +78,7 @@ export const PromoSectionStyles = styled.div`
     @media ${device.tablet} {
       left: 50%;
       width: 100%;
-      padding: 0 10%;
+      padding: 0 20%;
     }
   }
 `;
@@ -89,25 +98,27 @@ const PromoSection = ({ image }) => {
         in the most stunning locations.
       </p>
       {/* <div > */}
-      <Image
-        className="parallax__layer--base"
-        {...image}
-        // tell Sanity how large to make the image (does not set any CSS)
-        width={1440}
-        // style it how you want it
-        style={{
-          // width: "100%",
-          // height: "100%",
-          objectFit: "cover",
-        }}
-        // fluid={imageUrlFor(buildImageObj(site.image))
-        //   .width(1200)
-        //   .height(Math.floor((9 / 16) * 1200))
-        //   .fit("crop")
-        //   .auto("format")
-        //   .url()}
-        alt={image.alt}
-      />
+      {image && (
+        <Image
+          className="parallax__layer--base"
+          {...image}
+          // tell Sanity how large to make the image (does not set any CSS)
+          width={1440}
+          // style it how you want it
+          style={{
+            // width: "100%",
+            // height: "100%",
+            objectFit: "cover",
+          }}
+          // fluid={imageUrlFor(buildImageObj(site.image))
+          //   .width(1200)
+          //   .height(Math.floor((9 / 16) * 1200))
+          //   .fit("crop")
+          //   .auto("format")
+          //   .url()}
+          alt={image.alt}
+        />
+      )}
       {/* </div> */}
     </PromoSectionStyles>
   );

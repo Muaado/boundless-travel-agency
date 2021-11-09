@@ -31,6 +31,10 @@ const JourneyStyles = styled.div`
     margin-top: 10rem;
   }
 
+  @media ${device.tablet} {
+    padding: 0 3rem;
+  }
+
   h1 {
     letter-spacing: 2rem;
     line-height: 10rem;
@@ -132,10 +136,10 @@ const JourneyStyles = styled.div`
     margin-top: 4rem;
     .slider-slide,
     .slider-list {
-      height: 34rem !important;
+      height: 25rem !important;
     }
     &__image-container {
-      height: 30rem;
+      height: 25rem;
       img {
         object-position: center;
       }

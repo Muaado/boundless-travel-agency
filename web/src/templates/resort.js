@@ -299,7 +299,30 @@ const ResortTemplate = (props) => {
             data-aos-easing="ease-in-out"
           >
             <h2>Highlights</h2>
-            <ul>
+
+            <Carousel
+              speed={1000}
+              className="carousel"
+              renderCenterRightControls={({ nextSlide }) => (
+                <CarouselButton onClick={nextSlide} chevronRight={true} />
+              )}
+              renderCenterLeftControls={({ previousSlide }) => (
+                <CarouselButton onClick={previousSlide} />
+              )}
+            >
+              {highlights.map(({ name, imageThumb, _rawDescription }) => (
+                <li key={imageThumb?.alt}>
+                  {/* <Link to={getHighlightUrl({ name, resortName: resort.name })}> */}
+                  <a>
+                    {name} <ChevronRight />
+                  </a>
+                  {/* </Link> */}
+                  <PortableText blocks={_rawDescription} />
+                  {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
+                </li>
+              ))}
+            </Carousel>
+            <ul className="desktop-highlights">
               {highlights.map(({ name, imageThumb, _rawDescription }) => (
                 <li key={imageThumb?.alt}>
                   {/* <Link to={getHighlightUrl({ name, resortName: resort.name })}> */}

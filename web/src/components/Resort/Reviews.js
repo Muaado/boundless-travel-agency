@@ -16,6 +16,10 @@ const ReviewsStyles = styled.div`
   padding: 2rem 10%;
   min-width: fit-content;
 
+  @media ${device.tablet} {
+    padding: 2rem 3rem;
+  }
+
   h2 {
     letter-spacing: 1rem;
     text-align: center;

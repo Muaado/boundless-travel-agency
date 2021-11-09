@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { device } from "../../styles/deviceSizes";
 import { Link } from "gatsby";
 import { getActivityUrl } from "../../lib/helpers";
+import CarouselButton from "../Ui/CarouselButton";
+import Carousel from "nuka-carousel";
 
 const ActivitiesStyles = styled.div`
   margin: 10rem 0;
@@ -14,6 +16,9 @@ const ActivitiesStyles = styled.div`
   flex-direction: column;
   @media ${device.laptopL} {
     /* padding: 0; */
+  }
+  @media ${device.tablet} {
+    padding: 0 3rem;
   }
 
   h2 {
@@ -36,59 +41,90 @@ const ActivitiesStyles = styled.div`
     gap: 1.6rem;
     width: 100%;
 
-    @media ${device.tabletL} {
+    @media ${device.laptop} {
       grid-template-columns: 1fr 1fr;
     }
-    @media ${device.mobileXL} {
-      grid-template-columns: 1fr;
-    }
-
-    li {
-      position: relative;
-      /* width: 10rem; */
-
-      transition: all 2s;
-      max-height: 35rem;
-      a {
-        height: 100%;
-        width: 100%;
-        display: block;
-      }
-      p {
-        opacity: 0;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: fit-content;
-        color: #fff;
-        font-size: 2.4rem;
-      }
-
-      &:hover {
-        &:before {
-          /* transform: translate(-50%, -50%); */
-          content: "";
-          position: absolute;
-          opacity: 0.3;
-          width: 100%;
-          height: 100%;
-          background-color: #000;
-        }
-
-        p {
-          opacity: 1;
-        }
-      }
-      p {
-        opacity: 0;
-      }
+    @media ${device.tablet} {
+      display: none;
+      /* grid-template-columns: 1fr; */
     }
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+  }
+
+  .item {
+    position: relative;
+    /* width: 10rem; */
+
+    transition: all 2s;
+    max-height: 35rem;
+
+    &__carousel {
+      max-height: unset;
+    }
+    a {
+      height: 100%;
+      width: 100%;
+      display: block;
+    }
+    p {
+      opacity: 0;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: fit-content;
+      color: #fff;
+      font-size: 2.4rem;
+    }
+
+    &:hover {
+      &:before {
+        /* transform: translate(-50%, -50%); */
+        content: "";
+        position: absolute;
+        opacity: 0.3;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+      }
+
+      p {
+        opacity: 1;
+      }
+    }
+    p {
+      opacity: 0;
+    }
+    @media ${device.tablet} {
+      &:before {
+        /* transform: translate(-50%, -50%); */
+        content: "";
+        position: absolute;
+        opacity: 0.3;
+        width: 100%;
+        height: 103%;
+        background-color: #000;
+      }
+
+      p {
+        opacity: 1;
+      }
+    }
+  }
+
+  .carousel {
+    display: none !important;
+    @media ${device.tablet} {
+      display: unset !important;
+    }
+    .slider-control-bottomcenter {
+      bottom: -5rem !important;
+      /* height: 110% !important; */
     }
   }
 `;
@@ -109,7 +145,7 @@ const Activities = ({ activities }) => {
       </p>
       <ul>
         {activities.nodes.map(({ name, imageThumb, resort }) => (
-          <li key={imageThumb.alt}>
+          <li className="item" key={imageThumb.alt}>
             {/* <Link to={getActivityUrl({ name, resortName: resort.name })}> */}
             {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
             <p>{name}</p>
@@ -117,6 +153,26 @@ const Activities = ({ activities }) => {
           </li>
         ))}
       </ul>
+
+      <Carousel
+        speed={1000}
+        className="carousel"
+        renderCenterRightControls={({ nextSlide }) => (
+          <CarouselButton onClick={nextSlide} chevronRight={true} />
+        )}
+        renderCenterLeftControls={({ previousSlide }) => (
+          <CarouselButton onClick={previousSlide} />
+        )}
+      >
+        {activities.nodes.map(({ name, imageThumb, resort }) => (
+          <li className="item item__carousel" key={imageThumb.alt}>
+            {/* <Link to={getActivityUrl({ name, resortName: resort.name })}> */}
+            {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
+            <p>{name}</p>
+            {/* </Link> */}
+          </li>
+        ))}
+      </Carousel>
     </ActivitiesStyles>
   );
 };
