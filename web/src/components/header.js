@@ -114,12 +114,13 @@ const HeaderStyles = styled.header`
 
     @media ${device.tablet} {
       &.show {
-        transform: translateX(0);
+        /* transform: translateX(0); */
         opacity: 1;
       }
       &.hide {
-        transform: translateX(50vw);
+        /* transform: translateX(50vw); */
         opacity: 0;
+        z-index: -100;
       }
       /* display: none; */
 
