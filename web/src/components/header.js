@@ -140,7 +140,7 @@ const HeaderStyles = styled.header`
 
     opacity: 1;
     font-size: 1.6rem;
-    ul {
+    .nav-top-list {
       display: flex;
       gap: 6rem;
 
@@ -151,6 +151,7 @@ const HeaderStyles = styled.header`
       }
 
       li {
+        font-size: 1.6rem;
         /* position: relative; */
         &.selected {
           font-weight: bold;
@@ -302,7 +303,7 @@ const Header = ({
             }
           }}
         />
-        <ul>
+        <ul className="nav-top-list">
           <li
             className="clickable"
             onClick={() => {
@@ -321,16 +322,18 @@ const Header = ({
             Villas
             {showDropdown === 2 && <DropDown marginTop={9} list={list} />}
           </li>
-          <li>
-            <p
-              className="clickable"
-              onClick={() => {
-                handleOpenDropDown(navData.collections, 3);
-              }}
-            >
-              Holiday stays
-              {showDropdown === 3 && <DropDown marginTop={12} list={list} />}
-            </p>
+          <li
+            className="clickable"
+            onClick={() => {
+              handleOpenDropDown(navData.collections, 3);
+            }}
+          >
+            {/* <p
+              
+            > */}
+            Holiday stays
+            {showDropdown === 3 && <DropDown marginTop={12} list={list} />}
+            {/* </p> */}
           </li>
           <li>
             <Link
@@ -341,7 +344,7 @@ const Header = ({
               //   setList(navData.resorts);
               // }}
             >
-              <p>Magazine</p>
+              Magazine
               {showDropdown === 4 && <DropDown list={list} />}
             </Link>
           </li>

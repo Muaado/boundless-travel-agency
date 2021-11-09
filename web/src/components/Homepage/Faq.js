@@ -54,11 +54,14 @@ const FaqStyles = styled.div`
       transition: all 1s;
       box-shadow: none;
       min-height: 10rem;
+      max-height: 15rem;
+      outline: none;
 
       &.selected {
         box-shadow: 0px 59px 107px rgba(0, 0, 0, 0.05);
         border-color: #fff;
         min-height: 15rem;
+        max-height: 60rem;
       }
 
       &:not(:last-of-type) {

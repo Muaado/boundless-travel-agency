@@ -123,7 +123,7 @@ export const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     /* font-weight: normal; */
-    font-family: "Playfair Display";
+    font-family: "Roboto";
     font-size: 5rem;
     
     
@@ -154,6 +154,7 @@ export const GlobalStyle = createGlobalStyle`
 
   p {
     font-size: 2rem;
+    line-height: 4rem;
     color: var(--grey1);
       @media ${device.tablet} {
       font-size: 1.6rem;

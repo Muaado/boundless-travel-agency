@@ -34,6 +34,9 @@ const JourneyStyles = styled.div`
   @media ${device.tablet} {
     padding: 0 3rem;
   }
+  @media ${device.mobileXL} {
+    padding: 0;
+  }
 
   h1 {
     letter-spacing: 2rem;
@@ -136,10 +139,24 @@ const JourneyStyles = styled.div`
     margin-top: 4rem;
     .slider-slide,
     .slider-list {
-      height: 25rem !important;
+      @media ${device.tablet} {
+        height: 35rem !important;
+      }
+      @media ${device.mobileXL} {
+        height: 25rem !important;
+      }
+    }
+
+    .slider-control-bottomcenter {
+      bottom: -5rem !important;
     }
     &__image-container {
-      height: 25rem;
+      @media ${device.tablet} {
+        height: 35rem !important;
+      }
+      @media ${device.mobileXL} {
+        height: 25rem !important;
+      }
       img {
         object-position: center;
       }

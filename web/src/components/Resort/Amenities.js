@@ -9,7 +9,7 @@ const AmenitiesStyles = styled.div`
   display: flex;
   flex-direction: column;
   .description {
-    max-width: 50rem;
+    max-width: 70vw;
     font-size: 2.4rem;
     font-weight: 100;
     text-align: center;
@@ -18,6 +18,9 @@ const AmenitiesStyles = styled.div`
 
     line-height: 3.6rem;
 
+    @media ${device.tablet} {
+      width: 90vw;
+    }
     @media ${device.mobileXL} {
       padding: 3rem 2rem;
     }
