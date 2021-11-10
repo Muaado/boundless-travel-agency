@@ -144,7 +144,7 @@ const Activities = ({ activities }) => {
         veniam, quis nostrud exercitation.
       </p>
       <ul>
-        {activities.map(({ name, imageThumb, resort }) => (
+        {activities?.map(({ name, imageThumb, resort }) => (
           <li className="item" key={imageThumb.alt}>
             {/* <Link to={getActivityUrl({ name, resortName: resort.name })}> */}
             {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
@@ -164,7 +164,7 @@ const Activities = ({ activities }) => {
           <CarouselButton onClick={previousSlide} />
         )}
       >
-        {activities.map(({ name, imageThumb, resort }) => (
+        {activities?.map(({ name, imageThumb, resort }) => (
           <li className="item item__carousel" key={imageThumb.alt}>
             {/* <Link to={getActivityUrl({ name, resortName: resort.name })}> */}
             {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
