@@ -9,6 +9,10 @@ export const CollectionStyles = styled.div`
     &__image {
       max-height: 80vh;
       overflow-y: hidden;
+
+      @media ${device.tablet} {
+        height: 60vh;
+      }
       img {
         object-position: bottom !important;
       }
@@ -25,6 +29,10 @@ export const CollectionStyles = styled.div`
       margin-bottom: 10rem;
       width: 100%;
 
+      @media ${device.laptopM} {
+        padding: 0 5%;
+      }
+
       &__title {
         margin-top: 10rem;
         margin-bottom: 7rem;
@@ -39,9 +47,21 @@ export const CollectionStyles = styled.div`
         grid-template-columns: 1fr 1fr;
         gap: 5rem;
 
+        @media ${device.laptop} {
+          gap: 2.5rem;
+        }
+
+        @media ${device.tablet} {
+          grid-template-columns: 1fr;
+        }
+
         li {
           height: 70rem;
           background: var(--lightGrey1);
+
+          @media ${device.laptop} {
+            height: 60rem;
+          }
 
           .text {
             padding: 3rem;
@@ -58,6 +78,10 @@ export const CollectionStyles = styled.div`
           }
           img {
             height: 70%;
+
+            @media ${device.laptop} {
+              height: 65%;
+            }
           }
         }
       }

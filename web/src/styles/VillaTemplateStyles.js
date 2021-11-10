@@ -26,6 +26,9 @@ const VillaStyles = styled.div`
       @media ${device.tabletL} {
         height: 80vh;
       }
+      @media ${device.tablet} {
+        height: 60vh;
+      }
 
       &-title {
         position: absolute;
@@ -349,8 +352,11 @@ const VillaStyles = styled.div`
             ul {
               padding-left: 4rem;
               list-style: disc;
+              display: grid;
+              grid-template-columns: 1fr 1fr;
               li {
-                margin-bottom: 1rem;
+                margin-bottom: 0.5rem;
+                width: fit-content;
               }
             }
           }

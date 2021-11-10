@@ -111,7 +111,9 @@ const CollectionTemplate = (props) => {
           </div>
         )}
 
-        <h1 className="collection__title">Our resorts collection</h1>
+        {pageContext.type === "resort" && (
+          <h1 className="collection__title">Our resorts collection</h1>
+        )}
         <div className="collection__list">
           <ul>
             {items.map(({ name, records }) =>

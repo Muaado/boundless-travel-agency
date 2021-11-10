@@ -42,7 +42,7 @@ const WhyBoundlessSectionStyles = styled.div`
     @media ${device.laptopL} {
       left: 40%;
     }
-    @media ${device.laptop} {
+    @media ${device.laptopM} {
       left: 30%;
     }
     @media ${device.tablet} {
@@ -55,10 +55,10 @@ const WhyBoundlessSectionStyles = styled.div`
       max-width: 50rem;
       text-align: center;
       font-weight: 100;
+      font-size: 4rem;
 
-      @media ${device.laptopM} {
-        font-size: 4rem;
-      }
+      /* @media ${device.laptopM} {
+      } */
     }
     ul {
       display: grid;

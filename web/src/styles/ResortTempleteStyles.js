@@ -107,6 +107,10 @@ const ResortStyles = styled.div`
         @media ${device.tablet} {
           display: unset !important;
         }
+
+        .slider-control-bottomcenter {
+          bottom: -5rem !important;
+        }
       }
       h2 {
         margin-bottom: 7rem;
