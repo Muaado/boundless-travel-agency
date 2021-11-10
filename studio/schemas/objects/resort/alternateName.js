@@ -1,6 +1,6 @@
 export default {
   name: "alternateName",
-  type: "document",
+  type: "object",
   title: "Alternate name (highlight, activity)",
   fields: [
     {

@@ -59,6 +59,17 @@ export const query = graphql`
 
       # }
 
+      activities {
+        # sanityResortHighlightname
+        resort {
+          name
+        }
+        imageThumb {
+          ...SanityImage
+          alt
+        }
+      }
+
       gallery {
         images {
           ...SanityImage
@@ -159,18 +170,18 @@ export const query = graphql`
         }
       }
     }
-    activities: allSanityActivity(filter: { resort: { _id: { eq: $id } } }) {
-      nodes {
-        name
-        resort {
-          name
-        }
-        imageThumb {
-          ...SanityImage
-          alt
-        }
-      }
-    }
+    # activities: allSanityActivity(filter: { resort: { _id: { eq: $id } } }) {
+    #   nodes {
+    #     name
+    #     resort {
+    #       name
+    #     }
+    #     imageThumb {
+    #       ...SanityImage
+    #       alt
+    #     }
+    #   }
+    # }
 
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       contactUs {
@@ -199,7 +210,7 @@ const ResortTemplate = (props) => {
   const resort = data && data.resort;
   // const featuredSpa = data && data.featuredSpa;
   const spas = data && data.spas;
-  const activities = data && data.activities;
+  // const activities = data && data.activities;
   const villas = data && data.villas;
   const restaurants = data && data.restaurants;
   const site = data && data.site;
@@ -223,6 +234,7 @@ const ResortTemplate = (props) => {
     // restaurants,
     reviews,
     gallery: galleries,
+    activities,
     secondImage,
     highlights,
     faq,

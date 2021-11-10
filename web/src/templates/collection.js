@@ -41,10 +41,10 @@ export const query = graphql`
           resort {
             name
           }
-          imageWeb {
-            ...SanityImage
-            alt
-          }
+          # imageWeb {
+          #   ...SanityImage
+          #   alt
+          # }
         }
       }
     }

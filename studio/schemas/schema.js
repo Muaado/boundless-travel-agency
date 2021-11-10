@@ -26,16 +26,16 @@ import resortAccomodationType from "./documents/resortAccomodationType";
 import resortTransferType from "./documents/resortTransferType";
 // import resortCollection from "./documents/resortCollection";
 import restaurantCusinesServed from "./documents/restaurantCusinesServed";
-import spaServicesOffered from "./documents/spaServicesOffered";
-import spaTreatmentType from "./documents/spaTreatmentType";
+// import spaServicesOffered from "./documents/spaServicesOffered";
+// import spaTreatmentType from "./documents/spaTreatmentType";
+// import spaFeaturedProductBrand from "./documents/spaFeaturedProductBrand";
 
 import spa from "./documents/spa";
-import spaFeaturedProductBrand from "./documents/spaFeaturedProductBrand";
 import villaPoolType from "./documents/villaPoolType";
 
 import resortHighlight from "./objects/resort/resortHighlight";
 
-import activity from "./documents/activity";
+import activity from "./objects/resort/activity";
 
 // import resortFaq from "./documents/resortFaq";
 import faqGroupTag from "./documents/faqGroupTag";
@@ -54,7 +54,7 @@ import roomFeatures from "./objects/villa/roomFeatures";
 import feature from "./objects/villa/feature";
 import tag from "./documents/tag";
 import idealFor from "./documents/idealFor";
-import alternateName from "./documents/alternateName";
+import alternateName from "./objects/resort/alternateName";
 import review from "./objects/review";
 import imageWithTitle from "./objects/imageWithTitle";
 import maxOccupancy from "./objects/villa/maxOccupancy";
@@ -81,59 +81,50 @@ export default createSchema({
     contactPerson,
     dayWithHour,
 
-    // SHARED DOCS
-    tag,
-    idealFor,
-    alternateName,
-    imageWithTitle,
-    faq,
-
-    collection,
-    collectionType,
-
     post,
     category,
     author,
+
     resort,
+    villa,
+    restaurant,
+    spa,
+    collection,
+    collectionType,
 
-    resortAccomodationType,
+    // SHARED DOCS
     resortTransferType,
-
-    review,
+    galleryType,
+    tag,
+    idealFor,
+    villaPoolType,
+    faqGroupTag,
 
     gallery,
-    galleryType,
-
-    resortHighlight,
-
-    // resortFaq,
-    faqGroupTag,
+    imageWithTitle,
+    alternateName,
+    faq,
     faqQuestionAnswer,
-
-    restaurant,
-    restaurantCusinesServed,
-    spa,
-    spaServicesOffered,
-    // spaService,
-    spaTreatmentType,
-
-    spaFeaturedProductBrand,
-
-    activity,
-
-    villa,
-    villaPoolType,
-
     shower,
     maxOccupancy,
+    review,
     roomFeatures,
     feature,
-
     mainImage,
+    activity,
+    resortHighlight,
+
     authorReference,
     bodyPortableText,
     bioPortableText,
     excerptPortableText,
+
+    // resortFaq,
+    // restaurantCusinesServed,
+    // spaServicesOffered,
+    // spaService,
+    // spaTreatmentType,
+    // spaFeaturedProductBrand,
 
     // restauranta,
     // When added to this list, object types can be used as

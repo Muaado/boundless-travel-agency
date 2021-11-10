@@ -10,6 +10,11 @@ export default {
     },
 
     {
+      name: "image",
+      type: "mainImage",
+      title: "Hero Image",
+    },
+    {
       name: "externalId",
       type: "string",
       title: "Hotels API ID",
@@ -28,11 +33,6 @@ export default {
     },
 
     {
-      name: "image",
-      type: "mainImage",
-      title: "Image",
-    },
-    {
       name: "secondImage",
       type: "mainImage",
       title: "Second image",
@@ -49,11 +49,11 @@ export default {
       type: "bodyPortableText",
       title: "Accomodation description",
     },
-    {
-      name: "bottomLineDescription",
-      type: "bodyPortableText",
-      title: "Bottom line description",
-    },
+    // {
+    //   name: "bottomLineDescription",
+    //   type: "bodyPortableText",
+    //   title: "Bottom line description",
+    // },
 
     {
       name: "numberOfRooms",
@@ -97,8 +97,22 @@ export default {
       type: "array",
       of: [
         {
-          type: "reference",
-          to: { type: "resortHighlight" },
+          // type: "reference",
+          type: "resortHighlight",
+          // to: {  },
+        },
+      ],
+    },
+
+    {
+      title: "Activities",
+      name: "activities",
+      type: "array",
+      of: [
+        {
+          // type: "reference",
+          type: "activity",
+          // to: {  },
         },
       ],
     },
@@ -182,32 +196,32 @@ export default {
         },
       ],
     },
-    {
-      name: "resortTags",
-      title: "Resort tags",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: {
-            type: "tag",
-          },
-        },
-      ],
-    },
-    {
-      name: "resortAccomodationType",
-      title: "Resort accomodation type",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: {
-            type: "resortAccomodationType",
-          },
-        },
-      ],
-    },
+    // {
+    //   name: "resortTags",
+    //   title: "Resort tags",
+    //   type: "array",
+    //   of: [
+    //     {
+    //       type: "reference",
+    //       to: {
+    //         type: "tag",
+    //       },
+    //     },
+    //   ],
+    // },
+    // {
+    //   name: "resortAccomodationType",
+    //   title: "Resort accomodation type",
+    //   type: "array",
+    //   of: [
+    //     {
+    //       type: "reference",
+    //       to: {
+    //         type: "resortAccomodationType",
+    //       },
+    //     },
+    //   ],
+    // },
   ],
   preview: {
     select: {

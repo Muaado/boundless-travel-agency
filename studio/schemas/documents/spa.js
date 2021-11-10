@@ -39,16 +39,16 @@ export default {
       title: "Description",
     },
 
-    {
-      name: "spaAwardsAndHonors",
-      title: "Spa awards and honors",
-      type: "array",
-      of: [
-        {
-          type: "string",
-        },
-      ],
-    },
+    // {
+    //   name: "spaAwardsAndHonors",
+    //   title: "Spa awards and honors",
+    //   type: "array",
+    //   of: [
+    //     {
+    //       type: "string",
+    //     },
+    //   ],
+    // },
 
     // {
     //   name: "spaServicesOffered",
@@ -57,51 +57,50 @@ export default {
     //   of: [{ type: "spaService" }],
     // },
 
-    {
-      name: "spaTreatmentTypes",
-      title: "Spa treatment types",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: {
-            type: "spaTreatmentType",
-          },
-        },
-      ],
-    },
-    {
-      name: "spaTags",
-      title: "Spa tags",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: {
-            type: "tag",
-          },
-        },
-      ],
-    },
-    {
-      name: "spaFeaturedProductBrands",
-      title: "Spa featured product brands",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: {
-            type: "spaFeaturedProductBrand",
-          },
-        },
-      ],
-    },
-
-    {
-      name: "imageMobile",
-      type: "mainImage",
-      title: "Spa image mobile",
-    },
+    // {
+    //   name: "spaTreatmentTypes",
+    //   title: "Spa treatment types",
+    //   type: "array",
+    //   of: [
+    //     {
+    //       type: "reference",
+    //       to: {
+    //         type: "spaTreatmentType",
+    //       },
+    //     },
+    //   ],
+    // },
+    // {
+    //   name: "spaTags",
+    //   title: "Spa tags",
+    //   type: "array",
+    //   of: [
+    //     {
+    //       type: "reference",
+    //       to: {
+    //         type: "tag",
+    //       },
+    //     },
+    //   ],
+    // },
+    // {
+    //   name: "spaFeaturedProductBrands",
+    //   title: "Spa featured product brands",
+    //   type: "array",
+    //   of: [
+    //     {
+    //       type: "reference",
+    //       to: {
+    //         type: "spaFeaturedProductBrand",
+    //       },
+    //     },
+    //   ],
+    // },
+    // {
+    //   name: "imageMobile",
+    //   type: "mainImage",
+    //   title: "Spa image mobile",
+    // },
     {
       name: "imageWeb",
       type: "mainImage",

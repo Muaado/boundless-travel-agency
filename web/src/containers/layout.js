@@ -24,14 +24,14 @@ const query = graphql`
       }
     }
 
-    villas: allSanityVilla(filter: { featuredInNav: { eq: true } }) {
-      nodes {
-        name
-        resort {
-          name
-        }
-      }
-    }
+    # villas: allSanityVilla(filter: { featuredInNav: { eq: true } }) {
+    #   nodes {
+    #     name
+    #     resort {
+    #       name
+    #     }
+    #   }
+    # }
     collections: allSanityCollection {
       nodes {
         name
@@ -61,13 +61,13 @@ function LayoutContainer(props) {
     );
   }
 
-  const villas = navData.villas.nodes.map(
-    ({ name, resort }) =>
-      resort && {
-        url: getVillaUrl({ name, resortName: resort.name }),
-        name: name,
-      }
-  );
+  // const villas = navData.villas.nodes.map(
+  //   ({ name, resort }) =>
+  //     resort && {
+  //       url: getVillaUrl({ name, resortName: resort.name }),
+  //       name: name,
+  //     }
+  // );
   const resorts = navData.resorts.nodes
     .map(({ name }) => {
       if (typeof name === "string")
@@ -115,7 +115,7 @@ function LayoutContainer(props) {
 
   return (
     <Layout
-      navData={{ resorts, villas, collections }}
+      navData={{ resorts, collections }}
       {...props}
       showNav={showNav}
       siteTitle={navData.site.title}

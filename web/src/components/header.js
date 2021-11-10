@@ -18,9 +18,11 @@ const HeaderStyles = styled.header`
   /* padding: 2rem 4rem; */
   /* height: 40rem; */
   display: flex;
-  flex-direction: column;
+
+  /* flex-direction: column; */
   width: 100%;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 15%;
   align-items: center;
   /* align-items: center; */
   z-index: 100;
@@ -64,11 +66,11 @@ const HeaderStyles = styled.header`
   .logo {
     /* align-self: flex-start; */
     height: 100%;
-    width: 65%;
+    /* width: 65%; */
     /* margin: 0 15%; */
     margin-top: 2rem;
     margin-bottom: 2rem;
-    border-bottom: 1px solid #fff;
+    /* border-bottom: 1px solid #fff; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -313,7 +315,7 @@ const Header = ({
             Resorts
             {showDropdown === 1 && <DropDown marginTop={6} list={list} />}
           </li>
-          <li
+          {/* <li
             className="clickable"
             onClick={() => {
               handleOpenDropDown(navData.villas, 2);
@@ -321,7 +323,7 @@ const Header = ({
           >
             Villas
             {showDropdown === 2 && <DropDown marginTop={9} list={list} />}
-          </li>
+          </li> */}
           <li
             className="clickable"
             onClick={() => {

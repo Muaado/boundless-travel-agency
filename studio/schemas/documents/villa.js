@@ -10,6 +10,12 @@ export default {
     },
 
     {
+      name: "uniqueCode",
+      type: "string",
+      title: "Villa unique code",
+    },
+
+    {
       title: "Resort",
       name: "resort",
       type: "reference",
@@ -28,11 +34,11 @@ export default {
       title: "Alternate name",
     },
 
-    {
-      name: "featuredInNav",
-      type: "boolean",
-      title: "Feature villa in navigation",
-    },
+    // {
+    //   name: "featuredInNav",
+    //   type: "boolean",
+    //   title: "Feature villa in navigation",
+    // },
 
     {
       name: "price",
@@ -88,34 +94,34 @@ export default {
       title: "Number of rooms",
     },
 
-    {
-      title: "Villa featured",
-      name: "villaFeatured",
-      type: "boolean",
-    },
+    // {
+    //   title: "Villa featured",
+    //   name: "villaFeatured",
+    //   type: "boolean",
+    // },
 
-    {
-      title: "Gallery",
-      name: "gallery",
-      type: "array",
-      of: [
-        {
-          type: "gallery",
-          // to: { type: "gallery" },
-        },
-      ],
-    },
+    // {
+    //   title: "Gallery",
+    //   name: "gallery",
+    //   type: "array",
+    //   of: [
+    //     {
+    //       type: "gallery",
+    //       // to: { type: "gallery" },
+    //     },
+    //   ],
+    // },
 
-    {
-      name: "villaAwards",
-      title: "Villa awards",
-      type: "array",
-      of: [
-        {
-          type: "string",
-        },
-      ],
-    },
+    // {
+    //   name: "villaAwards",
+    //   title: "Villa awards",
+    //   type: "array",
+    //   of: [
+    //     {
+    //       type: "string",
+    //     },
+    //   ],
+    // },
 
     {
       name: "villaPoolTypes",
@@ -150,16 +156,16 @@ export default {
       type: "mainImage",
       title: "Hero image",
     },
-    {
-      name: "imageMobile",
-      type: "mainImage",
-      title: "Villa image mobile",
-    },
-    {
-      name: "imageWeb",
-      type: "mainImage",
-      title: "Villa image web",
-    },
+    // {
+    //   name: "imageMobile",
+    //   type: "mainImage",
+    //   title: "Villa image mobile",
+    // },
+    // {
+    //   name: "imageWeb",
+    //   type: "mainImage",
+    //   title: "Villa image web",
+    // },
     {
       name: "imageThumb",
       type: "mainImage",

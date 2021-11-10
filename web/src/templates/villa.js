@@ -49,10 +49,10 @@ export const query = graphql`
       }
 
       _rawDescription
-      imageWeb {
-        ...SanityImage
-        alt
-      }
+      # imageWeb {
+      #   ...SanityImage
+      #   alt
+      # }
 
       heroImage {
         ...SanityImage
@@ -118,6 +118,17 @@ export const query = graphql`
           }
         }
 
+        activities {
+          name
+          resort {
+            name
+          }
+          imageThumb {
+            ...SanityImage
+            alt
+          }
+        }
+
         reviews {
           name
           _rawDescription
@@ -144,20 +155,20 @@ export const query = graphql`
         }
       }
     }
-    activities: allSanityActivity(
-      filter: { resort: { _id: { eq: $resortId } } }
-    ) {
-      nodes {
-        name
-        resort {
-          name
-        }
-        imageThumb {
-          ...SanityImage
-          alt
-        }
-      }
-    }
+    # activities: allSanityActivity(
+    #   filter: { resort: { _id: { eq: $resortId } } }
+    # ) {
+    #   nodes {
+    #     name
+    #     resort {
+    #       name
+    #     }
+    #     imageThumb {
+    #       ...SanityImage
+    #       alt
+    #     }
+    #   }
+    # }
     resorts: allSanityResort {
       nodes {
         name
@@ -190,7 +201,7 @@ export const query = graphql`
 const VilaTemplate = (props) => {
   const { data, errors } = props;
   const villa = data && data.villa;
-  const activities = data && data.activities;
+  // const activities = data && data.activities;
   const spas = data && data.spas;
   const resorts = data && data.resorts;
   const restaurants = data && data.restaurants;
@@ -209,7 +220,7 @@ const VilaTemplate = (props) => {
     showers,
     villaPoolTypes,
     heroImage,
-
+    activities,
     headerImages,
 
     // gallery,

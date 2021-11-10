@@ -1,16 +1,11 @@
 export default {
-  name: "resortHighlight",
+  name: "activity",
   type: "object",
-  title: "Resort highlight",
+  title: "Activity",
   fields: [
     {
       name: "name",
       type: "string",
-    },
-    {
-      name: "description",
-      type: "bodyPortableText",
-      title: "Description",
     },
     {
       title: "Resort",
@@ -18,9 +13,14 @@ export default {
       type: "reference",
       to: [{ type: "resort" }],
     },
+    {
+      name: "description",
+      type: "bodyPortableText",
+      title: "Description",
+    },
     // {
-    //   name: "highlightAlternateName",
-    //   title: "Highlight alternate name",
+    //   name: "activityAlternateName",
+    //   title: "Activity alternate name",
     //   type: "array",
     //   of: [
     //     {
@@ -33,8 +33,8 @@ export default {
     // },
 
     // {
-    //   name: "highlightIdealFor",
-    //   title: "Highlight ideal for",
+    //   name: "activityIdealFor",
+    //   title: "Activity ideal for",
     //   type: "array",
     //   of: [
     //     {
@@ -47,8 +47,8 @@ export default {
     // },
 
     // {
-    //   name: "highlightTags",
-    //   title: "Highlight tags",
+    //   name: "activityTags",
+    //   title: "Activity tags",
     //   type: "array",
     //   of: [
     //     {
@@ -61,7 +61,7 @@ export default {
     // },
 
     // {
-    //   name: "highlightSpecialityArticlePage",
+    //   name: "ActivitySpecialityArticlePage",
     //   title: "Hightlight speciality article page",
     //   type: "string",
     // },
@@ -69,17 +69,17 @@ export default {
     // {
     //   name: "imageMobile",
     //   type: "mainImage",
-    //   title: "Highlight image mobile",
+    //   title: "Activity image mobile",
     // },
     // {
     //   name: "imageWeb",
     //   type: "mainImage",
-    //   title: "Highlight image web",
+    //   title: "Activity image web",
     // },
     {
       name: "imageThumb",
       type: "mainImage",
-      title: "Highlight image thumb",
+      title: "Activity image thumb",
     },
   ],
   preview: {
