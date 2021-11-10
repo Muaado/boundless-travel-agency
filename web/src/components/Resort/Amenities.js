@@ -33,6 +33,9 @@ const AmenitiesStyles = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
+    @media ${device.mobileXL} {
+      padding: 0 1rem;
+    }
     li {
       /* border-right: 1px solid #000; */
       /* padding: 0 1rem; */

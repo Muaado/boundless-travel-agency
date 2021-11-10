@@ -174,10 +174,14 @@ const ResortStyles = styled.div`
         width: fit-content;
         display: flex;
         align-items: center;
+
         svg {
           margin-left: 1rem;
         }
 
+        @media ${device.laptopM} {
+          bottom: 0;
+        }
         @media ${device.tabletL} {
           padding: 1rem 2.5rem;
         }
@@ -185,13 +189,17 @@ const ResortStyles = styled.div`
       p {
         width: 90%;
         position: absolute;
-        top: 20%;
+        /* top: 20%; */
+        top: 30%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 100;
 
+        @media ${device.laptopM} {
+          top: 35%
+          font-size: 1.4rem;
+        }
         @media ${device.tabletL} {
-          top: 30%;
           font-size: 1.4rem;
         }
 

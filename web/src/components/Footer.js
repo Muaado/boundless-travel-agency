@@ -15,6 +15,10 @@ const FooterStyles = styled.footer`
   display: flex;
   justify-content: space-between;
 
+  @media ${device.tablet} {
+    flex-direction: column;
+  }
+
   .header-section {
     display: flex;
     justify-content: space-between;

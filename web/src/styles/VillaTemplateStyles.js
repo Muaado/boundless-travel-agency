@@ -173,7 +173,7 @@ const VillaStyles = styled.div`
         }
 
         @media ${device.mobileXL} {
-          padding: 0 5%;
+          padding: 0;
         }
 
         p {
@@ -519,6 +519,8 @@ const VillaStyles = styled.div`
       }
 
       @media ${device.tablet} {
+        margin-top: 5rem;
+        padding: 0 3rem;
         margin-bottom: 0;
       }
       h2 {
@@ -622,6 +624,10 @@ const VillaStyles = styled.div`
       padding: 10rem 10%;
       background: #b39a6a;
       position: relative;
+
+      /* @media ${device.tablet} {
+        padding: 10rem 5%;
+      } */
 
       /* height: fit-content; */
       .title {
