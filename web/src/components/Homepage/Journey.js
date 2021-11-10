@@ -100,12 +100,12 @@ const JourneyStyles = styled.div`
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
           0px 4px 4px rgba(0, 0, 0, 0.25);
 
-        top: 90%;
+        /* top: 90%; */
+        top: 80%;
         left: 50%;
         transform: translate(-50%, -50%);
 
         @media ${device.laptopM} {
-          top: 80%;
         }
       }
       grid-column: 1 / span;

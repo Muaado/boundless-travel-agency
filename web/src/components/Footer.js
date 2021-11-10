@@ -10,13 +10,16 @@ import { Logo } from "./header";
 
 const FooterStyles = styled.footer`
   background: var(--lightOrange);
-  padding: 10rem 10%;
+  padding: 10rem 15%;
+
+  display: flex;
+  justify-content: space-between;
 
   .header-section {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #fff;
-    padding-bottom: 4rem;
+    /* border-bottom: 1px solid #fff; */
+    /* padding-bottom: 4rem; */
     @media ${device.laptop} {
       flex-direction: column;
       align-items: center;
@@ -88,7 +91,9 @@ const FooterStyles = styled.footer`
 
     color: #fff;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: flex-end;
 
     @media ${device.laptop} {
       flex-direction: column-reverse;
@@ -142,7 +147,7 @@ const Footer = ({ logo, contactUs }) => {
     <FooterStyles>
       <div className="header-section">
         <Logo logo={logo} />
-
+        {/* 
         <form className="form">
           <p>Join our newsletter</p>
           <div className="container">
@@ -154,11 +159,11 @@ const Footer = ({ logo, contactUs }) => {
               </div>
             </label>
           </div>
-        </form>
+        </form> */}
       </div>
 
       <div className="bottom-section">
-        <p>Copyright Boundless Maldives</p>
+        <p>Copyright © {new Date().getFullYear()} Boundless Maldives</p>
         <ul>
           <li>
             <a>

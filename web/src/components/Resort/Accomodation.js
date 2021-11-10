@@ -41,7 +41,7 @@ const AccomodationStyles = styled.div`
     .slider-slide {
       margin-right: 2rem;
       /* width: 100% !important; */
-      min-width: 30rem !important;
+      /* min-width: 50rem !important; */
     }
 
     .slider-frame {
@@ -52,9 +52,9 @@ const AccomodationStyles = styled.div`
   .image-container {
     /* min-width: 40rem; */
     width: 100%;
-    display: block;
-    @media ${device.laptopL} {
-    }
+    display: flex;
+    flex-direction: column;
+
     height: 60rem;
     img {
       height: 80%;
@@ -92,7 +92,7 @@ const Accomodation = ({ villas, id }) => {
       if (isSreenSM) return 2.4;
       if (isSreenLG) return 3;
       if (screenXL) return 3;
-      if (screenXXL) return 2.9;
+      if (screenXXL) return 3;
       return 2.9;
     };
     const spacing = () => {

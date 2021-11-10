@@ -10,7 +10,7 @@ export default {
   ],
   preview: {
     select: {
-      title: "Transfer type",
+      title: "transferType",
     },
   },
 };

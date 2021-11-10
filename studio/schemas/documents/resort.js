@@ -127,47 +127,47 @@ export default {
       ],
     },
 
-    {
-      name: "restaurants",
-      title: "Restaurants",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: {
-            type: "restaurant",
-          },
-        },
-      ],
-    },
+    // {
+    //   name: "restaurants",
+    //   title: "Restaurants",
+    //   type: "array",
+    //   of: [
+    //     {
+    //       type: "reference",
+    //       to: {
+    //         type: "restaurant",
+    //       },
+    //     },
+    //   ],
+    // },
 
-    {
-      name: "villas",
-      title: "Villas",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: {
-            type: "villa",
-          },
-        },
-      ],
-    },
+    // {
+    //   name: "villas",
+    //   title: "Villas",
+    //   type: "array",
+    //   of: [
+    //     {
+    //       type: "reference",
+    //       to: {
+    //         type: "villa",
+    //       },
+    //     },
+    //   ],
+    // },
 
-    {
-      name: "spas",
-      title: "Spas",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: {
-            type: "spa",
-          },
-        },
-      ],
-    },
+    // {
+    //   name: "spas",
+    //   title: "Spas",
+    //   type: "array",
+    //   of: [
+    //     {
+    //       type: "reference",
+    //       to: {
+    //         type: "spa",
+    //       },
+    //     },
+    //   ],
+    // },
 
     {
       name: "resortTransferType",

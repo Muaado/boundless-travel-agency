@@ -130,7 +130,7 @@ const GalleryStyles = styled.div`
   }
 
   .carousel {
-    height: 60vh !important;
+    height: 75vh !important;
 
     @media ${device.tablet} {
       height: 50vh !important;

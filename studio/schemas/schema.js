@@ -44,7 +44,7 @@ import faqQuestionAnswer from "./objects/faqQuestionAnswer";
 // import spaService from "./objects/spaService";
 import aboutUs from "./objects/homepage/aboutUs";
 // import boundlessFaq from "./objects/homepage/boundlessFaq";
-import gallery from "./documents/gallery";
+import gallery from "./objects/gallery";
 import galleryType from "./documents/galleryType";
 
 import contactUs from "./objects/homepage/contactUs";

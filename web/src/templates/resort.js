@@ -55,15 +55,9 @@ export const query = graphql`
       # villas {
 
       # }
-      restaurants {
-        name
-        alternateName
-        _rawDescription
-        imageThumb {
-          ...SanityImage
-          alt
-        }
-      }
+      # restaurants {
+
+      # }
 
       gallery {
         images {
@@ -114,6 +108,21 @@ export const query = graphql`
         }
         resort {
           name
+        }
+      }
+    }
+
+    restaurants: allSanityRestaurant(
+      limit: 4
+      filter: { resort: { _id: { eq: $id } } }
+    ) {
+      nodes {
+        name
+        alternateName
+        _rawDescription
+        imageThumb {
+          ...SanityImage
+          alt
         }
       }
     }
@@ -192,6 +201,7 @@ const ResortTemplate = (props) => {
   const spas = data && data.spas;
   const activities = data && data.activities;
   const villas = data && data.villas;
+  const restaurants = data && data.restaurants;
   const site = data && data.site;
 
   const [slice, setSlice] = useState(Number);
@@ -210,7 +220,7 @@ const ResortTemplate = (props) => {
     timeToAirport,
     image,
     // villas,
-    restaurants,
+    // restaurants,
     reviews,
     gallery: galleries,
     secondImage,
@@ -355,7 +365,7 @@ const ResortTemplate = (props) => {
               </p>
             </div>
             <ul>
-              {restaurants.map(
+              {restaurants.nodes.map(
                 ({ name, alternateName, imageThumb, _rawDescription }) => (
                   <li key={name}>
                     <div key={name} className="image-container">

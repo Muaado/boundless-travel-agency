@@ -118,26 +118,16 @@ export const query = graphql`
           }
         }
 
-        restaurants {
-          name
-          alternateName
-          _rawDescription
-          imageThumb {
-            ...SanityImage
-            alt
-          }
-
-          resort {
-            name
-          }
-        }
-
         reviews {
           name
           _rawDescription
         }
       }
     }
+
+    # restaurants {
+    #
+    #     }
 
     spas: allSanitySpa(filter: { resort: { _id: { eq: $resortId } } }) {
       nodes {
@@ -177,6 +167,23 @@ export const query = graphql`
         }
       }
     }
+    restaurants: allSanityRestaurant(
+      filter: { resort: { _id: { eq: $resortId } } }
+    ) {
+      nodes {
+        name
+        alternateName
+        _rawDescription
+        imageThumb {
+          ...SanityImage
+          alt
+        }
+
+        resort {
+          name
+        }
+      }
+    }
   }
 `;
 
@@ -186,6 +193,7 @@ const VilaTemplate = (props) => {
   const activities = data && data.activities;
   const spas = data && data.spas;
   const resorts = data && data.resorts;
+  const restaurants = data && data.restaurants;
 
   const [openedFeature, setOpenedFeature] = useState(-1);
 
@@ -194,7 +202,7 @@ const VilaTemplate = (props) => {
     alternateName,
     tagline,
     _rawDescription: _rawDescriptionVilla,
-    imageWeb,
+    // imageWeb,
     roomFeatures,
     maxOccupancy,
     sizeSqm,
@@ -217,7 +225,7 @@ const VilaTemplate = (props) => {
     timeToAirport,
     _rawDescription,
     reviews,
-    restaurants,
+
     gallery: galleries,
     highlights,
   } = villa.resort;
@@ -400,7 +408,7 @@ const VilaTemplate = (props) => {
           >
             <h2>Dine</h2>
             <ul>
-              {restaurants.map(
+              {restaurants.nodes.map(
                 ({ name, alternateName, imageThumb, resort }) => (
                   <li key={name}>
                     <div key={name} className="image-container">
