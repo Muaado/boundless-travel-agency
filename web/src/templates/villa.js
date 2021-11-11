@@ -279,11 +279,9 @@ const VilaTemplate = (props) => {
             data-aos-easing="ease-in-out"
           >
             <div className="container">
-              <PopUpGallery className="carousel" images={headerImages} />
-
-              <p className="alternate-name">{alternateName}</p>
+              {/* <p className="alternate-name">{alternateName}</p> */}
               <h1>{name}</h1>
-              <h3 className="tagline">{tagline}</h3>
+              {/* <h3 className="tagline">{tagline}</h3> */}
               <PortableText blocks={_rawDescriptionVilla} />
               <ul>
                 <li>
@@ -312,6 +310,7 @@ const VilaTemplate = (props) => {
               </ul>
               <button className="btn">ENQUIRE</button>
             </div>
+            <PopUpGallery className="carousel" images={headerImages} />
           </div>
 
           <div

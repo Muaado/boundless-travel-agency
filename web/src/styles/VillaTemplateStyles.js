@@ -53,12 +53,16 @@ const VillaStyles = styled.div`
       margin: 7rem 0;
       margin-top: 10rem;
       display: flex;
-      padding: 0 10%;
-      position: relative;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
 
-      @media ${device.laptopL} {
-        padding: 0;
+      /* padding: 0 10%; */
+      position: relative;
+      /* justify-content: center; */
+
+      @media ${device.laptop} {
+        margin-top: 0;
+        flex-direction: column;
       }
 
       @media ${device.mobileXl} {
@@ -66,35 +70,41 @@ const VillaStyles = styled.div`
       }
 
       .carousel {
-        height: 70rem !important;
-        width: 55rem !important;
-        position: absolute !important;
-        top: 10rem;
-        left: -55rem;
+        /* height: 70rem !important;
+        width: 55rem !important; */
+        height: 90vh;
+        width: 100%;
+        max-width: 50vw;
+
+        /* position: absolute !important; */
+        /* top: 10rem;
+        left: -55rem; */
         z-index: 100;
 
-        @media ${device.laptopM} {
-          /* display: none; */
-          /* position: unset !important; */
-          left: -45rem;
-          height: 65rem !important;
-          width: 45rem !important;
-          top: 10rem;
+        @media ${device.desktopS} {
+          height: 75vh !important;
         }
-
-        @media ${device.laptop} {
-          position: unset !important;
-          width: 100% !important;
-          height: 100% !important;
-        }
-        @media ${device.tablet} {
-          position: unset !important;
-          width: 100% !important;
+        @media ${device.laptopL} {
           height: 70vh !important;
+        }
 
-          .slider-list {
-            height: 70vh !important;
-          }
+        @media ${device.laptopM} {
+          height: 60vh !important;
+        }
+        @media ${device.laptop} {
+          /* height: 50vh !important; */
+          width: 65%;
+          max-width: unset;
+          align-self: center;
+        }
+
+        @media ${device.tablet} {
+          /* height: 50vh !important; */
+          width: 85%;
+        }
+        @media ${device.mobileXL} {
+          /* height: 50vh !important; */
+          width: 100%;
         }
 
         &__button-right,
@@ -103,19 +113,20 @@ const VillaStyles = styled.div`
         }
 
         &__image-container {
-          height: 80rem !important;
-          width: 60rem !important;
+          width: 100%;
+          height: 90vh;
 
+          @media ${device.desktopS} {
+            height: 75vh !important;
+          }
+          @media ${device.laptopL} {
+            height: 70vh !important;
+          }
           @media ${device.laptopM} {
-            height: 65rem !important;
+            height: 60vh !important;
           }
           @media ${device.laptop} {
-            height: inherit !important;
-            width: 100% !important;
-          }
-          @media ${device.tablet} {
-            height: 70vh !important;
-            width: 100% !important;
+            /* height: 50vh !important; */
           }
         }
 
@@ -151,34 +162,35 @@ const VillaStyles = styled.div`
       .container {
         /* background: black; */
         position: relative;
-        height: 100rem;
-        margin-left: 50rem;
-        padding: 15rem 8rem 15rem 15rem;
-        border: 1px solid var(--primary);
+        /* height: 100rem; */
+        min-width: 50rem;
+        /* margin-left: 50rem; */
+        /* padding: 15rem 8rem 15rem 15rem; */
+        margin: 5rem 5%;
+        /* display: flex; */
 
-        @media ${device.laptopM} {
-          /* margin: 0; */
-          height: 95vh;
-          padding: 5rem;
-          border: none;
-        }
+        /* border: 1px solid var(--primary); */
 
         @media ${device.laptop} {
-          display: flex;
+          /* display: flex;
           flex-direction: column;
           margin: 0;
           height: fit-content;
           width: 100%;
+          align-items: center; */
+          display: flex;
           align-items: center;
+          flex-direction: column;
         }
 
         @media ${device.mobileXL} {
           padding: 0;
+          min-width: unset;
         }
 
         p {
           max-width: 40rem;
-          font-size: 2.2rem;
+          /* font-size: 2.2rem; */
           color: var(--grey1);
           @media ${device.laptop} {
             text-align: center;
@@ -204,7 +216,7 @@ const VillaStyles = styled.div`
       }
 
       h1 {
-        margin-top: 5rem;
+        margin-bottom: 2.5rem;
         font-size: 3.6rem;
         font-weight: normal;
         color: #76622e;
@@ -228,7 +240,7 @@ const VillaStyles = styled.div`
       }
 
       ul {
-        padding: 3rem 4rem;
+        padding: 3rem 0;
         display: flex;
 
         @media ${device.laptop} {
@@ -255,9 +267,12 @@ const VillaStyles = styled.div`
       }
 
       .btn {
-        margin-top: 4rem;
-        padding: 1.5rem 4rem;
-        font-size: 2rem;
+        background: transparent;
+        border: 1px solid var(--lightOrange);
+        color: var(--lightOrange);
+        margin-top: 2rem;
+        padding: 1.5rem 10rem;
+        font-size: 1.6rem;
       }
     }
 

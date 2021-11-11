@@ -45,8 +45,8 @@ const GalleryComponent = ({ images }) => {
     const slides = () => {
       if (isMobileOnly) return 1;
       if (isTablet) return 1;
-      if (isTabletL) return 2;
-      if (isSreenSM) return 2;
+      if (isTabletL) return 1;
+      if (isSreenSM) return 1;
       if (isSreenLG) return 1;
       if (screenXL) return 1;
       if (screenXXL) return 1;

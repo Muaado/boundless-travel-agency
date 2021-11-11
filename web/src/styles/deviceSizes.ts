@@ -9,7 +9,8 @@ const size = {
   laptop: "1024px",
   laptopM: "1240px",
   laptopL: "1440px",
-  desktop: "2560px",
+  desktopS: "1600px",
+  desktopL: "2560px",
 };
 
 export const device = {
@@ -23,6 +24,6 @@ export const device = {
   laptop: `(max-width: ${size.laptop})`,
   laptopM: `(max-width: ${size.laptopM})`,
   laptopL: `(max-width: ${size.laptopL})`,
-  desktop: `(max-width: ${size.desktop})`,
-  desktopL: `(max-width: ${size.desktop})`,
+  desktopS: `(max-width: ${size.desktopS})`,
+  desktopL: `(max-width: ${size.desktopL})`,
 };
