@@ -29,6 +29,8 @@ import LeftSidebar from "../components/LeftSidebar";
 import { MouseScroll } from "../components/Ui/MouseScroll";
 import { getHighlightUrl } from "../lib/helpers";
 
+import Placeholder from "../assets/placeholder.svg";
+
 import { toPlainText } from "../lib/helpers";
 // import review from "../../../studio/schemas/documents/review";
 
@@ -345,17 +347,26 @@ const ResortTemplate = (props) => {
               ))}
             </Carousel>
             <ul className="desktop-highlights">
-              {highlights.map(({ name, imageThumb, _rawDescription }) => (
-                <li key={imageThumb?.alt}>
-                  {/* <Link to={getHighlightUrl({ name, resortName: resort.name })}> */}
-                  <a>
-                    {name} <ChevronRight />
-                  </a>
-                  {/* </Link> */}
-                  <PortableText blocks={_rawDescription} />
-                  {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
-                </li>
-              ))}
+              {highlights.length
+                ? highlights.map(({ name, imageThumb, _rawDescription }) => (
+                    <li key={imageThumb?.alt}>
+                      {/* <Link to={getHighlightUrl({ name, resortName: resort.name })}> */}
+                      <a>
+                        {name} <ChevronRight />
+                      </a>
+                      {/* </Link> */}
+                      <PortableText blocks={_rawDescription} />
+                      {imageThumb && (
+                        <Image {...imageThumb} alt={imageThumb.alt} />
+                      )}
+                    </li>
+                  ))
+                : [1, 2, 3, 4, 5, 6].map((item) => (
+                    <li key={item}>
+                      {console.log("hrehreh")}
+                      <Placeholder />
+                    </li>
+                  ))}
             </ul>
           </div>
 
@@ -381,8 +392,10 @@ const ResortTemplate = (props) => {
                 ({ name, alternateName, imageThumb, _rawDescription }) => (
                   <li key={name}>
                     <div key={name} className="image-container">
-                      {imageThumb && (
+                      {imageThumb ? (
                         <Image {...imageThumb} alt={imageThumb.alt} />
+                      ) : (
+                        <Placeholder />
                       )}
                     </div>
                     <div className="resort__restaurants__text">

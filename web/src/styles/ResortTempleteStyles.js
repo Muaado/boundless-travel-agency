@@ -417,11 +417,15 @@ const ResortStyles = styled.div`
     } */
 
     &__second-image {
+      max-height: 80vh;
+      overflow: hidden;
+      margin-bottom: 10rem;
       /* margin-bottom: 10rem; */
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        
       }
     }
 

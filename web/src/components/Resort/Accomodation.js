@@ -10,7 +10,7 @@ import useWindowSize from "../../lib/useWindowSize";
 import CarouselButton from "../Ui/CarouselButton";
 import { getVillaUrl } from "../../lib/helpers";
 import { Link } from "gatsby";
-
+import Placeholder from "../../assets/placeholder.svg";
 const AccomodationStyles = styled.div`
   padding: 0 15%;
   @media ${device.laptopL} {
@@ -134,7 +134,7 @@ const Accomodation = ({ villas, id }) => {
             key={name}
             className="image-container"
           >
-            {imageThumb && (
+            {imageThumb ? (
               <Image
                 style={{
                   width: "100%",
@@ -144,6 +144,8 @@ const Accomodation = ({ villas, id }) => {
                 {...imageThumb}
                 alt={imageThumb.alt}
               />
+            ) : (
+              <Placeholder />
             )}
 
             <p>{name}</p>

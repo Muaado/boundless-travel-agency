@@ -7,6 +7,8 @@ import Carousel from "nuka-carousel";
 import CarouselButton from "../Ui/CarouselButton";
 import useWindowSize from "../../lib/useWindowSize";
 
+import Placeholder from "../../assets/placeholder.svg";
+
 const GalleryStyles = styled.div`
   display: flex;
   flex-direction: column;
@@ -181,14 +183,23 @@ const Gallery = ({ id, galleries }) => {
       </ul>
       {!selectedGallery && !isTablet ? (
         <ul className="image-grid">
-          {galleries.length &&
-            galleries[0]?.images.slice(0, 4).map((image) => {
-              return (
-                <li key={image.alt}>
-                  {image && <Image {...image} alt={image.alt} />}
+          {galleries.length
+            ? galleries[0]?.images.slice(0, 4).map((image) => {
+                return (
+                  <li key={image.alt}>
+                    {image ? (
+                      <Image {...image} alt={image.alt} />
+                    ) : (
+                      <Placeholder />
+                    )}
+                  </li>
+                );
+              })
+            : [1, 2, 3, 4].map((item) => (
+                <li key={item}>
+                  <Placeholder />
                 </li>
-              );
-            })}
+              ))}
         </ul>
       ) : (
         <Carousel
@@ -204,12 +215,20 @@ const Gallery = ({ id, galleries }) => {
           {!isTablet
             ? selectedGallery.images.map((image) => (
                 <div key={image.alt} className="main-image-container">
-                  {image && <Image {...image} alt={image.alt} />}
+                  {image ? (
+                    <Image {...image} alt={image.alt} />
+                  ) : (
+                    <Placeholder />
+                  )}
                 </div>
               ))
             : allImages.map((image) => (
                 <div key={image.alt} className="main-image-container">
-                  {image && <Image {...image} alt={image.alt} />}
+                  {image ? (
+                    <Image {...image} alt={image.alt} />
+                  ) : (
+                    <Placeholder />
+                  )}
                 </div>
               ))}
         </Carousel>

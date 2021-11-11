@@ -7,6 +7,7 @@ import useWindowSize from "../../lib/useWindowSize";
 import styled from "styled-components";
 import { device } from "../../styles/deviceSizes";
 import CarouselButton from "../Ui/CarouselButton";
+import Placeholder from "../../assets/placeholder.svg";
 
 const ReviewsStyles = styled.div`
   display: flex;
@@ -188,13 +189,19 @@ const Reviews = ({ reviews }) => {
           <CarouselButton onClick={previousSlide} />
         )}
       >
-        {reviews.map(({ name, _rawDescription }) => (
-          <div className="review" key={name}>
-            <p className="title">{name}</p>
-            <PortableText blocks={_rawDescription} />
-            <a>Read more</a>
-          </div>
-        ))}
+        {reviews.length
+          ? reviews.map(({ name, _rawDescription }) => (
+              <div className="review" key={name}>
+                <p className="title">{name}</p>
+                <PortableText blocks={_rawDescription} />
+                <a>Read more</a>
+              </div>
+            ))
+          : [1, 2, 3, 4, 5].map((item) => (
+              <div className="review" key={item}>
+                <Placeholder />
+              </div>
+            ))}
       </Carousel>
     </ReviewsStyles>
   );

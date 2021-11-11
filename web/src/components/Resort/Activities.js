@@ -8,6 +8,10 @@ import { getActivityUrl } from "../../lib/helpers";
 import CarouselButton from "../Ui/CarouselButton";
 import Carousel from "nuka-carousel";
 
+// import { Placeholder } from "gatsby-plugin-image";
+import Placeholder from "../../assets/placeholder.svg";
+console.log(Placeholder);
+
 const ActivitiesStyles = styled.div`
   margin: 10rem 0;
   text-align: center;
@@ -129,6 +133,8 @@ const ActivitiesStyles = styled.div`
   }
 `;
 
+const activitiesPlaceHolders = [1, 2, 3, 4, 5, 6];
+
 const Activities = ({ activities }) => {
   return (
     <ActivitiesStyles
@@ -144,14 +150,21 @@ const Activities = ({ activities }) => {
         veniam, quis nostrud exercitation.
       </p>
       <ul>
-        {activities?.map(({ name, imageThumb, resort }) => (
-          <li className="item" key={imageThumb.alt}>
-            {/* <Link to={getActivityUrl({ name, resortName: resort.name })}> */}
-            {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
-            <p>{name}</p>
-            {/* </Link> */}
-          </li>
-        ))}
+        {activities.length
+          ? activities?.map(({ name, imageThumb, resort }) => (
+              <li className="item" key={imageThumb.alt}>
+                {/* <Link to={getActivityUrl({ name, resortName: resort.name })}> */}
+                {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
+                <p>{name}</p>
+                {/* </Link> */}
+              </li>
+            ))
+          : activitiesPlaceHolders.map((item) => (
+              <li className="item" key={item}>
+                <Placeholder />
+                {/* {item} */}
+              </li>
+            ))}
       </ul>
 
       <Carousel
