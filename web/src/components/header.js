@@ -8,6 +8,10 @@ import CloseIcon from "../assets/icons/close.svg";
 
 import styled from "styled-components";
 import { device } from "../styles/deviceSizes";
+
+import ChevronDown from "../assets/icons/chevron-down.svg";
+import ChevronUp from "../assets/icons/chevron-up.svg";
+
 const HeaderStyles = styled.header`
   width: 100vw;
 
@@ -101,10 +105,7 @@ const HeaderStyles = styled.header`
 
   nav {
     position: relative;
-    /* margin-top: 12rem; */
-    /* margin-left: -8rem;/ */
-    /* align-self: center;
-    justify-self: center; */
+
     transition: all 1s;
 
     .icon {
@@ -114,7 +115,26 @@ const HeaderStyles = styled.header`
       width: 2rem;
     }
 
+    svg {
+      path {
+        stroke: #fff;
+      }
+    }
+
     @media ${device.tablet} {
+      padding: 0 2rem;
+      background: var(--lightOrange);
+      top: 0;
+      right: 0;
+      position: absolute;
+      z-index: 10000;
+      height: 100vh;
+      width: 50vw;
+      display: flex;
+      justify-content: flex-start;
+      /* align-items: center; */
+      text-align: center;
+      padding-top: 5rem;
       &.show {
         /* transform: translateX(0); */
         opacity: 1;
@@ -125,19 +145,6 @@ const HeaderStyles = styled.header`
         z-index: -100;
       }
       /* display: none; */
-
-      background: var(--darkGreen);
-      top: 0;
-      right: 0;
-      position: absolute;
-      z-index: 10000;
-      height: 100vh;
-      width: 50vw;
-      display: flex;
-      justify-content: center;
-      /* align-items: center; */
-      text-align: center;
-      padding-top: 5rem;
     }
 
     opacity: 1;
@@ -150,10 +157,18 @@ const HeaderStyles = styled.header`
         /* font-size: 2.6rem; */
         gap: 1rem;
         flex-direction: column;
+        align-items: flex-start;
       }
 
       li {
         font-size: 1.6rem;
+
+        @media ${device.tablet} {
+          min-width: 30vw;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
         /* position: relative; */
         &.selected {
           font-weight: bold;
@@ -177,22 +192,30 @@ const DropdownListStyles = styled.div`
   color: #000;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
   margin-top: 2rem;
-  padding: 2rem 3rem;
 
-  z-index: 2000;
+  transition: all 0.3s;
+  transition-timing-function: ease-in-out;
+  opacity: 0;
+  transform: translateY(-100vh);
+  z-index: -100;
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 2000;
+  }
 
   @media ${device.tablet} {
     margin-top: ${(props) => `${props.marginTop}rem`};
     overflow-x: hidden !important;
     width: 50vw;
     overflow-y: scroll;
-    height: 70vh;
+    height: 90vh;
   }
 
   ul {
     display: grid;
     grid-template-columns: max-content max-content;
-    gap: 2rem;
+    /* gap: 2rem; */
 
     @media ${device.tablet} {
       grid-template-columns: 1fr;
@@ -203,8 +226,10 @@ const DropdownListStyles = styled.div`
     min-width: max-content;
   }
   a {
+    padding: 1rem;
+    border-bottom: 1px solid var(--grey);
     word-break: keep-all;
-    width: max-content;
+    width: 100%;
     display: inline-block;
     /* width: 100%; */
   }
@@ -215,9 +240,13 @@ export const Logo = ({ logo }) => (
   </div>
 );
 
-const DropDown = ({ list, marginTop }) => {
+const DropDown = ({ list, marginTop, className }) => {
   return (
-    <DropdownListStyles marginTop={marginTop} className="dropdown">
+    <DropdownListStyles
+      // className={}
+      marginTop={marginTop}
+      className={`dropdown ${className}`}
+    >
       <ul>
         {list.map(
           (item) =>
@@ -279,7 +308,6 @@ const Header = ({
       <HamburgerIcon
         className="icon"
         onClick={() => {
-          console.log("panelija", showNav);
           if (!showNav) {
             onShowNav();
           } else {
@@ -297,7 +325,6 @@ const Header = ({
         <CloseIcon
           className="icon"
           onClick={() => {
-            console.log("panelija", showNav);
             if (!showNav) {
               onShowNav();
             } else {
@@ -312,8 +339,14 @@ const Header = ({
               handleOpenDropDown(navData.resorts, 1);
             }}
           >
-            Resorts
-            {showDropdown === 1 && <DropDown marginTop={6} list={list} />}
+            Resorts {showDropdown === 1 ? <ChevronUp /> : <ChevronDown />}
+            {/* {showDropdown === 1 && ( */}
+            <DropDown
+              className={showDropdown === 1 ? "show" : ""}
+              marginTop={6}
+              list={list}
+            />
+            {/* )} */}
           </li>
           {/* <li
             className="clickable"
