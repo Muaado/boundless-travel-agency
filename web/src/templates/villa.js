@@ -34,6 +34,8 @@ import { MouseScroll } from "../components/Ui/MouseScroll";
 import Resorts from "../components/Villa/Resorts";
 // import styled from "styled-components";
 
+import Placeholder from "../assets/placeholder.svg";
+
 export const query = graphql`
   query VillaTemplateQuery($id: String!, $resortId: String!) {
     villa: sanityVilla(_id: { eq: $id }) {
@@ -260,15 +262,19 @@ const VilaTemplate = (props) => {
           list={["overview", "room-features", "gallery", "highlights", "dine"]}
         />
         <VillaStyles>
-          {heroImage && (
-            <div className="villa__image">
-              {heroImage && <Image {...heroImage} alt={heroImage.alt} />}
-              <h1 className="villa__image-title" id="header-text">
-                {resortName}
-              </h1>
-              <MouseScroll />
-            </div>
-          )}
+          {/* {heroImage && ( */}
+          <div className="villa__image">
+            {heroImage ? (
+              <Image {...heroImage} alt={heroImage.alt} />
+            ) : (
+              <Placeholder style={{ width: "100%", height: "100%" }} />
+            )}
+            <h1 className="villa__image-title" id="header-text">
+              {resortName}
+            </h1>
+            <MouseScroll />
+          </div>
+          {/* )} */}
 
           <div
             className="villa__header"
@@ -322,11 +328,13 @@ const VilaTemplate = (props) => {
             data-aos-easing="ease-in-out"
           >
             <div className="image-container">
-              {roomFeatures?.backgroundImage && (
+              {roomFeatures?.backgroundImage ? (
                 <Image
                   {...roomFeatures.backgroundImage}
                   alt={roomFeatures.backgroundImage.alt}
                 />
+              ) : (
+                <Placeholder style={{ width: "100%", height: "100%" }} />
               )}
             </div>
             <div className="content">
@@ -391,21 +399,29 @@ const VilaTemplate = (props) => {
               </p>
             </div>
             <ul>
-              {highlights.map(({ name, imageThumb }) => (
-                <li key={imageThumb?.alt}>
-                  {/* <Link to={getHighlightUrl({ name, resortName })}> */}
-                  {/* <a>
+              {highlights.length
+                ? highlights.map(({ name, imageThumb }) => (
+                    <li key={imageThumb?.alt}>
+                      {/* <Link to={getHighlightUrl({ name, resortName })}> */}
+                      {/* <a>
                      <ChevronRight />
                   </a> */}
-                  <div className="text">
-                    <h3>{name}</h3>
-                    {/* <PortableText blocks={_rawDescription} /> */}
-                  </div>
+                      <div className="text">
+                        <h3>{name}</h3>
+                        {/* <PortableText blocks={_rawDescription} /> */}
+                      </div>
 
-                  {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
-                  {/* </Link> */}
-                </li>
-              ))}
+                      {imageThumb && (
+                        <Image {...imageThumb} alt={imageThumb.alt} />
+                      )}
+                      {/* </Link> */}
+                    </li>
+                  ))
+                : [1, 2, 3, 4, 5, 6].map((item) => (
+                    <li key={item}>
+                      <Placeholder />
+                    </li>
+                  ))}
             </ul>
           </div>
           <div
@@ -422,8 +438,12 @@ const VilaTemplate = (props) => {
                 ({ name, alternateName, imageThumb, resort }) => (
                   <li key={name}>
                     <div key={name} className="image-container">
-                      {imageThumb && (
+                      {imageThumb ? (
                         <Image {...imageThumb} alt={imageThumb.alt} />
+                      ) : (
+                        <Placeholder
+                          style={{ width: "100%", height: "100%" }}
+                        />
                       )}
                     </div>
                     <div className="villa__restaurants__text">

@@ -7,6 +7,8 @@ import Carousel from "nuka-carousel";
 import CarouselButton from "../Ui/CarouselButton";
 import useWindowSize from "../../lib/useWindowSize";
 
+import Placeholder from "../../assets/placeholder.svg";
+
 const GalleryComponent = ({ images }) => {
   const [showLightbox, setShowLightbox] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -83,14 +85,19 @@ const GalleryComponent = ({ images }) => {
             <CarouselButton onClick={previousSlide} />
           )}
         >
-          {images &&
-            images.images.map((image) => (
-              <div key={image.alt} className="carousel__image-container">
-                {image && (
-                  <Image {...image} alt={image.alt} onClick={handleOpen(0)} />
-                )}
-              </div>
-            ))}
+          {images?.images.length
+            ? images.images.map((image) => (
+                <div key={image.alt} className="carousel__image-container">
+                  {image && (
+                    <Image {...image} alt={image.alt} onClick={handleOpen(0)} />
+                  )}
+                </div>
+              ))
+            : [1, 2, 3].map((item) => (
+                <div key={item} className="carousel__image-container">
+                  <Placeholder style={{ width: "100%", height: "100%" }} />
+                </div>
+              ))}
         </Carousel>
 
         {/* {images.images[0] && (

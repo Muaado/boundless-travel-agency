@@ -150,7 +150,7 @@ const Activities = ({ activities }) => {
         veniam, quis nostrud exercitation.
       </p>
       <ul>
-        {activities.length
+        {activities?.length
           ? activities?.map(({ name, imageThumb, resort }) => (
               <li className="item" key={imageThumb.alt}>
                 {/* <Link to={getActivityUrl({ name, resortName: resort.name })}> */}
