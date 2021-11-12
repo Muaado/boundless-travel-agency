@@ -21,6 +21,7 @@ const JourneyStyles = styled.div`
   text-align: center;
 
   padding: 0 15%;
+  z-index: -1;
 
   width: 100%;
   /* max-width: 1440px; */

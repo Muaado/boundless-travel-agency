@@ -108,9 +108,45 @@ export const SearchBar = styled.form`
   }
 
   filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.25));
-  input {
-    padding: 1rem;
-    border: none;
+  .input {
+    z-index: 10000 !important;
+    width: 100% !important;
+    display: flex !important;
+    outline: none !important;
+    margin-right: 1rem;
+
+    &__label {
+      display: flex;
+      justify-content: space-between;
+    }
+    &__type {
+      font-size: 1.8rem;
+      color: #000;
+      margin-left: 3rem;
+    }
+
+    #react-select-1-listbox,
+    #react-select-2-listbox,
+    #react-select-3-listbox {
+      /* z-index: 1000; */
+      /* position: absolute; */
+      /* height: 70vh; */
+      /* max-height: unset !important; */
+    }
+
+    & > div {
+      /* padding: 1rem; */
+
+      display: flex !important;
+      flex-direction: row !important;
+      border: none !important;
+      width: 100%;
+
+      svg {
+        outline: none !important;
+      }
+    }
+
     width: 20%;
 
     &[name="location"] {

@@ -39,6 +39,7 @@ import WhyBoundlessSection from "../components/Homepage/WhyBoundlessSection";
 import NewsletterSection from "../components/Homepage/NewsletterSection";
 import LeftSidebar from "../components/LeftSidebar";
 import { MouseScroll } from "../components/Ui/MouseScroll";
+import Search from "../components/Search";
 
 // import HomepageStaticImage from "../assets/homepage-image.png";
 
@@ -180,6 +181,19 @@ export const query = graphql`
       }
     }
 
+    resorts: allSanityResort {
+      nodes {
+        name
+      }
+    }
+    villas: allSanityVilla {
+      nodes {
+        name
+        resort {
+          name
+        }
+      }
+    }
     # posts: allSanityPost(
     #   limit: 6
     #   sort: { fields: [publishedAt], order: DESC }
@@ -218,7 +232,9 @@ const IndexPage = (props) => {
   }
 
   const site = (data || {}).site;
-  console.log(site);
+  const resorts = (data || {}).resorts;
+  const villas = (data || {}).villas;
+  // console.log(site);
   const magazinePosts = (data || {}).magazinePosts;
   // const postNodes = (data || {}).posts
   //   ? mapEdgesToNodes(data.posts)
@@ -268,18 +284,7 @@ const IndexPage = (props) => {
           <MouseScroll />
         </HeroStyles>
         <div className="page-content">
-          <SearchBar>
-            <input
-              placeholder="Where would you like to go?"
-              type="text"
-              name="location"
-            />
-            {/* <input placeholder="Check in" type="date" />
-            <input placeholder="Check out" type="date" />
-            <input placeholder="Adults" type="number" />
-            <input placeholder="Children" type="number" /> */}
-            <button className="btn">SEARCH</button>
-          </SearchBar>
+          <Search resorts={resorts.nodes} villas={villas.nodes} />
 
           <Journey collections={collections} />
 
