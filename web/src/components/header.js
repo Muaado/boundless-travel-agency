@@ -163,11 +163,14 @@ const HeaderStyles = styled.header`
       li {
         font-size: 1.6rem;
 
+        display: flex;
+        align-items: center;
+        /* justify-content: space-between; */
+        svg {
+          margin-left: 1rem;
+        }
         @media ${device.tablet} {
           min-width: 30vw;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
         }
         /* position: relative; */
         &.selected {

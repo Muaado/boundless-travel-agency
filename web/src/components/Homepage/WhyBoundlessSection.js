@@ -73,6 +73,10 @@ const WhyBoundlessSectionStyles = styled.div`
         @media ${device.laptopM} {
           gap: 1rem;
         }
+
+        @media ${device.tablet} {
+          font-size: 1.6rem;
+        }
       }
       li {
         svg {
@@ -89,6 +93,9 @@ const WhyBoundlessSectionStyles = styled.div`
 
           @media ${device.tablet} {
             width: 6rem;
+          }
+          @media ${device.mobileL} {
+            width: 4rem;
           }
         }
       }

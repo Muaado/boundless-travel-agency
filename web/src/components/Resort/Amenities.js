@@ -9,7 +9,7 @@ const AmenitiesStyles = styled.div`
   display: flex;
   flex-direction: column;
   .description {
-    max-width: 70vw;
+    max-width: 60vw;
     font-size: 2.4rem;
     font-weight: 100;
     text-align: center;

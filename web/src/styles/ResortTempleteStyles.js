@@ -27,7 +27,7 @@ const ResortStyles = styled.div`
     color: var(--primary);
     font-weight: bold;
     font-size: 7.2rem;
-    padding-bottom: 7rem;
+    /* padding-bottom: 7rem; */
     letter-spacing: 1rem;
 
     @media ${device.tablet} {
@@ -45,7 +45,8 @@ const ResortStyles = styled.div`
     &__image {
       position: relative;
       /* scroll-snap-align: center; */
-      max-height: 100vh;
+      height: 100vh;
+      width:100vw;
       overflow-y: hidden;
       /* position: relative;
       top: -18rem; */
@@ -292,6 +293,9 @@ const ResortStyles = styled.div`
           }
 
           .image-container {
+            height: 40vh;
+            width: 100%;
+            /* margin-bottom: 5rem; */
             @media ${device.laptop} {
               max-height: 50rem;
               overflow: hidden;
@@ -304,6 +308,7 @@ const ResortStyles = styled.div`
 
               img {
                 height: 100%;
+                width: 100%;
                 object-fit: cover;
                 object-position: top;
               }
@@ -347,10 +352,19 @@ const ResortStyles = styled.div`
       }
 
       &__text {
-        margin-top: -8rem;
+        margin-top: -6rem;
         align-self: center;
         max-width: 25rem;
 
+        height: 35vh;
+        white-space: normal !important;
+        overflow-wrap: break-word !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:hover {
+          overflow: visible;
+        }
         display: flex;
         flex-direction: column;
 
