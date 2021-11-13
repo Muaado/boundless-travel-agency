@@ -34,6 +34,13 @@ const ContainerStyles = styled.main`
     
   } */
 
+  .height-80vh {
+    height: 80vh;
+    &:before {
+      height: inherit;
+    }
+  }
+
   .second-image {
     /* margin-bottom: 5rem; */
     /* margin: 20rem -14%; */

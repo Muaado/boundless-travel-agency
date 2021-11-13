@@ -10,6 +10,12 @@ export default {
     },
 
     {
+      name: "uniqueCode",
+      type: "string",
+      title: "Resort unique code",
+    },
+
+    {
       name: "image",
       type: "mainImage",
       title: "Hero Image",

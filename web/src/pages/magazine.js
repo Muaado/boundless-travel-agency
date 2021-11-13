@@ -53,6 +53,17 @@ export const query = graphql`
 const MagazinePageStyles = styled.div`
   padding: 0 15%;
 
+  /* .magazine {
+    &__hero {
+      height: 80vh;
+    }
+  } */
+
+  h1 {
+    text-align: center;
+    padding: 5rem 0;
+  }
+
   @media ${device.laptopM} {
     padding: 0 10%;
   }
@@ -79,7 +90,7 @@ const MagazinePage = (props) => {
     <Layout>
       <SEO title="Magazine" />
       <Container>
-        <HeroStyles>
+        <HeroStyles className="height-80vh">
           {data.site.magazinePageImage && (
             <Image
               {...data.site.magazinePageImage}
@@ -90,7 +101,7 @@ const MagazinePage = (props) => {
         </HeroStyles>
 
         <MagazinePageStyles>
-          {/* <h1>Magazine</h1> */}
+          <h1>Best resorts for couples</h1>
           <div className="post-list">
             {postNodes && postNodes.length > 0 && (
               <BlogPostPreviewGrid nodes={postNodes} />
