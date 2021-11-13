@@ -35,9 +35,6 @@ const NotFoundPageStyles = styled.div`
   }
 `;
 const NotFoundPage = (props) => {
-  console.log(props);
-  console.log("here");
-
   const pages = props.data.pages;
 
   let pagesByType = [];
@@ -59,7 +56,7 @@ const NotFoundPage = (props) => {
       pagesByType[foundElement].items.push({ path, name: context?.name });
     }
   });
-  console.log(pagesByType);
+  // console.log(pagesByType);
 
   return (
     <Layout>

@@ -80,10 +80,12 @@ const MagazinePage = (props) => {
       <SEO title="Magazine" />
       <Container>
         <HeroStyles>
-          <Image
-            {...data.site.magazinePageImage}
-            alt={data.site.magazinePageImage.alt}
-          />
+          {data.site.magazinePageImage && (
+            <Image
+              {...data.site.magazinePageImage}
+              alt={data.site.magazinePageImage.alt}
+            />
+          )}
           <MouseScroll />
         </HeroStyles>
 

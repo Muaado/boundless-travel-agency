@@ -363,7 +363,7 @@ const ResortTemplate = (props) => {
                   ))
                 : [1, 2, 3, 4, 5, 6].map((item) => (
                     <li key={item}>
-                      {console.log("hrehreh")}
+                      {/* {console.log("hrehreh")} */}
                       <Placeholder />
                     </li>
                   ))}

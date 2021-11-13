@@ -123,10 +123,12 @@ const NewsletterSection = ({ site }) => {
   return (
     <NewsLetterStyles>
       <h2>{site.newsLetterTitle}</h2>
-      <Image
-        {...site.newsLetterBackground}
-        alt={site.newsLetterBackground?.alt}
-      />
+      {site.newsLetterBackground && (
+        <Image
+          {...site.newsLetterBackground}
+          alt={site.newsLetterBackground?.alt}
+        />
+      )}
 
       <form className="form">
         <h3>Subscribe to our newsletter</h3>

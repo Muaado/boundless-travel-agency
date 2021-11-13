@@ -344,7 +344,7 @@ const DropDown = ({ lists, marginTop, className, headerDropdownImage }) => {
       </ul>
 
       <div className={`${className} image-container`}>
-        <Image {...headerDropdownImage} />
+        {headerDropdownImage && <Image {...headerDropdownImage} />}
       </div>
     </DropdownListStyles>
   );

@@ -112,7 +112,7 @@ async function createVillaPages(graphql, actions) {
   villaEdges.forEach((node) => {
     const { _id, name, resort, _type } = node;
 
-    console.log(node);
+    // console.log(node);
 
     let path;
     if (typeof name === "string" && resort) {
