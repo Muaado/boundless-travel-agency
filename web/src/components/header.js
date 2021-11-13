@@ -11,25 +11,28 @@ import { device } from "../styles/deviceSizes";
 
 import ChevronDown from "../assets/icons/chevron-down.svg";
 import ChevronUp from "../assets/icons/chevron-up.svg";
+import Phone from "../assets/icons/phone.svg";
 
 const HeaderStyles = styled.header`
   width: 100vw;
 
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
+  left: 0;
+  /* transform: translate(-50%, 0); */
   /* padding: 2rem 4rem; */
   /* height: 40rem; */
   display: flex;
 
   /* flex-direction: column; */
-  width: 100%;
+  /* width: 100%; */
   justify-content: space-between;
   padding: 0 15%;
   align-items: center;
   /* align-items: center; */
   z-index: 100;
+  /* overflow-x: hidden;
+  overflow-y: visible; */
   /* position: fixed; */
   top: 0;
 
@@ -38,11 +41,46 @@ const HeaderStyles = styled.header`
 
   color: #fff;
   z-index: 1000;
+  /* height: 100vh; */
+  &.show {
+    height: 100vh;
+
+    .logo,
+    .icon {
+      opacity: 0;
+    }
+  }
 
   @media ${device.tablet} {
     padding: 0 4rem;
-    flex-direction: row;
-    justify-content: space-between;
+    /* flex-direction: row-reverse;
+    justify-content: space-between; */
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    direction: rtl;
+    justify-content: flex-start;
+    justify-items: flex-end;
+    width: 100%;
+
+    &.show-header {
+      direction: ltr;
+      display: flex;
+
+      .contact-us,
+      .logo,
+      .hamburger-icon {
+        display: none;
+      }
+    }
+    .logo {
+      justify-self: center;
+    }
+
+    .contact-us {
+      justify-self: start;
+    }
+
     svg {
       width: 3rem;
       z-index: 2000;
@@ -105,14 +143,21 @@ const HeaderStyles = styled.header`
 
   nav {
     position: relative;
+    z-index: 100000;
 
     transition: all 1s;
 
-    .icon {
+    .close-icon {
+      display: none;
       position: absolute;
       top: 1.5rem;
-      right: 3rem;
+      right: 1.5rem;
       width: 2rem;
+      height: 2rem;
+
+      @media ${device.tablet} {
+        display: unset;
+      }
     }
 
     svg {
@@ -127,22 +172,22 @@ const HeaderStyles = styled.header`
       top: 0;
       right: 0;
       position: absolute;
-      z-index: 10000;
+      /* z-index: 10000; */
       height: 100vh;
-      width: 50vw;
+      width: 100vw;
       display: flex;
       justify-content: flex-start;
       /* align-items: center; */
       text-align: center;
       padding-top: 5rem;
       &.show {
-        /* transform: translateX(0); */
+        transform: translateX(0);
         opacity: 1;
       }
       &.hide {
-        /* transform: translateX(50vw); */
+        transform: translateX(-100vw);
         opacity: 0;
-        z-index: -100;
+        /* z-index: -100; */
       }
       /* display: none; */
     }
@@ -185,6 +230,18 @@ const HeaderStyles = styled.header`
       }
     }
   }
+
+  .contact-us {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    @media ${device.tablet} {
+      display: flex;
+      svg {
+        margin-bottom: 1rem;
+      }
+    }
+  }
 `;
 
 const DropdownListStyles = styled.div`
@@ -209,12 +266,12 @@ const DropdownListStyles = styled.div`
   &.show {
     opacity: 1;
     transform: translateY(0);
-    z-index: 2000;
+    z-index: 200000;
 
     @media ${device.tablet} {
-      margin-top: ${(props) => `${props.marginTop}rem`};
+      /* margin-top: ${(props) => `${props.marginTop}rem`}; */
       overflow-x: hidden !important;
-      width: 50vw;
+      /* width: 50vw; */
       /* overflow-y: scroll; */
       height: 90vh;
     }
@@ -236,6 +293,16 @@ const DropdownListStyles = styled.div`
 
   ul {
     min-width: 25vw;
+
+    @media ${device.tablet} {
+      min-width: 50vw;
+    }
+  }
+
+  .image-container {
+    @media ${device.tablet} {
+      display: none;
+    }
   }
 
   .first-column {
@@ -285,6 +352,21 @@ const DropdownListStyles = styled.div`
     display: inline-block;
     /* width: 100%; */
   }
+
+  .close-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 5rem;
+    height: 5rem;
+    background: #fff;
+    padding: 1.5rem;
+    border: 1px solid #eeee;
+
+    g {
+      fill: #000;
+    }
+  }
 `;
 export const Logo = ({ logo }) => (
   <div className="logo">
@@ -292,7 +374,13 @@ export const Logo = ({ logo }) => (
   </div>
 );
 
-const DropDown = ({ lists, marginTop, className, headerDropdownImage }) => {
+const DropDown = ({
+  lists,
+  marginTop,
+  className,
+  headerDropdownImage,
+  handleOpenDropDown,
+}) => {
   const [selectedList, setSelectedList] = useState("resorts");
 
   const list = selectedList === "resorts" ? lists.resorts : lists.collections;
@@ -346,6 +434,21 @@ const DropDown = ({ lists, marginTop, className, headerDropdownImage }) => {
       <div className={`${className} image-container`}>
         {headerDropdownImage && <Image {...headerDropdownImage} />}
       </div>
+      <CloseIcon
+        className="close-icon"
+        onClick={() => {
+          handleOpenDropDown([], false);
+          // if (!showNav) {
+          //   handleOpenDropDown([], false);
+          //   onShowNav();
+          // } else {
+          //   handleOpenDropDown([]);
+          //   setTimeout(() => {
+          //     onHideNav();
+          //   }, 200);
+          // }
+        }}
+      />
     </DropdownListStyles>
   );
 };
@@ -364,13 +467,13 @@ const Header = ({
   const [list, setList] = useState([]);
 
   // const [marginTop, setMarginTop] = useState(2);
-  const handleOpenDropDown = (list, index) => {
+  const handleOpenDropDown = (list, condition) => {
     if (!showDropdown) {
-      setShowDropdown(true);
+      setShowDropdown(condition || true);
       setList(list);
       document.body.style.overflow = "hidden";
     } else {
-      setShowDropdown(false);
+      setShowDropdown(condition || false);
       document.body.style.overflow = "unset";
     }
   };
@@ -386,9 +489,13 @@ const Header = ({
   return (
     <HeaderStyles
       // ref={headerRef}
-      // className="disappear-on-scroll"
+      className={showNav ? "show-header" : ""}
       pathname={location?.pathname}
     >
+      <div className="contact-us">
+        <Phone />
+        Contact Us
+      </div>
       <Logo logo={logo} />
       {/* <button
         onClick={() => {
@@ -397,12 +504,14 @@ const Header = ({
         }}
       > */}
       <HamburgerIcon
-        className="icon"
+        className="icon hamburger-icon"
         onClick={() => {
           if (!showNav) {
             onShowNav();
+            setShowDropdown(false);
           } else {
             onHideNav();
+            setShowDropdown(false);
           }
         }}
       />
@@ -414,13 +523,16 @@ const Header = ({
         }`}
       >
         <CloseIcon
-          className="icon"
+          className="close-icon"
           onClick={() => {
             if (!showNav) {
               onShowNav();
             } else {
-              onHideNav();
+              setTimeout(() => {
+                onHideNav();
+              }, 200);
             }
+            setShowDropdown(false);
           }}
         />
         <ul className="nav-top-list">
@@ -433,7 +545,7 @@ const Header = ({
               });
             }}
           >
-            Resorts {showDropdown === 1 ? <ChevronUp /> : <ChevronDown />}
+            Resorts {showDropdown ? <ChevronUp /> : <ChevronDown />}
             {/* {showDropdown === 1 && ( */}
             {/* )} */}
           </li>
@@ -479,9 +591,8 @@ const Header = ({
         marginTop={6}
         lists={list}
         headerDropdownImage={headerDropdownImage}
+        handleOpenDropDown={handleOpenDropDown}
       />
-      {/* )} */}
-      {/* <div></div> */}
     </HeaderStyles>
   );
 };

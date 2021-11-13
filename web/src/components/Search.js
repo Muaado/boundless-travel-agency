@@ -73,7 +73,7 @@ const Search = ({ resorts, villas }) => {
         }}
       />
 
-      <button className="btn">SEARCH</button>
+      {/* <button className="btn">SEARCH</button> */}
     </SearchBar>
   );
 };

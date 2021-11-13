@@ -127,7 +127,13 @@ export const SearchBar = styled.form`
 
     #react-select-1-listbox,
     #react-select-2-listbox,
-    #react-select-3-listbox {
+    #react-select-3-listbox,
+    #react-select-4-listbox,
+    #react-select-5-listbox,
+    #react-select-5-listbox {
+      & > div {
+        width: 100%;
+      }
       /* z-index: 1000; */
       /* position: absolute; */
       /* height: 70vh; */
