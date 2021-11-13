@@ -33,5 +33,8 @@
     "sanity-plugin-dashboard-widget-netlify": "^1.0.1",
     "sanity-plugin-mux-input": "^1.1.0",
     "styled-components": "^5.2.0"
+  },
+  "devDependencies": {
+    "exceljs": "^4.3.0"
   }
 }

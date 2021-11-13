@@ -16,6 +16,11 @@ const query = graphql`
         email
         phoneOne
       }
+
+      headerDropdownImage {
+        ...SanityImage
+        alt
+      }
     }
 
     resorts: allSanityResort {
@@ -123,6 +128,7 @@ function LayoutContainer(props) {
       onShowNav={handleShowNav}
       logo={navData.site.logo}
       contactUs={navData.site.contactUs}
+      headerDropdownImage={navData.site.headerDropdownImage}
     />
   );
 }

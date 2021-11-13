@@ -189,48 +189,97 @@ const HeaderStyles = styled.header`
 
 const DropdownListStyles = styled.div`
   position: absolute;
-  top: 2rem;
+  top: 15rem;
   left: 0;
+  width: 100vw;
+  height: calc(100vh - 10rem);
   background: #fff;
   color: #000;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
-  margin-top: 2rem;
-
-  transition: all 0.3s;
+  /* box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25); */
+  /* margin-top: 2rem; */
+  transition: all 0.4s;
   transition-timing-function: ease-in-out;
   opacity: 0;
   transform: translateY(-100vh);
+  overflow: hidden;
+
+  display: flex;
+
   z-index: -100;
   &.show {
     opacity: 1;
     transform: translateY(0);
     z-index: 2000;
+
+    @media ${device.tablet} {
+      margin-top: ${(props) => `${props.marginTop}rem`};
+      overflow-x: hidden !important;
+      width: 50vw;
+      /* overflow-y: scroll; */
+      height: 90vh;
+    }
+
+    .route,
+    .image-container {
+      transition: all 4s;
+      opacity: 0;
+      &.show {
+        opacity: 1;
+      }
+    }
   }
 
-  @media ${device.tablet} {
-    margin-top: ${(props) => `${props.marginTop}rem`};
-    overflow-x: hidden !important;
-    width: 50vw;
-    overflow-y: scroll;
-    height: 90vh;
+  .route,
+  .image-container {
+    opacity: 0;
   }
 
   ul {
-    display: grid;
-    grid-template-columns: max-content max-content;
-    /* gap: 2rem; */
+    min-width: 25vw;
+  }
 
+  .first-column {
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    li {
+      padding: 1.5rem;
+      position: relative;
+      width: fit-content;
+      &.selected {
+        &:after {
+          content: "";
+          background: var(--grey);
+          width: calc(100% - 3rem);
+          height: 1px;
+          position: absolute;
+          bottom: 1.2rem;
+          left: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .second-column {
+    background: var(--lightGrey);
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    /* gap: 2rem; */
+    overflow-y: scroll;
+    height: 100%;
     @media ${device.tablet} {
       grid-template-columns: 1fr;
       overflow-x: hidden;
     }
   }
-  li {
+  /* li {
     min-width: max-content;
-  }
+  } */
   a {
-    padding: 1rem;
-    border-bottom: 1px solid var(--grey);
+    opacity: 0;
+    padding: 1.5rem;
+    /* border-bottom: 1px solid var(--grey); */
     word-break: keep-all;
     width: 100%;
     display: inline-block;
@@ -243,24 +292,60 @@ export const Logo = ({ logo }) => (
   </div>
 );
 
-const DropDown = ({ list, marginTop, className }) => {
+const DropDown = ({ lists, marginTop, className, headerDropdownImage }) => {
+  const [selectedList, setSelectedList] = useState("resorts");
+
+  const list = selectedList === "resorts" ? lists.resorts : lists.collections;
+
   return (
     <DropdownListStyles
       // className={}
       marginTop={marginTop}
       className={`dropdown ${className}`}
     >
-      <ul>
-        {list.map(
+      <ul className="first-column">
+        <li
+          className={`${selectedList === "resorts" ? "selected" : ""} clickable
+          ${className}
+          route 
+          `}
+          onClick={() => setSelectedList("resorts")}
+        >
+          Resorts
+        </li>
+        <li
+          className={`${
+            selectedList === "collections" ? "selected" : ""
+          } clickable
+          route
+            ${className}`}
+          onClick={() => setSelectedList("collections")}
+        >
+          Holiday stays
+        </li>
+      </ul>
+      <ul className="second-column">
+        {list?.map(
           (item) =>
             item &&
             item.url && (
-              <Link key={item.url} to={item.url}>
+              <Link
+                className={`${className} clickable route`}
+                key={item.url}
+                to={item.url}
+                onClick={() => {
+                  document.body.style.overflow = "unset";
+                }}
+              >
                 {item.name}
               </Link>
             )
         )}
       </ul>
+
+      <div className={`${className} image-container`}>
+        <Image {...headerDropdownImage} />
+      </div>
     </DropdownListStyles>
   );
 };
@@ -273,17 +358,20 @@ const Header = ({
   navData,
   logo,
   location,
+  headerDropdownImage,
 }) => {
-  const [showDropdown, setShowDropdown] = useState(0);
+  const [showDropdown, setShowDropdown] = useState(false);
   const [list, setList] = useState([]);
 
   // const [marginTop, setMarginTop] = useState(2);
   const handleOpenDropDown = (list, index) => {
-    if (showDropdown !== index) {
-      setShowDropdown(index);
+    if (!showDropdown) {
+      setShowDropdown(true);
       setList(list);
+      document.body.style.overflow = "hidden";
     } else {
-      setShowDropdown(-1);
+      setShowDropdown(false);
+      document.body.style.overflow = "unset";
     }
   };
 
@@ -298,7 +386,7 @@ const Header = ({
   return (
     <HeaderStyles
       // ref={headerRef}
-      className="disappear-on-scroll"
+      // className="disappear-on-scroll"
       pathname={location?.pathname}
     >
       <Logo logo={logo} />
@@ -339,16 +427,14 @@ const Header = ({
           <li
             className="clickable"
             onClick={() => {
-              handleOpenDropDown(navData.resorts, 1);
+              handleOpenDropDown({
+                resorts: navData.resorts,
+                collections: navData.collections,
+              });
             }}
           >
             Resorts {showDropdown === 1 ? <ChevronUp /> : <ChevronDown />}
             {/* {showDropdown === 1 && ( */}
-            <DropDown
-              className={showDropdown === 1 ? "show" : ""}
-              marginTop={6}
-              list={list}
-            />
             {/* )} */}
           </li>
           {/* <li
@@ -388,6 +474,12 @@ const Header = ({
           </li>
         </ul>
       </nav>
+      <DropDown
+        className={showDropdown ? "show" : ""}
+        marginTop={6}
+        lists={list}
+        headerDropdownImage={headerDropdownImage}
+      />
       {/* )} */}
       {/* <div></div> */}
     </HeaderStyles>

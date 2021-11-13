@@ -21,6 +21,7 @@ const Layout = ({
   logo,
   location,
   contactUs,
+  headerDropdownImage,
 }) => (
   <>
     <Header
@@ -31,6 +32,7 @@ const Layout = ({
       onHideNav={onHideNav}
       onShowNav={onShowNav}
       showNav={showNav}
+      headerDropdownImage={headerDropdownImage}
     />
 
     <div onClick={() => onHideNav()}> {children}</div>

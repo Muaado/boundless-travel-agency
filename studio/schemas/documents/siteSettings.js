@@ -52,6 +52,12 @@ export default {
     },
 
     {
+      name: "headerDropdownImage",
+      type: "mainImage",
+      title: "Header dropdown image",
+    },
+
+    {
       name: "promoImageMobile",
       type: "mainImage",
       title: "Promo image mobile",
