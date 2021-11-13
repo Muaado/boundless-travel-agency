@@ -4,6 +4,8 @@ import { SearchBar } from "./Homepage/styles";
 import { navigate } from "gatsby";
 import { getResortUrl, getVillaUrl } from "../lib/helpers";
 
+import SearchIcon from "../assets/icons/search-icon.svg";
+
 const Search = ({ resorts, villas }) => {
   const [search, setSearch] = useState();
 
@@ -72,6 +74,7 @@ const Search = ({ resorts, villas }) => {
           }
         }}
       />
+      <SearchIcon />
 
       {/* <button className="btn">SEARCH</button> */}
     </SearchBar>

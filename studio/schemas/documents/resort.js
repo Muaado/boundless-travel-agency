@@ -123,8 +123,7 @@ export default {
       type: "array",
       of: [
         {
-          type: "reference",
-          to: { type: "gallery" },
+          type: "gallery",
         },
       ],
     },

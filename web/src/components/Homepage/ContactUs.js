@@ -111,6 +111,18 @@ const ContactUsSection = styled.div`
       font-style: italic;
     }
   }
+
+  position: relative;
+  .anchor {
+    display: none;
+    @media ${device.tablet} {
+      display: block;
+    }
+    position: absolute;
+    top: -15rem;
+    /* top: -px; */
+    visibility: hidden;
+  }
 `;
 
 export const ContactUs = ({ contactUs }) => {
@@ -122,7 +134,9 @@ export const ContactUs = ({ contactUs }) => {
       data-aos-delay="50"
       data-aos-duration="1000"
       data-aos-easing="ease-in-out"
+      // id="contact-us"
     >
+      <a className="anchor" id="contact-us"></a>
       <div>
         <p>Need a little help?</p>
         <p>Our luxury hotel specialists are only a call or click away.</p>

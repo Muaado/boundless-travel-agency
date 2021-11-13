@@ -12,6 +12,8 @@ import { device } from "../styles/deviceSizes";
 import ChevronDown from "../assets/icons/chevron-down.svg";
 import ChevronUp from "../assets/icons/chevron-up.svg";
 import Phone from "../assets/icons/phone.svg";
+import CustomerService from "../assets/icons/customer-service.svg";
+import { MouseScroll } from "./Ui/MouseScroll";
 
 const HeaderStyles = styled.header`
   width: 100vw;
@@ -64,7 +66,7 @@ const HeaderStyles = styled.header`
     width: 100%;
 
     &.show-header {
-      direction: ltr;
+      /* direction: ltr; */
       display: flex;
 
       .contact-us,
@@ -111,7 +113,7 @@ const HeaderStyles = styled.header`
     /* width: 65%; */
     /* margin: 0 15%; */
     margin-top: 2rem;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
     /* border-bottom: 1px solid #fff; */
     display: flex;
     justify-content: center;
@@ -177,6 +179,7 @@ const HeaderStyles = styled.header`
       width: 100vw;
       display: flex;
       justify-content: flex-start;
+
       /* align-items: center; */
       text-align: center;
       padding-top: 5rem;
@@ -201,8 +204,10 @@ const HeaderStyles = styled.header`
       @media ${device.tablet} {
         /* font-size: 2.6rem; */
         gap: 1rem;
-        flex-direction: column;
+        flex-direction: row-reverse;
         align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
       }
 
       li {
@@ -215,7 +220,21 @@ const HeaderStyles = styled.header`
           margin-left: 1rem;
         }
         @media ${device.tablet} {
-          min-width: 30vw;
+          background: #eeee;
+          color: #000;
+          padding: 0.5rem 1rem;
+          text-align: center;
+          border-radius: 15px;
+
+          &.selected {
+            background: var(--darkGreen);
+            color: #fff;
+          }
+
+          svg {
+            display: none;
+          }
+          /* min-width: 30vw; */
         }
         /* position: relative; */
         &.selected {
@@ -233,12 +252,21 @@ const HeaderStyles = styled.header`
 
   .contact-us {
     display: none;
-    flex-direction: column;
-    align-items: center;
+
     @media ${device.tablet} {
-      display: flex;
-      svg {
-        margin-bottom: 1rem;
+      display: unset;
+    }
+    a {
+      flex-direction: column;
+      align-items: center;
+      @media ${device.tablet} {
+        display: flex;
+        svg {
+          margin-bottom: 1rem;
+          path {
+            fill: var(--primary);
+          }
+        }
       }
     }
   }
@@ -246,7 +274,7 @@ const HeaderStyles = styled.header`
 
 const DropdownListStyles = styled.div`
   position: absolute;
-  top: 15rem;
+  top: 10rem;
   left: 0;
   width: 100vw;
   height: calc(100vh - 10rem);
@@ -296,6 +324,7 @@ const DropdownListStyles = styled.div`
 
     @media ${device.tablet} {
       min-width: 50vw;
+      direction: ltr;
     }
   }
 
@@ -309,6 +338,9 @@ const DropdownListStyles = styled.div`
     padding: 4rem;
     display: flex;
     flex-direction: column;
+    @media ${device.tablet} {
+      display: none;
+    }
     li {
       padding: 1.5rem;
       position: relative;
@@ -334,6 +366,18 @@ const DropdownListStyles = styled.div`
     flex-direction: column;
     /* gap: 2rem; */
     overflow-y: scroll;
+    position: relative;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mouse_scroll {
+      position: absolute;
+      right: 4rem;
+      left: unset !important;
+      bottom: 8rem;
+    }
     height: 100%;
     @media ${device.tablet} {
       grid-template-columns: 1fr;
@@ -362,6 +406,7 @@ const DropdownListStyles = styled.div`
     background: #fff;
     padding: 1.5rem;
     border: 1px solid #eeee;
+    opacity: 0.7;
 
     g {
       fill: #000;
@@ -380,11 +425,9 @@ const DropDown = ({
   className,
   headerDropdownImage,
   handleOpenDropDown,
+  selectedList,
+  setSelectedList,
 }) => {
-  const [selectedList, setSelectedList] = useState("resorts");
-
-  const list = selectedList === "resorts" ? lists.resorts : lists.collections;
-
   return (
     <DropdownListStyles
       // className={}
@@ -413,7 +456,7 @@ const DropDown = ({
         </li>
       </ul>
       <ul className="second-column">
-        {list?.map(
+        {lists?.map(
           (item) =>
             item &&
             item.url && (
@@ -429,6 +472,7 @@ const DropDown = ({
               </Link>
             )
         )}
+        <MouseScroll />
       </ul>
 
       <div className={`${className} image-container`}>
@@ -438,6 +482,7 @@ const DropDown = ({
         className="close-icon"
         onClick={() => {
           handleOpenDropDown([], false);
+          setSelectedList("");
           // if (!showNav) {
           //   handleOpenDropDown([], false);
           //   onShowNav();
@@ -466,6 +511,11 @@ const Header = ({
   const [showDropdown, setShowDropdown] = useState(false);
   const [list, setList] = useState([]);
 
+  const [selectedList, setSelectedList] = useState("");
+  let lists = { resorts: navData.resorts, collections: navData.collections };
+  const dropdownLists =
+    selectedList === "resorts" ? lists.resorts : lists.collections;
+
   // const [marginTop, setMarginTop] = useState(2);
   const handleOpenDropDown = (list, condition) => {
     if (!showDropdown) {
@@ -493,8 +543,10 @@ const Header = ({
       pathname={location?.pathname}
     >
       <div className="contact-us">
-        <Phone />
-        Contact Us
+        <a href="#contact-us">
+          <CustomerService />
+          Contact Us
+        </a>
       </div>
       <Logo logo={logo} />
       {/* <button
@@ -537,12 +589,19 @@ const Header = ({
         />
         <ul className="nav-top-list">
           <li
-            className="clickable"
+            className={` ${
+              selectedList === "resorts" ? "selected" : ""
+            } clickable`}
             onClick={() => {
               handleOpenDropDown({
                 resorts: navData.resorts,
                 collections: navData.collections,
               });
+              if (!showDropdown) {
+                setSelectedList("resorts");
+              } else {
+                setSelectedList("");
+              }
             }}
           >
             Resorts {showDropdown ? <ChevronUp /> : <ChevronDown />}
@@ -589,9 +648,11 @@ const Header = ({
       <DropDown
         className={showDropdown ? "show" : ""}
         marginTop={6}
-        lists={list}
+        lists={dropdownLists}
         headerDropdownImage={headerDropdownImage}
         handleOpenDropDown={handleOpenDropDown}
+        selectedList={selectedList}
+        setSelectedList={setSelectedList}
       />
     </HeaderStyles>
   );

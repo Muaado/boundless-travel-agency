@@ -85,7 +85,7 @@ export const HeroStyles = styled.div`
 `;
 
 export const SearchBar = styled.form`
-  padding: 1rem;
+  padding: 1rem 2rem;
   position: absolute;
   top: -3.5rem;
 
@@ -93,6 +93,7 @@ export const SearchBar = styled.form`
   align-self: center;
 
   display: flex;
+  align-items: center;
   /* width: 80%; */
   justify-content: space-between;
   width: 40vw;
@@ -163,6 +164,14 @@ export const SearchBar = styled.form`
     }
     &:not(:last-of-type) {
       border-right: 1px solid #000;
+    }
+  }
+
+  svg {
+    width: 3rem;
+    height: 3rem;
+    path {
+      fill: var(--darkRed);
     }
   }
 
