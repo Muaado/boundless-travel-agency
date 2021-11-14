@@ -217,8 +217,11 @@ const ResortStyles = styled.div`
 
     &__restaurants {
       margin-top: 10rem;
-      margin-bottom: 15rem;
+      margin-bottom: 10rem;
       padding: 0 15%;
+
+      display: flex;
+      flex-direction: column;
 
       @media ${device.tablet} {
         margin-top: 0;
@@ -267,6 +270,7 @@ const ResortStyles = styled.div`
         column-gap: 20rem;
 
         position: relative;
+        
 
         @media ${device.laptop} {
           grid-template-columns: 1fr;
@@ -278,6 +282,9 @@ const ResortStyles = styled.div`
           display: flex;
           flex-direction: column;
           position: relative;
+          
+
+
           @media ${device.laptop} {
             max-height: unset;
             flex-direction: row;
@@ -387,6 +394,10 @@ const ResortStyles = styled.div`
           text-transform: capitalize;
           letter-spacing: 0.3rem;
         }
+      }
+
+      .btn {
+        align-self: center;
       }
     }
     /* &__gallery {

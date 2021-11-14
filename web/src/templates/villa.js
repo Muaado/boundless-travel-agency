@@ -209,6 +209,7 @@ const VilaTemplate = (props) => {
   const restaurants = data && data.restaurants;
 
   const [openedFeature, setOpenedFeature] = useState(-1);
+  const [restaurantSlice, setRestaurantSLice] = useState(4);
 
   const {
     name,
@@ -434,9 +435,16 @@ const VilaTemplate = (props) => {
           >
             <h2>Dine</h2>
             <ul>
-              {restaurants.nodes.map(
-                ({ name, alternateName, imageThumb, resort }) => (
-                  <li key={name}>
+              {restaurants.nodes
+                .slice(0, restaurantSlice)
+                .map(({ name, alternateName, imageThumb, resort }) => (
+                  <li
+                    data-aos="fade-up"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out"
+                    key={name}
+                  >
                     <div key={name} className="image-container">
                       {imageThumb ? (
                         <Image {...imageThumb} alt={imageThumb.alt} />
@@ -451,16 +459,21 @@ const VilaTemplate = (props) => {
                       <span className="alternate-name">{alternateName}</span>
 
                       <PortableText blocks={_rawDescription} />
-                      <Link
+                      {/* <Link
                         to={getRestaurantUrl({ name, resortName: resort.name })}
                       >
                         Read more...
-                      </Link>
+                      </Link> */}
                     </div>
                   </li>
-                )
-              )}
+                ))}
             </ul>
+
+            {restaurantSlice === 4 && (
+              <button className="btn" onClick={() => setRestaurantSLice(100)}>
+                View more
+              </button>
+            )}
           </div>
 
           <Activities activities={activities} />

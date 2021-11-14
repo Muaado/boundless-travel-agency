@@ -125,10 +125,7 @@ export const query = graphql`
       }
     }
 
-    restaurants: allSanityRestaurant(
-      limit: 4
-      filter: { resort: { _id: { eq: $id } } }
-    ) {
+    restaurants: allSanityRestaurant(filter: { resort: { _id: { eq: $id } } }) {
       nodes {
         name
         alternateName
@@ -218,6 +215,8 @@ const ResortTemplate = (props) => {
   const site = data && data.site;
 
   const [slice, setSlice] = useState(Number);
+  const [restaurantSlice, setRestaurentSlice] = useState(4);
+
   // const highlights = data && data.highlights;
 
   const {
@@ -388,9 +387,16 @@ const ResortTemplate = (props) => {
               </p>
             </div>
             <ul>
-              {restaurants.nodes.map(
-                ({ name, alternateName, imageThumb, _rawDescription }) => (
-                  <li key={name}>
+              {restaurants.nodes
+                .slice(0, restaurantSlice)
+                .map(({ name, alternateName, imageThumb, _rawDescription }) => (
+                  <li
+                    key={name}
+                    data-aos="fade-up"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out"
+                  >
                     <div key={name} className="image-container">
                       {imageThumb ? (
                         <Image {...imageThumb} alt={imageThumb.alt} />
@@ -405,9 +411,13 @@ const ResortTemplate = (props) => {
                       <PortableText blocks={_rawDescription} />
                     </div>
                   </li>
-                )
-              )}
+                ))}
             </ul>
+            {restaurantSlice === 4 && (
+              <button className="btn" onClick={() => setRestaurentSlice(100)}>
+                View more
+              </button>
+            )}
           </div>
 
           {galleries && <Gallery id="gallery" galleries={galleries} />}
@@ -422,6 +432,7 @@ const ResortTemplate = (props) => {
               className="resort__spas"
               slidesToShow={1}
               cellSpacing={0}
+              heightMode="max"
               renderCenterRightControls={({ nextSlide }) => (
                 <CarouselButton onClick={nextSlide} chevronRight={true} />
               )}

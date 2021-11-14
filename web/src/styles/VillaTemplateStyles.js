@@ -529,6 +529,10 @@ const VillaStyles = styled.div`
       margin-top: 10rem;
       margin-bottom: 5rem;
       padding: 0 15%;
+
+      display: flex;
+      flex-direction: column;
+
       @media ${device.laptop} {
         padding: 0 10%;
       }
@@ -601,6 +605,11 @@ const VillaStyles = styled.div`
           margin-top: 2.5rem;
           color: var(--grey);
         }
+      }
+
+      .btn {
+        margin-top: 5rem;
+        align-self: center;
       }
     }
 
@@ -685,8 +694,31 @@ const VillaStyles = styled.div`
         } */
 
         .slider-control-bottomcenter {
-          max-width: 80vw;
+          position: absolute;
+          bottom: -45px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        .slider-control-bottomcenter {
+          /* max-width: 10%;
           overflow: hidden;
+          position: relative; */
+
+          /* ul {
+            display: flex;
+            /* width: 10rem; */
+
+          /* li {
+              background: #000;
+              width: 1rem;
+              height: 1rem;
+              margin: 0 0.5rem;
+              cursor: pointer;
+              &.active {
+                background: blue;
+              }
+            }
+          } */
         }
         &__node {
           display: block;
