@@ -147,7 +147,7 @@ const Enquire = (props) => {
     updateValue,
     updateValueManually,
   } = useForm({
-    destination,
+    destination: {},
     dateOfTravel: "",
     duration: "",
     budget: "",

@@ -73,7 +73,7 @@ export const query = graphql`
       description
       keywords
       description
-      videoURL
+      # videoURL
       video {
         asset {
           _key
