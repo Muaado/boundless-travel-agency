@@ -20,6 +20,7 @@ export default {
       type: "mainImage",
       title: "Hero Image",
     },
+
     {
       name: "externalId",
       type: "string",
@@ -38,11 +39,6 @@ export default {
       title: "Location Atoll",
     },
 
-    {
-      name: "secondImage",
-      type: "mainImage",
-      title: "Second image",
-    },
     {
       name: "description",
       type: "bodyPortableText",
@@ -90,11 +86,19 @@ export default {
       type: "string",
       title: "Time to airport",
     },
+
     {
-      title: "FAQ",
-      name: "faq",
+      name: "resortTransferType",
+      title: "Resort transfer type",
       type: "array",
-      of: [{ type: "faq" }],
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "resortTransferType",
+          },
+        },
+      ],
     },
 
     {
@@ -146,6 +150,19 @@ export default {
       ],
     },
 
+    {
+      name: "secondImage",
+      type: "mainImage",
+      title: "Bottom image",
+    },
+
+    {
+      title: "FAQ",
+      name: "faq",
+      type: "array",
+      of: [{ type: "faq" }],
+    },
+
     // {
     //   name: "restaurants",
     //   title: "Restaurants",
@@ -188,19 +205,6 @@ export default {
     //   ],
     // },
 
-    {
-      name: "resortTransferType",
-      title: "Resort transfer type",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: {
-            type: "resortTransferType",
-          },
-        },
-      ],
-    },
     // {
     //   name: "resortTags",
     //   title: "Resort tags",

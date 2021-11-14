@@ -23,6 +23,18 @@ export default {
     },
 
     {
+      name: "heroImage",
+      type: "mainImage",
+      title: "Hero image",
+    },
+
+    {
+      name: "imageThumb",
+      type: "mainImage",
+      title: "Villa image thumb",
+    },
+
+    {
       title: "Header Images",
       type: "gallery",
       name: "headerImages",
@@ -59,12 +71,6 @@ export default {
     },
 
     {
-      name: "roomFeatures",
-      type: "roomFeatures",
-      title: "Room features",
-    },
-
-    {
       name: "maxOccupancy",
       title: "Max occupancy options",
       type: "array",
@@ -92,6 +98,40 @@ export default {
       name: "numberOfRooms",
       type: "number",
       title: "Number of rooms",
+    },
+
+    {
+      name: "villaPoolTypes",
+      title: "Villa pool types",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "villaPoolType",
+          },
+        },
+      ],
+    },
+
+    {
+      name: "villaTags",
+      title: "Villa tags",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "tag",
+          },
+        },
+      ],
+    },
+
+    {
+      name: "roomFeatures",
+      type: "roomFeatures",
+      title: "Room features",
     },
 
     // {
@@ -123,39 +163,6 @@ export default {
     //   ],
     // },
 
-    {
-      name: "villaPoolTypes",
-      title: "Villa pool types",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: {
-            type: "villaPoolType",
-          },
-        },
-      ],
-    },
-
-    {
-      name: "villaTags",
-      title: "Villa tags",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: {
-            type: "tag",
-          },
-        },
-      ],
-    },
-
-    {
-      name: "heroImage",
-      type: "mainImage",
-      title: "Hero image",
-    },
     // {
     //   name: "imageMobile",
     //   type: "mainImage",
@@ -166,11 +173,6 @@ export default {
     //   type: "mainImage",
     //   title: "Villa image web",
     // },
-    {
-      name: "imageThumb",
-      type: "mainImage",
-      title: "Villa image thumb",
-    },
   ],
   preview: {
     select: {
