@@ -32,7 +32,7 @@ export const PromoSectionStyles = styled.div`
     width: 100%;
 
     object-fit: contain;
-    @media ${device.tablet} {
+    @media ${device.laptopM} {
       object-position: right;
     }
   }
@@ -48,9 +48,10 @@ export const PromoSectionStyles = styled.div`
     color: #fff;
     text-align: center;
     letter-spacing: 1rem;
-    font-family: "Playfair display";
+    /* font-family: "Playfair display"; */
     /* font-size: 4.8rem; */
     text-transform: lowercase;
+    font-weight: normal;
 
     @media ${device.tabletL} {
       left: 70%;

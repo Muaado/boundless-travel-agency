@@ -115,7 +115,8 @@ const FooterStyles = styled.footer`
       display: flex;
       gap: 2rem;
 
-      @media ${device.tablet} {
+      @media ${device.laptop} {
+        margin-top: 2rem;
         flex-direction: column;
         align-items: center;
       }

@@ -1,12 +1,133 @@
 import React, { useState } from "react";
 import Select from "react-select/async";
-import { SearchBar } from "./Homepage/styles";
+// import { SearchBar } from "./Homepage/styles";
 import { navigate } from "gatsby";
 import { getResortUrl, getVillaUrl } from "../lib/helpers";
 
 import SearchIcon from "../assets/icons/search-icon.svg";
+import styled from "styled-components";
+import { device } from "../styles/deviceSizes";
 
-const Search = ({ resorts, villas }) => {
+export const SearchBar = styled.form`
+  &.homepage-search {
+    padding: 1rem 2rem;
+    position: absolute;
+    top: -3.5rem;
+
+    background: #fff;
+    align-self: center;
+
+    display: flex;
+    align-items: center;
+    /* width: 80%; */
+    justify-content: space-between;
+    width: 40vw;
+
+    @media ${device.laptop} {
+      width: 60vw;
+    }
+    @media ${device.tablet} {
+      width: 80vw;
+    }
+    @media ${device.mobileXL} {
+      width: 100vw;
+    }
+    filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.25));
+  }
+
+  &.enquire-search {
+    .magnifying-glass {
+      display: none;
+    }
+
+    .input {
+      padding: 0;
+      border: none;
+
+      margin: 0;
+    }
+  }
+
+  .input {
+    z-index: 10000 !important;
+    width: 100% !important;
+    display: flex !important;
+    outline: none !important;
+    margin-right: 1rem;
+
+    &__label {
+      display: flex;
+      justify-content: space-between;
+    }
+    &__type {
+      font-size: 1.8rem;
+      color: #000;
+      margin-left: 3rem;
+    }
+
+    #react-select-1-listbox,
+    #react-select-2-listbox,
+    #react-select-3-listbox,
+    #react-select-4-listbox,
+    #react-select-5-listbox,
+    #react-select-5-listbox {
+      & > div {
+        width: 100%;
+      }
+      /* z-index: 1000; */
+      /* position: absolute; */
+      /* height: 70vh; */
+      /* max-height: unset !important; */
+    }
+
+    & > div {
+      /* padding: 1rem; */
+
+      display: flex !important;
+      flex-direction: row !important;
+      border: none !important;
+      width: 100%;
+
+      svg {
+        outline: none !important;
+      }
+    }
+
+    width: 20%;
+
+    &[name="location"] {
+      width: 60%;
+    }
+    &:focus {
+      outline: none;
+    }
+    &:not(:last-of-type) {
+      border-right: 1px solid #000;
+    }
+  }
+
+  svg {
+    width: 3rem;
+    height: 3rem;
+    path {
+      fill: var(--darkRed);
+    }
+  }
+
+  button {
+    border-radius: 2px;
+  }
+`;
+
+const Search = ({
+  name,
+  className,
+  resorts,
+  villas,
+  placeholder,
+  onChange,
+  value,
+}) => {
   const [search, setSearch] = useState();
 
   const options = [
@@ -48,33 +169,24 @@ const Search = ({ resorts, villas }) => {
   };
 
   return (
-    <SearchBar>
+    <SearchBar className={className}>
       <Select
+        name="name"
         className="input"
         defaultOptions={options}
         loadOptions={loadOptions}
-        placeholder="Where would you like to go?"
+        // menuIsOpen
+        placeholder={placeholder}
         isClearable
-        value={search}
+        value={value || search}
         onInputChange={(input) => {
           setSearch(input);
         }}
         onChange={(input) => {
-          let route;
-          if (input) {
-            if (input?.type === "resort") {
-              route = getResortUrl({ name: input.value });
-            } else {
-              route = getVillaUrl({
-                name: input.value,
-                resortName: input.resortName,
-              });
-            }
-            navigate(route);
-          }
+          onChange(input);
         }}
       />
-      <SearchIcon />
+      <SearchIcon className="magnifying-glass" />
 
       {/* <button className="btn">SEARCH</button> */}
     </SearchBar>

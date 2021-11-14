@@ -205,7 +205,7 @@ const VillaStyles = styled.div`
         left: 11rem;
         text-transform: uppercase;
         color: #76622e !important;
-        font-family: "Playfair Display";
+        // font-family: "Playfair Display";
         font-size: 1.5rem !important;
         letter-spacing: 0.5rem;
 
@@ -588,7 +588,7 @@ const VillaStyles = styled.div`
 
         .name {
           font-size: 2rem;
-          font-family: "Playfair Display";
+          /* font-family: "Playfair Display"; */
           text-transform: uppercase;
           margin-bottom: 1.5rem;
         }
@@ -655,7 +655,7 @@ const VillaStyles = styled.div`
 
       /* height: fit-content; */
       .title {
-        font-family: "Playfair Display";
+        /* font-family: "Playfair Display"; */
         position: absolute;
         left: 0;
         transform: rotate(-90deg);

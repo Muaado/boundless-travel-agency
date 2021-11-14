@@ -108,6 +108,12 @@ const ResortStyles = styled.div`
         @media ${device.tablet} {
           display: unset !important;
         }
+        .slider-slide {
+          height: 100% !important;
+          li {
+            height: inherit;
+          }
+        }
 
         .slider-control-bottomcenter {
           bottom: -5rem !important;

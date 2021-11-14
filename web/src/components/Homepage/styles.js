@@ -84,102 +84,6 @@ export const HeroStyles = styled.div`
   }
 `;
 
-export const SearchBar = styled.form`
-  padding: 1rem 2rem;
-  position: absolute;
-  top: -3.5rem;
-
-  background: #fff;
-  align-self: center;
-
-  display: flex;
-  align-items: center;
-  /* width: 80%; */
-  justify-content: space-between;
-  width: 40vw;
-
-  @media ${device.laptop} {
-    width: 60vw;
-  }
-  @media ${device.tablet} {
-    width: 80vw;
-  }
-  @media ${device.mobileXL} {
-    width: 100vw;
-  }
-
-  filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.25));
-  .input {
-    z-index: 10000 !important;
-    width: 100% !important;
-    display: flex !important;
-    outline: none !important;
-    margin-right: 1rem;
-
-    &__label {
-      display: flex;
-      justify-content: space-between;
-    }
-    &__type {
-      font-size: 1.8rem;
-      color: #000;
-      margin-left: 3rem;
-    }
-
-    #react-select-1-listbox,
-    #react-select-2-listbox,
-    #react-select-3-listbox,
-    #react-select-4-listbox,
-    #react-select-5-listbox,
-    #react-select-5-listbox {
-      & > div {
-        width: 100%;
-      }
-      /* z-index: 1000; */
-      /* position: absolute; */
-      /* height: 70vh; */
-      /* max-height: unset !important; */
-    }
-
-    & > div {
-      /* padding: 1rem; */
-
-      display: flex !important;
-      flex-direction: row !important;
-      border: none !important;
-      width: 100%;
-
-      svg {
-        outline: none !important;
-      }
-    }
-
-    width: 20%;
-
-    &[name="location"] {
-      width: 60%;
-    }
-    &:focus {
-      outline: none;
-    }
-    &:not(:last-of-type) {
-      border-right: 1px solid #000;
-    }
-  }
-
-  svg {
-    width: 3rem;
-    height: 3rem;
-    path {
-      fill: var(--darkRed);
-    }
-  }
-
-  button {
-    border-radius: 2px;
-  }
-`;
-
 export const HandCraftedJourneysStyles = styled.div`
   margin: 10rem 0;
   padding: 0 15%;
@@ -190,6 +94,9 @@ export const HandCraftedJourneysStyles = styled.div`
 
   @media ${device.laptopL} {
     padding: 0 15%;
+  }
+  @media ${device.laptop} {
+    padding: 0 10%;
   }
   @media ${device.tablet} {
     margin: 5rem 0;
@@ -273,6 +180,9 @@ export const MagazineStyles = styled.div`
 
   @media ${device.laptopL} {
     padding: 0 15%;
+  }
+  @media ${device.laptopM} {
+    padding: 0 10%;
   }
 
   @media ${device.tablet} {

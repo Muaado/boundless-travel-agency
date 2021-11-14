@@ -69,6 +69,7 @@ const ActivitiesStyles = styled.div`
 
     &__carousel {
       max-height: unset;
+      height: 100%;
     }
     a {
       height: 100%;
@@ -123,9 +124,19 @@ const ActivitiesStyles = styled.div`
 
   .carousel {
     display: none !important;
+    min-height: 100% !important;
+
     @media ${device.tablet} {
       display: unset !important;
     }
+
+    /* .slider-slide {
+      height: 100% !important;
+      li {
+        height: inherit;
+      }
+    } */
+
     .slider-control-bottomcenter {
       bottom: -5rem !important;
       /* height: 110% !important; */

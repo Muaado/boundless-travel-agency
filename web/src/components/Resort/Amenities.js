@@ -20,6 +20,7 @@ const AmenitiesStyles = styled.div`
 
     @media ${device.tablet} {
       width: 90vw;
+      max-width: unset;
     }
     @media ${device.mobileXL} {
       padding: 3rem 2rem;

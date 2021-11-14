@@ -22,11 +22,11 @@ export default {
       title: "Full name",
     },
 
-    {
-      type: "string",
-      name: "videoURL",
-      description: "Url for homepage video",
-    },
+    // {
+    //   type: "string",
+    //   name: "videoURL",
+    //   description: "Url for homepage video",
+    // },
 
     {
       type: "mux.video",
@@ -72,7 +72,7 @@ export default {
     {
       name: "secondImage",
       type: "mainImage",
-      title: "Second image",
+      title: "Homepage bottom image",
     },
 
     {

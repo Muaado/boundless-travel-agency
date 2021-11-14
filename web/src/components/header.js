@@ -466,6 +466,7 @@ const DropDown = ({
                 to={item.url}
                 onClick={() => {
                   document.body.style.overflow = "unset";
+                  handleOpenDropDown([], false);
                 }}
               >
                 {item.name}

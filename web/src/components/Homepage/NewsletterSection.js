@@ -122,7 +122,7 @@ export const NewsLetterStyles = styled.div`
 const NewsletterSection = ({ site }) => {
   return (
     <NewsLetterStyles>
-      <h2>{site.newsLetterTitle}</h2>
+      {/* <h2>{site.newsLetterTitle}</h2> */}
       {site.newsLetterBackground && (
         <Image
           {...site.newsLetterBackground}
@@ -130,13 +130,13 @@ const NewsletterSection = ({ site }) => {
         />
       )}
 
-      <form className="form">
+      {/* <form className="form">
         <h3>Subscribe to our newsletter</h3>
         <div className="container">
           <input placeholder="Enter your email here" />
           <button className="btn">Subscribe</button>
         </div>
-      </form>
+      </form> */}
     </NewsLetterStyles>
   );
 };

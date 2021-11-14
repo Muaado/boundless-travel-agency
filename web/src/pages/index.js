@@ -12,6 +12,7 @@ import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
 
+import { navigate } from "gatsby";
 import styled from "styled-components";
 
 import Video from "../components/Video";
@@ -34,7 +35,7 @@ import {
   SearchBar,
 } from "../components/Homepage/styles";
 import PortableText from "../components/portableText";
-import { getBlogUrl } from "../lib/helpers";
+import { getBlogUrl, getResortUrl, getVillaUrl } from "../lib/helpers";
 import WhyBoundlessSection from "../components/Homepage/WhyBoundlessSection";
 import NewsletterSection from "../components/Homepage/NewsletterSection";
 import LeftSidebar from "../components/LeftSidebar";
@@ -284,7 +285,27 @@ const IndexPage = (props) => {
           <MouseScroll />
         </HeroStyles>
         <div className="page-content">
-          <Search resorts={resorts.nodes} villas={villas.nodes} />
+          <Search
+            className="homepage-search"
+            placeholder="Where would you like to go?"
+            resorts={resorts.nodes}
+            villas={villas.nodes}
+            onChange={(input) => {
+              let route;
+              if (input) {
+                if (input?.type === "resort") {
+                  route = getResortUrl({ name: input.value });
+                } else {
+                  route = getVillaUrl({
+                    name: input.value,
+                    resortName: input.resortName,
+                  });
+                }
+
+                navigate(route);
+              }
+            }}
+          />
 
           <Journey collections={collections} />
 

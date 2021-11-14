@@ -10,7 +10,7 @@ const AboutUsSectionStyles = styled.div`
   align-items: center;
   padding: 10rem 15%;
 
-  @media ${device.laptopM} {
+  @media ${device.laptopL} {
     padding: 5rem 10%;
   }
 
@@ -30,7 +30,7 @@ const AboutUsSectionStyles = styled.div`
     }
     &__text {
       h2 {
-        font-family: "Playfair display";
+        /* font-family: "Playfair display"; */
         text-transform: uppercase;
         /* font-size: 5rem; */
         margin-bottom: 2rem;

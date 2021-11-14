@@ -17,7 +17,7 @@ const AccomodationStyles = styled.div`
     padding: 0 10%;
   }
   @media ${device.tablet} {
-    padding: 0 3rem;
+    padding: 0;
   }
   h2 {
     text-align: center;
@@ -60,7 +60,7 @@ const AccomodationStyles = styled.div`
       height: 80%;
     }
     p {
-      font-family: "Playfair Display";
+      /* font-family: "Playfair Display"; */
       font-size: 3rem;
       padding: 2rem 0;
       text-align: right;

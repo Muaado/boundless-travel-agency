@@ -12,16 +12,16 @@ import { Link } from "gatsby";
 import { getCollectionUrl } from "../../lib/helpers";
 
 const JourneyStyles = styled.div`
-  margin-top: 15rem;
+  margin-top: 10rem;
   margin-bottom: 2rem;
   align-self: center;
   display: flex;
   flex-direction: column;
-  font-family: "Playfair Display";
+  /* font-family: "Playfair Display"; */
   text-align: center;
 
   padding: 0 15%;
-  z-index: -1;
+  /* z-index: -1; */
 
   width: 100%;
   /* max-width: 1440px; */
@@ -30,6 +30,7 @@ const JourneyStyles = styled.div`
   }
   @media ${device.laptop} {
     margin-top: 10rem;
+    padding: 0 10%;
   }
 
   @media ${device.tablet} {
@@ -41,7 +42,7 @@ const JourneyStyles = styled.div`
 
   h1 {
     letter-spacing: 2rem;
-    line-height: 10rem;
+    line-height: 5rem;
     color: var(--primary);
     margin-bottom: 1rem;
 
@@ -91,9 +92,12 @@ const JourneyStyles = styled.div`
       /* height: 40rem;
       width: 40rem; */
       height: 35rem;
+      img {
+        z-index: -1;
+      }
       /* width: 40rem; */
       p {
-        z-index: 100;
+        z-index: 1;
         color: #fff;
         position: absolute;
         text-transform: uppercase;
@@ -102,8 +106,9 @@ const JourneyStyles = styled.div`
           0px 4px 4px rgba(0, 0, 0, 0.25);
 
         /* top: 90%; */
-        top: 80%;
+        top: 90%;
         left: 50%;
+        width: 100%;
         transform: translate(-50%, -50%);
 
         @media ${device.laptopM} {

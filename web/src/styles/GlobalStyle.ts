@@ -137,7 +137,7 @@ export const GlobalStyle = createGlobalStyle`
   h1 {
     color: var(--primary);
     /* text-transform: unset; */
-    font-size: 7.2rem;
+    font-size: 5rem;
     font-weight: bold;
     @media ${device.tablet} {
       font-size: 3.6rem;
