@@ -357,7 +357,7 @@ const Enquire = (props) => {
             </div>
           </form>
 
-          <ContactUs contactUs={site.contactUs} />
+          {/* <ContactUs contactUs={site.contactUs} /> */}
         </EnquirePageStyles>
       </Container>
     </Layout>
