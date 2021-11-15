@@ -400,7 +400,7 @@ const ResortTemplate = (props) => {
                     data-aos-easing="ease-in-out"
                   >
                     <div key={name} className="image-container">
-                      {imageThumb ? (
+                      {imageThumb && imageThumb.asset ? (
                         <Image {...imageThumb} alt={imageThumb.alt} />
                       ) : (
                         <Placeholder />
