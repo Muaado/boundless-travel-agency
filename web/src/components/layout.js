@@ -6,6 +6,7 @@ import AOS from "aos";
 import { GlobalStyle } from "../styles/GlobalStyle";
 import "aos/dist/aos.css";
 import Footer from "./Footer";
+import { Helmet } from "react-helmet";
 const windowGlobal = typeof window !== "undefined";
 if (windowGlobal) AOS.init();
 
@@ -24,6 +25,15 @@ const Layout = ({
   headerDropdownImage,
 }) => (
   <>
+    <Helmet>
+      <script
+        type="text/javascript"
+        id="hs-script-loader"
+        async
+        defer
+        src="//js-na1.hs-scripts.com/21013560.js"
+      ></script>
+    </Helmet>
     <Header
       logo={logo}
       location={location}
