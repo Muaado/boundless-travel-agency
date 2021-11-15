@@ -28,8 +28,8 @@ const LeftSidebarStyles = styled.div`
   }
 
   li {
+    display: none;
     @media ${device.tablet} {
-      display: none;
     }
     color: var(--grey);
     margin-bottom: 2rem;

@@ -63,6 +63,7 @@ import shower from "./objects/villa/shower";
 import collection from "./documents/collection";
 import collectionType from "./documents/collectionType";
 import faq from "./objects/faq";
+import priceList from "./objects/villa/priceList";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -91,7 +92,7 @@ export default createSchema({
     spa,
     collection,
     collectionType,
-
+    priceList,
     // SHARED DOCS
     resortTransferType,
     galleryType,

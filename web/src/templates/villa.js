@@ -24,6 +24,7 @@ import PopUpGallery from "../components/PopUpGallery";
 
 import PlusIcon from "../assets/icons/plus-icon.svg";
 import MinusIcon from "../assets/icons/minus-icon.svg";
+import CalendarIcon from "../assets/icons/calendar.svg";
 
 import Measure from "../assets/icons/villaSpecifications/measure.svg";
 import TwoPeople from "../assets/icons/villaSpecifications/two-people.svg";
@@ -197,6 +198,13 @@ export const query = graphql`
         }
       }
     }
+
+    priceList: allSanityPriceList(filter: { villa: { _id: { eq: $id } } }) {
+      nodes {
+        month
+        price
+      }
+    }
   }
 `;
 
@@ -207,6 +215,7 @@ const VilaTemplate = (props) => {
   const spas = data && data.spas;
   const resorts = data && data.resorts;
   const restaurants = data && data.restaurants;
+  const priceList = data && data.priceList;
 
   const [openedFeature, setOpenedFeature] = useState(-1);
   const [restaurantSlice, setRestaurantSLice] = useState(4);
@@ -256,6 +265,34 @@ const VilaTemplate = (props) => {
     }
   };
 
+  const [calendarOpen, setCalendarOpen] = useState(false);
+
+  const months = [
+    { title: "January", value: "0" },
+    { title: "February", value: "1" },
+    { title: "March", value: "2" },
+    { title: "April", value: "3" },
+    { title: "May", value: "4" },
+    { title: "June", value: "5" },
+    { title: "July", value: "6" },
+    { title: "August", value: "7" },
+    { title: "September", value: "8" },
+    { title: "October", value: "9" },
+    { title: "November", value: "10" },
+    { title: "December", value: "11" },
+  ];
+
+  const sortedPriceList = priceList.nodes.sort((a, b) =>
+    parseInt(b.month) > parseInt(a.month) ? -1 : 1
+  );
+
+  let medianPrice = 0;
+
+  sortedPriceList.forEach((price) => {
+    medianPrice += price.price;
+  });
+
+  medianPrice = medianPrice / sortedPriceList.length;
   return (
     <Layout>
       <Container>
@@ -265,16 +302,40 @@ const VilaTemplate = (props) => {
         <VillaStyles>
           {/* {heroImage && ( */}
           <div className="villa__image">
-            {heroImage && heroImage.asset ? (
-              <Image {...heroImage} alt={heroImage.alt} />
-            ) : (
-              <Placeholder style={{ width: "100%", height: "100%" }} />
-            )}
+            <div className="image-container">
+              {heroImage && heroImage.asset ? (
+                <Image {...heroImage} alt={heroImage.alt} />
+              ) : (
+                <Placeholder style={{ width: "100%", height: "100%" }} />
+              )}
+            </div>
             <h1 className="villa__image-title" id="header-text">
               {resortName}
             </h1>
             <MouseScroll />
+            <div className="villa__calendar">
+              <CalendarIcon onClick={() => setCalendarOpen(!calendarOpen)} />
+              {calendarOpen && (
+                <ul>
+                  {months.map(({ title, value }) => {
+                    const price = sortedPriceList?.find(
+                      (item) => item.month === value
+                    );
+
+                    return (
+                      <li key={title}>
+                        <span>{title}</span>{" "}
+                        <span>
+                          ${price?.price.toFixed(2) || medianPrice.toFixed(2)}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
           </div>
+
           {/* )} */}
 
           <div

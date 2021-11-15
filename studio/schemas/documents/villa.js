@@ -59,6 +59,12 @@ export default {
     },
 
     {
+      name: "priceList",
+      type: "priceList",
+      title: "Price list",
+    },
+
+    {
       name: "tagline",
       type: "string",
       title: "Tag line",

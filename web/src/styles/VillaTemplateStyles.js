@@ -20,8 +20,13 @@ const VillaStyles = styled.div`
   .villa {
     &__image {
       max-height: 80vh;
-      overflow-y: hidden;
+      /* overflow-y: hidden; */
       position: relative;
+
+      .image-container {
+        max-height: 80vh;
+        overflow-y: hidden;
+      }
 
       @media ${device.tabletL} {
         height: 80vh;
@@ -46,6 +51,28 @@ const VillaStyles = styled.div`
           font-size: 2rem;
           bottom: 1rem;
           letter-spacing: 0.8rem;
+        }
+      }
+    }
+
+    &__calendar {
+      z-index: 100000;
+      position: absolute;
+      bottom: 20%;
+      right: 15%;
+      svg {
+        width: 3rem;
+        height: 3rem;
+      }
+
+      ul {
+        position: absolute;
+        background: #fff;
+        li {
+          padding: 1rem;
+          width: 20rem;
+          display: flex;
+          justify-content: space-between;
         }
       }
     }
