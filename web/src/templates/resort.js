@@ -254,7 +254,9 @@ const ResortTemplate = (props) => {
       <Container>
         <ResortStyles>
           <div className="resort__image">
-            {image && <Image {...image} width={1440} alt={image?.alt} />}
+            {image && image.asset && (
+              <Image {...image} width={1440} alt={image?.alt} />
+            )}
             <div
               // id="header-text"
               className="text disappear-on-scroll"
