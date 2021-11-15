@@ -60,6 +60,19 @@ const VillaStyles = styled.div`
       position: absolute;
       bottom: 20%;
       right: 15%;
+
+      .icon {
+        display: flex;
+        align-items: center;
+        .chevron {
+          width: 1.5rem;
+          height: 1.5rem;
+          margin-left: 1rem;
+          path {
+            stroke: #000;
+          }
+        }
+      }
       svg {
         width: 3rem;
         height: 3rem;
@@ -68,11 +81,53 @@ const VillaStyles = styled.div`
       ul {
         position: absolute;
         background: #fff;
+        padding: 2rem;
+
+        /* transform: translateY(-100%); */
+        max-height: 1rem;
+        transition: all 0.2s;
+        visibility: hidden;
+        z-index: -1;
+        &.open {
+          /* transform: translateY(0); */
+          max-height: 50rem;
+          visibility: unset;
+          z-index: 100;
+        }
+
+        &.open {
+          li {
+            visibility: unset;
+            opacity: 1;
+          }
+        }
+
         li {
-          padding: 1rem;
+          opacity: 0;
+          padding: 0.5rem 1rem;
           width: 20rem;
           display: flex;
-          justify-content: space-between;
+          /* justify-content: space-between; */
+          /* background: var(--primary); */
+          background: rgba(179, 154, 106, 0.3);
+          /* color: #fff; */
+          margin-bottom: 0.5rem;
+
+          span {
+            span {
+              margin-right: 0.5rem;
+              width: 3rem;
+              display: inline-block;
+            }
+          }
+
+          .per-night {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            margin-left: 0.5rem;
+            color: var(--grey);
+          }
+          /* background-opacity: 0.6; */
         }
       }
     }

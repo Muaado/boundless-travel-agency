@@ -25,6 +25,8 @@ import PopUpGallery from "../components/PopUpGallery";
 import PlusIcon from "../assets/icons/plus-icon.svg";
 import MinusIcon from "../assets/icons/minus-icon.svg";
 import CalendarIcon from "../assets/icons/calendar.svg";
+import ChevronUp from "../assets/icons/chevron-up.svg";
+import ChevronDown from "../assets/icons/chevron-down.svg";
 
 import Measure from "../assets/icons/villaSpecifications/measure.svg";
 import TwoPeople from "../assets/icons/villaSpecifications/two-people.svg";
@@ -268,18 +270,18 @@ const VilaTemplate = (props) => {
   const [calendarOpen, setCalendarOpen] = useState(false);
 
   const months = [
-    { title: "January", value: "0" },
-    { title: "February", value: "1" },
-    { title: "March", value: "2" },
-    { title: "April", value: "3" },
-    { title: "May", value: "4" },
-    { title: "June", value: "5" },
-    { title: "July", value: "6" },
-    { title: "August", value: "7" },
-    { title: "September", value: "8" },
-    { title: "October", value: "9" },
-    { title: "November", value: "10" },
-    { title: "December", value: "11" },
+    { title: "JAN", value: "0" },
+    { title: "FEB", value: "1" },
+    { title: "MAR", value: "2" },
+    { title: "APR", value: "3" },
+    { title: "MAY", value: "4" },
+    { title: "JUN", value: "5" },
+    { title: "JUL", value: "6" },
+    { title: "AUG", value: "7" },
+    { title: "SEP", value: "8" },
+    { title: "OCT", value: "9" },
+    { title: "NOV", value: "10" },
+    { title: "DEC", value: "11" },
   ];
 
   const sortedPriceList = priceList.nodes.sort((a, b) =>
@@ -314,25 +316,36 @@ const VilaTemplate = (props) => {
             </h1>
             <MouseScroll />
             <div className="villa__calendar">
-              <CalendarIcon onClick={() => setCalendarOpen(!calendarOpen)} />
-              {calendarOpen && (
-                <ul>
-                  {months.map(({ title, value }) => {
-                    const price = sortedPriceList?.find(
-                      (item) => item.month === value
-                    );
+              <div
+                className="icon"
+                onClick={() => setCalendarOpen(!calendarOpen)}
+              >
+                <CalendarIcon />
+                {!calendarOpen ? (
+                  <ChevronDown className="chevron" />
+                ) : (
+                  <ChevronUp className="chevron" />
+                )}
+              </div>
+              {/* {calendarOpen && ( */}
+              <ul className={calendarOpen ? "open" : ""}>
+                {months.map(({ title, value }) => {
+                  const price = sortedPriceList?.find(
+                    (item) => item.month === value
+                  );
 
-                    return (
-                      <li key={title}>
-                        <span>{title}</span>{" "}
-                        <span>
-                          ${price?.price.toFixed(2) || medianPrice.toFixed(2)}
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
+                  return (
+                    <li key={title}>
+                      <span>
+                        <span>{title}</span> $
+                        {price?.price.toFixed(2) || medianPrice.toFixed(2)}
+                      </span>
+                      <span className="per-night">per night</span>
+                    </li>
+                  );
+                })}
+              </ul>
+              {/* )} */}
             </div>
           </div>
 
