@@ -187,7 +187,7 @@ const Gallery = ({ id, galleries }) => {
             ? galleries[0]?.images.slice(0, 4).map((image) => {
                 return (
                   <li key={image.alt}>
-                    {image ? (
+                    {image && image.asset ? (
                       <Image {...image} alt={image.alt} />
                     ) : (
                       <Placeholder />
@@ -215,7 +215,7 @@ const Gallery = ({ id, galleries }) => {
           {!isTablet
             ? selectedGallery.images.map((image) => (
                 <div key={image.alt} className="main-image-container">
-                  {image ? (
+                  {image && image.asset ? (
                     <Image {...image} alt={image.alt} />
                   ) : (
                     <Placeholder />
@@ -224,7 +224,7 @@ const Gallery = ({ id, galleries }) => {
               ))
             : allImages.map((image) => (
                 <div key={image.alt} className="main-image-container">
-                  {image ? (
+                  {image && image.asset ? (
                     <Image {...image} alt={image.alt} />
                   ) : (
                     <Placeholder />

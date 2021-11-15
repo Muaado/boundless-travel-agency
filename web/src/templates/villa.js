@@ -265,7 +265,7 @@ const VilaTemplate = (props) => {
         <VillaStyles>
           {/* {heroImage && ( */}
           <div className="villa__image">
-            {heroImage ? (
+            {heroImage && heroImage.asset ? (
               <Image {...heroImage} alt={heroImage.alt} />
             ) : (
               <Placeholder style={{ width: "100%", height: "100%" }} />
@@ -412,7 +412,7 @@ const VilaTemplate = (props) => {
                         {/* <PortableText blocks={_rawDescription} /> */}
                       </div>
 
-                      {imageThumb && (
+                      {imageThumb && imageThumb.asset && (
                         <Image {...imageThumb} alt={imageThumb.alt} />
                       )}
                       {/* </Link> */}
@@ -446,7 +446,7 @@ const VilaTemplate = (props) => {
                     key={name}
                   >
                     <div key={name} className="image-container">
-                      {imageThumb ? (
+                      {imageThumb && imageThumb.asset ? (
                         <Image {...imageThumb} alt={imageThumb.alt} />
                       ) : (
                         <Placeholder

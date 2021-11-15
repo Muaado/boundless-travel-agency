@@ -165,7 +165,9 @@ const Activities = ({ activities }) => {
           ? activities?.map(({ name, imageThumb, resort }) => (
               <li className="item" key={imageThumb.alt}>
                 {/* <Link to={getActivityUrl({ name, resortName: resort.name })}> */}
-                {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
+                {imageThumb && imageThumb.asset && (
+                  <Image {...imageThumb} alt={imageThumb.alt} />
+                )}
                 <p>{name}</p>
                 {/* </Link> */}
               </li>
