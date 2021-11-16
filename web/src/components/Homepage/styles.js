@@ -27,7 +27,7 @@ export const HeroStyles = styled.div`
     height: 80vh;
   }
   @media ${device.tablet} {
-    height: 65vh;
+    height: 65vh !important;
   }
 
   &:before {

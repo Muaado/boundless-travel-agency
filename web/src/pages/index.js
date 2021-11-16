@@ -349,7 +349,9 @@ const IndexPage = (props) => {
                 )
               )}
             </ul>
-            <button className="btn">Enquire</button>
+            <Link to="/enquire" className="btn white">
+              Enquire
+            </Link>
           </HandCraftedJourneysStyles>
           <PromoSection image={site.promoImageWeb} />
           <AboutUs aboutUs={site.aboutUs} />

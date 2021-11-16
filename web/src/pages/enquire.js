@@ -10,6 +10,7 @@ import styled from "styled-components";
 import Search from "../components/Search";
 import useForm from "../hooks/useForm";
 import { ContactUs } from "../components/Homepage/ContactUs";
+import { device } from "../styles/deviceSizes";
 
 export const query = graphql`
   query EnquirePageQuery {
@@ -56,10 +57,15 @@ export const query = graphql`
 
 const EnquirePageStyles = styled.div`
   margin: 5rem 0;
+
   form {
     margin-bottom: 5rem;
     display: flex;
 
+    @media ${device.tablet} {
+      flex-direction: column;
+      /* margin: 1rem 0; */
+    }
     h2 {
       margin-bottom: 4rem;
       font-weight: normal;
@@ -85,6 +91,10 @@ const EnquirePageStyles = styled.div`
       width: 35vw;
       margin-bottom: 2rem;
 
+      @media ${device.tablet} {
+        width: 100%;
+        /* margin: 1rem 0; */
+      }
       &.two-column {
         display: grid;
         grid-template-columns: 48% 48%;

@@ -401,7 +401,9 @@ const VilaTemplate = (props) => {
                   </li>
                 )}
               </ul>
-              <button className="btn">ENQUIRE</button>
+              <Link to="/enquire" className="btn">
+                ENQUIRE
+              </Link>
             </div>
             <PopUpGallery className="carousel" images={headerImages} />
           </div>

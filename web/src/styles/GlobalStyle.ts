@@ -176,6 +176,10 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+
+  .white {
+    color: #fff !important;
+  }
   ::-moz-selection {
     background: #b3d4fc;
     text-shadow: none;

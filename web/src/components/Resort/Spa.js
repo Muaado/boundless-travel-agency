@@ -9,7 +9,7 @@ import { device } from "../../styles/deviceSizes";
 
 const SpaStyles = styled.div`
   /* margin-top: 14rem; */
-
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
