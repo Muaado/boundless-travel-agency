@@ -1,3 +1,3 @@
-import MediaAssetSource from "part:sanity-plugin-media/asset-source";
+import AssetSource from "part:sanity-plugin-media-library/asset-source";
 
-export default [MediaAssetSource];
+export default [AssetSource];
