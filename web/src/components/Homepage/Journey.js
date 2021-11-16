@@ -55,9 +55,6 @@ const JourneyStyles = styled.div`
       letter-spacing: 1rem;
       line-height: 5rem;
     }
-
-    @media ${device.tablet} {
-    }
   }
 
   .header {
@@ -163,6 +160,19 @@ const JourneyStyles = styled.div`
       @media ${device.mobileXL} {
         height: 25rem !important;
       }
+
+      p {
+        position: absolute;
+        /* top: 90%; */
+        bottom: 0;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+
+        color: #fff;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+          0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
       img {
         object-position: center;
       }
@@ -180,10 +190,10 @@ const Journey = ({ collections }) => {
   }
   return (
     <JourneyStyles
-      data-aos="fade-up"
-      data-aos-delay="50"
-      data-aos-duration="1000"
-      data-aos-easing="ease-in-out"
+    // data-aos="fade-up"
+    // data-aos-delay="50"
+    // data-aos-duration="1000"
+    // data-aos-easing="ease-in-out"
     >
       <h1>Start your journey</h1>
       {/* <ul className="header">
@@ -224,11 +234,16 @@ const Journey = ({ collections }) => {
           {collections.edges
             .sort((a, b) => a.node.rank - b.node.rank)
             .map(({ node }) => (
-              <div key={node.alt} className="carousel__image-container">
+              <Link
+                key={node.alt}
+                className="carousel__image-container clickable"
+                to={getCollectionUrl({ name: node.name, type: node.type })}
+              >
+                <p>{node.name}</p>
                 {node.imageThumb && (
                   <Image {...node.imageThumb} alt={node.imageThumb.alt} />
                 )}
-              </div>
+              </Link>
             ))}
         </Carousel>
       )}

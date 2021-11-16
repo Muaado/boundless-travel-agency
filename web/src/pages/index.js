@@ -94,6 +94,10 @@ export const query = graphql`
           alt
         }
       }
+      mobileHeroImage {
+        ...SanityImage
+        alt
+      }
       promoImageWeb {
         ...SanityImage
         alt
@@ -249,6 +253,8 @@ const IndexPage = (props) => {
     );
   }
 
+  const windowGlobal = typeof window !== "undefined";
+
   return (
     <Layout {...props}>
       <SEO
@@ -260,18 +266,23 @@ const IndexPage = (props) => {
         <LeftSidebar />
         <HeroStyles>
           {/* <h1> {site.description}</h1> */}
-          <SanityMuxPlayer
-            assetDocument={site.video.asset}
-            autoload={true | false}
-            autoplay={true | false}
-            className="video"
-            height={"100vh"}
-            loop={true | false}
-            muted={true}
-            showControls={false}
-            style={{}}
-            width={"100vh"}
-          />
+          {windowGlobal && window.innerWidth >= 805 ? (
+            <SanityMuxPlayer
+              assetDocument={site.video.asset}
+              autoload={true | false}
+              autoplay={true | false}
+              className="video"
+              height={"100vh"}
+              loop={true | false}
+              muted={true}
+              showControls={false}
+              style={{}}
+              width={"100vh"}
+            />
+          ) : (
+            <Image {...site.mobileHeroImage} alt={site.mobileHeroImage.alt} />
+          )}
+
           {/* <Video
             videoSrcURL={
               // VideoBg

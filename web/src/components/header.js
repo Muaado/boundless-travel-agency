@@ -289,8 +289,12 @@ const DropdownListStyles = styled.div`
   overflow: hidden;
 
   display: flex;
-
   z-index: -100;
+
+  @media ${device.tablet} {
+    top: 10rem;
+  }
+
   &.show {
     opacity: 1;
     transform: translateY(0);
