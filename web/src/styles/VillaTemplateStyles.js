@@ -521,6 +521,10 @@ const VillaStyles = styled.div`
 
         @media ${device.tablet} {
           grid-template-rows: 20rem 20rem 20rem;
+
+          &.desktop-list {
+            display: none;
+          }
         }
         @media ${device.mobileXL} {
           grid-template-rows: 12rem 12rem 12rem;
@@ -585,6 +589,24 @@ const VillaStyles = styled.div`
             @media ${device.mobileL} {
               font-size: 1.4rem;
             }
+          }
+        }
+      }
+
+      .carousel {
+        .slider-control-bottomcenter {
+          bottom: -5rem !important;
+        }
+        li {
+          h3 {
+            position: absolute;
+            color: #fff;
+            top: 50%;
+            left: 50%;
+            /* width: 100%; */
+            transform: translate(-50%, -50%);
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+              0px 4px 4px rgba(0, 0, 0, 0.25);
           }
         }
       }
@@ -654,7 +676,7 @@ const VillaStyles = styled.div`
         .image-container {
           height: 50rem;
           @media ${device.tablet} {
-            height: 30vh;
+            height: 28rem;
           }
         }
 

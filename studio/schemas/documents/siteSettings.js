@@ -34,6 +34,11 @@ export default {
       description: "Video",
     },
     {
+      name: "mobileHeroImage",
+      type: "mainImage",
+      description: "Mobile hero image for homepage",
+    },
+    {
       name: "description",
       type: "text",
       title: "Description",
