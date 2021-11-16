@@ -75,6 +75,11 @@ export default {
       type: "bodyPortableText",
       title: "Description",
     },
+    {
+      name: "short_desc",
+      type: "string",
+      title: "short_desc",
+    },
 
     {
       name: "maxOccupancy",

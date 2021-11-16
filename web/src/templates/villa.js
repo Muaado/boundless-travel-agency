@@ -52,6 +52,7 @@ export const query = graphql`
           alt
         }
       }
+      short_desc
 
       _rawDescription
       # imageWeb {
@@ -227,6 +228,7 @@ const VilaTemplate = (props) => {
     alternateName,
     tagline,
     _rawDescription: _rawDescriptionVilla,
+    short_desc,
     // imageWeb,
     roomFeatures,
     maxOccupancy,
@@ -297,6 +299,14 @@ const VilaTemplate = (props) => {
   medianPrice = medianPrice / sortedPriceList.length;
   return (
     <Layout>
+      {villa && (
+        <SEO
+          title={name || "Untitled"}
+          description={short_desc}
+          image={heroImage}
+        />
+      )}
+
       <Container>
         <LeftSidebar
           list={["overview", "room-features", "gallery", "highlights", "dine"]}
