@@ -26,6 +26,12 @@ const VillaStyles = styled.div`
       .image-container {
         max-height: 80vh;
         overflow-y: hidden;
+        @media ${device.tabletL} {
+          height: 80vh;
+        }
+        @media ${device.tablet} {
+          height: 60vh;
+        }
       }
 
       @media ${device.tabletL} {
@@ -44,7 +50,7 @@ const VillaStyles = styled.div`
         font-size: 4rem;
         color: #fff;
         left: 10%;
-        bottom: 10%;
+        bottom: 3%;
         z-index: 100;
 
         @media ${device.tabletL} {
@@ -53,10 +59,14 @@ const VillaStyles = styled.div`
           letter-spacing: 0.8rem;
         }
       }
+
+      .mouse_scroll {
+        bottom: 30% !important;
+      }
     }
 
     &__calendar {
-      z-index: 100000;
+      /* z-index: 100000; */
       position: absolute;
       bottom: 20%;
       right: 15%;
@@ -82,6 +92,10 @@ const VillaStyles = styled.div`
         position: absolute;
         background: #fff;
         padding: 2rem;
+
+        @media ${device.laptopL} {
+          right: 0;
+        }
 
         /* transform: translateY(-100%); */
         max-height: 1rem;
@@ -639,6 +653,9 @@ const VillaStyles = styled.div`
 
         .image-container {
           height: 50rem;
+          @media ${device.tablet} {
+            height: 30vh;
+          }
         }
 
         li {
@@ -782,6 +799,8 @@ const VillaStyles = styled.div`
           transform: translateX(-50%);
         }
         .slider-control-bottomcenter {
+          max-width: 80vw;
+          overflow-x: hidden;
           /* max-width: 10%;
           overflow: hidden;
           position: relative; */

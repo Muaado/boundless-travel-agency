@@ -28,7 +28,9 @@ const AccomodationStyles = styled.div`
     /* display: grid;
     grid-template-columns: 1fr 1fr 1fr; */
     display: flex !important;
-    gap: 2rem;
+    /* gap: 2rem; */
+    /* padding: 0 2rem; */
+    width: 100%;
     /* justify-content: center; */ /*
     
 
@@ -66,7 +68,9 @@ const AccomodationStyles = styled.div`
       text-align: right;
 
       @media ${device.tablet} {
-        text-align: left;
+        /* text-align: left; */
+        font-size: 1.6rem;
+        margin-right: 1rem;
       }
     }
   }

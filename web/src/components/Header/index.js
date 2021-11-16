@@ -1,5 +1,5 @@
 import { Link } from "gatsby";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 import Image from "gatsby-plugin-sanity-image";
 // import Logo from "../assets/logo.svg";
@@ -274,7 +274,7 @@ const HeaderStyles = styled.header`
 
 const DropdownListStyles = styled.div`
   position: absolute;
-  top: 15rem;
+  top: 10rem;
   left: 0;
   width: 100vw;
   height: calc(100vh - 10rem);
@@ -304,8 +304,8 @@ const DropdownListStyles = styled.div`
       height: 90vh;
     }
 
-    .route {
-      /* .image-container { */
+    .route,
+    .image-container {
       transition: all 4s;
       opacity: 0;
       &.show {
@@ -314,8 +314,8 @@ const DropdownListStyles = styled.div`
     }
   }
 
-  .route {
-    /* .image-container { */
+  .route,
+  .image-container {
     opacity: 0;
   }
 
@@ -409,9 +409,6 @@ const DropdownListStyles = styled.div`
     border: 1px solid #eeee;
     opacity: 0.7;
 
-    @media ${device.tablet} {
-      display: none;
-    }
     g {
       fill: #000;
     }
@@ -428,8 +425,7 @@ const DropDown = ({
   marginTop,
   className,
   headerDropdownImage,
-  // handleOpenDropDown,
-  setShowDropdown,
+  handleOpenDropDown,
   selectedList,
   setSelectedList,
 }) => {
@@ -489,7 +485,6 @@ const DropDown = ({
         onClick={() => {
           // handleOpenDropDown([], false);
           setSelectedList("");
-          setShowDropdown(false);
         }}
       />
     </DropdownListStyles>
@@ -515,28 +510,25 @@ const Header = ({
     selectedList === "resorts" ? lists.resorts : lists.collections;
 
   // // const [marginTop, setMarginTop] = useState(2);
-  // const handleOpenDropDown = (list, condition) => {
-  //   if (!showDropdown) {
-  //     setShowDropdown(condition || true);
-  //     setList(list);
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     setShowDropdown(condition || false);
-  //     document.body.style.overflow = "unset";
-  //   }
-  // };
+  const handleOpenDropDown = (list, condition) => {
+    if (!showDropdown) {
+      setShowDropdown(condition || true);
+      setList(list);
+      document.body.style.overflow = "hidden";
+    } else {
+      setShowDropdown(condition || false);
+      document.body.style.overflow = "unset";
+    }
+  };
 
   // const headerRef = useRef();
   const windowGlobal = typeof window !== "undefined";
+  // if (windowGlobal) {
+  //   if (window.innerWidth <= 805) {
+  //     headerRef.current.classes.remove("mobile-header");
+  //   }
+  // }
 
-  useEffect(() => {
-    console.log("here");
-    if (showDropdown) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [showDropdown, showNav]);
   return (
     <HeaderStyles
       // ref={headerRef}
@@ -594,15 +586,15 @@ const Header = ({
               selectedList === "resorts" ? "selected" : ""
             } clickable`}
             onClick={() => {
-              setSelectedList("resorts");
+              // handleOpenDropDown({
+              //   resorts: navData.resorts,
+              //   collections: navData.collections,
+              // });
               if (!showDropdown || selectedList !== "resorts") {
                 setShowDropdown(true);
+                setSelectedList("resorts");
               } else {
                 setSelectedList("");
-              }
-
-              if (windowGlobal && window.innerWidth > 805) {
-                if (showDropdown) setShowDropdown(false);
               }
             }}
           >
@@ -620,9 +612,8 @@ const Header = ({
               //   resorts: navData.resorts,
               //   collections: navData.collections,
               // });
-              setSelectedList("collections");
-              if (!showDropdown || selectedList !== "collections") {
-                setShowDropdown(true);
+              if (!showDropdown) {
+                setSelectedList("collections");
               } else {
                 setSelectedList("");
               }
@@ -632,7 +623,7 @@ const Header = ({
               
             > */}
             Holiday stays
-            {/* {showDropdown === 3 && <DropDown marginTop={12} list={list} />} */}
+            {showDropdown === 3 && <DropDown marginTop={12} list={list} />}
             {/* </p> */}
           </li>
           <li>
@@ -655,8 +646,7 @@ const Header = ({
         marginTop={6}
         lists={dropdownLists}
         headerDropdownImage={headerDropdownImage}
-        setShowDropdown={setShowDropdown}
-        // handleOpenDropDown={handleOpenDropDown}
+        handleOpenDropDown={handleOpenDropDown}
         selectedList={selectedList}
         setSelectedList={setSelectedList}
       />

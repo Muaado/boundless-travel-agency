@@ -369,15 +369,13 @@ const ResortStyles = styled.div`
         align-self: center;
         max-width: 25rem;
 
-        height: 35vh;
-        white-space: normal !important;
-        overflow-wrap: break-word !important;
+        /* height: 35vh; */
+        /* white-space: normal !important; */
+        /* overflow-wrap: break-word !important;
         overflow: hidden;
-        text-overflow: ellipsis;
+        text-overflow: ellipsis; */
 
-        &:hover {
-          overflow: visible;
-        }
+        
         display: flex;
         flex-direction: column;
 
