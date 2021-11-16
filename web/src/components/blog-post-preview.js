@@ -12,6 +12,7 @@ import CategoryIcon from "../assets//icons/category.svg";
 
 import { responsiveTitle3 } from "./typography.module.css";
 import styled from "styled-components";
+import { device } from "../styles/deviceSizes";
 
 const BlogPostPreviewStyles = styled.div`
   display: grid;
@@ -20,6 +21,11 @@ const BlogPostPreviewStyles = styled.div`
   width: 100%;
   margin-bottom: 6rem;
   max-height: 25rem;
+
+  @media ${device.tablet} {
+    grid-template-columns: 1fr;
+    max-height: unset;
+  }
   /* padding: 5rem 0; */
 
   position: relative;
@@ -42,6 +48,12 @@ const BlogPostPreviewStyles = styled.div`
     max-height: 80%;
     overflow: hidden;
     width: 100%;
+
+    @media ${device.tablet} {
+      max-height: unset;
+      height: 30rem;
+      margin-bottom: 3rem;
+    }
   }
   img {
     /* height: 60rem; */
@@ -87,6 +99,9 @@ const BlogPostPreviewStyles = styled.div`
     /* margin-top: 10rem; */
     display: flex;
 
+    @media ${device.tablet} {
+      margin-top: 2rem;
+    }
     span {
       margin-right: 5rem;
       min-width: max-content;

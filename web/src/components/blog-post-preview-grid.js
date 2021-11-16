@@ -4,8 +4,12 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 
+import { device } from "../styles/deviceSizes";
 const BlogPostPreviewGridStyles = styled.div`
   margin-top: 5rem;
+  @media ${device.tablet} {
+    margin: 0;
+  }
 `;
 
 function BlogPostPreviewGrid(props) {

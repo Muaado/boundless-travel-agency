@@ -25,6 +25,11 @@ const BlogPostStyles = styled.article`
   display: flex;
   h1 {
     font-size: 4rem;
+
+    @media ${device.tablet} {
+      font-size: 3rem !important;
+      margin-bottom: 2.5rem !important;
+    }
   }
   /* grid-template-columns: 1fr 25rem; */
   gap: 2rem;
@@ -42,6 +47,7 @@ const BlogPostStyles = styled.article`
   @media ${device.tablet} {
     grid-template-columns: 1fr;
     margin-bottom: 3rem;
+    width: 100%;
     .content__text {
       border: none;
     }
@@ -50,6 +56,10 @@ const BlogPostStyles = styled.article`
   .image {
     width: 70rem;
     height: 50rem;
+
+    @media ${device.tablet} {
+      width: 100%;
+    }
     /* overflow: hidden; */
     img {
       height: 90%;
@@ -100,13 +110,14 @@ const BlogPostStyles = styled.article`
         }
       }
     }
-  aside {
-    h2 {
-      font-size: 2.4rem;
-      margin: 2rem 0;
-    }
-    .name {
-      font-size: 1.8rem;
+    aside {
+      h2 {
+        font-size: 2.4rem;
+        margin: 2rem 0;
+      }
+      .name {
+        font-size: 1.8rem;
+      }
     }
   }
 `;

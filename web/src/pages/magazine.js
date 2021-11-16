@@ -70,6 +70,10 @@ const MagazinePageStyles = styled.div`
 
   .post-list {
     max-width: 80%;
+
+    @media ${device.laptopM} {
+      max-width: 100%;
+    }
   }
 `;
 
