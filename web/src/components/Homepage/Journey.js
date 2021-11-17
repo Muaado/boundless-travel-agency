@@ -228,6 +228,10 @@ const Journey = ({ collections }) => {
           speed={1000}
           className="carousel"
           slidesToShow={1}
+          disableEdgeSwiping
+          dragging
+          // easing
+          // animation=""
           // cellSpacing={cellSpacing}
           renderCenterRightControls={() => ""}
           renderCenterLeftControls={() => ""}

@@ -51,7 +51,7 @@ export const SearchBar = styled.form`
   }
 
   .input {
-    z-index: 10000 !important;
+    /* z-index: 10000 !important; */
     width: 100% !important;
     display: flex !important;
     outline: none !important;

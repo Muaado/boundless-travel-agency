@@ -465,12 +465,13 @@ const VillaStyles = styled.div`
               padding-left: 0 !important;
             } */
             ul {
-              padding-left: 4rem;
+              /* padding-left: 4rem; */
               list-style: disc;
               display: grid;
               grid-template-columns: 1fr 1fr;
               li {
                 margin-bottom: 0.5rem;
+                margin-left: 1rem;
                 width: fit-content;
               }
             }
