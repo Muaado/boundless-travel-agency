@@ -220,7 +220,14 @@ const HeaderStyles = styled.header`
         display: flex;
         align-items: center;
         /* justify-content: space-between; */
+
         svg {
+          path {
+            stroke: #fff;
+            @media ${device.tablet} {
+              stroke: #000;
+            }
+          }
           margin-left: 1rem;
         }
         @media ${device.tablet} {
