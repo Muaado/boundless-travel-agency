@@ -74,6 +74,10 @@ const FaqStyles = styled.div`
         align-items: center;
         justify-content: space-between;
       }
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
 
       .answer {
         margin-top: 5rem;
@@ -81,10 +85,6 @@ const FaqStyles = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-between;
-
-        svg {
-          width: 2.5rem;
-        }
       }
     }
   }
@@ -130,15 +130,13 @@ const Faq = (props) => {
               }}
             >
               <p className="question">
-                {question} {selectedQuestion !== index ? <ChevronDown /> : ""}
+                {question}{" "}
+                {selectedQuestion !== index ? <ChevronDown /> : <ChevronUp />}
               </p>
 
-              {selectedQuestion === index && (
-                <p className="answer">
-                  {" "}
-                  {answer} <ChevronUp />
-                </p>
-              )}
+              {/* {selectedQuestion === index && (
+                <p className="answer"> {answer}</p>
+              )} */}
             </li>
           ))}
       </ul>

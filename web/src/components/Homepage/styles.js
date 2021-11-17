@@ -210,7 +210,7 @@ export const MagazineStyles = styled.div`
 
     @media ${device.tablet} {
       grid-template-columns: 1fr;
-      text-align: center;
+      text-align: left;
     }
 
     a {

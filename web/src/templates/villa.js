@@ -516,12 +516,12 @@ const VilaTemplate = (props) => {
             <Carousel
               speed={1000}
               className="carousel"
-              renderCenterRightControls={({ nextSlide }) => (
-                <CarouselButton onClick={nextSlide} chevronRight={true} />
-              )}
-              renderCenterLeftControls={({ previousSlide }) => (
-                <CarouselButton onClick={previousSlide} />
-              )}
+              // renderCenterRightControls={({ nextSlide }) => (
+              //   <CarouselButton onClick={nextSlide} chevronRight={true} />
+              // )}
+              // renderCenterLeftControls={({ previousSlide }) => (
+              //   <CarouselButton onClick={previousSlide} />
+              // )}
             >
               {highlights.length
                 ? highlights.map(({ name, imageThumb }) => (

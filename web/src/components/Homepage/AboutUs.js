@@ -33,11 +33,12 @@ const AboutUsSectionStyles = styled.div`
         /* font-family: "Playfair display"; */
         text-transform: uppercase;
         /* font-size: 5rem; */
+
         margin-bottom: 2rem;
         color: var(--darkGreen);
         text-align: left !important;
         @media ${device.tabletL} {
-          text-align: center !important;
+          /* text-align: center !important; */
         }
       }
 

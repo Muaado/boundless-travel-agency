@@ -17,6 +17,7 @@ export const CarouselButtonStyles = styled.button`
   svg {
     path {
       fill: ${(props) => `${props.bgColor}`};
+      /* background: ; */
     }
   }
 `;

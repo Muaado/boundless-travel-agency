@@ -182,12 +182,12 @@ const Reviews = ({ reviews }) => {
         className="carousel"
         slidesToShow={numberOfSlides}
         cellSpacing={cellSpacing}
-        renderCenterRightControls={({ nextSlide }) => (
-          <CarouselButton onClick={nextSlide} chevronRight={true} />
-        )}
-        renderCenterLeftControls={({ previousSlide }) => (
-          <CarouselButton onClick={previousSlide} />
-        )}
+        // renderCenterRightControls={({ nextSlide }) => (
+        //   <CarouselButton onClick={nextSlide} chevronRight={true} />
+        // )}
+        // renderCenterLeftControls={({ previousSlide }) => (
+        //   <CarouselButton onClick={previousSlide} />
+        // )}
       >
         {reviews.length
           ? reviews.map(({ name, _rawDescription }) => (

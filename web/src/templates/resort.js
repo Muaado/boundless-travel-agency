@@ -328,12 +328,12 @@ const ResortTemplate = (props) => {
             <Carousel
               speed={1000}
               className="carousel"
-              renderCenterRightControls={({ nextSlide }) => (
-                <CarouselButton onClick={nextSlide} chevronRight={true} />
-              )}
-              renderCenterLeftControls={({ previousSlide }) => (
-                <CarouselButton onClick={previousSlide} />
-              )}
+              // renderCenterRightControls={({ nextSlide }) => (
+              //   <CarouselButton onClick={nextSlide} chevronRight={true} />
+              // )}
+              // renderCenterLeftControls={({ previousSlide }) => (
+              //   <CarouselButton onClick={previousSlide} />
+              // )}
             >
               {highlights.map(({ name, imageThumb, _rawDescription }) => (
                 <li key={imageThumb?.alt}>
@@ -435,12 +435,12 @@ const ResortTemplate = (props) => {
               slidesToShow={1}
               cellSpacing={0}
               // heightMode="max"
-              renderCenterRightControls={({ nextSlide }) => (
-                <CarouselButton onClick={nextSlide} chevronRight={true} />
-              )}
-              renderCenterLeftControls={({ previousSlide }) => (
-                <CarouselButton onClick={previousSlide} />
-              )}
+              // renderCenterRightControls={({ nextSlide }) => (
+              //   <CarouselButton onClick={nextSlide} chevronRight={true} />
+              // )}
+              // renderCenterLeftControls={({ previousSlide }) => (
+              //   <CarouselButton onClick={previousSlide} />
+              // )}
             >
               {spas.nodes.map((spa) => (
                 <Spa spa={spa} key={spa._id} />

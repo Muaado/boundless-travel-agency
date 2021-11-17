@@ -160,18 +160,19 @@ const HeaderStyles = styled.header`
 
       @media ${device.tablet} {
         display: unset;
+        padding: 0;
       }
     }
 
     svg {
       path {
-        stroke: #fff;
+        stroke: #000;
       }
     }
 
     @media ${device.tablet} {
-      padding: 0 2rem;
-      background: var(--lightOrange);
+      padding: 0 1.5rem;
+      background: #fff;
       top: 0;
       right: 0;
       position: absolute;
@@ -207,8 +208,10 @@ const HeaderStyles = styled.header`
         gap: 1rem;
         /* flex-direction: row-reverse; */
         align-items: flex-start;
+        flex-direction: column;
         justify-content: space-between;
         width: 100%;
+        height: max-content;
       }
 
       li {
@@ -221,20 +224,21 @@ const HeaderStyles = styled.header`
           margin-left: 1rem;
         }
         @media ${device.tablet} {
-          background: #eeee;
+          /* background: #eeee; */
           color: #000;
-          padding: 0.5rem 1rem;
+          padding: 0.5rem 0;
           text-align: center;
-          border-radius: 15px;
+          /* border-radius: 15px; */
 
           &.selected {
-            background: var(--darkGreen);
-            color: #fff;
+            /* background: var(--darkGreen); */
+            /* color: #fff; */
+            font-weight: bold;
           }
 
-          svg {
+          /* svg {
             display: none;
-          }
+          } */
           /* min-width: 30vw; */
         }
         /* position: relative; */
@@ -286,11 +290,12 @@ const DropdownListStyles = styled.div`
   transition: all 0.4s;
   transition-timing-function: ease-in-out;
   opacity: 0;
-  transform: translateY(-100vh);
+  /* transform: translateY(-100vh); */
   overflow: hidden;
 
   display: flex;
   z-index: -100;
+  height: 0px;
 
   @media ${device.tablet} {
     top: 10rem;
@@ -298,7 +303,8 @@ const DropdownListStyles = styled.div`
 
   &.show {
     opacity: 1;
-    transform: translateY(0);
+    /* transform: translateY(0); */
+    height: 90vh;
     z-index: 200000;
 
     @media ${device.tablet} {
@@ -350,6 +356,7 @@ const DropdownListStyles = styled.div`
       padding: 1.5rem;
       position: relative;
       width: fit-content;
+
       &.selected {
         &:after {
           content: "";
@@ -372,6 +379,11 @@ const DropdownListStyles = styled.div`
     /* gap: 2rem; */
     overflow-y: scroll;
     position: relative;
+
+    @media ${device.tablet} {
+      background: #fff;
+      padding: 0;
+    }
 
     &::-webkit-scrollbar {
       display: none;
@@ -400,6 +412,10 @@ const DropdownListStyles = styled.div`
     word-break: keep-all;
     width: 100%;
     display: inline-block;
+
+    @media ${device.tablet} {
+      border-bottom: 1px solid var(--grey);
+    }
     /* width: 100%; */
   }
 
@@ -604,6 +620,7 @@ const Header = ({
                 setShowDropdown(true);
               } else {
                 setSelectedList("");
+                setShowDropdown(false);
               }
 
               if (windowGlobal && window.innerWidth > 805) {

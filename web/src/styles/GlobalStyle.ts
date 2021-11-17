@@ -136,6 +136,15 @@ export const GlobalStyle = createGlobalStyle`
 
   .carousel {
     outline: none;
+
+    .slider-control-centerright,
+    .slider-control-centerleft {
+     @media ${device.tablet} {
+        bottom: 1rem !important;
+        top: unset !important;
+        height: max-content ;
+     }
+    }
   }
 
   h1 {

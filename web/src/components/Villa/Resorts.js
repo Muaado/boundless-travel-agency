@@ -64,12 +64,12 @@ const Resorts = ({ resorts }) => {
         // slidesToScroll={1}
 
         cellSpacing={cellSpacing}
-        renderCenterRightControls={({ nextSlide }) => (
-          <CarouselButton onClick={nextSlide} chevronRight={true} />
-        )}
-        renderCenterLeftControls={({ previousSlide }) => (
-          <CarouselButton onClick={previousSlide} />
-        )}
+        // renderCenterRightControls={({ nextSlide }) => (
+        //   <CarouselButton onClick={nextSlide} chevronRight={true} />
+        // )}
+        // renderCenterLeftControls={({ previousSlide }) => (
+        //   <CarouselButton onClick={previousSlide} />
+        // )}
         // cellAlign="center"
         // renderBottomCenterControls={(props) => {
         //   console.log(props);

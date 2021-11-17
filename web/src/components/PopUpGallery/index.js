@@ -78,12 +78,12 @@ const GalleryComponent = ({ images }) => {
           cellSpacing={cellSpacing}
           slidesToShow={numberOfSlides}
           className=""
-          renderCenterRightControls={({ nextSlide }) => (
-            <CarouselButton onClick={nextSlide} chevronRight={true} />
-          )}
-          renderCenterLeftControls={({ previousSlide }) => (
-            <CarouselButton onClick={previousSlide} />
-          )}
+          // renderCenterRightControls={({ nextSlide }) => (
+          //   <CarouselButton onClick={nextSlide} chevronRight={true} />
+          // )}
+          // renderCenterLeftControls={({ previousSlide }) => (
+          //   <CarouselButton onClick={previousSlide} />
+          // )}
         >
           {images?.images.length
             ? images.images.map((image) => (

@@ -111,15 +111,14 @@ const Accomodation = ({ villas, id }) => {
 
       <Carousel
         speed={1000}
+        wrapAround
         className="carousel"
         slidesToShow={numberOfSlides}
         cellSpacing={cellSpacing}
-        renderCenterRightControls={({ nextSlide }) => (
-          <CarouselButton onClick={nextSlide} chevronRight={true} />
-        )}
-        renderCenterLeftControls={({ previousSlide }) => (
-          <CarouselButton onClick={previousSlide} />
-        )}
+        // renderCenterRightControls={({ nextSlide }) => (
+        //   <CarouselButton onClick={nextSlide} />
+        // )}
+        // renderCenterLeftControls={({ previousSlide }) => ""}
       >
         {villas.map(({ name, imageThumb, resort }) => (
           // <li key={name}>

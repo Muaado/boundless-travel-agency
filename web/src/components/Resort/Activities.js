@@ -183,12 +183,12 @@ const Activities = ({ activities }) => {
       <Carousel
         speed={1000}
         className="carousel"
-        renderCenterRightControls={({ nextSlide }) => (
-          <CarouselButton onClick={nextSlide} chevronRight={true} />
-        )}
-        renderCenterLeftControls={({ previousSlide }) => (
-          <CarouselButton onClick={previousSlide} />
-        )}
+        // renderCenterRightControls={({ nextSlide }) => (
+        //   <CarouselButton onClick={nextSlide} chevronRight={true} />
+        // )}
+        // renderCenterLeftControls={({ previousSlide }) => (
+        //   <CarouselButton onClick={previousSlide} />
+        // )}
       >
         {activities?.map(({ name, imageThumb, resort }) => (
           <li className="item item__carousel" key={imageThumb.alt}>
