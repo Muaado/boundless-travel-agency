@@ -18,7 +18,7 @@ const ReviewsStyles = styled.div`
   min-width: fit-content;
 
   @media ${device.tablet} {
-    padding: 2rem 3rem;
+    padding: 2rem 1.5rem;
   }
 
   h2 {

@@ -58,10 +58,11 @@ const HeaderStyles = styled.header`
     /* flex-direction: row-reverse;
     justify-content: space-between; */
 
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    direction: rtl;
-    justify-content: flex-start;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr; */
+    /* direction: rtl; */
+    flex-direction: row-reverse;
+    justify-content: space-between;
     justify-items: flex-end;
     width: 100%;
 
@@ -204,7 +205,7 @@ const HeaderStyles = styled.header`
       @media ${device.tablet} {
         /* font-size: 2.6rem; */
         gap: 1rem;
-        flex-direction: row-reverse;
+        /* flex-direction: row-reverse; */
         align-items: flex-start;
         justify-content: space-between;
         width: 100%;
@@ -547,12 +548,12 @@ const Header = ({
       className={showNav ? "show-header" : ""}
       pathname={location?.pathname}
     >
-      <div className="contact-us">
+      {/* <div className="contact-us">
         <a href="#contact-us">
           <CustomerService />
           Contact Us
         </a>
-      </div>
+      </div> */}
       <Logo logo={logo} />
       {/* <button
         onClick={() => {

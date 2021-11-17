@@ -22,7 +22,7 @@ const ActivitiesStyles = styled.div`
     /* padding: 0; */
   }
   @media ${device.tablet} {
-    padding: 0 3rem;
+    padding: 0 1.5rem;
   }
 
   h2 {

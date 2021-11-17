@@ -657,7 +657,7 @@ const VillaStyles = styled.div`
 
       @media ${device.tablet} {
         margin-top: 5rem;
-        padding: 0 3rem;
+        padding: 0 1.5rem;
         margin-bottom: 0;
       }
       h2 {

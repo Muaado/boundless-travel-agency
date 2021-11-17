@@ -22,24 +22,14 @@ const AccomodationStyles = styled.div`
   h2 {
     text-align: center;
     /* padding: 5rem; */
+    letter-spacing: normal;
     margin-bottom: 7rem;
   }
   .carousel {
-    /* display: grid;
-    grid-template-columns: 1fr 1fr 1fr; */
     display: flex !important;
-    /* gap: 2rem; */
-    /* padding: 0 2rem; */
-    width: 100%;
-    /* justify-content: center; */ /*
-    
 
-    
-     */
-    /* .slider-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-    } */
+    width: 100%;
+
     .slider-slide {
       margin-right: 2rem;
       /* width: 100% !important; */

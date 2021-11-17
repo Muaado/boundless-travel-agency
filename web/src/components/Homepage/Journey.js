@@ -34,7 +34,7 @@ const JourneyStyles = styled.div`
   }
 
   @media ${device.tablet} {
-    padding: 0 3rem;
+    padding: 0 1.5rem;
   }
   @media ${device.mobileXL} {
     padding: 0;

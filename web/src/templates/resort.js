@@ -434,7 +434,7 @@ const ResortTemplate = (props) => {
               className="resort__spas"
               slidesToShow={1}
               cellSpacing={0}
-              heightMode="max"
+              // heightMode="max"
               renderCenterRightControls={({ nextSlide }) => (
                 <CarouselButton onClick={nextSlide} chevronRight={true} />
               )}

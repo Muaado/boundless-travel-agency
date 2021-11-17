@@ -100,7 +100,7 @@ export const HandCraftedJourneysStyles = styled.div`
   }
   @media ${device.tablet} {
     margin: 5rem 0;
-    padding: 0 3rem;
+    padding: 0 1.5rem;
   }
 
   h2,
@@ -187,7 +187,7 @@ export const MagazineStyles = styled.div`
 
   @media ${device.tablet} {
     margin-bottom: 7rem;
-    padding: 0 3rem;
+    padding: 0 1.5rem;
   }
 
   h2,

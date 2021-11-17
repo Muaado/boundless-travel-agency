@@ -10,6 +10,7 @@ const MouseScrollStyles = styled.div`
 
   @media ${device.tabletL} {
     /* bottom: 1rem; */
+    display: none;
   }
   body {
     background: #333;

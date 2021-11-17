@@ -9,7 +9,7 @@ import { device } from "../../styles/deviceSizes";
 
 const SpaStyles = styled.div`
   /* margin-top: 14rem; */
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +26,7 @@ const SpaStyles = styled.div`
 
   @media ${device.tablet} {
     min-height: unset;
-    padding: 6rem 2rem 10rem 2rem;
+    padding: 6rem 1.5rem 10rem 1.5rem;
   }
 
   /* height: max-content; */
@@ -36,7 +36,7 @@ const SpaStyles = styled.div`
     justify-content: center;
     max-width: 1400px;
     min-height: 70rem;
-
+    width: 100%;
     @media ${device.laptopM} {
       align-items: center;
       flex-direction: column-reverse;
@@ -63,6 +63,10 @@ const SpaStyles = styled.div`
         padding: 0;
         width: 90%;
       }
+
+      @media ${device.tablet} {
+        width: 100%;
+      }
       .image-web {
         height: 40rem;
         width: 70rem;
@@ -71,15 +75,15 @@ const SpaStyles = styled.div`
         top: -2rem;
         z-index: 100;
         @media ${device.laptopM} {
-          /* text-align: center;
-          align-items: center;
-          padding: 0;
-          width: 90%; */
           height: 30rem;
           width: unset;
           right: 0;
           top: 0;
           margin-bottom: 2rem;
+        }
+
+        @media ${device.tablet} {
+          height: 100%;
         }
       }
       p {

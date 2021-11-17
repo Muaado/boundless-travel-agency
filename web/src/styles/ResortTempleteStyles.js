@@ -7,12 +7,14 @@ const ResortStyles = styled.div`
   overscroll-behavior-y: contain;
   scroll-snap-type: y proximity; */
 
-  h1 {
-  }
 
   h2 {
     letter-spacing: 1rem;
     text-align: center;
+
+    @media ${device.tablet} {
+      letter-spacing: normal;
+    }
   }
 
   #overview {
@@ -26,14 +28,14 @@ const ResortStyles = styled.div`
     text-align: center;
     color: var(--primary);
     font-weight: bold;
-    font-size: 7.2rem;
+    /* font-size: 7.2rem; */
     /* padding-bottom: 7rem; */
     letter-spacing: 1rem;
 
     @media ${device.tablet} {
-      font-size: 4rem;
+      /* font-size: 4rem; */
       /* padding-bottom: 2rem; */
-      padding: 2rem;
+    padding: 1.5rem;
     }
   }
 
@@ -100,7 +102,7 @@ const ResortStyles = styled.div`
       }
       @media ${device.tablet} {
         margin-top: 5rem;
-        padding: 0 3rem;
+        padding: 0 1.5rem;
       }
 
       .carousel {
@@ -228,11 +230,12 @@ const ResortStyles = styled.div`
 
       display: flex;
       flex-direction: column;
+      max-width: 100vw;
 
       @media ${device.tablet} {
         margin-top: 0;
         margin-bottom: 8rem;
-        padding: 0 3rem;
+        padding: 0 1.5rem;
       }
       p {
         font-size: 1.4rem;
@@ -267,6 +270,10 @@ const ResortStyles = styled.div`
           @media ${device.laptop} {
             text-align: center;
             align-self: center;
+          }
+
+          @media ${device.tablet} {
+            width: 100%;
           }
         }
       }
@@ -417,7 +424,7 @@ const ResortStyles = styled.div`
       }
 
       .slider {
-        height: 70rem;
+        /* height: 70rem; */
       }
       .slider-slide {
         width: 100% !important;

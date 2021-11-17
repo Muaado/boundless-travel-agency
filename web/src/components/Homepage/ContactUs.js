@@ -28,7 +28,8 @@ const ContactUsSection = styled.div`
     justify-items: center;
   }
   @media ${device.tablet} {
-    padding: 0 3rem;
+    padding: 0 1.5rem;
+    /* max-width: 100vw; */
   }
 
   .links {
@@ -76,6 +77,10 @@ const ContactUsSection = styled.div`
 
       &:not(:last-of-type) {
         margin-right: 2.5rem;
+
+        @media ${device.tablet} {
+          margin-right: 1rem;
+        }
       }
     }
   }
