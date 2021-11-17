@@ -258,7 +258,7 @@ const ResortStyles = styled.div`
         h2 {
           color: var(--primary);
           font-weight: bold;
-          font-size: 7.2rem;
+          /* font-size: 7.2rem; */
           width: 30rem;
           line-height: 1;
           padding-bottom: 2rem;

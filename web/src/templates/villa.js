@@ -373,7 +373,7 @@ const VilaTemplate = (props) => {
           >
             <div className="container">
               {/* <p className="alternate-name">{alternateName}</p> */}
-              <h1>{name}</h1>
+              <h2>{name}</h2>
               {/* <h3 className="tagline">{tagline}</h3> */}
               <PortableText blocks={_rawDescriptionVilla} />
               <ul>

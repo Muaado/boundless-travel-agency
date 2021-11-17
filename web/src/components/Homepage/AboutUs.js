@@ -15,7 +15,7 @@ const AboutUsSectionStyles = styled.div`
   }
 
   @media ${device.tablet} {
-    padding: 5rem 3rem;
+    padding: 5rem 1.5rem;
   }
   .about-us {
     &__image-container {

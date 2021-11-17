@@ -134,6 +134,10 @@ export const GlobalStyle = createGlobalStyle`
     
   }
 
+  .carousel {
+    outline: none;
+  }
+
   h1 {
     color: var(--primary);
     /* text-transform: unset; */
@@ -157,7 +161,7 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 2.8rem;
     color: var(--grey1);
       @media ${device.tablet} {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       line-height: 2.2rem;
     }
   }

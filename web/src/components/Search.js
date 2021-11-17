@@ -27,12 +27,14 @@ export const SearchBar = styled.form`
       width: 60vw;
     }
     @media ${device.tablet} {
+      padding: 0.2rem 2rem;
       width: 80vw;
     }
     @media ${device.mobileXL} {
       width: 100vw;
     }
-    filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.25));
+    /* filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.25)); */
+    border-bottom: 1px solid var(--grey);
   }
 
   &.enquire-search {
@@ -186,7 +188,7 @@ const Search = ({
           onChange(input);
         }}
       />
-      <SearchIcon className="magnifying-glass" />
+      {/* <SearchIcon className="magnifying-glass" /> */}
 
       {/* <button className="btn">SEARCH</button> */}
     </SearchBar>

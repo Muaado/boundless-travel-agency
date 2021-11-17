@@ -61,6 +61,8 @@ export const PromoSectionStyles = styled.div`
       top: 35%;
       width: unset;
       text-transform: uppercase;
+
+      /* position: relative; */
     }
   }
   p {
@@ -79,7 +81,7 @@ export const PromoSectionStyles = styled.div`
     @media ${device.tablet} {
       left: 50%;
       width: 100%;
-      padding: 0 20%;
+      padding: 0 1.5rem;
     }
   }
 `;

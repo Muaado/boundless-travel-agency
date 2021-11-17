@@ -116,6 +116,7 @@ const GalleryStyles = styled.div`
   }
 
   .slider-control-bottomcenter {
+    /* outline: none; */
     position: absolute;
     bottom: -3rem !important;
 

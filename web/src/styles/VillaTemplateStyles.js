@@ -10,10 +10,14 @@ const VillaStyles = styled.div`
     /* font-size: 7.2rem; */
     /* padding: 7rem 0; */
     letter-spacing: 1rem;
+
+    @media ${device.tablet} {
+      letter-spacing: unset;
+    }
   }
 
   h2 {
-    letter-spacing: 1rem;
+    /* letter-spacing: 1rem; */
     text-align: center;
   }
 
@@ -54,9 +58,9 @@ const VillaStyles = styled.div`
         z-index: 100;
 
         @media ${device.tabletL} {
-          font-size: 2rem;
+          /* font-size: 2rem; */
           bottom: 1rem;
-          letter-spacing: 0.8rem;
+          /* letter-spacing: 0.8rem; */
         }
       }
 
@@ -311,9 +315,9 @@ const VillaStyles = styled.div`
         }
       }
 
-      h1 {
+      h2 {
         margin-bottom: 2.5rem;
-        font-size: 3.6rem;
+
         font-weight: normal;
         color: #76622e;
 
@@ -617,7 +621,8 @@ const VillaStyles = styled.div`
       align-items: center;
       margin-top: 5rem;
       @media ${device.mobileXL} {
-        padding: 0 2rem;
+        padding: 0 1.5rem;
+        width: 100vw;
       }
       h2 {
         text-transform: capitalize;
@@ -634,6 +639,7 @@ const VillaStyles = styled.div`
           height: 2px;
           @media ${device.tablet} {
             content: unset;
+            display: none;
           }
         }
         &:after {
@@ -770,9 +776,9 @@ const VillaStyles = styled.div`
       background: #b39a6a;
       position: relative;
 
-      /* @media ${device.tablet} {
-        padding: 10rem 5%;
-      } */
+      @media ${device.tablet} {
+        padding: 3rem 1.5rem;
+      }
 
       /* height: fit-content; */
       .title {

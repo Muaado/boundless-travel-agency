@@ -17,6 +17,7 @@ const FooterStyles = styled.footer`
 
   @media ${device.tablet} {
     flex-direction: column;
+    padding: 10rem 1.5rem;
   }
 
   .header-section {
