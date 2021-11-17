@@ -306,6 +306,10 @@ const DropdownListStyles = styled.div`
 
   @media ${device.tablet} {
     top: 10rem;
+
+    &.collections {
+      top: 12.5rem;
+    }
   }
 
   &.show {
@@ -465,7 +469,9 @@ const DropDown = ({
     <DropdownListStyles
       // className={}
       marginTop={marginTop}
-      className={`dropdown ${className}`}
+      className={`dropdown ${className} ${
+        selectedList === "collections" ? "collections" : ""
+      }`}
     >
       <ul className="first-column">
         <li
@@ -635,7 +641,12 @@ const Header = ({
               }
             }}
           >
-            Resorts {showDropdown ? <ChevronUp /> : <ChevronDown />}
+            Resorts{" "}
+            {showDropdown && selectedList === "resorts" ? (
+              <ChevronUp />
+            ) : (
+              <ChevronDown />
+            )}
             {/* {showDropdown === 1 && ( */}
             {/* )} */}
           </li>
@@ -653,6 +664,7 @@ const Header = ({
               if (!showDropdown || selectedList !== "collections") {
                 setShowDropdown(true);
               } else {
+                setShowDropdown(false);
                 setSelectedList("");
               }
             }}
@@ -661,6 +673,11 @@ const Header = ({
               
             > */}
             Holiday stays
+            {showDropdown && selectedList === "collections" ? (
+              <ChevronUp />
+            ) : (
+              <ChevronDown />
+            )}
             {/* {showDropdown === 3 && <DropDown marginTop={12} list={list} />} */}
             {/* </p> */}
           </li>
@@ -681,7 +698,6 @@ const Header = ({
       </nav>
       <DropDown
         className={showDropdown ? "show" : ""}
-        marginTop={6}
         lists={dropdownLists}
         headerDropdownImage={headerDropdownImage}
         setShowDropdown={setShowDropdown}
