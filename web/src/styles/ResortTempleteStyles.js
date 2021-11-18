@@ -7,7 +7,6 @@ const ResortStyles = styled.div`
   overscroll-behavior-y: contain;
   scroll-snap-type: y proximity; */
 
-
   h2 {
     letter-spacing: 1rem;
     text-align: center;
@@ -35,7 +34,7 @@ const ResortStyles = styled.div`
     @media ${device.tablet} {
       /* font-size: 4rem; */
       /* padding-bottom: 2rem; */
-    padding: 1.5rem;
+      padding: 1.5rem;
     }
   }
 
@@ -48,7 +47,7 @@ const ResortStyles = styled.div`
       position: relative;
       /* scroll-snap-align: center; */
       height: 100vh;
-      width:100vw;
+      width: 100vw;
       overflow-y: hidden;
       /* position: relative;
       top: -18rem; */
@@ -91,132 +90,6 @@ const ResortStyles = styled.div`
     } */
 
     &__highlights {
-      margin-top: 10rem;
-      margin-bottom: 10rem;
-      text-align: center;
-      padding: 0 15%;
-      display: flex;
-      flex-direction: column;
-      @media ${device.laptopM} {
-        padding: 0 10%;
-      }
-      @media ${device.tablet} {
-        margin-top: 5rem;
-        padding: 0 1.5rem;
-      }
-
-      .carousel {
-        display: none !important;
-        @media ${device.tablet} {
-          display: unset !important;
-        }
-        .slider-slide {
-          height: 100% !important;
-          li {
-            height: inherit;
-          }
-        }
-
-        .slider-control-bottomcenter {
-          bottom: -5rem !important;
-        }
-      }
-      h2 {
-        margin-bottom: 7rem;
-        /* letter-spacing: 1rem; */
-      }
-
-      ul {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 1.6rem;
-
-        @media ${device.laptop} {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        @media ${device.tablet} {
-          grid-template-columns: 1fr;
-          display: none;
-        }
-
-        li {
-          position: relative;
-
-          &:hover {
-            transition: all 0.3s;
-
-            p {
-              transition: all 0.3s;
-              opacity: 1;
-            }
-            &:after {
-              content: "";
-              background: #000;
-              left: 0;
-              top: 0;
-              opacity: 0.4;
-              width: 100%;
-              height: 100%;
-              position: absolute;
-              z-index: 50;
-              /* right: -55vw; */
-            }
-          }
-        }
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-      a {
-        position: absolute;
-        color: #fff;
-        font-size: 2.2rem;
-        padding: 1rem 5rem;
-        bottom: 3rem;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border: 1px solid #fff;
-        z-index: 100;
-        width: fit-content;
-        display: flex;
-        align-items: center;
-
-        svg {
-          margin-left: 1rem;
-        }
-
-        @media ${device.laptopM} {
-          bottom: 0;
-        }
-        @media ${device.tabletL} {
-          padding: 1rem 2.5rem;
-        }
-      }
-      p {
-        width: 90%;
-        position: absolute;
-        /* top: 20%; */
-        top: 30%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 100;
-
-        @media ${device.laptopM} {
-          top: 35%
-          font-size: 1.4rem;
-        }
-        @media ${device.tabletL} {
-          font-size: 1.4rem;
-        }
-
-        opacity: 0;
-        color: #fff;
-        align-self: center;
-        line-height: 2.4rem;
-      }
     }
 
     /* &__accomodation {
@@ -283,7 +156,6 @@ const ResortStyles = styled.div`
         column-gap: 20rem;
 
         position: relative;
-        
 
         @media ${device.laptop} {
           grid-template-columns: 1fr;
@@ -295,8 +167,6 @@ const ResortStyles = styled.div`
           display: flex;
           flex-direction: column;
           position: relative;
-          
-
 
           @media ${device.laptop} {
             max-height: unset;
@@ -382,7 +252,6 @@ const ResortStyles = styled.div`
         overflow: hidden;
         text-overflow: ellipsis; */
 
-        
         display: flex;
         flex-direction: column;
 
@@ -461,7 +330,6 @@ const ResortStyles = styled.div`
         width: 100%;
         height: 100%;
         object-fit: cover;
-        
       }
     }
 

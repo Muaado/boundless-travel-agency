@@ -32,6 +32,7 @@ import { getHighlightUrl } from "../lib/helpers";
 import Placeholder from "../assets/placeholder.svg";
 
 import { toPlainText } from "../lib/helpers";
+import Highlights from "../components/Resort/Highlights";
 // import review from "../../../studio/schemas/documents/review";
 
 export const query = graphql`
@@ -318,62 +319,7 @@ const ResortTemplate = (props) => {
               )}
             </li>
           </ul> */}
-
-          <div
-            id="highlights"
-            className="resort__highlights"
-            data-aos="fade-up"
-            data-aos-delay="50"
-            data-aos-duration="1000"
-            data-aos-easing="ease-in-out"
-          >
-            <h2>Highlights</h2>
-
-            <Carousel
-              speed={1000}
-              className="carousel"
-              // renderCenterRightControls={({ nextSlide }) => (
-              //   <CarouselButton onClick={nextSlide} chevronRight={true} />
-              // )}
-              // renderCenterLeftControls={({ previousSlide }) => (
-              //   <CarouselButton onClick={previousSlide} />
-              // )}
-            >
-              {highlights.map(({ name, imageThumb, _rawDescription }) => (
-                <li key={imageThumb?.alt}>
-                  {/* <Link to={getHighlightUrl({ name, resortName: resort.name })}> */}
-                  <a>
-                    {name} <ChevronRight />
-                  </a>
-                  {/* </Link> */}
-                  <PortableText blocks={_rawDescription} />
-                  {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
-                </li>
-              ))}
-            </Carousel>
-            <ul className="desktop-highlights">
-              {highlights.length
-                ? highlights.map(({ name, imageThumb, _rawDescription }) => (
-                    <li key={imageThumb?.alt}>
-                      {/* <Link to={getHighlightUrl({ name, resortName: resort.name })}> */}
-                      <a>
-                        {name} <ChevronRight />
-                      </a>
-                      {/* </Link> */}
-                      <PortableText blocks={_rawDescription} />
-                      {imageThumb && (
-                        <Image {...imageThumb} alt={imageThumb.alt} />
-                      )}
-                    </li>
-                  ))
-                : [1, 2, 3, 4, 5, 6].map((item) => (
-                    <li key={item}>
-                      {/* {console.log("hrehreh")} */}
-                      <Placeholder />
-                    </li>
-                  ))}
-            </ul>
-          </div>
+          <Highlights highlights={highlights} />
 
           <div
             id="dine"

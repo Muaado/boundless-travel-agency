@@ -40,6 +40,7 @@ import Resorts from "../components/Villa/Resorts";
 import Placeholder from "../assets/placeholder.svg";
 import Carousel from "nuka-carousel";
 import CarouselButton from "../components/Ui/CarouselButton";
+import Highlights from "../components/Resort/Highlights";
 
 export const query = graphql`
   query VillaTemplateQuery($id: String!, $resortId: String!) {
@@ -471,83 +472,8 @@ const VilaTemplate = (props) => {
             />
           </div>
 
-          <div
-            className="villa__highlights"
-            id="highlights"
-            data-aos="fade-up"
-            data-aos-delay="50"
-            data-aos-duration="1000"
-            data-aos-easing="ease-in-out"
-          >
-            <div>
-              <h2>Hightlights</h2>
-              <p>
-                Elegant mansions by the sea, our two-storey beach residence in
-                Maldives are sanctuaries of effortless chic. Each of our beach
-                residence in Maldives features curved walls and livi
-              </p>
-            </div>
-            <ul className="desktop-list">
-              {highlights.length
-                ? highlights.map(({ name, imageThumb }) => (
-                    <li key={imageThumb?.alt}>
-                      {/* <Link to={getHighlightUrl({ name, resortName })}> */}
-                      {/* <a>
-                     <ChevronRight />
-                  </a> */}
-                      <div className="text">
-                        <h3>{name}</h3>
-                        {/* <PortableText blocks={_rawDescription} /> */}
-                      </div>
+          <Highlights highlights={highlights} />
 
-                      {imageThumb && imageThumb.asset && (
-                        <Image {...imageThumb} alt={imageThumb.alt} />
-                      )}
-                      {/* </Link> */}
-                    </li>
-                  ))
-                : [1, 2, 3, 4, 5, 6].map((item) => (
-                    <li key={item}>
-                      <Placeholder />
-                    </li>
-                  ))}
-            </ul>
-
-            <Carousel
-              speed={1000}
-              className="carousel"
-              // renderCenterRightControls={({ nextSlide }) => (
-              //   <CarouselButton onClick={nextSlide} chevronRight={true} />
-              // )}
-              // renderCenterLeftControls={({ previousSlide }) => (
-              //   <CarouselButton onClick={previousSlide} />
-              // )}
-            >
-              {highlights.length
-                ? highlights.map(({ name, imageThumb }) => (
-                    <li key={imageThumb?.alt}>
-                      {/* <Link to={getHighlightUrl({ name, resortName })}> */}
-                      {/* <a>
-                     <ChevronRight />
-                  </a> */}
-                      <div className="text">
-                        <h3>{name}</h3>
-                        {/* <PortableText blocks={_rawDescription} /> */}
-                      </div>
-
-                      {imageThumb && imageThumb.asset && (
-                        <Image {...imageThumb} alt={imageThumb.alt} />
-                      )}
-                      {/* </Link> */}
-                    </li>
-                  ))
-                : [1, 2, 3, 4, 5, 6].map((item) => (
-                    <li key={item}>
-                      <Placeholder />
-                    </li>
-                  ))}
-            </Carousel>
-          </div>
           <div
             className="villa__restaurants"
             id="dine"
