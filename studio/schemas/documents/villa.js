@@ -16,6 +16,12 @@ export default {
     },
 
     {
+      name: "active",
+      type: "boolean",
+      title: "Active",
+    },
+
+    {
       title: "Resort",
       name: "resort",
       type: "reference",
@@ -145,6 +151,12 @@ export default {
       title: "Room features",
     },
 
+    {
+      name: "hotelsApiName",
+      type: "string",
+      title: "Hotels api name",
+      description: "Do not edit field!",
+    },
     // {
     //   title: "Villa featured",
     //   name: "villaFeatured",

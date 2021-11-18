@@ -5,7 +5,7 @@ import { device } from "../styles/deviceSizes";
 
 const LeftSidebarStyles = styled.div`
   opacity: 0;
-  height: 100vh;
+  height: max-content;
   display: flex;
   flex-direction: column;
 

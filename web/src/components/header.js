@@ -144,6 +144,68 @@ const HeaderStyles = styled.header`
     }
   }
 
+  .mobile-nav {
+    padding: 0 3rem;
+    background: #fff;
+    top: 0;
+    right: 0;
+    position: absolute;
+    /* z-index: 10000; */
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+
+    /* align-items: center; */
+    text-align: center;
+    padding-top: 5rem;
+
+    transition: all 1s;
+
+    .close-icon {
+      display: none;
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 2rem;
+      height: 2rem;
+
+      path {
+        fill: #000;
+        stroke: #000;
+      }
+
+      @media ${device.tablet} {
+        display: unset;
+        padding: 0;
+      }
+    }
+    &.show {
+      transform: translateX(0);
+    }
+    &.hide {
+      transform: translateX(-100vw);
+    }
+
+    ul {
+      color: #000;
+      text-align: left;
+      width: 100%;
+      li {
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border-bottom: 1px solid var(--grey);
+        width: 100%;
+
+        svg {
+          path {
+            stroke: var(--primary);
+          }
+        }
+      }
+    }
+  }
+
   nav {
     position: relative;
     z-index: 100000;
@@ -171,6 +233,7 @@ const HeaderStyles = styled.header`
     }
 
     @media ${device.tablet} {
+      display: none;
       padding: 0 1.5rem;
       background: #fff;
       top: 0;
@@ -308,7 +371,7 @@ const DropdownListStyles = styled.div`
     top: 10rem;
 
     &.collections {
-      top: 12.5rem;
+      top: 15rem;
     }
   }
 
@@ -347,6 +410,7 @@ const DropdownListStyles = styled.div`
     @media ${device.tablet} {
       min-width: 50vw;
       direction: ltr;
+      padding: 0 3rem !important;
     }
   }
 
@@ -394,6 +458,7 @@ const DropdownListStyles = styled.div`
     @media ${device.tablet} {
       background: #fff;
       padding: 0;
+      /* height: 90vh; */
     }
 
     &::-webkit-scrollbar {
@@ -418,7 +483,7 @@ const DropdownListStyles = styled.div`
   } */
   a {
     /* opacity: 0; */
-    padding: 1.5rem;
+    padding: 1rem 0;
     /* border-bottom: 1px solid var(--grey); */
     word-break: keep-all;
     width: 100%;
@@ -430,7 +495,7 @@ const DropdownListStyles = styled.div`
     /* width: 100%; */
   }
 
-  .close-icon {
+  .dropdown-close-icon {
     position: absolute;
     right: 0;
     top: 0;
@@ -519,7 +584,7 @@ const DropDown = ({
         {headerDropdownImage && <Image {...headerDropdownImage} />}
       </div>
       <CloseIcon
-        className="close-icon"
+        className="dropdown-close-icon"
         onClick={() => {
           // handleOpenDropDown([], false);
           setSelectedList("");
@@ -544,27 +609,15 @@ const Header = ({
   const [list, setList] = useState([]);
 
   const [selectedList, setSelectedList] = useState("");
+
+  const [showMobileDropDown, setShowMobileDropDown] = useState(Number);
   let lists = { resorts: navData?.resorts, collections: navData?.collections };
   const dropdownLists =
     selectedList === "resorts" ? lists.resorts : lists.collections;
 
-  // // const [marginTop, setMarginTop] = useState(2);
-  // const handleOpenDropDown = (list, condition) => {
-  //   if (!showDropdown) {
-  //     setShowDropdown(condition || true);
-  //     setList(list);
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     setShowDropdown(condition || false);
-  //     document.body.style.overflow = "unset";
-  //   }
-  // };
-
-  // const headerRef = useRef();
   const windowGlobal = typeof window !== "undefined";
 
   useEffect(() => {
-    console.log("here");
     if (showDropdown) {
       document.body.style.overflow = "hidden";
     } else {
@@ -605,9 +658,11 @@ const Header = ({
       {/* </button> */}
 
       <nav
-        className={`${showNav ? "show" : "hide"} ${
-          windowGlobal && window.innerWidth > 805 ? "show" : ""
-        }`}
+        className={
+          // `${showNav ? "show" : "hide"} ${
+          windowGlobal && window.innerWidth > 805 ? "show" : "hide"
+          // }`
+        }
       >
         <CloseIcon
           className="close-icon"
@@ -644,7 +699,7 @@ const Header = ({
               }
             }}
           >
-            Resorts{" "}
+            Resorts
             {showDropdown && selectedList === "resorts" ? (
               <ChevronUp />
             ) : (
@@ -699,8 +754,121 @@ const Header = ({
           </li>
         </ul>
       </nav>
+
+      <div
+        // className="mobile-nav"
+        className={`mobile-nav ${showNav ? "show" : "hide"} ${
+          windowGlobal && window.innerWidth > 805 ? "show" : ""
+        }`}
+      >
+        <CloseIcon
+          className="close-icon"
+          onClick={() => {
+            if (!showNav) {
+              onShowNav();
+            } else {
+              setTimeout(() => {
+                onHideNav();
+              }, 200);
+            }
+            setShowDropdown(false);
+          }}
+        />
+        <ul>
+          <li
+            className={` ${
+              selectedList === "resorts" ? "selected" : ""
+            } clickable`}
+            onClick={() => {
+              if (showMobileDropDown === 2) {
+                setShowMobileDropDown(0);
+                setTimeout(() => {
+                  if (showMobileDropDown !== 1) {
+                    setShowMobileDropDown(1);
+                  } else {
+                    setShowMobileDropDown(0);
+                  }
+                }, 700);
+              } else {
+                if (showMobileDropDown !== 1) {
+                  setShowMobileDropDown(1);
+                } else {
+                  setShowMobileDropDown(0);
+                }
+              }
+            }}
+          >
+            Resorts {showMobileDropDown === 1 ? <ChevronUp /> : <ChevronDown />}
+            {/* {showMobileDropDown === 1 && ( */}
+            <DropDown
+              className={showMobileDropDown === 1 ? "show resorts" : ""}
+              lists={lists.resorts}
+              // headerDropdownImage={headerDropdownImage}
+              setShowDropdown={setShowDropdown}
+              // handleOpenDropDown={handleOpenDropDown}
+              selectedList={selectedList}
+              setSelectedList={setSelectedList}
+            />
+            {/* )} */}
+          </li>
+
+          <li
+            className={` ${
+              selectedList === "collections" ? "selected" : ""
+            } clickable`}
+            onClick={() => {
+              if (showMobileDropDown !== 2) {
+                setShowMobileDropDown(2);
+              } else {
+                setShowMobileDropDown(0);
+              }
+              // setSelectedList("collections");
+              // if (!showDropdown || selectedList !== "collections") {
+              //   setShowDropdown(true);
+              // } else {
+              //   setShowDropdown(false);
+              //   setSelectedList("");
+              // }
+            }}
+          >
+            {/* <p
+              
+            > */}
+            Holiday stays
+            {showMobileDropDown == 2 ? <ChevronUp /> : <ChevronDown />}
+            <DropDown
+              className={`collections ${
+                showMobileDropDown === 2 ? "show collections" : ""
+              }`}
+              lists={lists.collections}
+              // headerDropdownImage={headerDropdownImage}
+              setShowDropdown={setShowDropdown}
+              // handleOpenDropDown={handleOpenDropDown}
+              selectedList={selectedList}
+              setSelectedList={setSelectedList}
+            />
+            {/* {showDropdown === 3 && <DropDown marginTop={12} list={list} />} */}
+            {/* </p> */}
+          </li>
+          <li>
+            <Link
+              to="/magazine"
+              className="clickable"
+              // onClick={() => {
+              //   setShowDropdown(!showDropdown);
+              //   setList(navData.resorts);
+              // }}
+            >
+              Magazine
+              {showDropdown === 4 && <DropDown list={list} />}
+            </Link>
+          </li>
+        </ul>
+      </div>
       <DropDown
-        className={showDropdown ? "show" : ""}
+        className={
+          showDropdown && windowGlobal && window.innerWidth > 805 ? "show" : ""
+        }
         lists={dropdownLists}
         headerDropdownImage={headerDropdownImage}
         setShowDropdown={setShowDropdown}

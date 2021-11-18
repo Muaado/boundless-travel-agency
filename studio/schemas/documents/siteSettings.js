@@ -17,6 +17,12 @@ export default {
     },
 
     {
+      name: "mobileLogo",
+      type: "mainImage",
+      title: "Boundless mobile logo",
+    },
+
+    {
       name: "fullName",
       type: "string",
       title: "Full name",
