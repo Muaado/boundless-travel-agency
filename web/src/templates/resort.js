@@ -219,6 +219,7 @@ const ResortTemplate = (props) => {
 
   // const highlights = data && data.highlights;
 
+  const windowGlobal = typeof window !== "undefined";
   const {
     name,
     locationAtoll,
@@ -434,7 +435,7 @@ const ResortTemplate = (props) => {
               className="resort__spas"
               slidesToShow={1}
               cellSpacing={0}
-              vertical
+              vertical={windowGlobal && window.innerWidth < 806}
               // heightMode="max"
               // renderCenterRightControls={({ nextSlide }) => (
               //   <CarouselButton onClick={nextSlide} chevronRight={true} />

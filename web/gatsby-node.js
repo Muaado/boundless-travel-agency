@@ -94,6 +94,7 @@ async function createVillaPages(graphql, actions) {
       allSanityVilla {
         nodes {
           _id
+          active
           name
           _type
           resort {
@@ -110,7 +111,7 @@ async function createVillaPages(graphql, actions) {
   const villaEdges = (result.data.allSanityVilla || {}).nodes || [];
 
   villaEdges.forEach((node) => {
-    const { _id, name, resort, _type } = node;
+    const { _id, name, resort, _type, active } = node;
 
     // console.log(node);
 
@@ -122,7 +123,7 @@ async function createVillaPages(graphql, actions) {
         .join("-")}`;
     }
 
-    if (path)
+    if (path && active)
       createPage({
         path,
         component: require.resolve("./src/templates/villa.js"),
