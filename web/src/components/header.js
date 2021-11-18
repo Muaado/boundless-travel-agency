@@ -813,7 +813,7 @@ const Header = ({
               }
             }}
           >
-            Resorts {showMobileDropDown === 1 ? <PlusIcon /> : <MinusIcon />}
+            Resorts {showMobileDropDown === 1 ? <MinusIcon /> : <PlusIcon />}
             {/* {showMobileDropDown === 1 && ( */}
             <DropDown
               className={showMobileDropDown === 1 ? "show resorts" : ""}
@@ -850,7 +850,7 @@ const Header = ({
               
             > */}
             Holiday stays
-            {showMobileDropDown == 2 ? <PlusIcon /> : <MinusIcon />}
+            {showMobileDropDown == 2 ? <MinusIcon /> : <PlusIcon />}
             <DropDown
               className={`collections ${
                 showMobileDropDown === 2 ? "show collections" : ""

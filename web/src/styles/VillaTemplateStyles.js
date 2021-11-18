@@ -294,7 +294,7 @@ const VillaStyles = styled.div`
           justify-content: flex-start;
         }
         @media ${device.mobileXL} {
-          padding: 0;
+          /* padding: 0; */
           min-width: unset;
         }
 
