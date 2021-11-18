@@ -376,7 +376,7 @@ const VilaTemplate = (props) => {
               <h2>{name}</h2>
               {/* <h3 className="tagline">{tagline}</h3> */}
               <PortableText blocks={_rawDescriptionVilla} />
-              <ul>
+              <ul className="villa__header-icons">
                 <li>
                   <Measure />
                   {sizeSqm}m2

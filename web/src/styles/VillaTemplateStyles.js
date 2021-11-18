@@ -234,7 +234,7 @@ const VillaStyles = styled.div`
 
         .slider-control-bottomcenter {
           position: absolute;
-          bottom: -10rem !important;
+          bottom: -4rem !important;
 
           ul {
             /* display: flex !important;
@@ -350,7 +350,7 @@ const VillaStyles = styled.div`
         font-size: 2.4rem;
       }
 
-      ul {
+      &-icons {
         padding: 3rem 0;
         display: flex;
         justify-content: center;
@@ -502,6 +502,8 @@ const VillaStyles = styled.div`
             } */
             ul {
               /* padding-left: 4rem; */
+              max-height: 14rem;
+              overflow-y: hidden;
               list-style: disc;
               display: grid;
               grid-template-columns: 1fr 1fr;
@@ -637,6 +639,15 @@ const VillaStyles = styled.div`
       .carousel {
         .slider-control-bottomcenter {
           bottom: -5rem !important;
+          /* .paging-item {
+            button {
+              svg {
+                width: unset;
+                height: unset;
+                margin: unset;
+              }
+            }
+          } */
         }
         li {
           h3 {

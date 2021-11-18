@@ -112,7 +112,10 @@ export const query = graphql`
         }
       }
     }
-    villas: allSanityVilla(limit: 3, filter: { resort: { _id: { eq: $id } } }) {
+    villas: allSanityVilla(
+      limit: 3
+      filter: { resort: { _id: { eq: $id } }, active: { eq: true } }
+    ) {
       nodes {
         name
         imageThumb {

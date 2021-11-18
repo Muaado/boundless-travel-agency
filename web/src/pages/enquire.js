@@ -44,7 +44,7 @@ export const query = graphql`
         name
       }
     }
-    villas: allSanityVilla {
+    villas: allSanityVilla(filter: { active: { eq: true } }) {
       nodes {
         name
         resort {
