@@ -5,7 +5,7 @@ import { device } from "../styles/deviceSizes";
 
 const LeftSidebarStyles = styled.div`
   opacity: 0;
-  height: 50vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 
@@ -13,8 +13,9 @@ const LeftSidebarStyles = styled.div`
   width: fit-content;
   /* background: #fff; */
   position: fixed;
-  left: 5rem;
-  top: 30%;
+  left: 2rem;
+  /* top: 30%; */
+  bottom: 2rem;
   z-index: 10000;
 
   transition: all 1s;

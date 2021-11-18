@@ -71,6 +71,8 @@ const VillaStyles = styled.div`
 
     &__calendar {
       /* z-index: 100000; */
+
+      z-index: 2000;
       position: absolute;
       bottom: 20%;
       right: 15%;

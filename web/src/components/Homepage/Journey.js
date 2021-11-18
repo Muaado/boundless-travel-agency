@@ -53,7 +53,7 @@ const JourneyStyles = styled.div`
 
     @media ${device.tablet} {
       font-size: 3.6rem;
-      letter-spacing: 1rem;
+      letter-spacing: unset;
       line-height: 5rem;
     }
   }

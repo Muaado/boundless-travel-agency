@@ -33,7 +33,7 @@ export const HeroStyles = styled.div`
   &:before {
     content: "";
     position: absolute;
-    opacity: 0.3;
+    opacity: 0.5;
     left: 0;
     top: 0;
     width: 100%;
@@ -113,6 +113,10 @@ export const HandCraftedJourneysStyles = styled.div`
     max-width: 50rem;
     margin-bottom: 3rem;
     letter-spacing: 1rem;
+
+    @media ${device.tablet} {
+      letter-spacing: unset;
+    }
   }
 
   .subtitle {

@@ -59,13 +59,16 @@ const MagazinePageStyles = styled.div`
     }
   } */
 
+  @media ${device.laptopM} {
+    padding: 0 10%;
+  }
+  @media ${device.tablet} {
+    padding: 0 1.5rem;
+  }
+
   h1 {
     text-align: center;
     padding: 5rem 0;
-  }
-
-  @media ${device.laptopM} {
-    padding: 0 10%;
   }
 
   .post-list {

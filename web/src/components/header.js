@@ -187,11 +187,11 @@ const HeaderStyles = styled.header`
       padding-top: 5rem;
       &.show {
         transform: translateX(0);
-        opacity: 1;
+        /* opacity: 1; */
       }
       &.hide {
         transform: translateX(-100vw);
-        opacity: 0;
+        /* opacity: 0; */
         /* z-index: -100; */
       }
       /* display: none; */
@@ -296,7 +296,7 @@ const DropdownListStyles = styled.div`
   /* margin-top: 2rem; */
   transition: all 0.4s;
   transition-timing-function: ease-in-out;
-  opacity: 0;
+  /* opacity: 0; */
   /* transform: translateY(-100vh); */
   overflow: hidden;
 
@@ -313,7 +313,7 @@ const DropdownListStyles = styled.div`
   }
 
   &.show {
-    opacity: 1;
+    /* opacity: 1; */
     /* transform: translateY(0); */
     height: 90vh;
     z-index: 200000;
@@ -329,16 +329,16 @@ const DropdownListStyles = styled.div`
     .route {
       /* .image-container { */
       transition: all 4s;
-      opacity: 0;
+      /* opacity: 0; */
       &.show {
-        opacity: 1;
+        /* opacity: 1; */
       }
     }
   }
 
   .route {
     /* .image-container { */
-    opacity: 0;
+    /* opacity: 0; */
   }
 
   ul {
@@ -397,7 +397,7 @@ const DropdownListStyles = styled.div`
     }
 
     &::-webkit-scrollbar {
-      display: none;
+      /* display: none; */
     }
 
     .mouse_scroll {
@@ -417,7 +417,7 @@ const DropdownListStyles = styled.div`
     min-width: max-content;
   } */
   a {
-    opacity: 0;
+    /* opacity: 0; */
     padding: 1.5rem;
     /* border-bottom: 1px solid var(--grey); */
     word-break: keep-all;
@@ -512,7 +512,7 @@ const DropDown = ({
               </Link>
             )
         )}
-        <MouseScroll />
+        {/* <MouseScroll /> */}
       </ul>
 
       <div className={`${className} image-container`}>
@@ -632,12 +632,15 @@ const Header = ({
               if (!showDropdown || selectedList !== "resorts") {
                 setShowDropdown(true);
               } else {
-                setSelectedList("");
                 setShowDropdown(false);
+                setSelectedList("");
               }
 
               if (windowGlobal && window.innerWidth > 805) {
-                if (showDropdown) setShowDropdown(false);
+                if (showDropdown) {
+                  setSelectedList("");
+                  setShowDropdown(false);
+                }
               }
             }}
           >

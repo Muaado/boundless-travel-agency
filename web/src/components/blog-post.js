@@ -60,6 +60,9 @@ const BlogPostStyles = styled.article`
     @media ${device.tablet} {
       width: 100%;
     }
+    @media ${device.mobileL} {
+      margin-bottom: 5rem;
+    }
     /* overflow: hidden; */
     img {
       height: 90%;
@@ -91,6 +94,10 @@ const BlogPostStyles = styled.article`
     margin-top: 2rem;
     display: flex;
 
+    @media ${device.mobileL} {
+      flex-direction: column;
+    }
+
     span {
       margin-right: 5rem;
       min-width: max-content;
@@ -99,6 +106,10 @@ const BlogPostStyles = styled.article`
       color: var(--primary);
       display: flex;
       align-items: center;
+
+      @media ${device.mobileL} {
+        margin: 1rem 0;
+      }
 
       svg {
         height: 2rem;

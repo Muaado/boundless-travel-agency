@@ -23,18 +23,19 @@ export const SearchBar = styled.form`
     justify-content: space-between;
     width: 40vw;
 
+    filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.25));
     @media ${device.laptop} {
       width: 60vw;
     }
     @media ${device.tablet} {
       padding: 0.2rem 2rem;
       width: 80vw;
+      border-bottom: 1px solid var(--grey);
+      filter: unset;
     }
     @media ${device.mobileXL} {
       width: 100vw;
     }
-    /* filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.25)); */
-    border-bottom: 1px solid var(--grey);
   }
 
   &.enquire-search {

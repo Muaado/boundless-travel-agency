@@ -25,6 +25,7 @@ const BlogPostPreviewStyles = styled.div`
   @media ${device.tablet} {
     grid-template-columns: 1fr;
     max-height: unset;
+    max-width: 100vw;
   }
   /* padding: 5rem 0; */
 
@@ -52,13 +53,19 @@ const BlogPostPreviewStyles = styled.div`
     @media ${device.tablet} {
       max-height: unset;
       height: 30rem;
+      max-width: 100%;
       margin-bottom: 3rem;
+    }
+
+    @media ${device.mobileL} {
+      height: 30vh;
+      width: 90vw;
     }
   }
   img {
     /* height: 60rem; */
     /* max-height: 60rem; */
-    min-width: 100%;
+    /* min-width: 100%; */
     object-position: bottom;
   }
 
@@ -68,6 +75,10 @@ const BlogPostPreviewStyles = styled.div`
 
     flex-direction: column;
     justify-content: space-between;
+
+    @media ${device.mobileL} {
+      width: 90vw;
+    }
 
     &__text {
       margin-bottom: 2rem;
@@ -102,6 +113,10 @@ const BlogPostPreviewStyles = styled.div`
     @media ${device.tablet} {
       margin-top: 2rem;
     }
+
+    @media ${device.mobileL} {
+      flex-direction: column;
+    }
     span {
       margin-right: 5rem;
       min-width: max-content;
@@ -110,6 +125,10 @@ const BlogPostPreviewStyles = styled.div`
       color: var(--primary);
       display: flex;
       align-items: center;
+
+      @media ${device.mobileL} {
+        margin: 1rem 0;
+      }
 
       svg {
         height: 2rem;
@@ -128,10 +147,10 @@ function BlogPostPreview(props) {
   return (
     // <Link to={getBlogUrl(props.publishedAt, props.slug.current)}>
     <BlogPostPreviewStyles
-      data-aos="fade-up"
-      data-aos-delay="50"
-      data-aos-duration="1000"
-      data-aos-easing="ease-in-out"
+    // data-aos="fade-up"
+    // data-aos-delay="50"
+    // data-aos-duration="1000"
+    // data-aos-easing="ease-in-out"
     >
       <div className="image-container">
         {props.mainImage && props.mainImage.asset && (
@@ -156,10 +175,12 @@ function BlogPostPreview(props) {
           <TimeIcon />
           {format(new Date(props.publishedAt), "MMMM Mo, yyyy")}
         </span>
-        <span>
-          <CategoryIcon />
-          {props.categories?.[0]?.title}
-        </span>
+        {props.categories?.[0] && (
+          <span>
+            <CategoryIcon />
+            {props.categories?.[0]?.title}
+          </span>
+        )}
       </div>
     </BlogPostPreviewStyles>
     // </Link>
