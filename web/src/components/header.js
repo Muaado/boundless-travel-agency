@@ -11,6 +11,9 @@ import { device } from "../styles/deviceSizes";
 
 import ChevronDown from "../assets/icons/chevron-down.svg";
 import ChevronUp from "../assets/icons/chevron-up.svg";
+import PlusIcon from "../assets/icons/plus-icon.svg";
+import MinusIcon from "../assets/icons/minus-icon.svg";
+
 import Phone from "../assets/icons/phone.svg";
 import CustomerService from "../assets/icons/customer-service.svg";
 import { MouseScroll } from "./Ui/MouseScroll";
@@ -145,6 +148,7 @@ const HeaderStyles = styled.header`
   }
 
   .mobile-nav {
+    z-index: 30000;
     padding: 0 3rem;
     background: #fff;
     top: 0;
@@ -193,13 +197,21 @@ const HeaderStyles = styled.header`
       width: 100%;
       li {
         margin-bottom: 1rem;
-        padding: 1rem;
-        border-bottom: 1px solid var(--grey);
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--lightGrey);
         width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        font-size: 2rem;
 
+        /* color: var(--primary;) */
         svg {
+          width: 1.5rem;
+          height: 1.5rem;
           path {
-            stroke: var(--primary);
+            fill: var(--primary);
           }
         }
       }
@@ -371,7 +383,7 @@ const DropdownListStyles = styled.div`
     top: 10rem;
 
     &.collections {
-      top: 15rem;
+      top: 16rem;
     }
   }
 
@@ -483,14 +495,17 @@ const DropdownListStyles = styled.div`
   } */
   a {
     /* opacity: 0; */
-    padding: 1rem 0;
+    color: var(--darkGrey);
+    padding: 1.5rem 0;
     /* border-bottom: 1px solid var(--grey); */
     word-break: keep-all;
     width: 100%;
     display: inline-block;
 
+    font-size: 1.6rem;
+
     @media ${device.tablet} {
-      border-bottom: 1px solid var(--grey);
+      border-bottom: 1px solid var(--lightGrey3);
     }
     /* width: 100%; */
   }
@@ -798,7 +813,7 @@ const Header = ({
               }
             }}
           >
-            Resorts {showMobileDropDown === 1 ? <ChevronUp /> : <ChevronDown />}
+            Resorts {showMobileDropDown === 1 ? <PlusIcon /> : <MinusIcon />}
             {/* {showMobileDropDown === 1 && ( */}
             <DropDown
               className={showMobileDropDown === 1 ? "show resorts" : ""}
@@ -835,7 +850,7 @@ const Header = ({
               
             > */}
             Holiday stays
-            {showMobileDropDown == 2 ? <ChevronUp /> : <ChevronDown />}
+            {showMobileDropDown == 2 ? <PlusIcon /> : <MinusIcon />}
             <DropDown
               className={`collections ${
                 showMobileDropDown === 2 ? "show collections" : ""

@@ -72,7 +72,7 @@ const VillaStyles = styled.div`
     &__calendar {
       /* z-index: 100000; */
 
-      z-index: 2000;
+      /* z-index: 1000; */
       position: absolute;
       bottom: 20%;
       right: 15%;
@@ -265,12 +265,14 @@ const VillaStyles = styled.div`
         /* background: black; */
         position: relative;
         /* height: 100rem; */
-        min-width: 50rem;
+        width: 50%;
         /* margin-left: 50rem; */
         /* padding: 15rem 8rem 15rem 15rem; */
         margin: 5rem 5%;
-        /* display: flex; */
-
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         /* border: 1px solid var(--primary); */
 
         @media ${device.laptop} {
@@ -286,7 +288,10 @@ const VillaStyles = styled.div`
         }
 
         @media ${device.tablet} {
+          width: 100%;
+          padding: 0 3rem;
           align-items: flex-start;
+          justify-content: flex-start;
         }
         @media ${device.mobileXL} {
           padding: 0;
@@ -294,11 +299,12 @@ const VillaStyles = styled.div`
         }
 
         p {
-          max-width: 40rem;
+          /* max-width: 40rem; */
           /* font-size: 2.2rem; */
+          text-align: center;
           color: var(--grey1);
-          @media ${device.laptop} {
-            /* text-align: center; */
+          @media ${device.tablet} {
+            text-align: left;
           }
         }
       }
@@ -326,8 +332,8 @@ const VillaStyles = styled.div`
         font-weight: normal;
         color: #76622e;
 
-        @media ${device.mobileXL} {
-          /* text-align: center; */
+        @media ${device.tablet} {
+          text-align: left;
         }
       }
 
@@ -347,6 +353,12 @@ const VillaStyles = styled.div`
       ul {
         padding: 3rem 0;
         display: flex;
+        justify-content: center;
+        /* align-items: center; */
+
+        @media ${device.tablet} {
+          justify-content: flex-start;
+        }
 
         @media ${device.laptop} {
           align-items: center;
@@ -386,12 +398,17 @@ const VillaStyles = styled.div`
       }
 
       .btn {
+        align-self: center;
         background: transparent;
         border: 1px solid var(--lightOrange);
         color: var(--lightOrange);
         margin-top: 2rem;
         padding: 1.5rem 10rem;
         font-size: 1.4rem;
+
+        @media ${device.tablet} {
+          align-self: flex-start;
+        }
       }
     }
 

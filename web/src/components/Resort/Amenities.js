@@ -10,7 +10,7 @@ const AmenitiesStyles = styled.div`
   flex-direction: column;
   .description {
     max-width: 60vw;
-    font-size: 2.4rem;
+    /* font-size: 2.4rem; */
     font-weight: 100;
     text-align: center;
     align-self: center;
@@ -44,7 +44,9 @@ const AmenitiesStyles = styled.div`
       /* padding: 0 1rem; */
       text-align: center;
 
-      font-size: 1.1rem;
+      @media ${device.tablet} {
+        font-size: 1.1rem;
+      }
       &:nth-of-type(1),
       &:nth-of-type(4) {
         border-right: 1px solid var(--grey);

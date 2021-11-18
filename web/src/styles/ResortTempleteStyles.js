@@ -313,7 +313,7 @@ const ResortStyles = styled.div`
           }
 
           .image-container {
-            height: 40vh;
+            height: 60rem;
             width: 100%;
             /* margin-bottom: 5rem; */
             @media ${device.laptop} {

@@ -33,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
     --grey: #8e8e8e;
     --grey1: #505050;
     --grey2: #CCCCCC;
-    --darkGrey: #292929;
+    --darkGrey: #2f2f2f;
     /* Define colors intentions */
     --background: var(--cream);
     --textColor: var(--black);
@@ -166,7 +166,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   p {
-    font-size: 2rem;
+    font-size: 1.6rem;
     line-height: 2.8rem;
     color: var(--grey1);
       @media ${device.tablet} {
