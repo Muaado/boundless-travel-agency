@@ -11,6 +11,7 @@ import Search from "../components/Search";
 import useForm from "../hooks/useForm";
 import { ContactUs } from "../components/Homepage/ContactUs";
 import { device } from "../styles/deviceSizes";
+import countries from "../lib/countries";
 
 export const query = graphql`
   query EnquirePageQuery {
@@ -104,7 +105,17 @@ const EnquirePageStyles = styled.div`
         display: grid;
         grid-template-columns: 48% 1fr 1fr;
         gap: 4%;
+        .phone {
+          display: flex;
+
+          select {
+            width: 10rem;
+            margin-right: 1rem;
+          }
+        }
       }
+
+      /* & */
 
       label {
         text-transform: uppercase;
@@ -137,7 +148,17 @@ const Enquire = (props) => {
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     );
   }
+  const resortId = typeof window !== `undefined` ? window.location.search : ``;
+  // const parameter2 = params.get("parameter2");
+  // const resortId = URLSearchParams.values();
 
+  // console.log(url);
+  const budgetRanges = [
+    "£3,500 to £5,000",
+    "£5,000 to £7,500",
+    "£7,500 to 10,000",
+    "Above £10,000 ",
+  ];
   const {
     values: {
       destination,
@@ -152,15 +173,16 @@ const Enquire = (props) => {
       phoneNumber,
       adults,
       children,
+      countryCode,
     } = {},
     values,
     updateValue,
     updateValueManually,
   } = useForm({
-    destination: {},
+    destination: { value: resortId?.split("=")[1].split("%20").join(" ") },
     dateOfTravel: "",
     duration: "",
-    budget: "",
+    budget: budgetRanges[0],
     comments: "",
     title: "",
     firstName: "",
@@ -169,10 +191,10 @@ const Enquire = (props) => {
     phoneNumber: "",
     adults: "",
     children: "",
+    countryCode: "",
   });
 
   console.log(values);
-
   return (
     <Layout {...props}>
       <SEO
@@ -203,9 +225,10 @@ const Enquire = (props) => {
                   Destination<span className="required">*</span>
                 </label>
                 <Search
+                  selectedRecord={resortId}
                   className="enquire-search"
                   resorts={resorts.nodes}
-                  villas={villas.nodes}
+                  villas={[]}
                   placeholder="Select destination"
                   value={destination}
                   onChange={(input) => {
@@ -253,16 +276,16 @@ const Enquire = (props) => {
               {/* <div className="form-control"></div> */}
               <div className="form-control">
                 <label>Total holiday budget $</label>
-                <input
-                  name="budget"
-                  type="number"
-                  placeholder=""
-                  value={budget}
-                  onChange={updateValue}
-                />
+                <select value={budget} onChange={updateValue} name="budget">
+                  {budgetRanges.map((range) => (
+                    <option key={range} value={range}>
+                      {range}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="form-control">
-                <label>Additional comments</label>
+                <label>Tell us a bit more</label>
                 {/* <input name="" type="" placeholder="" /> */}
                 <textarea onChange={updateValue} name="comments">
                   {comments}
@@ -323,18 +346,34 @@ const Enquire = (props) => {
                   placeholder=""
                 />
               </div>
-              <div className="form-control three-column">
+              <div className="form-control three-column ">
                 <div>
                   <label>
                     Telephone number<span className="required">*</span>
                   </label>
-                  <input
-                    name="phoneNumber"
-                    type="text"
-                    placeholder=""
-                    value={phoneNumber}
-                    onChange={updateValue}
-                  />
+                  <div className="phone">
+                    <select
+                      value={countryCode}
+                      name="countryCode"
+                      onChange={updateValue}
+                    >
+                      {countries.map(({ code, name }, index) => (
+                        <option
+                          key={`${code}-${index}`}
+                          value={`${code}${name}`}
+                        >
+                          {code} {name}
+                        </option>
+                      ))}
+                    </select>
+                    <input
+                      name="phoneNumber"
+                      type="text"
+                      placeholder=""
+                      value={phoneNumber}
+                      onChange={updateValue}
+                    />
+                  </div>
                 </div>
 
                 <div>

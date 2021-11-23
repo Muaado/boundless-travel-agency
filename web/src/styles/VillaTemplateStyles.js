@@ -72,7 +72,7 @@ const VillaStyles = styled.div`
     &__calendar {
       /* z-index: 100000; */
 
-      /* z-index: 1000; */
+      z-index: 1000;
       position: absolute;
       bottom: 20%;
       right: 15%;
@@ -845,7 +845,7 @@ const VillaStyles = styled.div`
         }
 
         span {
-          margin-right: 5rem;
+          margin-right: 1rem;
           &.line {
             position: absolute;
             top: 1rem;

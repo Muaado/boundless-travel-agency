@@ -7,6 +7,7 @@ import { getResortUrl, getVillaUrl } from "../lib/helpers";
 import SearchIcon from "../assets/icons/search-icon.svg";
 import styled from "styled-components";
 import { device } from "../styles/deviceSizes";
+import { useEffect } from "react";
 
 export const SearchBar = styled.form`
   &.homepage-search {
@@ -123,6 +124,7 @@ export const SearchBar = styled.form`
 `;
 
 const Search = ({
+  selectedRecord,
   name,
   className,
   resorts,
@@ -161,6 +163,19 @@ const Search = ({
     }),
   ];
 
+  useEffect(() => {
+    if (!search && selectedRecord) {
+      const selected = options.find((item) => {
+        console.log(item);
+        console.log(selectedRecord);
+        return (
+          item.value === selectedRecord?.split("=")[1].split("%20").join(" ")
+        );
+      });
+      console.log(selected);
+      setSearch(selected);
+    }
+  }, [selectedRecord]);
   const loadOptions = (search, callback) => {
     const newSearchOptions = options.filter((option) => {
       return (
@@ -181,7 +196,7 @@ const Search = ({
         // menuIsOpen
         placeholder={placeholder}
         isClearable
-        value={value || search}
+        value={search || value}
         onInputChange={(input) => {
           setSearch(input);
         }}

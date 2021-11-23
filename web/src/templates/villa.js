@@ -94,6 +94,7 @@ export const query = graphql`
       }
 
       resort {
+        id
         name
         locationAtoll
         locationFull
@@ -246,6 +247,7 @@ const VilaTemplate = (props) => {
   } = villa;
 
   const {
+    id,
     name: resortName,
     locationAtoll,
     numberOfBars,
@@ -402,7 +404,7 @@ const VilaTemplate = (props) => {
                   </li>
                 )}
               </ul>
-              <Link to="/enquire" className="btn">
+              <Link to={`/enquire?id=${resortName}`} className="btn">
                 ENQUIRE
               </Link>
             </div>

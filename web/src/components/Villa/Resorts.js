@@ -53,9 +53,9 @@ const Resorts = ({ resorts }) => {
       data-aos-easing="ease-in-out"
     >
       <p className="title">
-        <span>ALL</span>
-        <span className="line"></span>
-        <span>PRODUCTS</span>
+        <span>SIMILAR</span>
+        {/* <span className="line"></span> */}
+        <span>RESORTS</span>
       </p>
       <Carousel
         speed={1000}
