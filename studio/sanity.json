@@ -4,9 +4,10 @@
     "name": "Boundless travel agency"
   },
   "api": {
-    "projectId": "4x5xvp2b",
+    "projectId": "opangdfy",
     "dataset": "production"
   },
+
   "plugins": [
     "@sanity/base",
     "@sanity/components",
