@@ -179,7 +179,7 @@ const Enquire = (props) => {
     updateValue,
     updateValueManually,
   } = useForm({
-    destination: { value: resortId?.split("=")[1].split("%20").join(" ") },
+    destination: { value: resortId?.split("=")[1]?.split("%20").join(" ") },
     dateOfTravel: "",
     duration: "",
     budget: budgetRanges[0],

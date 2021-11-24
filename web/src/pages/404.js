@@ -6,15 +6,15 @@ import { HeroStyles } from "../components/Homepage/styles";
 import styled from "styled-components";
 export const query = graphql`
   query NotFoundPageTemplateQuery {
-    pages: allSitePage {
-      nodes {
-        path
-        context {
-          _type
-          name
-        }
-      }
-    }
+  #   pages: allSitePage {
+  #     nodes {
+  #       path
+  #       context {
+  #         _type
+  #         name
+  #       }
+  #     }
+  #   }
   }
 `;
 
@@ -35,27 +35,27 @@ const NotFoundPageStyles = styled.div`
   }
 `;
 const NotFoundPage = (props) => {
-  const pages = props.data.pages;
+  // const pages = props.data.pages;
 
-  let pagesByType = [];
+  // let pagesByType = [];
 
-  pages.nodes.forEach(({ context }) => {
-    const typeAdded = pagesByType.find(
-      (value) => value.type === context?._type
-    );
-    if (!typeAdded && context?._type !== null)
-      pagesByType.push({ type: context?._type || "", items: [] });
-  });
+  // pages.nodes.forEach(({ context }) => {
+  //   const typeAdded = pagesByType.find(
+  //     (value) => value.type === context?._type
+  //   );
+  //   if (!typeAdded && context?._type !== null)
+  //     pagesByType.push({ type: context?._type || "", items: [] });
+  // });
 
-  pages.nodes.forEach(({ path, context }) => {
-    const foundElement = pagesByType.findIndex(
-      ({ type }) => type === context?._type
-    );
-    if (foundElement > -1) {
-      // console.log(pagesByType)
-      pagesByType[foundElement].items.push({ path, name: context?.name });
-    }
-  });
+  // pages.nodes.forEach(({ path, context }) => {
+  //   const foundElement = pagesByType.findIndex(
+  //     ({ type }) => type === context?._type
+  //   );
+  //   if (foundElement > -1) {
+  //     // console.log(pagesByType)
+  //     pagesByType[foundElement].items.push({ path, name: context?.name });
+  //   }
+  // });
   // console.log(pagesByType);
 
   return (
@@ -65,7 +65,7 @@ const NotFoundPage = (props) => {
       <NotFoundPageStyles>
         <h1>Not found</h1>
         <p>We couldn't find the page you were looking for</p>
-        <ul className="models">
+        {/* <ul className="models">
           {pagesByType.map(({ type, items }) => (
             <li key={type}>
               <h2>{type}</h2>
@@ -78,7 +78,7 @@ const NotFoundPage = (props) => {
               </ul>
             </li>
           ))}
-        </ul>
+        </ul> */}
       </NotFoundPageStyles>
     </Layout>
   );

@@ -169,7 +169,7 @@ const Search = ({
         console.log(item);
         console.log(selectedRecord);
         return (
-          item.value === selectedRecord?.split("=")[1].split("%20").join(" ")
+          item.value === selectedRecord?.split("=")[1]?.split("%20").join(" ")
         );
       });
       console.log(selected);
