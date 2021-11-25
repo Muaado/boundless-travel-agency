@@ -102,12 +102,13 @@ const CollectionTemplate = (props) => {
       <CollectionStyles>
         {collections.nodes[0]?.imageWeb && (
           <div className="collection__image">
-            {collections.nodes[0].imageWeb && (
-              <Image
-                {...collections.nodes[0].imageWeb}
-                alt={collections.nodes[0].imageWeb.alt}
-              />
-            )}
+            {collections.nodes[0].imageWeb &&
+              collections.nodes[0].imageWeb.asset && (
+                <Image
+                  {...collections.nodes[0].imageWeb}
+                  alt={collections.nodes[0].imageWeb.alt}
+                />
+              )}
           </div>
         )}
 
@@ -138,10 +139,11 @@ const CollectionTemplate = (props) => {
                         resort,
                       }) => (
                         <li key={name}>
-                          {image ? (
+                          {image && image.asset ? (
                             <Image {...image} alt={image.alt} />
                           ) : (
-                            imageWeb && (
+                            imageWeb &&
+                            imageWeb.asset && (
                               <Image {...imageWeb} alt={imageWeb.alt} />
                             )
                           )}

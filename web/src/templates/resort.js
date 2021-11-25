@@ -410,7 +410,9 @@ const ResortTemplate = (props) => {
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
           >
-            {secondImage && <Image {...secondImage} alt={secondImage?.alt} />}
+            {secondImage && secondImage.asset && (
+              <Image {...secondImage} alt={secondImage?.alt} />
+            )}
           </div>
           {faq.slice(0, slice ? slice : 1).map((faq) => (
             <Faq

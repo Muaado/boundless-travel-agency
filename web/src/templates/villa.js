@@ -420,7 +420,8 @@ const VilaTemplate = (props) => {
             data-aos-easing="ease-in-out"
           >
             <div className="image-container">
-              {roomFeatures?.backgroundImage ? (
+              {roomFeatures?.backgroundImage &&
+              roomFeatures?.backgroundImage.asset ? (
                 <Image
                   {...roomFeatures.backgroundImage}
                   alt={roomFeatures.backgroundImage.alt}

@@ -4,19 +4,19 @@ import React from "react";
 import SEO from "../components/seo";
 import { HeroStyles } from "../components/Homepage/styles";
 import styled from "styled-components";
-export const query = graphql`
-  query NotFoundPageTemplateQuery {
-  #   pages: allSitePage {
-  #     nodes {
-  #       path
-  #       context {
-  #         _type
-  #         name
-  #       }
-  #     }
-  #   }
-  }
-`;
+// export const query = graphql`
+//   query NotFoundPageTemplateQuery {
+//   #   pages: allSitePage {
+//   #     nodes {
+//   #       path
+//   #       context {
+//   #         _type
+//   #         name
+//   #       }
+//   #     }
+//   #   }
+//   }
+// `;
 
 const NotFoundPageStyles = styled.div`
   margin-top: 30rem;
@@ -60,7 +60,7 @@ const NotFoundPage = (props) => {
 
   return (
     <Layout>
-      <SEO title="404: Not found" />
+      {/* <SEO title="404: Not found" /> */}
       {/* <HeroStyles></HeroStyles> */}
       <NotFoundPageStyles>
         <h1>Not found</h1>

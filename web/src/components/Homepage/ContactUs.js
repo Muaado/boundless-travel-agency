@@ -158,7 +158,7 @@ export const ContactUs = ({ contactUs }) => {
         <ul className="contact-people">
           {contactPeople.map(({ image }) => (
             <li key={image._id}>
-              {image && <Image {...image} alt={image.alt} />}
+              {image && image.asset && <Image {...image} alt={image.alt} />}
             </li>
           ))}
         </ul>

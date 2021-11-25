@@ -416,7 +416,9 @@ const DropdownListStyles = styled.div`
 `;
 export const Logo = ({ logo }) => (
   <div className="logo">
-    <Link to="/">{logo && <Image {...logo} alt={logo.alt} />}</Link>
+    <Link to="/">
+      {logo && logo.asset && <Image {...logo} alt={logo.alt} />}
+    </Link>
   </div>
 );
 
@@ -478,7 +480,9 @@ const DropDown = ({
       </ul>
 
       <div className={`${className} image-container`}>
-        {headerDropdownImage && <Image {...headerDropdownImage} />}
+        {headerDropdownImage && headerDropdownImage.asset && (
+          <Image {...headerDropdownImage} />
+        )}
       </div>
       <CloseIcon
         className="close-icon"

@@ -60,7 +60,7 @@ const AboutUs = ({ aboutUs }) => {
       data-aos-easing="ease-in-out"
     >
       <div className="about-us__image-container">
-        {aboutUs.image && (
+        {aboutUs.image && aboutUs.image.asset && (
           <Image
             {...aboutUs.image}
             // tell Sanity how large to make the image (does not set any CSS)

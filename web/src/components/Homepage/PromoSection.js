@@ -101,7 +101,7 @@ const PromoSection = ({ image }) => {
         in the most stunning locations.
       </p>
       {/* <div > */}
-      {image && (
+      {image && image.asset && (
         <Image
           className="parallax__layer--base"
           {...image}

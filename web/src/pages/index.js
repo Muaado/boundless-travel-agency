@@ -280,7 +280,10 @@ const IndexPage = (props) => {
               width={"100vh"}
             />
           ) : (
-            <Image {...site.mobileHeroImage} alt={site.mobileHeroImage.alt} />
+            site.mobileHeroImage &&
+            site.mobileHeroImage.asset && (
+              <Image {...site.mobileHeroImage} alt={site.mobileHeroImage.alt} />
+            )
           )}
 
           {/* <Video
@@ -340,7 +343,9 @@ const IndexPage = (props) => {
                   <li key={title}>
                     {/* <Link to={getBlogUrl(publishedAt, slug.current)}> */}
                     <div className="image-container">
-                      {image && <Image {...image} alt={image.alt} />}
+                      {image && image.asset && (
+                        <Image {...image} alt={image.alt} />
+                      )}
                     </div>
                     <h3>{title}</h3>
                     <PortableText blocks={_rawDescription} />
@@ -370,7 +375,7 @@ const IndexPage = (props) => {
                   <li key={title}>
                     <Link to={getBlogUrl(publishedAt, slug.current)}>
                       <div className="image-container">
-                        {mainImage && (
+                        {mainImage && mainImage.asset && (
                           <Image {...mainImage} alt={mainImage.alt} />
                         )}
                       </div>
@@ -394,7 +399,7 @@ const IndexPage = (props) => {
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
           >
-            {site.secondImage && (
+            {site.secondImage && site.secondImage.asset && (
               <Image
                 {...site.secondImage}
                 width={1440}

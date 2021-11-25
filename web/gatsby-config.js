@@ -61,8 +61,8 @@ module.exports = {
       resolve: "gatsby-plugin-sanity-image",
       options: {
         // Sanity project info (required)
-        projectId: "opangdfy",
-        dataset: "production",
+        projectId: "y7yu20xn",
+        dataset: "slave",
       },
     },
     {

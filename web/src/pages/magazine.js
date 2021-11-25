@@ -98,7 +98,7 @@ const MagazinePage = (props) => {
       <SEO title="Magazine" />
       <Container>
         <HeroStyles className="height-80vh">
-          {data.site.magazinePageImage && (
+          {data.site.magazinePageImage && data.site.magazinePageImage.asset && (
             <Image
               {...data.site.magazinePageImage}
               alt={data.site.magazinePageImage.alt}

@@ -182,7 +182,9 @@ const Highlights = ({ highlights }) => {
             </a>
             {/* </Link> */}
             <PortableText blocks={_rawDescription} />
-            {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
+            {imageThumb && imageThumb.asset && (
+              <Image {...imageThumb} alt={imageThumb.alt} />
+            )}
           </li>
         ))}
       </Carousel>
@@ -196,7 +198,9 @@ const Highlights = ({ highlights }) => {
                 </a>
                 {/* </Link> */}
                 <PortableText blocks={_rawDescription} />
-                {imageThumb && <Image {...imageThumb} alt={imageThumb.alt} />}
+                {imageThumb && imageThumb.asset && (
+                  <Image {...imageThumb} alt={imageThumb.alt} />
+                )}
               </li>
             ))
           : [1, 2, 3, 4, 5, 6].map((item) => (

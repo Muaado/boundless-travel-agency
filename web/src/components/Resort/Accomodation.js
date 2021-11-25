@@ -127,7 +127,7 @@ const Accomodation = ({ villas, id }) => {
             key={name}
             className="image-container"
           >
-            {imageThumb ? (
+            {imageThumb && imageThumb.asset ? (
               <Image
                 style={{
                   width: "100%",

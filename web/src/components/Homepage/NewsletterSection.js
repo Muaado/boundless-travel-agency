@@ -123,7 +123,7 @@ const NewsletterSection = ({ site }) => {
   return (
     <NewsLetterStyles>
       {/* <h2>{site.newsLetterTitle}</h2> */}
-      {site.newsLetterBackground && (
+      {site.newsLetterBackground && site.newsLetterBackground.asset && (
         <Image
           {...site.newsLetterBackground}
           alt={site.newsLetterBackground?.alt}

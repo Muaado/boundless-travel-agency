@@ -217,7 +217,7 @@ const Journey = ({ collections }) => {
               >
                 <p>{node.name}</p>
 
-                {node.imageThumb && (
+                {node.imageThumb && node.imageThumb.asset && (
                   <Image {...node.imageThumb} alt={node.imageThumb.alt} />
                 )}
               </Link>
@@ -245,7 +245,7 @@ const Journey = ({ collections }) => {
                 to={getCollectionUrl({ name: node.name, type: node.type })}
               >
                 <p>{node.name}</p>
-                {node.imageThumb && (
+                {node.imageThumb && node.imageThumb.asset && (
                   <Image {...node.imageThumb} alt={node.imageThumb.alt} />
                 )}
               </Link>

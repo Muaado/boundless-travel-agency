@@ -206,7 +206,7 @@ const Enquire = (props) => {
       <Container>
         <HeroStyles className="height-80vh">
           <h1> {site.description}</h1>
-          {data.site.magazinePageImage && (
+          {data.site.magazinePageImage && data.site.magazinePageImage.asset && (
             <Image
               {...data.site.magazinePageImage}
               alt={data.site.magazinePageImage.alt}

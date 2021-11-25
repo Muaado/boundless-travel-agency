@@ -168,14 +168,16 @@ const Spa = ({ spa, className }) => {
       <div className="container">
         <div className="left-section">
           <div className="image-web">
-            {spa.imageWeb && <Image {...spa.imageWeb} alt={spa.imageWeb.alt} />}
+            {spa.imageWeb && spa.imageWeb.asset && (
+              <Image {...spa.imageWeb} alt={spa.imageWeb.alt} />
+            )}
           </div>
           <PortableText blocks={spa._rawDescription} />
         </div>
         <div className="right-section">
           <h2>{spa.name}</h2>
           <div className="image-thumb">
-            {spa.imageThumb && (
+            {spa.imageThumb && spa.imageThumb.asset && (
               <Image {...spa.imageThumb} alt={spa.imageThumb.alt} />
             )}
           </div>

@@ -122,7 +122,7 @@ const Resorts = ({ resorts }) => {
             >
               {/* <a className="carousel__node" key={name}> */}
               <div className="image-container">
-                {image && <Image {...image} alt={image.alt} />}
+                {image && image.asset && <Image {...image} alt={image.alt} />}
               </div>
               <p>{name}</p>
               {/* </a> */}

@@ -88,7 +88,7 @@ const GalleryComponent = ({ images }) => {
           {images?.images.length
             ? images.images.map((image) => (
                 <div key={image.alt} className="carousel__image-container">
-                  {image && (
+                  {image && image.asset && (
                     <Image {...image} alt={image.alt} onClick={handleOpen(0)} />
                   )}
                 </div>

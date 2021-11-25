@@ -18,7 +18,7 @@ const Lightbox = ({
   images.forEach((image) =>
     array.push(
       <GalleryImage className={`gallery ${showLightbox ? "open" : ""}`}>
-        {image && <Image {...image} alt={image.alt} />}
+        {image && image.asset && <Image {...image} alt={image.alt} />}
       </GalleryImage>
     )
   );
