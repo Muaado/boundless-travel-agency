@@ -5,7 +5,7 @@
   },
   "api": {
     "projectId": "y7yu20xn",
-    "dataset": "slave"
+    "dataset": "master"
   },
 
   "plugins": [

@@ -62,7 +62,7 @@ module.exports = {
       options: {
         // Sanity project info (required)
         projectId: "y7yu20xn",
-        dataset: "slave",
+        dataset: "master",
       },
     },
     {
