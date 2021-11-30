@@ -7,10 +7,12 @@ export const GalleryImage = styled.div`
     padding-right: 0 !important;
   }
   width: 100%;
-  height: 100%;
+  height: max-content;
+  /* height: 100%; */
   &.open {
-    width: 70%;
-    height: 70%;
+    /* width: 70%;
+    height: 70%; */
+
     position: absolute;
     top: 50%;
     left: 50%;
