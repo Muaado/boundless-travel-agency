@@ -33,7 +33,7 @@ import {
   NewsLetterStyles,
   SearchBar,
 } from "../components/Homepage/styles";
-import PortableText from "../components/portableText";
+import PortableText from "../components/UI/portableText";
 import { getBlogUrl } from "../lib/helpers";
 import WhyBoundlessSection from "../components/Homepage/WhyBoundlessSection";
 import NewsletterSection from "../components/Homepage/NewsletterSection";

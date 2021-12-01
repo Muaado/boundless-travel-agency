@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import Carousel from "nuka-carousel";
-import PortableText from "../portableText";
+import PortableText from "../UI/portableText";
 
 import useWindowSize from "../../lib/useWindowSize";
 import styled from "styled-components";

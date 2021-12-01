@@ -12,7 +12,7 @@ import {
 
 import Image from "gatsby-plugin-sanity-image";
 
-import PortableText from "../components/portableText";
+import PortableText from "../components/UI/portableText";
 import Gallery from "../components/Gallery";
 import VillaStyles from "../styles/VillaTemplateStyles";
 import Amenities from "../components/Resort/Amenities";

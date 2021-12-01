@@ -1,7 +1,7 @@
 import React from "react";
 
 import Image from "gatsby-plugin-sanity-image";
-import PortableText from "../portableText";
+import PortableText from "../UI/portableText";
 
 import styled from "styled-components";
 import { device } from "../../styles/deviceSizes";
