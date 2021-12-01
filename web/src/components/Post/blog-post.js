@@ -2,7 +2,7 @@
 import { differenceInDays, formatDistance, format } from "date-fns";
 import AuthorList from "./author-list";
 import Container from "../container";
-import PortableText from "../UI/portableText";
+import PortableText from "../Ui/portableText";
 import React from "react";
 
 import Image from "gatsby-plugin-sanity-image";

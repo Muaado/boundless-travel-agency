@@ -11,7 +11,7 @@ import CarouselButton from "../components/Ui/CarouselButton";
 
 import Image from "gatsby-plugin-sanity-image";
 
-import PortableText from "../components/UI/portableText";
+import PortableText from "../components/Ui/portableText";
 
 import ChevronRight from "../assets/icons/chevron-right.svg";
 

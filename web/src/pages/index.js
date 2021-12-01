@@ -34,7 +34,7 @@ import {
   MagazineStyles,
   SearchBar,
 } from "../components/Homepage/styles";
-import PortableText from "../components/UI/portableText";
+import PortableText from "../components/Ui/portableText";
 import { getBlogUrl, getResortUrl, getVillaUrl } from "../lib/helpers";
 import WhyBoundlessSection from "../components/Homepage/WhyBoundlessSection";
 import NewsletterSection from "../components/Homepage/NewsletterSection";

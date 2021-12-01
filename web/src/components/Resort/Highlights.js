@@ -1,6 +1,6 @@
 import Carousel from "nuka-carousel";
 import React from "react";
-import PortableText from "../UI/portableText";
+import PortableText from "../Ui/portableText";
 import ChevronRight from "../../assets/icons/chevron-right.svg";
 import Image from "gatsby-plugin-sanity-image";
 import Placeholder from "../../assets/placeholder.svg";
