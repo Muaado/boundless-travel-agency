@@ -1,4 +1,4 @@
-import * as styles from "./author-list.module.css";
+// import * as styles from "./author-list.module.css";
 import React from "react";
 import Image from "gatsby-plugin-sanity-image";
 import styled from "styled-components";

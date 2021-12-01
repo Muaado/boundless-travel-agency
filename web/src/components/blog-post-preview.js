@@ -1,4 +1,4 @@
-import * as styles from "./blog-post-preview.module.css";
+// import * as styles from "./blog-post-preview.module.css";
 import { buildImageObj, cn, getBlogUrl } from "../lib/helpers";
 import { Link } from "gatsby";
 import PortableText from "./portableText";
@@ -10,7 +10,7 @@ import ChevronRight from "../assets//icons/chevron-right.svg";
 import TimeIcon from "../assets//icons/time.svg";
 import CategoryIcon from "../assets//icons/category.svg";
 
-import { responsiveTitle3 } from "./typography.module.css";
+// import { responsiveTitle3 } from "./typography.module.css";
 import styled from "styled-components";
 import { device } from "../styles/deviceSizes";
 
