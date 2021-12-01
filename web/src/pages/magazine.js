@@ -1,4 +1,4 @@
-import BlogPostPreviewGrid from "../components/blog-post-preview-grid";
+import BlogPostPreviewGrid from "../components/Post/blog-post-preview-grid";
 import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
 import Layout from "../containers/layout";

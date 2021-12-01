@@ -1,5 +1,5 @@
 import React from "react";
-import { Figure } from "./Figure";
+import { Figure } from "./Post/Figure";
 
 const serializers = {
   types: {

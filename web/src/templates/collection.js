@@ -1,5 +1,5 @@
 import { graphql, Link } from "gatsby";
-import BlogPost from "../components/blog-post";
+import BlogPost from "../components/Post/blog-post";
 import React from "react";
 import GraphQLErrorList from "../components/graphql-error-list";
 import Layout from "../containers/layout";

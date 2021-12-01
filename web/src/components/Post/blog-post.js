@@ -1,17 +1,18 @@
 // import * as styles from "./blog-post.module.css";
 import { differenceInDays, formatDistance, format } from "date-fns";
 import AuthorList from "./author-list";
-import Container from "./container";
-import PortableText from "./UI/portableText";
+import Container from "../container";
+import PortableText from "../UI/portableText";
 import React from "react";
 
 import Image from "gatsby-plugin-sanity-image";
 import styled from "styled-components";
-import { HeroStyles } from "./Homepage/styles";
-import { device } from "../styles/deviceSizes";
+import { HeroStyles } from "../Homepage/styles";
+// import { device } from "../styles/deviceSizes";
 
-import TimeIcon from "../assets//icons/time.svg";
-import CategoryIcon from "../assets//icons/category.svg";
+import TimeIcon from "../../assets/icons/time.svg";
+import CategoryIcon from "../../assets/icons/category.svg";
+import { device } from "../../styles/deviceSizes";
 
 const BlogPostStyles = styled.article`
   display: flex;
