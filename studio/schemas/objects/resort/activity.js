@@ -7,15 +7,16 @@ export default {
       name: "name",
       type: "string",
     },
-    {
-      title: "Resort",
-      name: "resort",
-      type: "reference",
-      to: [{ type: "resort" }],
-    },
+    // {
+    //   title: "Resort",
+    //   name: "resort",
+    //   type: "reference",
+    //   to: [{ type: "resort" }],
+    // },
     {
       name: "description",
-      type: "bodyPortableText",
+      // type: "bodyPortableText",
+      type: "string",
       title: "Description",
     },
     // {
