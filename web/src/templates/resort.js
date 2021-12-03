@@ -64,9 +64,8 @@ export const query = graphql`
 
       activities {
         # sanityResortHighlightname
-        resort {
-          name
-        }
+
+        name
         imageThumb {
           ...SanityImage
           alt
