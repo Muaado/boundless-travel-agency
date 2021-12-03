@@ -9,7 +9,7 @@ export default {
     },
     {
       name: "description",
-      type: "bodyPortableText",
+      type: "string",
       title: "Description",
     },
     {
