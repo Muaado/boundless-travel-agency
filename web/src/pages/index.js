@@ -88,7 +88,7 @@ export const query = graphql`
 
       handCraftedJourneys {
         title
-        _rawDescription
+        description
         image {
           ...SanityImage
           alt
@@ -120,7 +120,7 @@ export const query = graphql`
 
       faq {
         name
-        _rawDescription
+        description
         faqQuestionsAnswers {
           # _id
           answer
@@ -228,13 +228,13 @@ const IndexPage = (props) => {
 
   const { collections } = data;
 
-  if (errors) {
-    return (
-      <Layout>
-        <GraphQLErrorList errors={errors} />
-      </Layout>
-    );
-  }
+  // if (errors) {
+  //   return (
+  //     <Layout>
+  //       <GraphQLErrorList errors={errors} />
+  //     </Layout>
+  //   );
+  // }
 
   const site = (data || {}).site;
   const resorts = (data || {}).resorts;
@@ -338,21 +338,20 @@ const IndexPage = (props) => {
               sed.
             </p>
             <ul>
-              {site.handCraftedJourneys.map(
-                ({ title, image, _rawDescription }) => (
-                  <li key={title}>
-                    {/* <Link to={getBlogUrl(publishedAt, slug.current)}> */}
-                    <div className="image-container">
-                      {image && image.asset && (
-                        <Image {...image} alt={image.alt} />
-                      )}
-                    </div>
-                    <h3>{title}</h3>
-                    <PortableText blocks={_rawDescription} />
-                    {/* </Link> */}
-                  </li>
-                )
-              )}
+              {site.handCraftedJourneys.map(({ title, image, description }) => (
+                <li key={title}>
+                  {/* <Link to={getBlogUrl(publishedAt, slug.current)}> */}
+                  <div className="image-container">
+                    {image && image.asset && (
+                      <Image {...image} alt={image.alt} />
+                    )}
+                  </div>
+                  <h3>{title}</h3>
+
+                  <p>{description} </p>
+                  {/* </Link> */}
+                </li>
+              ))}
             </ul>
             <Link to="/enquire" className="btn white">
               Enquire
@@ -380,7 +379,7 @@ const IndexPage = (props) => {
                         )}
                       </div>
                       <h3>{title}</h3>
-                      <PortableText blocks={_rawExcerpt} />
+                      {_rawExcerpt && <PortableText blocks={_rawExcerpt} />}
                     </Link>
                   </li>
                 )
@@ -407,7 +406,7 @@ const IndexPage = (props) => {
               />
             )}
           </div>
-          <Faq path="/" faq={site.faq[0]} />
+          {site.faq.length && <Faq path="/" faq={site.faq[0]} />}
           <NewsletterSection site={site} />
           <ContactUs contactUs={site.contactUs} />
         </div>

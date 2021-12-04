@@ -190,10 +190,10 @@ const Reviews = ({ reviews }) => {
         // )}
       >
         {reviews.length
-          ? reviews.map(({ name, _rawDescription }) => (
+          ? reviews.map(({ name, description }) => (
               <div className="review" key={name}>
                 <p className="title">{name}</p>
-                <PortableText blocks={_rawDescription} />
+                <p>{description}</p>
                 <a>Read more</a>
               </div>
             ))

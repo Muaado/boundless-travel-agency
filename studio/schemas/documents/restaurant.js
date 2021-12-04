@@ -52,7 +52,7 @@ export default {
     // },
     {
       name: "description",
-      type: "string",
+      type: "bodyPortableText",
       title: "Description",
     },
 

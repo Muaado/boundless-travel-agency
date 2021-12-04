@@ -147,7 +147,7 @@ const GalleryStyles = styled.div`
 
 const Gallery = ({ id, galleries }) => {
   // const firstImage = galleries[0].images[0];
-  const types = galleries.map((galleryItem) => galleryItem.type.name);
+  const types = galleries.map((galleryItem) => galleryItem.type?.name);
   const [selectedGallery, setSelectedGallery] = useState(null);
 
   const allImages = galleries.map((galleryItem) => galleryItem.images).flat();

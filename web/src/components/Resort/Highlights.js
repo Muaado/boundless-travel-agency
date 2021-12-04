@@ -174,14 +174,14 @@ const Highlights = ({ highlights }) => {
         //   <CarouselButton onClick={previousSlide} />
         // )}
       >
-        {highlights.map(({ name, imageThumb, _rawDescription }) => (
+        {highlights.map(({ name, imageThumb, description }) => (
           <li key={imageThumb?.alt}>
             {/* <Link to={getHighlightUrl({ name, resortName: resort.name })}> */}
             <a>
               {name} <ChevronRight />
             </a>
             {/* </Link> */}
-            <PortableText blocks={_rawDescription} />
+            <p>{description}</p>
             {imageThumb && imageThumb.asset && (
               <Image {...imageThumb} alt={imageThumb.alt} />
             )}
@@ -190,14 +190,14 @@ const Highlights = ({ highlights }) => {
       </Carousel>
       <ul className="desktop-highlights">
         {highlights.length
-          ? highlights.map(({ name, imageThumb, _rawDescription }) => (
+          ? highlights.map(({ name, imageThumb, description }) => (
               <li key={imageThumb?.alt}>
                 {/* <Link to={getHighlightUrl({ name, resortName: resort.name })}> */}
                 <a>
                   {name} <ChevronRight />
                 </a>
                 {/* </Link> */}
-                <PortableText blocks={_rawDescription} />
+                <p>{description}</p>
                 {imageThumb && imageThumb.asset && (
                   <Image {...imageThumb} alt={imageThumb.alt} />
                 )}

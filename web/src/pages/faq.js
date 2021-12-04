@@ -45,7 +45,7 @@ export const query = graphql`
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       faq {
         name
-        _rawDescription
+        description
         faqQuestionsAnswers {
           # _id
           answer

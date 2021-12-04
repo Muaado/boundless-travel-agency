@@ -99,60 +99,62 @@ const Faq = (props) => {
   const { faq, path, onClick, slice, className } = props;
 
   return (
-    <FaqStyles
-      className={`faq__section ${className}`}
-      // data-aos="fade-up"
-      // data-aos-delay="50"
-      // data-aos-duration="1000"
-      // data-aos-easing="ease-in-out"
-    >
-      <h2>{faq.name}</h2>
-      <p className="description">
-        Browse our FAQ's below, if you can not find the answer you're looking
-        for please contact us
-      </p>
+    faq && (
+      <FaqStyles
+        className={`faq__section ${className}`}
+        // data-aos="fade-up"
+        // data-aos-delay="50"
+        // data-aos-dution="1000"
+        // data-aos-easing="ease-in-out"
+      >
+        <h2>{faq.name}</h2>
+        <p className="description">
+          Browse our FAQ's below, if you can not find the answer you're looking
+          for please contact us
+        </p>
 
-      <ul>
-        {faq?.faqQuestionsAnswers
-          .slice(0, slice ? slice : 4)
-          .map(({ question, answer }, index) => (
-            <li
-              className={`clickable ${
-                selectedQuestion === index ? "selected" : ""
-              }`}
-              key={question}
-              onClick={() => {
-                if (selectedQuestion !== index) {
-                  setSelectedQuestion(index);
-                } else {
-                  setSelectedQuestion(-1);
-                }
-              }}
-            >
-              <p className="question">
-                {question}{" "}
-                {selectedQuestion !== index ? <ChevronDown /> : <ChevronUp />}
-              </p>
+        <ul>
+          {faq?.faqQuestionsAnswers
+            .slice(0, slice ? slice : 4)
+            .map(({ question, answer }, index) => (
+              <li
+                className={`clickable ${
+                  selectedQuestion === index ? "selected" : ""
+                }`}
+                key={question}
+                onClick={() => {
+                  if (selectedQuestion !== index) {
+                    setSelectedQuestion(index);
+                  } else {
+                    setSelectedQuestion(-1);
+                  }
+                }}
+              >
+                <p className="question">
+                  {question}{" "}
+                  {selectedQuestion !== index ? <ChevronDown /> : <ChevronUp />}
+                </p>
 
-              {/* {selectedQuestion === index && (
+                {/* {selectedQuestion === index && (
                 <p className="answer"> {answer}</p>
               )} */}
-            </li>
-          ))}
-      </ul>
+              </li>
+            ))}
+        </ul>
 
-      {!slice && path === "/" ? (
-        <Link to="/faq">
-          <button className="btn">View more...</button>
-        </Link>
-      ) : slice < 100 && path === "/resort" ? (
-        <button className="btn" onClick={onClick}>
-          View more...
-        </button>
-      ) : (
-        ""
-      )}
-    </FaqStyles>
+        {!slice && path === "/" ? (
+          <Link to="/faq">
+            <button className="btn">View more...</button>
+          </Link>
+        ) : slice < 100 && path === "/resort" ? (
+          <button className="btn" onClick={onClick}>
+            View more...
+          </button>
+        ) : (
+          ""
+        )}
+      </FaqStyles>
+    )
   );
 };
 

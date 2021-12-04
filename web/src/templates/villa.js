@@ -121,7 +121,7 @@ export const query = graphql`
 
         highlights {
           name
-          _rawDescription
+          description
           imageThumb {
             ...SanityImage
             alt
@@ -139,7 +139,7 @@ export const query = graphql`
 
         reviews {
           name
-          _rawDescription
+          description
         }
       }
     }
@@ -487,36 +487,44 @@ const VilaTemplate = (props) => {
             <ul>
               {restaurants.nodes
                 .slice(0, restaurantSlice)
-                .map(({ name, alternateName, imageThumb, resort }) => (
-                  <li
-                    data-aos="fade-up"
-                    data-aos-delay="50"
-                    data-aos-duration="1000"
-                    data-aos-easing="ease-in-out"
-                    key={name}
-                  >
-                    <div key={name} className="image-container">
-                      {imageThumb && imageThumb.asset ? (
-                        <Image {...imageThumb} alt={imageThumb.alt} />
-                      ) : (
-                        <Placeholder
-                          style={{ width: "100%", height: "100%" }}
-                        />
-                      )}
-                    </div>
-                    <div className="villa__restaurants__text">
-                      <span className="name">{name}</span>
-                      <span className="alternate-name">{alternateName}</span>
+                .map(
+                  ({
+                    name,
+                    alternateName,
+                    imageThumb,
+                    resort,
+                    _rawDescription,
+                  }) => (
+                    <li
+                      data-aos="fade-up"
+                      data-aos-delay="50"
+                      data-aos-duration="1000"
+                      data-aos-easing="ease-in-out"
+                      key={name}
+                    >
+                      <div key={name} className="image-container">
+                        {imageThumb && imageThumb.asset ? (
+                          <Image {...imageThumb} alt={imageThumb.alt} />
+                        ) : (
+                          <Placeholder
+                            style={{ width: "100%", height: "100%" }}
+                          />
+                        )}
+                      </div>
+                      <div className="villa__restaurants__text">
+                        <span className="name">{name}</span>
+                        <span className="alternate-name">{alternateName}</span>
 
-                      <PortableText blocks={_rawDescription} />
-                      {/* <Link
+                        <PortableText blocks={_rawDescription} />
+                        {/* <Link
                         to={getRestaurantUrl({ name, resortName: resort.name })}
                       >
                         Read more...
                       </Link> */}
-                    </div>
-                  </li>
-                ))}
+                      </div>
+                    </li>
+                  )
+                )}
             </ul>
 
             {restaurantSlice === 4 && (

@@ -74,10 +74,12 @@ const AboutUs = ({ aboutUs }) => {
       <div className="about-us__text">
         <h2>{aboutUs.title}</h2>
 
-        <PortableText
-          className="about-us__text-block"
-          blocks={aboutUs._rawDescription}
-        />
+        {aboutUs._rawDescription && (
+          <PortableText
+            className="about-us__text-block"
+            blocks={aboutUs._rawDescription}
+          />
+        )}
         {/* <p>{}</p> */}
       </div>
     </AboutUsSectionStyles>

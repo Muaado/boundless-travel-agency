@@ -85,7 +85,7 @@ export const query = graphql`
 
       reviews {
         name
-        _rawDescription
+        description
       }
 
       secondImage {
@@ -95,7 +95,7 @@ export const query = graphql`
 
       highlights {
         name
-        _rawDescription
+        description
         imageThumb {
           ...SanityImage
           alt
@@ -104,7 +104,7 @@ export const query = graphql`
 
       faq {
         name
-        _rawDescription
+        description
         faqQuestionsAnswers {
           # _id
           answer
@@ -220,7 +220,7 @@ const ResortTemplate = (props) => {
   const [slice, setSlice] = useState(Number);
   const [restaurantSlice, setRestaurentSlice] = useState(4);
 
-  // const highlights = data && data.highlights;
+  console.log(restaurants); // const highlights = data && data.highlights;
 
   const windowGlobal = typeof window !== "undefined";
   const {
@@ -359,7 +359,9 @@ const ResortTemplate = (props) => {
                       <span className="name">{name}</span>
                       <span className="alternate-name">{alternateName}</span>
 
-                      <PortableText blocks={_rawDescription} />
+                      {_rawDescription && (
+                        <PortableText blocks={_rawDescription} />
+                      )}
                     </div>
                   </li>
                 ))}
