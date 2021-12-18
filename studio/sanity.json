@@ -1,11 +1,11 @@
 {
   "root": true,
   "project": {
-    "name": "Boundless travel agency"
+    "name": "boundless muaado v1"
   },
   "api": {
-    "projectId": "y7yu20xn",
-    "dataset": "master"
+    "projectId": "3wlx4niz",
+    "dataset": "production"
   },
 
   "plugins": [
