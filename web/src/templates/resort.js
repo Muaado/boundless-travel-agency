@@ -132,7 +132,7 @@ export const query = graphql`
       nodes {
         name
         alternateName
-        _rawDescription
+        description
         imageThumb {
           ...SanityImage
           alt
@@ -145,7 +145,7 @@ export const query = graphql`
       spaFeatured: { eq: true }
     ) {
       id
-      _rawDescription
+      description
       name
       imageWeb {
         ...SanityImage
@@ -160,7 +160,7 @@ export const query = graphql`
     spas: allSanitySpa(filter: { resort: { _id: { eq: $id } } }) {
       nodes {
         id
-        _rawDescription
+        description
         name
         imageWeb {
           ...SanityImage
