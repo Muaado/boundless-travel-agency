@@ -406,8 +406,8 @@ const IndexPage = (props) => {
               />
             )}
           </div>
-          {site.faq.length && <Faq path="/" faq={site.faq[0]} />}
-          <NewsletterSection site={site} />
+          {/* {site.faq.length && <Faq path="/" faq={site.faq[0]} />}
+          <NewsletterSection site={site} /> */}
           <ContactUs contactUs={site.contactUs} />
         </div>
       </Container>

@@ -136,10 +136,11 @@ export const ContactUs = ({ contactUs }) => {
   return (
     <ContactUsSection
       data-aos="fade-up"
-      data-aos-delay="50"
-      data-aos-duration="1000"
+      data-aos-delay="10"
+      data-aos-duration="500"
       data-aos-easing="ease-in-out"
       // id="contact-us"
+      id = 'contact-us'
     >
       <a className="anchor" id="contact-us"></a>
       <div>
